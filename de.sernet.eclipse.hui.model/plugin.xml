@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated hitro -->
+      <package
+            uri="http://www.sernet.de/hitro"
+            class="de.sernet.eclipse.hitro.HitroPackage"
+            genModel="model/hitro.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated hitro -->
+      <parser
+            type="hitro"
+            class="de.sernet.eclipse.hitro.util.HitroResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

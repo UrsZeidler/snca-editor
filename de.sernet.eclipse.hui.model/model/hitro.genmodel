@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.sernet.eclipse.hui.model/src" editDirectory="/de.sernet.eclipse.hui.model.edit/src"
+    editorDirectory="/de.sernet.eclipse.hui.model.editor/src" modelPluginID="de.sernet.eclipse.hui.model"
+    modelName="Hitro" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.xsd.ecore.importer">
+    <details key="createMap" value="true"/>
+  </genAnnotations>
+  <foreignModel>hitro.xsd</foreignModel>
+  <genPackages prefix="Hitro" basePackage="de.sernet.eclipse" resource="XML" disposableProviderFactory="true"
+      ecorePackage="hitro.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="hitro.ecore#//Inputtypes">
+      <genEnumLiterals ecoreEnumLiteral="hitro.ecore#//Inputtypes/line"/>
+      <genEnumLiterals ecoreEnumLiteral="hitro.ecore#//Inputtypes/singleoption"/>
+      <genEnumLiterals ecoreEnumLiteral="hitro.ecore#//Inputtypes/multioption"/>
+      <genEnumLiterals ecoreEnumLiteral="hitro.ecore#//Inputtypes/text"/>
+      <genEnumLiterals ecoreEnumLiteral="hitro.ecore#//Inputtypes/reference"/>
+      <genEnumLiterals ecoreEnumLiteral="hitro.ecore#//Inputtypes/cnalinkReference"/>
+      <genEnumLiterals ecoreEnumLiteral="hitro.ecore#//Inputtypes/date"/>
+      <genEnumLiterals ecoreEnumLiteral="hitro.ecore#//Inputtypes/numericoption"/>
+      <genEnumLiterals ecoreEnumLiteral="hitro.ecore#//Inputtypes/booleanoption"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="hitro.ecore#//InputtypesObject"/>
+    <genClasses ecoreClass="hitro.ecore#//DefaultRule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//DefaultRule/param"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//DefaultRule/class"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//Depends">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Depends/inverse"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference hitro.ecore#//Depends/option"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Depends/value"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference hitro.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference hitro.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//DocumentRoot/huientities"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//Huientities">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//Huientities/huientity"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//Huientity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute hitro.ecore#//Huientity/group"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference hitro.ecore#//Huientity/huiproperty"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference hitro.ecore#//Huientity/huipropertygroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference hitro.ecore#//Huientity/huirelation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huientity/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huientity/name"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//Huiproperty">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//Huiproperty/depends"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//Huiproperty/references"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//Huiproperty/defaultRule"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//Huiproperty/validationRule"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//Huiproperty/option"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/crudButtons"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/defaultValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/editable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/focus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/inputtype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/isURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/report"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/required"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/showInObjectBrowser"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/tags"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/textrows"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/tooltip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huiproperty/visible"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//Huipropertygroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//Huipropertygroup/depends"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//Huipropertygroup/huiproperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huipropertygroup/columns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huipropertygroup/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huipropertygroup/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huipropertygroup/tags"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//Huirelation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huirelation/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huirelation/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huirelation/reversename"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hitro.ecore#//Huirelation/to"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Huirelation/tooltip"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//Option">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Option/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Option/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Option/value"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//Param">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute hitro.ecore#//Param/mixed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Param/id"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//Reference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hitro.ecore#//Reference/entitytype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//Reference/linkType"/>
+    </genClasses>
+    <genClasses ecoreClass="hitro.ecore#//ValidationRule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hitro.ecore#//ValidationRule/param"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//ValidationRule/class"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hitro.ecore#//ValidationRule/hint"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

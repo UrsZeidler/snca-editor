@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+<!-- 
+BUILD INSTRUCTIONS
+
+	Build with mvn -Dtycho.disableP2Mirrors=true -X clean verify
+	
+	See https://bugs.eclipse.org/bugs/show_bug.cgi?id=376973 and 
+	https://wiki.eclipse.org/Tycho/FAQ#How_do_I_disable_P2_mirrors.3F.
+	
+	Otherwise you might get a NullPointerException while fetching the artifacts.
+	
+	HOW TO DEAL WITH ECLIPSE?
+-->
+  
+  <modelVersion>4.0.0</modelVersion>
+  <packaging>pom</packaging>
+  
+  <groupId>sernet.verinice</groupId>
+  <artifactId>de.sernet.eclipse.hui.parent</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  
+    <properties>
+        <!-- See http://mvnrepository.com/artifact/org.eclipse.tycho/tycho-maven-plugin/ for latest version. -->
+        <!-- 
+			Failed to execute goal org.eclipse.tycho:tycho-p2-publisher-plugin:1.0.0:publish-products (default-publish-products) on project sernet.verinice.releng.client.product: Detected Luna or older launcher feature org.eclipse.equinox.executable version 3.5.1.v20111216-1653-7P7NFUIFIbaUcU77s0KQWHw5HZTZ.
+			[ERROR] Native product launchers for MacOSX can only be built against Eclipse Mars or newer.
+			[ERROR] To fix this, you can either build against Eclipse Mars or newer (recommended) or go back to Tycho <= 0.22.0
+         -->
+        <!-- <tycho-version>1.0.0</tycho-version> -->
+        <tycho-version>0.22.0</tycho-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- Aggregation -->
+    <modules>
+        <!-- Target platform definition -->
+        <module>../de.sernet.eclipse.hui.tp</module>
+        
+        <module>../de.sernet.eclipse.hui.model</module>
+        <module>../de.sernet.eclipse.hui.model.edit</module>
+        <module>../de.sernet.eclipse.hui.model.editor</module>
+        <module>../de.sernet.eclipse.hui.model.tests</module>
+        <module>../de.sernet.eclipse.hui.parsley</module>
+
+        <module>../de.sernet.eclipse.hui.feature</module>
+        <module>../de.sernet.eclipse.hui.depedencies.feature</module>
+
+        <module>../de.sernet.eclipse.hui.p2</module>
+        <module>../de.sernet.eclipse.hui.product</module>        
+    </modules>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <!-- enable tycho build extension -->
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-maven-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <!--
+                    The Tycho plugin needs to be defined as an extension. Otherwise
+                    it does not contribute to the packaging type.
+                -->
+                <extensions>true</extensions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-compiler-plugin</artifactId>
+                <version>${tycho-version}</version>
+                
+                <configuration>
+                	<!-- source and target options can be ommited as soon as we upgrade to Tycho 1.0.0 -->
+  					<source>1.7</source>
+  					<target>1.7</target>
+  					<!-- otherwise you will get numerous API access restriction errors when tycho version < 1.0.0 -->
+                	<compilerArgument>-err:none</compilerArgument>
+				</configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+
+                    <target>
+                        <artifact>
+                            <groupId>sernet.verinice</groupId>
+                            <artifactId>de.sernet.eclipse.hui.tp</artifactId>
+                            <version>1.0.0-SNAPSHOT</version>
+                        </artifact>
+                    </target>
+
+                    <!-- It seems that Tycho can't consume the target runtime environment from
+                        the target platform file at the moment. -->
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+					</environments>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>  
+  
+</project>

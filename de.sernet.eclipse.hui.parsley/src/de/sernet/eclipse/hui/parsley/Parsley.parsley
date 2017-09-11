@@ -1,0 +1,55 @@
+import de.sernet.eclipse.hitro.Huientity
+import de.sernet.eclipse.hitro.Huiproperty
+import de.sernet.eclipse.hitro.Huipropertygroup
+import de.sernet.eclipse.hitro.Huirelation
+import de.sernet.eclipse.hui.parsley.HuiFormView
+import de.sernet.eclipse.hui.parsley.ParsleyOnSelectionTreeFormView
+import org.eclipse.emf.parsley.edit.IEditingStrategy
+import org.eclipse.emf.parsley.edit.UndoableEditingStrategy
+import org.eclipse.emf.parsley.views.OnSelectionFormView
+import org.eclipse.swt.SWT
+import org.eclipse.swt.widgets.Display
+
+/* de.sernet.eclipse.hui.parsley EMF Parsley Dsl Module file */
+module de.sernet.eclipse.hui.parsley {
+	parts {
+		viewpart de.sernet.eclipse.hui.parsley {
+			viewname "Parsley"
+			viewclass ParsleyOnSelectionTreeFormView
+			viewcategory de.sernet.eclipse.hui.parsley
+		}
+
+		viewpart de.sernet.eclipse.hui.huiview {
+			viewname "hiuview"
+			viewclass HuiFormView
+			viewcategory de.sernet.eclipse.hui.parsley
+		}
+
+		viewpart de.sernet.eclipse.hui.parsley.formview {
+			viewname "AttributesView"
+			viewclass OnSelectionFormView
+			viewcategory de.sernet.eclipse.hui.parsley
+		}
+	}
+	
+	labelProvider {
+		text {
+			Huientity -> name +" ["+id + "]"
+			Huiproperty -> name +" ["+id + "]"
+			Huipropertygroup -> name +" ["+id + "]"
+			Huirelation -> name +" ["+id + "]"
+			
+		}
+		
+		foreground { 
+			Huipropertygroup -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+			Huientity -> Display.getCurrent().getSystemColor(SWT.COLOR_DARK_GREEN)
+			Huiproperty -> Display.getCurrent().getSystemColor(SWT.COLOR_DARK_YELLOW)
+		}
+	}
+
+	bindings {
+		type IEditingStrategy -> UndoableEditingStrategy
+		value int TreeFormSashStyle -> SWT.HORIZONTAL
+	}
+}

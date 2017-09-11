@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="hitro.xsd#/" outputs="hitro.ecore#/" topToBottom="true">
+  <nested inputs="bundleentry://853.fwk940130302/cache/www.w3.org/2001/XMLSchema.xsd#//boolean;XSDSimpleTypeDefinition=10"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+  <nested inputs="bundleentry://853.fwk940130302/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=9"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="hitro.xsd#//dependstype;XSDComplexTypeDefinition=2" outputs="hitro.ecore#//Depends">
+    <nested inputs="hitro.xsd#//dependstype;XSDComplexTypeDefinition=2/XSDAttributeUse=2"
+        outputs="hitro.ecore#//Depends/inverse"/>
+    <nested inputs="hitro.xsd#//dependstype;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="hitro.ecore#//Depends/option"/>
+    <nested inputs="hitro.xsd#//dependstype;XSDComplexTypeDefinition=2/XSDAttributeUse=1"
+        outputs="hitro.ecore#//Depends/value"/>
+  </nested>
+  <nested inputs="bundleentry://853.fwk940130302/cache/www.w3.org/2001/XMLSchema.xsd#//IDREF;XSDSimpleTypeDefinition=38"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//IDREF"/>
+  <nested inputs="hitro.xsd#//referencestype;XSDComplexTypeDefinition=3" outputs="hitro.ecore#//Reference">
+    <nested inputs="hitro.xsd#//referencestype;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="hitro.ecore#//Reference/entitytype"/>
+    <nested inputs="hitro.xsd#//referencestype;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="hitro.ecore#//Reference/linkType"/>
+  </nested>
+  <nested inputs="bundleentry://853.fwk940130302/cache/www.w3.org/2001/XMLSchema.xsd#//ID;XSDSimpleTypeDefinition=37"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//ID"/>
+  <nested inputs="hitro.xsd#//param;XSDComplexTypeDefinition=6" outputs="hitro.ecore#//Param">
+    <nested inputs="hitro.xsd#//param;XSDComplexTypeDefinition=6/XSDAttributeUse"
+        outputs="hitro.ecore#//Param/id"/>
+  </nested>
+  <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=2/defaultRule;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="hitro.ecore#//DefaultRule">
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=2/defaultRule;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="hitro.ecore#//DefaultRule/param"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=2/defaultRule;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="hitro.ecore#//DefaultRule/class"/>
+  </nested>
+  <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=3/validationRule;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="hitro.ecore#//ValidationRule">
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=3/validationRule;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="hitro.ecore#//ValidationRule/param"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=3/validationRule;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="hitro.ecore#//ValidationRule/class"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=3/validationRule;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="hitro.ecore#//ValidationRule/hint"/>
+  </nested>
+  <nested inputs="bundleentry://853.fwk940130302/cache/www.w3.org/2001/XMLSchema.xsd#//decimal;XSDSimpleTypeDefinition=13"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Decimal"/>
+  <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=4/option;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="hitro.ecore#//Option">
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=4/option;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="hitro.ecore#//Option/id"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=4/option;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="hitro.ecore#//Option/name"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=4/option;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse=2"
+        outputs="hitro.ecore#//Option/value"/>
+  </nested>
+  <nested inputs="bundleentry://853.fwk940130302/cache/www.w3.org/2001/XMLSchema.xsd#//int;XSDSimpleTypeDefinition=44"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+  <nested inputs="hitro.xsd#//inputtypes;XSDSimpleTypeDefinition" outputs="hitro.ecore#//Inputtypes">
+    <nested inputs="hitro.xsd#//inputtypes;XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="hitro.ecore#//Inputtypes/line"/>
+    <nested inputs="hitro.xsd#//inputtypes;XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="hitro.ecore#//Inputtypes/singleoption"/>
+    <nested inputs="hitro.xsd#//inputtypes;XSDSimpleTypeDefinition/XSDEnumerationFacet=2"
+        outputs="hitro.ecore#//Inputtypes/multioption"/>
+    <nested inputs="hitro.xsd#//inputtypes;XSDSimpleTypeDefinition/XSDEnumerationFacet=3"
+        outputs="hitro.ecore#//Inputtypes/text"/>
+    <nested inputs="hitro.xsd#//inputtypes;XSDSimpleTypeDefinition/XSDEnumerationFacet=4"
+        outputs="hitro.ecore#//Inputtypes/reference"/>
+    <nested inputs="hitro.xsd#//inputtypes;XSDSimpleTypeDefinition/XSDEnumerationFacet=5"
+        outputs="hitro.ecore#//Inputtypes/cnalinkReference"/>
+    <nested inputs="hitro.xsd#//inputtypes;XSDSimpleTypeDefinition/XSDEnumerationFacet=6"
+        outputs="hitro.ecore#//Inputtypes/date"/>
+    <nested inputs="hitro.xsd#//inputtypes;XSDSimpleTypeDefinition/XSDEnumerationFacet=7"
+        outputs="hitro.ecore#//Inputtypes/numericoption"/>
+    <nested inputs="hitro.xsd#//inputtypes;XSDSimpleTypeDefinition/XSDEnumerationFacet=8"
+        outputs="hitro.ecore#//Inputtypes/booleanoption"/>
+  </nested>
+  <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4" outputs="hitro.ecore#//Huiproperty">
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="hitro.ecore#//Huiproperty/depends"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="hitro.ecore#//Huiproperty/references"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="hitro.ecore#//Huiproperty/defaultRule"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="hitro.ecore#//Huiproperty/validationRule"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="hitro.ecore#//Huiproperty/option"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=10"
+        outputs="hitro.ecore#//Huiproperty/crudButtons"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=13"
+        outputs="hitro.ecore#//Huiproperty/defaultValue"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=8"
+        outputs="hitro.ecore#//Huiproperty/editable"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=6"
+        outputs="hitro.ecore#//Huiproperty/focus"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse"
+        outputs="hitro.ecore#//Huiproperty/id"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=4"
+        outputs="hitro.ecore#//Huiproperty/inputtype"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=7"
+        outputs="hitro.ecore#//Huiproperty/isURL"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=12"
+        outputs="hitro.ecore#//Huiproperty/max"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=11"
+        outputs="hitro.ecore#//Huiproperty/min"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=1"
+        outputs="hitro.ecore#//Huiproperty/name"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=14"
+        outputs="hitro.ecore#//Huiproperty/report"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=5"
+        outputs="hitro.ecore#//Huiproperty/required"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=16"
+        outputs="hitro.ecore#//Huiproperty/showInObjectBrowser"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=3"
+        outputs="hitro.ecore#//Huiproperty/tags"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=15"
+        outputs="hitro.ecore#//Huiproperty/textrows"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=2"
+        outputs="hitro.ecore#//Huiproperty/tooltip"/>
+    <nested inputs="hitro.xsd#//huipropertytype;XSDComplexTypeDefinition=4/XSDAttributeUse=9"
+        outputs="hitro.ecore#//Huiproperty/visible"/>
+  </nested>
+  <nested inputs="hitro.xsd#//huipropertygrouptype;XSDComplexTypeDefinition=1" outputs="hitro.ecore#//Huipropertygroup">
+    <nested inputs="hitro.xsd#//huipropertygrouptype;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="hitro.ecore#//Huipropertygroup/depends"/>
+    <nested inputs="hitro.xsd#//huipropertygrouptype;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="hitro.ecore#//Huipropertygroup/huiproperty"/>
+    <nested inputs="hitro.xsd#//huipropertygrouptype;XSDComplexTypeDefinition=1/XSDAttributeUse=3"
+        outputs="hitro.ecore#//Huipropertygroup/columns"/>
+    <nested inputs="hitro.xsd#//huipropertygrouptype;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="hitro.ecore#//Huipropertygroup/id"/>
+    <nested inputs="hitro.xsd#//huipropertygrouptype;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="hitro.ecore#//Huipropertygroup/name"/>
+    <nested inputs="hitro.xsd#//huipropertygrouptype;XSDComplexTypeDefinition=1/XSDAttributeUse=2"
+        outputs="hitro.ecore#//Huipropertygroup/tags"/>
+  </nested>
+  <nested inputs="hitro.xsd#//huirelationtype;XSDComplexTypeDefinition=5" outputs="hitro.ecore#//Huirelation">
+    <nested inputs="hitro.xsd#//huirelationtype;XSDComplexTypeDefinition=5/XSDAttributeUse"
+        outputs="hitro.ecore#//Huirelation/id"/>
+    <nested inputs="hitro.xsd#//huirelationtype;XSDComplexTypeDefinition=5/XSDAttributeUse=1"
+        outputs="hitro.ecore#//Huirelation/name"/>
+    <nested inputs="hitro.xsd#//huirelationtype;XSDComplexTypeDefinition=5/XSDAttributeUse=2"
+        outputs="hitro.ecore#//Huirelation/reversename"/>
+    <nested inputs="hitro.xsd#//huirelationtype;XSDComplexTypeDefinition=5/XSDAttributeUse=3"
+        outputs="hitro.ecore#//Huirelation/to"/>
+    <nested inputs="hitro.xsd#//huirelationtype;XSDComplexTypeDefinition=5/XSDAttributeUse=4"
+        outputs="hitro.ecore#//Huirelation/tooltip"/>
+  </nested>
+  <nested inputs="hitro.xsd#//huientitytype;XSDComplexTypeDefinition" outputs="hitro.ecore#//Huientity">
+    <nested inputs="hitro.xsd#//huientitytype;XSDComplexTypeDefinition/XSDParticle"
+        outputs="hitro.ecore#//Huientity/group"/>
+    <nested inputs="hitro.xsd#//huientitytype;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="hitro.ecore#//Huientity/huiproperty"/>
+    <nested inputs="hitro.xsd#//huientitytype;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="hitro.ecore#//Huientity/huipropertygroup"/>
+    <nested inputs="hitro.xsd#//huientitytype;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="hitro.ecore#//Huientity/huirelation"/>
+    <nested inputs="hitro.xsd#//huientitytype;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="hitro.ecore#//Huientity/id"/>
+    <nested inputs="hitro.xsd#//huientitytype;XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="hitro.ecore#//Huientity/name"/>
+  </nested>
+  <nested inputs="hitro.xsd#//huientities;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="hitro.ecore#//Huientities">
+    <nested inputs="hitro.xsd#//huientities;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="hitro.ecore#//Huientities/huientity"/>
+  </nested>
+  <nested inputs="hitro.xsd#//huientities;XSDElementDeclaration" outputs="hitro.ecore#//DocumentRoot/huientities"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

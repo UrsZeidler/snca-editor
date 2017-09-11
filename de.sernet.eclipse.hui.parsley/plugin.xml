@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="de.sernet.eclipse.hui.parsley"
+            class="de.sernet.eclipse.hui.parsley.ParsleyExecutableExtensionFactory:de.sernet.eclipse.hui.parsley.ParsleyOnSelectionTreeFormView"
+            id="de.sernet.eclipse.hui.parsley"
+            name="Parsley"
+            restorable="true">
+      </view>
+      <view
+            category="de.sernet.eclipse.hui.parsley"
+            class="de.sernet.eclipse.hui.parsley.ParsleyExecutableExtensionFactory:de.sernet.eclipse.hui.parsley.HuiFormView"
+            id="de.sernet.eclipse.hui.huiview"
+            name="hiuview"
+            restorable="true">
+      </view>
+      <view
+            category="de.sernet.eclipse.hui.parsley"
+            class="de.sernet.eclipse.hui.parsley.ParsleyExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionFormView"
+            id="de.sernet.eclipse.hui.parsley.formview"
+            name="AttributesView"
+            restorable="true">
+      </view>
+      <category
+            id="de.sernet.eclipse.hui.parsley"
+            name="hui">
+      </category>
+   </extension>
+</plugin>
