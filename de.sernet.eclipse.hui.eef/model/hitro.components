@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+  <eef-components:PropertiesEditionContext xmi:id="_sc3zsJfsEeeiucnkHK0wDQ" documentation="Edition Context for hitro GenPackage">
+    <categories xmi:id="_sc3zsZfsEeeiucnkHK0wDQ" name="hitro">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc3zspfsEeeiucnkHK0wDQ" name="DefaultRule" views="_sc4a-5fsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc3zs5fsEeeiucnkHK0wDQ" name="param" views="_sc4a_ZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DefaultRule/param"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc3ztJfsEeeiucnkHK0wDQ" name="class" views="_sc4a_pfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DefaultRule/class"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DefaultRule"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc3ztZfsEeeiucnkHK0wDQ" name="Depends" views="_sc4a_5fsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc3ztpfsEeeiucnkHK0wDQ" name="inverse" views="_sc4bAZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Depends/inverse"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc3zt5fsEeeiucnkHK0wDQ" name="option" views="_sc4bApfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Depends/option"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc3zuJfsEeeiucnkHK0wDQ" name="value" views="_sc4bA5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Depends/value"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Depends"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc3zuZfsEeeiucnkHK0wDQ" name="DocumentRoot" views="_sc4bBJfsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4awJfsEeeiucnkHK0wDQ" name="mixed" views="_sc4bBpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DocumentRoot/mixed"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4awZfsEeeiucnkHK0wDQ" name="xMLNSPrefixMap" views="_sc4bB5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4awpfsEeeiucnkHK0wDQ" name="xSISchemaLocation" views="_sc4bCJfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DocumentRoot/xSISchemaLocation"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DocumentRoot"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4aw5fsEeeiucnkHK0wDQ" name="Huientities" views="_sc4bCZfsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4axJfsEeeiucnkHK0wDQ" name="huientity" views="_sc4bC5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huientities/huientity"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huientities"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4axZfsEeeiucnkHK0wDQ" name="Huientity" views="_sc4bDJfsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4axpfsEeeiucnkHK0wDQ" name="group" views="_sc4bDpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huientity/group"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4ax5fsEeeiucnkHK0wDQ" name="id" views="_sc4bD5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huientity/id"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4ayJfsEeeiucnkHK0wDQ" name="name" views="_sc4bEJfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huientity/name"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huientity"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4ayZfsEeeiucnkHK0wDQ" name="Huiproperty" views="_sc4bEZfsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4aypfsEeeiucnkHK0wDQ" name="depends" views="_sc4bE5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/depends"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4ay5fsEeeiucnkHK0wDQ" name="validationRule" views="_sc4bFJfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/validationRule"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4azJfsEeeiucnkHK0wDQ" name="option" views="_sc4bFZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/option"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4azZfsEeeiucnkHK0wDQ" name="crudButtons" views="_sc4bFpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/crudButtons"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4azpfsEeeiucnkHK0wDQ" name="defaultValue" views="_sc4bF5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/defaultValue"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4az5fsEeeiucnkHK0wDQ" name="editable" views="_sc4bGJfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/editable"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a0JfsEeeiucnkHK0wDQ" name="focus" views="_sc4bGZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/focus"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a0ZfsEeeiucnkHK0wDQ" name="id" views="_sc4bGpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/id"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a0pfsEeeiucnkHK0wDQ" name="inputtype" views="_sc4bG5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/inputtype"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a05fsEeeiucnkHK0wDQ" name="isURL" views="_sc4bHJfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/isURL"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a1JfsEeeiucnkHK0wDQ" name="max" views="_sc4bHZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/max"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a1ZfsEeeiucnkHK0wDQ" name="min" views="_sc4bHpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/min"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a1pfsEeeiucnkHK0wDQ" name="name" views="_sc4bH5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a15fsEeeiucnkHK0wDQ" name="report" views="_sc4bIJfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/report"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a2JfsEeeiucnkHK0wDQ" name="required" views="_sc4bIZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/required"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a2ZfsEeeiucnkHK0wDQ" name="showInObjectBrowser" views="_sc4bIpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/showInObjectBrowser"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a2pfsEeeiucnkHK0wDQ" name="tags" views="_sc4bI5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/tags"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a25fsEeeiucnkHK0wDQ" name="textrows" views="_sc4bJJfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/textrows"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a3JfsEeeiucnkHK0wDQ" name="tooltip" views="_sc4bJZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/tooltip"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a3ZfsEeeiucnkHK0wDQ" name="visible" views="_sc4bJpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty/visible"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huiproperty"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4a3pfsEeeiucnkHK0wDQ" name="Huipropertygroup" views="_sc4bJ5fsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a35fsEeeiucnkHK0wDQ" name="depends" views="_sc4bKZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huipropertygroup/depends"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a4JfsEeeiucnkHK0wDQ" name="huiproperty" views="_sc4bKpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huipropertygroup/huiproperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a4ZfsEeeiucnkHK0wDQ" name="columns" views="_sc4bK5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huipropertygroup/columns"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a4pfsEeeiucnkHK0wDQ" name="id" views="_sc4bLJfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huipropertygroup/id"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a45fsEeeiucnkHK0wDQ" name="name" views="_sc4bLZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huipropertygroup/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a5JfsEeeiucnkHK0wDQ" name="tags" views="_sc4bLpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huipropertygroup/tags"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huipropertygroup"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4a5ZfsEeeiucnkHK0wDQ" name="Huirelation" views="_sc4bL5fsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a5pfsEeeiucnkHK0wDQ" name="id" views="_sc4bMZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huirelation/id"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a55fsEeeiucnkHK0wDQ" name="name" views="_sc4bMpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huirelation/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a6JfsEeeiucnkHK0wDQ" name="reversename" views="_sc4bM5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huirelation/reversename"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a6ZfsEeeiucnkHK0wDQ" name="to" views="_sc4bNJfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huirelation/to"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a6pfsEeeiucnkHK0wDQ" name="tooltip" views="_sc4bNZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huirelation/tooltip"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huirelation"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4a65fsEeeiucnkHK0wDQ" name="Option" views="_sc4bNpfsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a7JfsEeeiucnkHK0wDQ" name="id" views="_sc4bOJfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Option/id"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a7ZfsEeeiucnkHK0wDQ" name="name" views="_sc4bOZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Option/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a7pfsEeeiucnkHK0wDQ" name="value" views="_sc4bOpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Option/value"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Option"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4a75fsEeeiucnkHK0wDQ" name="Param" views="_sc4bO5fsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a8JfsEeeiucnkHK0wDQ" name="mixed" views="_sc4bPZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Param/mixed"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a8ZfsEeeiucnkHK0wDQ" name="id" views="_sc4bPpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Param/id"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Param"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4a8pfsEeeiucnkHK0wDQ" name="Reference" views="_sc4bP5fsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a85fsEeeiucnkHK0wDQ" name="entitytype" views="_sc4bQZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Reference/entitytype"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a9JfsEeeiucnkHK0wDQ" name="linkType" views="_sc4bQpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Reference/linkType"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Reference"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4a9ZfsEeeiucnkHK0wDQ" name="ValidationRule" views="_sc4bQ5fsEeeiucnkHK0wDQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a9pfsEeeiucnkHK0wDQ" name="param" views="_sc4bRZfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//ValidationRule/param"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a95fsEeeiucnkHK0wDQ" name="class" views="_sc4bRpfsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//ValidationRule/class"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4a-JfsEeeiucnkHK0wDQ" name="hint" views="_sc4bR5fsEeeiucnkHK0wDQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//ValidationRule/hint"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//ValidationRule"/>
+      </bindings>
+    </categories>
+    <model href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.genmodel#//hitro"/>
+  </eef-components:PropertiesEditionContext>
+  <eef-views:ViewsRepository xmi:id="_sc4a-ZfsEeeiucnkHK0wDQ" documentation="Views repository for hitro GenPackage" name="hitro">
+    <RepositoryKind>SWT</RepositoryKind>
+    <RepositoryKind>Form</RepositoryKind>
+    <categories xmi:id="_sc4a-pfsEeeiucnkHK0wDQ" name="hitro">
+      <views xmi:id="_sc4a-5fsEeeiucnkHK0wDQ" name="DefaultRule">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4a_JfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4a_ZfsEeeiucnkHK0wDQ" name="param">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4a_pfsEeeiucnkHK0wDQ" name="class">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4a_5fsEeeiucnkHK0wDQ" name="Depends">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bAJfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bAZfsEeeiucnkHK0wDQ" name="inverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bApfsEeeiucnkHK0wDQ" name="option">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bA5fsEeeiucnkHK0wDQ" name="value">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bBJfsEeeiucnkHK0wDQ" name="DocumentRoot">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bBZfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bBpfsEeeiucnkHK0wDQ" name="mixed">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bB5fsEeeiucnkHK0wDQ" name="xMLNSPrefixMap">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bCJfsEeeiucnkHK0wDQ" name="xSISchemaLocation">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bCZfsEeeiucnkHK0wDQ" name="Huientities">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bCpfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bC5fsEeeiucnkHK0wDQ" name="huientity">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bDJfsEeeiucnkHK0wDQ" name="Huientity">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bDZfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bDpfsEeeiucnkHK0wDQ" name="group">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bD5fsEeeiucnkHK0wDQ" name="id">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bEJfsEeeiucnkHK0wDQ" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bEZfsEeeiucnkHK0wDQ" name="Huiproperty">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bEpfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bE5fsEeeiucnkHK0wDQ" name="depends">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bFJfsEeeiucnkHK0wDQ" name="validationRule">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bFZfsEeeiucnkHK0wDQ" name="option">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bFpfsEeeiucnkHK0wDQ" name="crudButtons">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bF5fsEeeiucnkHK0wDQ" name="defaultValue">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bGJfsEeeiucnkHK0wDQ" name="editable">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bGZfsEeeiucnkHK0wDQ" name="focus">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bGpfsEeeiucnkHK0wDQ" name="id">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bG5fsEeeiucnkHK0wDQ" name="inputtype">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bHJfsEeeiucnkHK0wDQ" name="isURL">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bHZfsEeeiucnkHK0wDQ" name="max">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bHpfsEeeiucnkHK0wDQ" name="min">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bH5fsEeeiucnkHK0wDQ" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bIJfsEeeiucnkHK0wDQ" name="report">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bIZfsEeeiucnkHK0wDQ" name="required">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bIpfsEeeiucnkHK0wDQ" name="showInObjectBrowser">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bI5fsEeeiucnkHK0wDQ" name="tags">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bJJfsEeeiucnkHK0wDQ" name="textrows">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bJZfsEeeiucnkHK0wDQ" name="tooltip">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bJpfsEeeiucnkHK0wDQ" name="visible">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bJ5fsEeeiucnkHK0wDQ" name="Huipropertygroup">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bKJfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bKZfsEeeiucnkHK0wDQ" name="depends">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bKpfsEeeiucnkHK0wDQ" name="huiproperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bK5fsEeeiucnkHK0wDQ" name="columns">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bLJfsEeeiucnkHK0wDQ" name="id">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bLZfsEeeiucnkHK0wDQ" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bLpfsEeeiucnkHK0wDQ" name="tags">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bL5fsEeeiucnkHK0wDQ" name="Huirelation">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bMJfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bMZfsEeeiucnkHK0wDQ" name="id">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bMpfsEeeiucnkHK0wDQ" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bM5fsEeeiucnkHK0wDQ" name="reversename">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bNJfsEeeiucnkHK0wDQ" name="to">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bNZfsEeeiucnkHK0wDQ" name="tooltip">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bNpfsEeeiucnkHK0wDQ" name="Option">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bN5fsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bOJfsEeeiucnkHK0wDQ" name="id">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bOZfsEeeiucnkHK0wDQ" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bOpfsEeeiucnkHK0wDQ" name="value">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bO5fsEeeiucnkHK0wDQ" name="Param">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bPJfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bPZfsEeeiucnkHK0wDQ" name="mixed">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bPpfsEeeiucnkHK0wDQ" name="id">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bP5fsEeeiucnkHK0wDQ" name="Reference">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bQJfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bQZfsEeeiucnkHK0wDQ" name="entitytype">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bQpfsEeeiucnkHK0wDQ" name="linkType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bQ5fsEeeiucnkHK0wDQ" name="ValidationRule">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bRJfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bRZfsEeeiucnkHK0wDQ" name="param">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bRpfsEeeiucnkHK0wDQ" name="class">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bR5fsEeeiucnkHK0wDQ" name="hint">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+    </categories>
+  </eef-views:ViewsRepository>
+</xmi:XMI>

@@ -66,6 +66,7 @@ import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+import org.eclipse.emf.eef.runtime.ui.notify.OpenWizardOnDoubleClick;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -121,6 +122,8 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
+import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import de.sernet.eclipse.hitro.provider.HitroItemProviderAdapterFactory;
 
@@ -128,13 +131,22 @@ import de.sernet.eclipse.hitro.provider.HitroItemProviderAdapterFactory;
 /**
  * This is an example of a Hitro model editor.
  * <!-- begin-user-doc -->
+ * @implements ITabbedPropertySheetPageContributor
  * <!-- end-user-doc -->
  * @generated
  */
 public class HitroEditor
 	extends MultiPageEditorPart
-	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
+	implements ITabbedPropertySheetPageContributor,IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	private static final String PROPERTIES_CONTRIBUTOR = "de.sernet.eclipse.hitro.properties";
+	/**
+	 * This is the property sheet page.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected TabbedPropertySheetPage propertySheetPage;
+
 
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -1045,6 +1057,9 @@ public class HitroEditor
 				createContextMenuFor(selectionViewer);
 				int pageIndex = addPage(viewerPane.getControl());
 				setPageText(pageIndex, getString("_UI_SelectionPage_label"));
+				 selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain, adapterFactory));
+
+
 			}
 
 			// Create a page for the parent tree view.
@@ -1385,33 +1400,18 @@ public class HitroEditor
 		return contentOutlinePage;
 	}
 
-/**
+	/**
 	 * This accesses a cached version of the property sheet.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public IPropertySheetPage getPropertySheetPage() {
-		PropertySheetPage propertySheetPage =
-			new ExtendedPropertySheetPage(editingDomain) {
-				@Override
-				public void setSelectionToViewer(List<?> selection) {
-					HitroEditor.this.setSelectionToViewer(selection);
-					HitroEditor.this.setFocus();
-				}
-
-				@Override
-				public void setActionBars(IActionBars actionBars) {
-					super.setActionBars(actionBars);
-					getActionBarContributor().shareGlobalActions(this, actionBars);
-				}
-			};
-		propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
-		propertySheetPages.add(propertySheetPage);
-
-		return propertySheetPage;
-	}
-
+	 public IPropertySheetPage getPropertySheetPage() {
+	     if (propertySheetPage == null || propertySheetPage.getControl().isDisposed()) {
+	        propertySheetPage = new TabbedPropertySheetPage(HitroEditor.this);
+	     }
+	    return propertySheetPage;
+	 }
 	//	/**
 //	 * This accesses a cached version of the property sheet.
 //	 * <!-- begin-user-doc -->
@@ -1845,4 +1845,13 @@ public class HitroEditor
 	}
 
 	
+	/** (non-Javadoc)
+	 * @see org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor#getContributorId()
+	 * @generated NOT
+	 */
+	public String getContributorId() {
+	    return PROPERTIES_CONTRIBUTOR;
+	}
+
+
 }
