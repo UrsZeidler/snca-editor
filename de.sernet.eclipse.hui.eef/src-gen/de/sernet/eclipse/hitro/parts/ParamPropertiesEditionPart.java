@@ -16,6 +16,20 @@ import org.eclipse.emf.common.util.EList;
 public interface ParamPropertiesEditionPart {
 
 	/**
+	 * @return the id
+	 * 
+	 */
+	public String getId();
+
+	/**
+	 * Defines a new id
+	 * @param newValue the new id to set
+	 * 
+	 */
+	public void setId(String newValue);
+
+
+	/**
 	 * @return the mixed
 	 * 
 	 */
@@ -39,20 +53,6 @@ public interface ParamPropertiesEditionPart {
 	 * @param newValue the value to remove
 	 */
 	public void removeToMixed(Object newValue);
-
-
-	/**
-	 * @return the id
-	 * 
-	 */
-	public String getId();
-
-	/**
-	 * Defines a new id
-	 * @param newValue the new id to set
-	 * 
-	 */
-	public void setId(String newValue);
 
 
 

@@ -94,16 +94,13 @@ public class HitroViewsRepository {
 	 * 
 	 */
 	public static class Huientity {
-		public static class Properties {
+		public static class Base {
 	
 			
-			public static String group = "hitro::Huientity::properties::group";
+			public static String id = "hitro::Huientity::base::id";
 			
 			
-			public static String id = "hitro::Huientity::properties::id";
-			
-			
-			public static String name = "hitro::Huientity::properties::name";
+			public static String name = "hitro::Huientity::base::name";
 			
 	
 		}
@@ -115,17 +112,36 @@ public class HitroViewsRepository {
 	 * 
 	 */
 	public static class Huiproperty {
-		public static class Properties {
+		public static class Base {
 	
 			
-			public static String depends = "hitro::Huiproperty::properties::depends";
+			public static String id = "hitro::Huiproperty::base::id";
 			
 			
-			public static String validationRule = "hitro::Huiproperty::properties::validationRule";
+			public static String name = "hitro::Huiproperty::base::name";
+			
+	
+		}
+	
+		public static class Type {
+	
+			
+			public static String inputtype = "hitro::Huiproperty::type::inputtype";
 			
 			
-			public static String option = "hitro::Huiproperty::properties::option";
+			public static String isURL = "hitro::Huiproperty::type::isURL";
 			
+			
+			public static String min = "hitro::Huiproperty::type::min";
+			
+			
+			public static String max = "hitro::Huiproperty::type::max";
+			
+	
+		}
+	
+		public static class Properties {
+	
 			
 			public static String crudButtons = "hitro::Huiproperty::properties::crudButtons";
 			
@@ -137,24 +153,6 @@ public class HitroViewsRepository {
 			
 			
 			public static String focus = "hitro::Huiproperty::properties::focus";
-			
-			
-			public static String id = "hitro::Huiproperty::properties::id";
-			
-			
-			public static String inputtype = "hitro::Huiproperty::properties::inputtype";
-			
-			
-			public static String isURL = "hitro::Huiproperty::properties::isURL";
-			
-			
-			public static String max = "hitro::Huiproperty::properties::max";
-			
-			
-			public static String min = "hitro::Huiproperty::properties::min";
-			
-			
-			public static String name = "hitro::Huiproperty::properties::name";
 			
 			
 			public static String report = "hitro::Huiproperty::properties::report";
@@ -180,6 +178,20 @@ public class HitroViewsRepository {
 	
 		}
 	
+		public static class Childs {
+	
+			
+			public static String depends = "hitro::Huiproperty::childs::depends";
+			
+			
+			public static String validationRule = "hitro::Huiproperty::childs::validationRule";
+			
+			
+			public static String option = "hitro::Huiproperty::childs::option";
+			
+	
+		}
+	
 	}
 
 	/**
@@ -187,25 +199,30 @@ public class HitroViewsRepository {
 	 * 
 	 */
 	public static class Huipropertygroup {
+		public static class Base {
+	
+			
+			public static String id = "hitro::Huipropertygroup::base::id";
+			
+			
+			public static String name = "hitro::Huipropertygroup::base::name";
+			
+	
+		}
+	
 		public static class Properties {
 	
 			
-			public static String depends = "hitro::Huipropertygroup::properties::depends";
+			public static String columns = "hitro::Huipropertygroup::properties::columns";
+			
+			
+			public static String tags = "hitro::Huipropertygroup::properties::tags";
 			
 			
 			public static String huiproperty = "hitro::Huipropertygroup::properties::huiproperty";
 			
 			
-			public static String columns = "hitro::Huipropertygroup::properties::columns";
-			
-			
-			public static String id = "hitro::Huipropertygroup::properties::id";
-			
-			
-			public static String name = "hitro::Huipropertygroup::properties::name";
-			
-			
-			public static String tags = "hitro::Huipropertygroup::properties::tags";
+			public static String depends = "hitro::Huipropertygroup::properties::depends";
 			
 	
 		}
@@ -217,14 +234,19 @@ public class HitroViewsRepository {
 	 * 
 	 */
 	public static class Huirelation {
-		public static class Properties {
+		public static class Base {
 	
 			
-			public static String id = "hitro::Huirelation::properties::id";
+			public static String id = "hitro::Huirelation::base::id";
 			
 			
-			public static String name = "hitro::Huirelation::properties::name";
+			public static String name = "hitro::Huirelation::base::name";
 			
+	
+		}
+	
+		public static class Properties {
+	
 			
 			public static String reversename = "hitro::Huirelation::properties::reversename";
 			
@@ -268,10 +290,10 @@ public class HitroViewsRepository {
 		public static class Properties {
 	
 			
-			public static String mixed = "hitro::Param::properties::mixed";
-			
-			
 			public static String id = "hitro::Param::properties::id";
+			
+			
+			public static String mixed = "hitro::Param::properties::mixed";
 			
 	
 		}

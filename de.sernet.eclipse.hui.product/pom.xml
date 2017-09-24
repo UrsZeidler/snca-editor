@@ -47,7 +47,7 @@
 					<products>
 						<product>
 							<id>de.sernet.eclipse.hui.product</id>
-							<rootFolder>verinice</rootFolder>
+							<rootFolder>snca-editor</rootFolder>
 						</product>
 					</products>
 				</configuration>

@@ -42,13 +42,17 @@ BUILD INSTRUCTIONS
         <module>../de.sernet.eclipse.hui.model.edit</module>
         <module>../de.sernet.eclipse.hui.model.editor</module>
         <module>../de.sernet.eclipse.hui.model.tests</module>
+        <module>../de.sernet.eclipse.hui.eef</module>
         <module>../de.sernet.eclipse.hui.parsley</module>
 
         <module>../de.sernet.eclipse.hui.feature</module>
         <module>../de.sernet.eclipse.hui.depedencies.feature</module>
 
         <module>../de.sernet.eclipse.hui.p2</module>
-        <module>../de.sernet.eclipse.hui.product</module>        
+        <module>../de.sernet.eclipse.hui.product</module>   
+        
+        
+            
     </modules>
 
     <build>

@@ -42,9 +42,6 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huientities"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4axZfsEeeiucnkHK0wDQ" name="Huientity" views="_sc4bDJfsEeeiucnkHK0wDQ">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4axpfsEeeiucnkHK0wDQ" name="group" views="_sc4bDpfsEeeiucnkHK0wDQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huientity/group"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4ax5fsEeeiucnkHK0wDQ" name="id" views="_sc4bD5fsEeeiucnkHK0wDQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//Huientity/id"/>
         </properties>
@@ -252,11 +249,8 @@
         </elements>
       </views>
       <views xmi:id="_sc4bDJfsEeeiucnkHK0wDQ" name="Huientity">
-        <elements xsi:type="eef-views:Container" xmi:id="_sc4bDZfsEeeiucnkHK0wDQ" name="properties">
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bDZfsEeeiucnkHK0wDQ" name="base">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bDpfsEeeiucnkHK0wDQ" name="group">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bD5fsEeeiucnkHK0wDQ" name="id">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
@@ -266,17 +260,32 @@
         </elements>
       </views>
       <views xmi:id="_sc4bEZfsEeeiucnkHK0wDQ" name="Huiproperty">
+        <elements xsi:type="eef-views:Container" xmi:id="_nHwJwKFbEeecFob3-127Jw" name="base">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bGpfsEeeiucnkHK0wDQ" name="id">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bH5fsEeeiucnkHK0wDQ" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_ZB8-oKFZEeecFob3-127Jw" name="type">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bG5fsEeeiucnkHK0wDQ" name="inputtype">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bHJfsEeeiucnkHK0wDQ" name="isURL">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bHpfsEeeiucnkHK0wDQ" name="min">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bHZfsEeeiucnkHK0wDQ" name="max">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_sc4bEpfsEeeiucnkHK0wDQ" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bE5fsEeeiucnkHK0wDQ" name="depends">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bFJfsEeeiucnkHK0wDQ" name="validationRule">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bFZfsEeeiucnkHK0wDQ" name="option">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bFpfsEeeiucnkHK0wDQ" name="crudButtons">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
@@ -288,24 +297,6 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bGZfsEeeiucnkHK0wDQ" name="focus">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bGpfsEeeiucnkHK0wDQ" name="id">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bG5fsEeeiucnkHK0wDQ" name="inputtype">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bHJfsEeeiucnkHK0wDQ" name="isURL">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bHZfsEeeiucnkHK0wDQ" name="max">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bHpfsEeeiucnkHK0wDQ" name="min">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bH5fsEeeiucnkHK0wDQ" name="name">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bIJfsEeeiucnkHK0wDQ" name="report">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
@@ -329,32 +320,47 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
-      </views>
-      <views xmi:id="_sc4bJ5fsEeeiucnkHK0wDQ" name="Huipropertygroup">
-        <elements xsi:type="eef-views:Container" xmi:id="_sc4bKJfsEeeiucnkHK0wDQ" name="properties">
+        <elements xsi:type="eef-views:Container" xmi:id="_JjKDcKFbEeecFob3-127Jw" name="childs">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bKZfsEeeiucnkHK0wDQ" name="depends">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bKpfsEeeiucnkHK0wDQ" name="huiproperty">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bE5fsEeeiucnkHK0wDQ" name="depends">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bK5fsEeeiucnkHK0wDQ" name="columns">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bFJfsEeeiucnkHK0wDQ" name="validationRule">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bFZfsEeeiucnkHK0wDQ" name="option">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sc4bJ5fsEeeiucnkHK0wDQ" name="Huipropertygroup">
+        <elements xsi:type="eef-views:Container" xmi:id="_6orywKFbEeecFob3-127Jw" name="base">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bLJfsEeeiucnkHK0wDQ" name="id">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bLZfsEeeiucnkHK0wDQ" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bKJfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bK5fsEeeiucnkHK0wDQ" name="columns">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bLpfsEeeiucnkHK0wDQ" name="tags">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bKpfsEeeiucnkHK0wDQ" name="huiproperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bKZfsEeeiucnkHK0wDQ" name="depends">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
           </elements>
         </elements>
       </views>
       <views xmi:id="_sc4bL5fsEeeiucnkHK0wDQ" name="Huirelation">
-        <elements xsi:type="eef-views:Container" xmi:id="_sc4bMJfsEeeiucnkHK0wDQ" name="properties">
+        <elements xsi:type="eef-views:Container" xmi:id="_S1y3AKFcEeecFob3-127Jw" name="base">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bMZfsEeeiucnkHK0wDQ" name="id">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -362,6 +368,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bMpfsEeeiucnkHK0wDQ" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_sc4bMJfsEeeiucnkHK0wDQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bM5fsEeeiucnkHK0wDQ" name="reversename">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
@@ -390,11 +399,11 @@
       <views xmi:id="_sc4bO5fsEeeiucnkHK0wDQ" name="Param">
         <elements xsi:type="eef-views:Container" xmi:id="_sc4bPJfsEeeiucnkHK0wDQ" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bPZfsEeeiucnkHK0wDQ" name="mixed">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bPpfsEeeiucnkHK0wDQ" name="id">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bPZfsEeeiucnkHK0wDQ" name="mixed">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
         </elements>
       </views>

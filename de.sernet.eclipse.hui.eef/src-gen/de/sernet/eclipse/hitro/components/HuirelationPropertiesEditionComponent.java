@@ -98,10 +98,10 @@ public class HuirelationPropertiesEditionComponent extends SinglePartPropertiesE
 			final Huirelation huirelation = (Huirelation)elt;
 			final HuirelationPropertiesEditionPart basePart = (HuirelationPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(HitroViewsRepository.Huirelation.Properties.id))
+			if (isAccessible(HitroViewsRepository.Huirelation.Base.id))
 				basePart.setId(EEFConverterUtil.convertToString(XMLTypePackage.Literals.ID, huirelation.getId()));
 			
-			if (isAccessible(HitroViewsRepository.Huirelation.Properties.name))
+			if (isAccessible(HitroViewsRepository.Huirelation.Base.name))
 				basePart.setName(EEFConverterUtil.convertToString(XMLTypePackage.Literals.STRING, huirelation.getName()));
 			
 			if (isAccessible(HitroViewsRepository.Huirelation.Properties.reversename))
@@ -158,10 +158,10 @@ public class HuirelationPropertiesEditionComponent extends SinglePartPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == HitroViewsRepository.Huirelation.Properties.id) {
+		if (editorKey == HitroViewsRepository.Huirelation.Base.id) {
 			return HitroPackage.eINSTANCE.getHuirelation_Id();
 		}
-		if (editorKey == HitroViewsRepository.Huirelation.Properties.name) {
+		if (editorKey == HitroViewsRepository.Huirelation.Base.name) {
 			return HitroPackage.eINSTANCE.getHuirelation_Name();
 		}
 		if (editorKey == HitroViewsRepository.Huirelation.Properties.reversename) {
@@ -183,10 +183,10 @@ public class HuirelationPropertiesEditionComponent extends SinglePartPropertiesE
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Huirelation huirelation = (Huirelation)semanticObject;
-		if (HitroViewsRepository.Huirelation.Properties.id == event.getAffectedEditor()) {
+		if (HitroViewsRepository.Huirelation.Base.id == event.getAffectedEditor()) {
 			huirelation.setId((java.lang.String)EEFConverterUtil.createFromString(XMLTypePackage.Literals.ID, (String)event.getNewValue()));
 		}
-		if (HitroViewsRepository.Huirelation.Properties.name == event.getAffectedEditor()) {
+		if (HitroViewsRepository.Huirelation.Base.name == event.getAffectedEditor()) {
 			huirelation.setName((java.lang.String)EEFConverterUtil.createFromString(XMLTypePackage.Literals.STRING, (String)event.getNewValue()));
 		}
 		if (HitroViewsRepository.Huirelation.Properties.reversename == event.getAffectedEditor()) {
@@ -221,14 +221,14 @@ public class HuirelationPropertiesEditionComponent extends SinglePartPropertiesE
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			HuirelationPropertiesEditionPart basePart = (HuirelationPropertiesEditionPart)editingPart;
-			if (HitroPackage.eINSTANCE.getHuirelation_Id().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(HitroViewsRepository.Huirelation.Properties.id)) {
+			if (HitroPackage.eINSTANCE.getHuirelation_Id().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(HitroViewsRepository.Huirelation.Base.id)) {
 				if (msg.getNewValue() != null) {
 					basePart.setId(EcoreUtil.convertToString(XMLTypePackage.Literals.ID, msg.getNewValue()));
 				} else {
 					basePart.setId("");
 				}
 			}
-			if (HitroPackage.eINSTANCE.getHuirelation_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(HitroViewsRepository.Huirelation.Properties.name)) {
+			if (HitroPackage.eINSTANCE.getHuirelation_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(HitroViewsRepository.Huirelation.Base.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(XMLTypePackage.Literals.STRING, msg.getNewValue()));
 				} else {
@@ -279,7 +279,7 @@ public class HuirelationPropertiesEditionComponent extends SinglePartPropertiesE
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == HitroViewsRepository.Huirelation.Properties.id || key == HitroViewsRepository.Huirelation.Properties.to;
+		return key == HitroViewsRepository.Huirelation.Base.id || key == HitroViewsRepository.Huirelation.Properties.to;
 	}
 
 	/**
@@ -292,14 +292,14 @@ public class HuirelationPropertiesEditionComponent extends SinglePartPropertiesE
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (HitroViewsRepository.Huirelation.Properties.id == event.getAffectedEditor()) {
+				if (HitroViewsRepository.Huirelation.Base.id == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(HitroPackage.eINSTANCE.getHuirelation_Id().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(HitroPackage.eINSTANCE.getHuirelation_Id().getEAttributeType(), newValue);
 				}
-				if (HitroViewsRepository.Huirelation.Properties.name == event.getAffectedEditor()) {
+				if (HitroViewsRepository.Huirelation.Base.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(HitroPackage.eINSTANCE.getHuirelation_Name().getEAttributeType(), (String)newValue);

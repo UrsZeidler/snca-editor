@@ -83,17 +83,13 @@ public class HuientityPropertiesEditionComponent extends SinglePartPropertiesEdi
 			final Huientity huientity = (Huientity)elt;
 			final HuientityPropertiesEditionPart basePart = (HuientityPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(HitroViewsRepository.Huientity.Properties.group))
-				basePart.setGroup(huientity.getGroup());
-			
-			if (isAccessible(HitroViewsRepository.Huientity.Properties.id))
+			if (isAccessible(HitroViewsRepository.Huientity.Base.id))
 				basePart.setId(EEFConverterUtil.convertToString(XMLTypePackage.Literals.ID, huientity.getId()));
 			
-			if (isAccessible(HitroViewsRepository.Huientity.Properties.name))
+			if (isAccessible(HitroViewsRepository.Huientity.Base.name))
 				basePart.setName(EEFConverterUtil.convertToString(XMLTypePackage.Literals.STRING, huientity.getName()));
 			
 			// init filters
-			
 			
 			
 			// init values for referenced views
@@ -108,19 +104,15 @@ public class HuientityPropertiesEditionComponent extends SinglePartPropertiesEdi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == HitroViewsRepository.Huientity.Properties.group) {
-			return HitroPackage.eINSTANCE.getHuientity_Group();
-		}
-		if (editorKey == HitroViewsRepository.Huientity.Properties.id) {
+		if (editorKey == HitroViewsRepository.Huientity.Base.id) {
 			return HitroPackage.eINSTANCE.getHuientity_Id();
 		}
-		if (editorKey == HitroViewsRepository.Huientity.Properties.name) {
+		if (editorKey == HitroViewsRepository.Huientity.Base.name) {
 			return HitroPackage.eINSTANCE.getHuientity_Name();
 		}
 		return super.associatedFeature(editorKey);
@@ -133,16 +125,10 @@ public class HuientityPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Huientity huientity = (Huientity)semanticObject;
-		if (HitroViewsRepository.Huientity.Properties.group == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				huientity.getGroup().clear();
-				huientity.getGroup().addAll(((EList) event.getNewValue()));
-			}
-		}
-		if (HitroViewsRepository.Huientity.Properties.id == event.getAffectedEditor()) {
+		if (HitroViewsRepository.Huientity.Base.id == event.getAffectedEditor()) {
 			huientity.setId((java.lang.String)EEFConverterUtil.createFromString(XMLTypePackage.Literals.ID, (String)event.getNewValue()));
 		}
-		if (HitroViewsRepository.Huientity.Properties.name == event.getAffectedEditor()) {
+		if (HitroViewsRepository.Huientity.Base.name == event.getAffectedEditor()) {
 			huientity.setName((java.lang.String)EEFConverterUtil.createFromString(XMLTypePackage.Literals.STRING, (String)event.getNewValue()));
 		}
 	}
@@ -155,26 +141,14 @@ public class HuientityPropertiesEditionComponent extends SinglePartPropertiesEdi
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			HuientityPropertiesEditionPart basePart = (HuientityPropertiesEditionPart)editingPart;
-			if (HitroPackage.eINSTANCE.getHuientity_Group().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(HitroViewsRepository.Huientity.Properties.group)) {
-				if (msg.getNewValue() instanceof EList<?>) {
-					basePart.setGroup((EList<?>)msg.getNewValue());
-				} else if (msg.getNewValue() == null) {
-					basePart.setGroup(new BasicEList<Object>());
-				} else {
-					BasicEList<Object> newValueAsList = new BasicEList<Object>();
-					newValueAsList.add(msg.getNewValue());
-					basePart.setGroup(newValueAsList);
-				}
-			}
-			
-			if (HitroPackage.eINSTANCE.getHuientity_Id().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(HitroViewsRepository.Huientity.Properties.id)) {
+			if (HitroPackage.eINSTANCE.getHuientity_Id().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(HitroViewsRepository.Huientity.Base.id)) {
 				if (msg.getNewValue() != null) {
 					basePart.setId(EcoreUtil.convertToString(XMLTypePackage.Literals.ID, msg.getNewValue()));
 				} else {
 					basePart.setId("");
 				}
 			}
-			if (HitroPackage.eINSTANCE.getHuientity_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(HitroViewsRepository.Huientity.Properties.name)) {
+			if (HitroPackage.eINSTANCE.getHuientity_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(HitroViewsRepository.Huientity.Base.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(XMLTypePackage.Literals.STRING, msg.getNewValue()));
 				} else {
@@ -193,7 +167,6 @@ public class HuientityPropertiesEditionComponent extends SinglePartPropertiesEdi
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			HitroPackage.eINSTANCE.getHuientity_Group(),
 			HitroPackage.eINSTANCE.getHuientity_Id(),
 			HitroPackage.eINSTANCE.getHuientity_Name()		);
 		return new NotificationFilter[] {filter,};
@@ -207,7 +180,7 @@ public class HuientityPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == HitroViewsRepository.Huientity.Properties.id;
+		return key == HitroViewsRepository.Huientity.Base.id;
 	}
 
 	/**
@@ -220,21 +193,14 @@ public class HuientityPropertiesEditionComponent extends SinglePartPropertiesEdi
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (HitroViewsRepository.Huientity.Properties.group == event.getAffectedEditor()) {
-					BasicDiagnostic chain = new BasicDiagnostic();
-					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
-						chain.add(Diagnostician.INSTANCE.validate(HitroPackage.eINSTANCE.getHuientity_Group().getEAttributeType(), iterator.next()));
-					}
-					ret = chain;
-				}
-				if (HitroViewsRepository.Huientity.Properties.id == event.getAffectedEditor()) {
+				if (HitroViewsRepository.Huientity.Base.id == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(HitroPackage.eINSTANCE.getHuientity_Id().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(HitroPackage.eINSTANCE.getHuientity_Id().getEAttributeType(), newValue);
 				}
-				if (HitroViewsRepository.Huientity.Properties.name == event.getAffectedEditor()) {
+				if (HitroViewsRepository.Huientity.Base.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(HitroPackage.eINSTANCE.getHuientity_Name().getEAttributeType(), (String)newValue);

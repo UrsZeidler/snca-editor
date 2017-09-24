@@ -64,9 +64,6 @@ import org.eclipse.swt.widgets.Text;
  */
 public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, HuientityPropertiesEditionPart {
 
-	protected Text group;
-	protected Button editGroup;
-	protected EList groupList;
 	protected Text id;
 	protected Text name;
 
@@ -106,26 +103,22 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence huientityStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = huientityStep.addStep(HitroViewsRepository.Huientity.Properties.class);
-		propertiesStep.addStep(HitroViewsRepository.Huientity.Properties.group);
-		propertiesStep.addStep(HitroViewsRepository.Huientity.Properties.id);
-		propertiesStep.addStep(HitroViewsRepository.Huientity.Properties.name);
+		CompositionStep baseStep = huientityStep.addStep(HitroViewsRepository.Huientity.Base.class);
+		baseStep.addStep(HitroViewsRepository.Huientity.Base.id);
+		baseStep.addStep(HitroViewsRepository.Huientity.Base.name);
 		
 		
 		composer = new PartComposer(huientityStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
-				if (key == HitroViewsRepository.Huientity.Properties.class) {
-					return createPropertiesGroup(parent);
+				if (key == HitroViewsRepository.Huientity.Base.class) {
+					return createBaseGroup(parent);
 				}
-				if (key == HitroViewsRepository.Huientity.Properties.group) {
-					return createGroupMultiValuedEditor(parent);
-				}
-				if (key == HitroViewsRepository.Huientity.Properties.id) {
+				if (key == HitroViewsRepository.Huientity.Base.id) {
 					return createIdText(parent);
 				}
-				if (key == HitroViewsRepository.Huientity.Properties.name) {
+				if (key == HitroViewsRepository.Huientity.Base.name) {
 					return createNameText(parent);
 				}
 				return parent;
@@ -137,64 +130,21 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 	/**
 	 * 
 	 */
-	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(HitroMessages.HuientityPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
-
-	protected Composite createGroupMultiValuedEditor(Composite parent) {
-		group = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
-		GridData groupData = new GridData(GridData.FILL_HORIZONTAL);
-		groupData.horizontalSpan = 2;
-		group.setLayoutData(groupData);
-		EditingUtils.setID(group, HitroViewsRepository.Huientity.Properties.group);
-		EditingUtils.setEEFtype(group, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editGroup = new Button(parent, SWT.NONE);
-		editGroup.setText(getDescription(HitroViewsRepository.Huientity.Properties.group, HitroMessages.HuientityPropertiesEditionPart_GroupLabel));
-		GridData editGroupData = new GridData();
-		editGroup.setLayoutData(editGroupData);
-		editGroup.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-						group.getShell(), "Huientity", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
-						groupList, HitroPackage.eINSTANCE.getHuientity_Group().getEType(), null,
-						false, true, 
-						null, null);
-				if (dialog.open() == Window.OK) {
-					groupList = dialog.getResult();
-					if (groupList == null) {
-						groupList = new BasicEList();
-					}
-					group.setText(groupList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuientityPropertiesEditionPartImpl.this, HitroViewsRepository.Huientity.Properties.group, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(groupList)));
-					setHasChanged(true);
-				}
-			}
-		});
-		EditingUtils.setID(editGroup, HitroViewsRepository.Huientity.Properties.group);
-		EditingUtils.setEEFtype(editGroup, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
-		// Start of user code for createGroupMultiValuedEditor
-
-		// End of user code
-		return parent;
+	protected Composite createBaseGroup(Composite parent) {
+		Group baseGroup = new Group(parent, SWT.NONE);
+		baseGroup.setText(HitroMessages.HuientityPropertiesEditionPart_BaseGroupLabel);
+		GridData baseGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		baseGroupData.horizontalSpan = 3;
+		baseGroup.setLayoutData(baseGroupData);
+		GridLayout baseGroupLayout = new GridLayout();
+		baseGroupLayout.numColumns = 3;
+		baseGroup.setLayout(baseGroupLayout);
+		return baseGroup;
 	}
 
 	
 	protected Composite createIdText(Composite parent) {
-		createDescription(parent, HitroViewsRepository.Huientity.Properties.id, HitroMessages.HuientityPropertiesEditionPart_IdLabel);
+		createDescription(parent, HitroViewsRepository.Huientity.Base.id, HitroMessages.HuientityPropertiesEditionPart_IdLabel);
 		id = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData idData = new GridData(GridData.FILL_HORIZONTAL);
 		id.setLayoutData(idData);
@@ -210,7 +160,7 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuientityPropertiesEditionPartImpl.this, HitroViewsRepository.Huientity.Properties.id, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, id.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuientityPropertiesEditionPartImpl.this, HitroViewsRepository.Huientity.Base.id, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, id.getText()));
 			}
 
 		});
@@ -227,14 +177,14 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuientityPropertiesEditionPartImpl.this, HitroViewsRepository.Huientity.Properties.id, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, id.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuientityPropertiesEditionPartImpl.this, HitroViewsRepository.Huientity.Base.id, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, id.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(id, HitroViewsRepository.Huientity.Properties.id);
+		EditingUtils.setID(id, HitroViewsRepository.Huientity.Base.id);
 		EditingUtils.setEEFtype(id, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huientity.Properties.id, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huientity.Base.id, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createIdText
 
 		// End of user code
@@ -243,7 +193,7 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 	
 	protected Composite createNameText(Composite parent) {
-		createDescription(parent, HitroViewsRepository.Huientity.Properties.name, HitroMessages.HuientityPropertiesEditionPart_NameLabel);
+		createDescription(parent, HitroViewsRepository.Huientity.Base.name, HitroMessages.HuientityPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -259,7 +209,7 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuientityPropertiesEditionPartImpl.this, HitroViewsRepository.Huientity.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuientityPropertiesEditionPartImpl.this, HitroViewsRepository.Huientity.Base.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 
 		});
@@ -276,14 +226,14 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuientityPropertiesEditionPartImpl.this, HitroViewsRepository.Huientity.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuientityPropertiesEditionPartImpl.this, HitroViewsRepository.Huientity.Base.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(name, HitroViewsRepository.Huientity.Properties.name);
+		EditingUtils.setID(name, HitroViewsRepository.Huientity.Base.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huientity.Properties.name, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huientity.Base.name, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNameText
 
 		// End of user code
@@ -301,57 +251,6 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 		// Start of user code for tab synchronization
 		
 		// End of user code
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuientityPropertiesEditionPart#getGroup()
-	 * 
-	 */
-	public EList getGroup() {
-		return groupList;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuientityPropertiesEditionPart#setGroup(EList newValue)
-	 * 
-	 */
-	public void setGroup(EList newValue) {
-		groupList = newValue;
-		if (newValue != null) {
-			group.setText(groupList.toString());
-		} else {
-			group.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huientity.Properties.group);
-		if (eefElementEditorReadOnlyState && group.isEnabled()) {
-			group.setEnabled(false);
-			group.setToolTipText(HitroMessages.Huientity_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !group.isEnabled()) {
-			group.setEnabled(true);
-		}	
-		
-	}
-
-	public void addToGroup(Object newValue) {
-		groupList.add(newValue);
-		if (newValue != null) {
-			group.setText(groupList.toString());
-		} else {
-			group.setText(""); //$NON-NLS-1$
-		}
-	}
-
-	public void removeToGroup(Object newValue) {
-		groupList.remove(newValue);
-		if (newValue != null) {
-			group.setText(groupList.toString());
-		} else {
-			group.setText(""); //$NON-NLS-1$
-		}
 	}
 
 	/**
@@ -376,7 +275,7 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 		} else {
 			id.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huientity.Properties.id);
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huientity.Base.id);
 		if (eefElementEditorReadOnlyState && id.isEnabled()) {
 			id.setEnabled(false);
 			id.setToolTipText(HitroMessages.Huientity_ReadOnly);
@@ -408,7 +307,7 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huientity.Properties.name);
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huientity.Base.name);
 		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(HitroMessages.Huientity_ReadOnly);

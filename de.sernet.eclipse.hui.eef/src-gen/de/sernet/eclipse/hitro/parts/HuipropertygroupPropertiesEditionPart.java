@@ -19,46 +19,60 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface HuipropertygroupPropertiesEditionPart {
 
+	/**
+	 * @return the id
+	 * 
+	 */
+	public String getId();
+
+	/**
+	 * Defines a new id
+	 * @param newValue the new id to set
+	 * 
+	 */
+	public void setId(String newValue);
 
 
 	/**
-	 * Init the depends
-	 * @param settings settings for the depends ReferencesTable 
+	 * @return the name
+	 * 
 	 */
-	public void initDepends(ReferencesTableSettings settings);
+	public String getName();
 
 	/**
-	 * Update the depends
-	 * @param newValue the depends to update
+	 * Defines a new name
+	 * @param newValue the new name to set
 	 * 
 	 */
-	public void updateDepends();
+	public void setName(String newValue);
+
 
 	/**
-	 * Adds the given filter to the depends edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @return the columns
 	 * 
 	 */
-	public void addFilterToDepends(ViewerFilter filter);
+	public String getColumns();
 
 	/**
-	 * Adds the given filter to the depends edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * Defines a new columns
+	 * @param newValue the new columns to set
 	 * 
 	 */
-	public void addBusinessFilterToDepends(ViewerFilter filter);
+	public void setColumns(String newValue);
+
 
 	/**
-	 * @return true if the given element is contained inside the depends table
+	 * @return the tags
 	 * 
 	 */
-	public boolean isContainedInDependsTable(EObject element);
+	public String getTags();
+
+	/**
+	 * Defines a new tags
+	 * @param newValue the new tags to set
+	 * 
+	 */
+	public void setTags(String newValue);
 
 
 
@@ -105,60 +119,46 @@ public interface HuipropertygroupPropertiesEditionPart {
 	public boolean isContainedInHuipropertyTable(EObject element);
 
 
-	/**
-	 * @return the columns
-	 * 
-	 */
-	public String getColumns();
-
-	/**
-	 * Defines a new columns
-	 * @param newValue the new columns to set
-	 * 
-	 */
-	public void setColumns(String newValue);
 
 
 	/**
-	 * @return the id
-	 * 
+	 * Init the depends
+	 * @param settings settings for the depends ReferencesTable 
 	 */
-	public String getId();
+	public void initDepends(ReferencesTableSettings settings);
 
 	/**
-	 * Defines a new id
-	 * @param newValue the new id to set
+	 * Update the depends
+	 * @param newValue the depends to update
 	 * 
 	 */
-	public void setId(String newValue);
-
+	public void updateDepends();
 
 	/**
-	 * @return the name
+	 * Adds the given filter to the depends edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public String getName();
+	public void addFilterToDepends(ViewerFilter filter);
 
 	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
+	 * Adds the given filter to the depends edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void setName(String newValue);
-
-
-	/**
-	 * @return the tags
-	 * 
-	 */
-	public String getTags();
+	public void addBusinessFilterToDepends(ViewerFilter filter);
 
 	/**
-	 * Defines a new tags
-	 * @param newValue the new tags to set
+	 * @return true if the given element is contained inside the depends table
 	 * 
 	 */
-	public void setTags(String newValue);
+	public boolean isContainedInDependsTable(EObject element);
 
 
 

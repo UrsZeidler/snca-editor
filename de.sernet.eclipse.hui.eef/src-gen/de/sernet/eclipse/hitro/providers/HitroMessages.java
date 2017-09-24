@@ -26,13 +26,28 @@ public class HitroMessages extends NLS {
 	public static String HuientitiesPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String HuientityPropertiesEditionPart_PropertiesGroupLabel;
+	public static String HuientityPropertiesEditionPart_BaseGroupLabel;
+
+	
+	public static String HuipropertyPropertiesEditionPart_BaseGroupLabel;
+
+	
+	public static String HuipropertyPropertiesEditionPart_TypeGroupLabel;
 
 	
 	public static String HuipropertyPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String HuipropertyPropertiesEditionPart_ChildsGroupLabel;
+
+	
+	public static String HuipropertygroupPropertiesEditionPart_BaseGroupLabel;
+
+	
 	public static String HuipropertygroupPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String HuirelationPropertiesEditionPart_BaseGroupLabel;
 
 	
 	public static String HuirelationPropertiesEditionPart_PropertiesGroupLabel;
@@ -151,22 +166,28 @@ public class HitroMessages extends NLS {
 	public static String HuientitiesPropertiesEditionPart_HuientityLabel;
 
 	
-	public static String HuientityPropertiesEditionPart_GroupLabel;
-
-	
 	public static String HuientityPropertiesEditionPart_IdLabel;
 
 	
 	public static String HuientityPropertiesEditionPart_NameLabel;
 
 	
-	public static String HuipropertyPropertiesEditionPart_DependsLabel;
+	public static String HuipropertyPropertiesEditionPart_IdLabel;
 
 	
-	public static String HuipropertyPropertiesEditionPart_ValidationRuleLabel;
+	public static String HuipropertyPropertiesEditionPart_NameLabel;
 
 	
-	public static String HuipropertyPropertiesEditionPart_OptionLabel;
+	public static String HuipropertyPropertiesEditionPart_InputtypeLabel;
+
+	
+	public static String HuipropertyPropertiesEditionPart_IsURLLabel;
+
+	
+	public static String HuipropertyPropertiesEditionPart_MinLabel;
+
+	
+	public static String HuipropertyPropertiesEditionPart_MaxLabel;
 
 	
 	public static String HuipropertyPropertiesEditionPart_CrudButtonsLabel;
@@ -179,24 +200,6 @@ public class HitroMessages extends NLS {
 
 	
 	public static String HuipropertyPropertiesEditionPart_FocusLabel;
-
-	
-	public static String HuipropertyPropertiesEditionPart_IdLabel;
-
-	
-	public static String HuipropertyPropertiesEditionPart_InputtypeLabel;
-
-	
-	public static String HuipropertyPropertiesEditionPart_IsURLLabel;
-
-	
-	public static String HuipropertyPropertiesEditionPart_MaxLabel;
-
-	
-	public static String HuipropertyPropertiesEditionPart_MinLabel;
-
-	
-	public static String HuipropertyPropertiesEditionPart_NameLabel;
 
 	
 	public static String HuipropertyPropertiesEditionPart_ReportLabel;
@@ -220,13 +223,13 @@ public class HitroMessages extends NLS {
 	public static String HuipropertyPropertiesEditionPart_VisibleLabel;
 
 	
-	public static String HuipropertygroupPropertiesEditionPart_DependsLabel;
+	public static String HuipropertyPropertiesEditionPart_DependsLabel;
 
 	
-	public static String HuipropertygroupPropertiesEditionPart_HuipropertyLabel;
+	public static String HuipropertyPropertiesEditionPart_ValidationRuleLabel;
 
 	
-	public static String HuipropertygroupPropertiesEditionPart_ColumnsLabel;
+	public static String HuipropertyPropertiesEditionPart_OptionLabel;
 
 	
 	public static String HuipropertygroupPropertiesEditionPart_IdLabel;
@@ -235,7 +238,16 @@ public class HitroMessages extends NLS {
 	public static String HuipropertygroupPropertiesEditionPart_NameLabel;
 
 	
+	public static String HuipropertygroupPropertiesEditionPart_ColumnsLabel;
+
+	
 	public static String HuipropertygroupPropertiesEditionPart_TagsLabel;
+
+	
+	public static String HuipropertygroupPropertiesEditionPart_HuipropertyLabel;
+
+	
+	public static String HuipropertygroupPropertiesEditionPart_DependsLabel;
 
 	
 	public static String HuirelationPropertiesEditionPart_IdLabel;
@@ -262,10 +274,10 @@ public class HitroMessages extends NLS {
 	public static String OptionPropertiesEditionPart_ValueLabel;
 
 	
-	public static String ParamPropertiesEditionPart_MixedLabel;
+	public static String ParamPropertiesEditionPart_IdLabel;
 
 	
-	public static String ParamPropertiesEditionPart_IdLabel;
+	public static String ParamPropertiesEditionPart_MixedLabel;
 
 	
 	public static String ReferencePropertiesEditionPart_EntitytypeLabel;

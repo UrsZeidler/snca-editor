@@ -21,6 +21,251 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface HuipropertyPropertiesEditionPart {
 
+	/**
+	 * @return the id
+	 * 
+	 */
+	public String getId();
+
+	/**
+	 * Defines a new id
+	 * @param newValue the new id to set
+	 * 
+	 */
+	public void setId(String newValue);
+
+
+	/**
+	 * @return the name
+	 * 
+	 */
+	public String getName();
+
+	/**
+	 * Defines a new name
+	 * @param newValue the new name to set
+	 * 
+	 */
+	public void setName(String newValue);
+
+
+	/**
+	 * @return the inputtype
+	 * 
+	 */
+	public Enumerator getInputtype();
+
+	/**
+	 * Init the inputtype
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initInputtype(Object input, Enumerator current);
+
+	/**
+	 * Defines a new inputtype
+	 * @param newValue the new inputtype to set
+	 * 
+	 */
+	public void setInputtype(Enumerator newValue);
+
+
+	/**
+	 * @return the isURL
+	 * 
+	 */
+	public Boolean getIsURL();
+
+	/**
+	 * Defines a new isURL
+	 * @param newValue the new isURL to set
+	 * 
+	 */
+	public void setIsURL(Boolean newValue);
+
+
+	/**
+	 * @return the min
+	 * 
+	 */
+	public String getMin();
+
+	/**
+	 * Defines a new min
+	 * @param newValue the new min to set
+	 * 
+	 */
+	public void setMin(String newValue);
+
+
+	/**
+	 * @return the max
+	 * 
+	 */
+	public String getMax();
+
+	/**
+	 * Defines a new max
+	 * @param newValue the new max to set
+	 * 
+	 */
+	public void setMax(String newValue);
+
+
+	/**
+	 * @return the crudButtons
+	 * 
+	 */
+	public Boolean getCrudButtons();
+
+	/**
+	 * Defines a new crudButtons
+	 * @param newValue the new crudButtons to set
+	 * 
+	 */
+	public void setCrudButtons(Boolean newValue);
+
+
+	/**
+	 * @return the defaultValue
+	 * 
+	 */
+	public String getDefaultValue();
+
+	/**
+	 * Defines a new defaultValue
+	 * @param newValue the new defaultValue to set
+	 * 
+	 */
+	public void setDefaultValue(String newValue);
+
+
+	/**
+	 * @return the editable
+	 * 
+	 */
+	public Boolean getEditable();
+
+	/**
+	 * Defines a new editable
+	 * @param newValue the new editable to set
+	 * 
+	 */
+	public void setEditable(Boolean newValue);
+
+
+	/**
+	 * @return the focus
+	 * 
+	 */
+	public Boolean getFocus();
+
+	/**
+	 * Defines a new focus
+	 * @param newValue the new focus to set
+	 * 
+	 */
+	public void setFocus(Boolean newValue);
+
+
+	/**
+	 * @return the report
+	 * 
+	 */
+	public Boolean getReport();
+
+	/**
+	 * Defines a new report
+	 * @param newValue the new report to set
+	 * 
+	 */
+	public void setReport(Boolean newValue);
+
+
+	/**
+	 * @return the required
+	 * 
+	 */
+	public Boolean getRequired();
+
+	/**
+	 * Defines a new required
+	 * @param newValue the new required to set
+	 * 
+	 */
+	public void setRequired(Boolean newValue);
+
+
+	/**
+	 * @return the showInObjectBrowser
+	 * 
+	 */
+	public Boolean getShowInObjectBrowser();
+
+	/**
+	 * Defines a new showInObjectBrowser
+	 * @param newValue the new showInObjectBrowser to set
+	 * 
+	 */
+	public void setShowInObjectBrowser(Boolean newValue);
+
+
+	/**
+	 * @return the tags
+	 * 
+	 */
+	public String getTags();
+
+	/**
+	 * Defines a new tags
+	 * @param newValue the new tags to set
+	 * 
+	 */
+	public void setTags(String newValue);
+
+
+	/**
+	 * @return the textrows
+	 * 
+	 */
+	public String getTextrows();
+
+	/**
+	 * Defines a new textrows
+	 * @param newValue the new textrows to set
+	 * 
+	 */
+	public void setTextrows(String newValue);
+
+
+	/**
+	 * @return the tooltip
+	 * 
+	 */
+	public String getTooltip();
+
+	/**
+	 * Defines a new tooltip
+	 * @param newValue the new tooltip to set
+	 * 
+	 */
+	public void setTooltip(String newValue);
+
+
+	/**
+	 * @return the visible
+	 * 
+	 */
+	public Boolean getVisible();
+
+	/**
+	 * Defines a new visible
+	 * @param newValue the new visible to set
+	 * 
+	 */
+	public void setVisible(Boolean newValue);
+
+
 
 
 	/**
@@ -151,251 +396,6 @@ public interface HuipropertyPropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInOptionTable(EObject element);
-
-
-	/**
-	 * @return the crudButtons
-	 * 
-	 */
-	public Boolean getCrudButtons();
-
-	/**
-	 * Defines a new crudButtons
-	 * @param newValue the new crudButtons to set
-	 * 
-	 */
-	public void setCrudButtons(Boolean newValue);
-
-
-	/**
-	 * @return the defaultValue
-	 * 
-	 */
-	public String getDefaultValue();
-
-	/**
-	 * Defines a new defaultValue
-	 * @param newValue the new defaultValue to set
-	 * 
-	 */
-	public void setDefaultValue(String newValue);
-
-
-	/**
-	 * @return the editable
-	 * 
-	 */
-	public Boolean getEditable();
-
-	/**
-	 * Defines a new editable
-	 * @param newValue the new editable to set
-	 * 
-	 */
-	public void setEditable(Boolean newValue);
-
-
-	/**
-	 * @return the focus
-	 * 
-	 */
-	public Boolean getFocus();
-
-	/**
-	 * Defines a new focus
-	 * @param newValue the new focus to set
-	 * 
-	 */
-	public void setFocus(Boolean newValue);
-
-
-	/**
-	 * @return the id
-	 * 
-	 */
-	public String getId();
-
-	/**
-	 * Defines a new id
-	 * @param newValue the new id to set
-	 * 
-	 */
-	public void setId(String newValue);
-
-
-	/**
-	 * @return the inputtype
-	 * 
-	 */
-	public Enumerator getInputtype();
-
-	/**
-	 * Init the inputtype
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initInputtype(Object input, Enumerator current);
-
-	/**
-	 * Defines a new inputtype
-	 * @param newValue the new inputtype to set
-	 * 
-	 */
-	public void setInputtype(Enumerator newValue);
-
-
-	/**
-	 * @return the isURL
-	 * 
-	 */
-	public Boolean getIsURL();
-
-	/**
-	 * Defines a new isURL
-	 * @param newValue the new isURL to set
-	 * 
-	 */
-	public void setIsURL(Boolean newValue);
-
-
-	/**
-	 * @return the max
-	 * 
-	 */
-	public String getMax();
-
-	/**
-	 * Defines a new max
-	 * @param newValue the new max to set
-	 * 
-	 */
-	public void setMax(String newValue);
-
-
-	/**
-	 * @return the min
-	 * 
-	 */
-	public String getMin();
-
-	/**
-	 * Defines a new min
-	 * @param newValue the new min to set
-	 * 
-	 */
-	public void setMin(String newValue);
-
-
-	/**
-	 * @return the name
-	 * 
-	 */
-	public String getName();
-
-	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
-	 * 
-	 */
-	public void setName(String newValue);
-
-
-	/**
-	 * @return the report
-	 * 
-	 */
-	public Boolean getReport();
-
-	/**
-	 * Defines a new report
-	 * @param newValue the new report to set
-	 * 
-	 */
-	public void setReport(Boolean newValue);
-
-
-	/**
-	 * @return the required
-	 * 
-	 */
-	public Boolean getRequired();
-
-	/**
-	 * Defines a new required
-	 * @param newValue the new required to set
-	 * 
-	 */
-	public void setRequired(Boolean newValue);
-
-
-	/**
-	 * @return the showInObjectBrowser
-	 * 
-	 */
-	public Boolean getShowInObjectBrowser();
-
-	/**
-	 * Defines a new showInObjectBrowser
-	 * @param newValue the new showInObjectBrowser to set
-	 * 
-	 */
-	public void setShowInObjectBrowser(Boolean newValue);
-
-
-	/**
-	 * @return the tags
-	 * 
-	 */
-	public String getTags();
-
-	/**
-	 * Defines a new tags
-	 * @param newValue the new tags to set
-	 * 
-	 */
-	public void setTags(String newValue);
-
-
-	/**
-	 * @return the textrows
-	 * 
-	 */
-	public String getTextrows();
-
-	/**
-	 * Defines a new textrows
-	 * @param newValue the new textrows to set
-	 * 
-	 */
-	public void setTextrows(String newValue);
-
-
-	/**
-	 * @return the tooltip
-	 * 
-	 */
-	public String getTooltip();
-
-	/**
-	 * Defines a new tooltip
-	 * @param newValue the new tooltip to set
-	 * 
-	 */
-	public void setTooltip(String newValue);
-
-
-	/**
-	 * @return the visible
-	 * 
-	 */
-	public Boolean getVisible();
-
-	/**
-	 * Defines a new visible
-	 * @param newValue the new visible to set
-	 * 
-	 */
-	public void setVisible(Boolean newValue);
 
 
 

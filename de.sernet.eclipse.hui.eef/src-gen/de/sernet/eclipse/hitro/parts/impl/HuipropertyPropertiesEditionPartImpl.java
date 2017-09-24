@@ -79,6 +79,23 @@ import org.eclipse.swt.widgets.Text;
  */
 public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, HuipropertyPropertiesEditionPart {
 
+	protected Text id;
+	protected Text name;
+	protected EMFComboViewer inputtype;
+	protected Button isURL;
+	protected Text min;
+	protected Text max;
+	protected Button crudButtons;
+	protected Text defaultValue;
+	protected Button editable;
+	protected Button focus;
+	protected Button report;
+	protected Button required;
+	protected Button showInObjectBrowser;
+	protected Text tags;
+	protected Text textrows;
+	protected Text tooltip;
+	protected Button visible;
 	protected ReferencesTable depends;
 	protected List<ViewerFilter> dependsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> dependsFilters = new ArrayList<ViewerFilter>();
@@ -88,23 +105,6 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected ReferencesTable option;
 	protected List<ViewerFilter> optionBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> optionFilters = new ArrayList<ViewerFilter>();
-	protected Button crudButtons;
-	protected Text defaultValue;
-	protected Button editable;
-	protected Button focus;
-	protected Text id;
-	protected EMFComboViewer inputtype;
-	protected Button isURL;
-	protected Text max;
-	protected Text min;
-	protected Text name;
-	protected Button report;
-	protected Button required;
-	protected Button showInObjectBrowser;
-	protected Text tags;
-	protected Text textrows;
-	protected Text tooltip;
-	protected Button visible;
 
 
 
@@ -142,20 +142,21 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence huipropertyStep = new BindingCompositionSequence(propertiesEditionComponent);
+		CompositionStep baseStep = huipropertyStep.addStep(HitroViewsRepository.Huiproperty.Base.class);
+		baseStep.addStep(HitroViewsRepository.Huiproperty.Base.id);
+		baseStep.addStep(HitroViewsRepository.Huiproperty.Base.name);
+		
+		CompositionStep typeStep = huipropertyStep.addStep(HitroViewsRepository.Huiproperty.Type.class);
+		typeStep.addStep(HitroViewsRepository.Huiproperty.Type.inputtype);
+		typeStep.addStep(HitroViewsRepository.Huiproperty.Type.isURL);
+		typeStep.addStep(HitroViewsRepository.Huiproperty.Type.min);
+		typeStep.addStep(HitroViewsRepository.Huiproperty.Type.max);
+		
 		CompositionStep propertiesStep = huipropertyStep.addStep(HitroViewsRepository.Huiproperty.Properties.class);
-		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.depends);
-		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.validationRule);
-		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.option);
 		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.crudButtons);
 		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.defaultValue);
 		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.editable);
 		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.focus);
-		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.id);
-		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.inputtype);
-		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.isURL);
-		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.max);
-		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.min);
-		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.name);
 		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.report);
 		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.required);
 		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.showInObjectBrowser);
@@ -164,22 +165,42 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.tooltip);
 		propertiesStep.addStep(HitroViewsRepository.Huiproperty.Properties.visible);
 		
+		CompositionStep childsStep = huipropertyStep.addStep(HitroViewsRepository.Huiproperty.Childs.class);
+		childsStep.addStep(HitroViewsRepository.Huiproperty.Childs.depends);
+		childsStep.addStep(HitroViewsRepository.Huiproperty.Childs.validationRule);
+		childsStep.addStep(HitroViewsRepository.Huiproperty.Childs.option);
+		
 		
 		composer = new PartComposer(huipropertyStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+				if (key == HitroViewsRepository.Huiproperty.Base.class) {
+					return createBaseGroup(parent);
+				}
+				if (key == HitroViewsRepository.Huiproperty.Base.id) {
+					return createIdText(parent);
+				}
+				if (key == HitroViewsRepository.Huiproperty.Base.name) {
+					return createNameText(parent);
+				}
+				if (key == HitroViewsRepository.Huiproperty.Type.class) {
+					return createTypeGroup(parent);
+				}
+				if (key == HitroViewsRepository.Huiproperty.Type.inputtype) {
+					return createInputtypeEMFComboViewer(parent);
+				}
+				if (key == HitroViewsRepository.Huiproperty.Type.isURL) {
+					return createIsURLCheckbox(parent);
+				}
+				if (key == HitroViewsRepository.Huiproperty.Type.min) {
+					return createMinText(parent);
+				}
+				if (key == HitroViewsRepository.Huiproperty.Type.max) {
+					return createMaxText(parent);
+				}
 				if (key == HitroViewsRepository.Huiproperty.Properties.class) {
 					return createPropertiesGroup(parent);
-				}
-				if (key == HitroViewsRepository.Huiproperty.Properties.depends) {
-					return createDependsAdvancedTableComposition(parent);
-				}
-				if (key == HitroViewsRepository.Huiproperty.Properties.validationRule) {
-					return createValidationRuleAdvancedTableComposition(parent);
-				}
-				if (key == HitroViewsRepository.Huiproperty.Properties.option) {
-					return createOptionAdvancedTableComposition(parent);
 				}
 				if (key == HitroViewsRepository.Huiproperty.Properties.crudButtons) {
 					return createCrudButtonsCheckbox(parent);
@@ -192,24 +213,6 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 				}
 				if (key == HitroViewsRepository.Huiproperty.Properties.focus) {
 					return createFocusCheckbox(parent);
-				}
-				if (key == HitroViewsRepository.Huiproperty.Properties.id) {
-					return createIdText(parent);
-				}
-				if (key == HitroViewsRepository.Huiproperty.Properties.inputtype) {
-					return createInputtypeEMFComboViewer(parent);
-				}
-				if (key == HitroViewsRepository.Huiproperty.Properties.isURL) {
-					return createIsURLCheckbox(parent);
-				}
-				if (key == HitroViewsRepository.Huiproperty.Properties.max) {
-					return createMaxText(parent);
-				}
-				if (key == HitroViewsRepository.Huiproperty.Properties.min) {
-					return createMinText(parent);
-				}
-				if (key == HitroViewsRepository.Huiproperty.Properties.name) {
-					return createNameText(parent);
 				}
 				if (key == HitroViewsRepository.Huiproperty.Properties.report) {
 					return createReportCheckbox(parent);
@@ -232,10 +235,308 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 				if (key == HitroViewsRepository.Huiproperty.Properties.visible) {
 					return createVisibleCheckbox(parent);
 				}
+				if (key == HitroViewsRepository.Huiproperty.Childs.class) {
+					return createChildsGroup(parent);
+				}
+				if (key == HitroViewsRepository.Huiproperty.Childs.depends) {
+					return createDependsAdvancedTableComposition(parent);
+				}
+				if (key == HitroViewsRepository.Huiproperty.Childs.validationRule) {
+					return createValidationRuleAdvancedTableComposition(parent);
+				}
+				if (key == HitroViewsRepository.Huiproperty.Childs.option) {
+					return createOptionAdvancedTableComposition(parent);
+				}
 				return parent;
 			}
 		};
 		composer.compose(view);
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createBaseGroup(Composite parent) {
+		Group baseGroup = new Group(parent, SWT.NONE);
+		baseGroup.setText(HitroMessages.HuipropertyPropertiesEditionPart_BaseGroupLabel);
+		GridData baseGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		baseGroupData.horizontalSpan = 3;
+		baseGroup.setLayoutData(baseGroupData);
+		GridLayout baseGroupLayout = new GridLayout();
+		baseGroupLayout.numColumns = 3;
+		baseGroup.setLayout(baseGroupLayout);
+		return baseGroup;
+	}
+
+	
+	protected Composite createIdText(Composite parent) {
+		createDescription(parent, HitroViewsRepository.Huiproperty.Base.id, HitroMessages.HuipropertyPropertiesEditionPart_IdLabel);
+		id = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData idData = new GridData(GridData.FILL_HORIZONTAL);
+		id.setLayoutData(idData);
+		id.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Base.id, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, id.getText()));
+			}
+
+		});
+		id.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Base.id, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, id.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(id, HitroViewsRepository.Huiproperty.Base.id);
+		EditingUtils.setEEFtype(id, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Base.id, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createIdText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createNameText(Composite parent) {
+		createDescription(parent, HitroViewsRepository.Huiproperty.Base.name, HitroMessages.HuipropertyPropertiesEditionPart_NameLabel);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
+		name.setLayoutData(nameData);
+		name.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Base.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+			}
+
+		});
+		name.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Base.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(name, HitroViewsRepository.Huiproperty.Base.name);
+		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Base.name, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createTypeGroup(Composite parent) {
+		Group typeGroup = new Group(parent, SWT.NONE);
+		typeGroup.setText(HitroMessages.HuipropertyPropertiesEditionPart_TypeGroupLabel);
+		GridData typeGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		typeGroupData.horizontalSpan = 3;
+		typeGroup.setLayoutData(typeGroupData);
+		GridLayout typeGroupLayout = new GridLayout();
+		typeGroupLayout.numColumns = 3;
+		typeGroup.setLayout(typeGroupLayout);
+		return typeGroup;
+	}
+
+	
+	protected Composite createInputtypeEMFComboViewer(Composite parent) {
+		createDescription(parent, HitroViewsRepository.Huiproperty.Type.inputtype, HitroMessages.HuipropertyPropertiesEditionPart_InputtypeLabel);
+		inputtype = new EMFComboViewer(parent);
+		inputtype.setContentProvider(new ArrayContentProvider());
+		inputtype.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData inputtypeData = new GridData(GridData.FILL_HORIZONTAL);
+		inputtype.getCombo().setLayoutData(inputtypeData);
+		inputtype.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Type.inputtype, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputtype()));
+			}
+
+		});
+		inputtype.setID(HitroViewsRepository.Huiproperty.Type.inputtype);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Type.inputtype, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createInputtypeEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createIsURLCheckbox(Composite parent) {
+		isURL = new Button(parent, SWT.CHECK);
+		isURL.setText(getDescription(HitroViewsRepository.Huiproperty.Type.isURL, HitroMessages.HuipropertyPropertiesEditionPart_IsURLLabel));
+		isURL.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Type.isURL, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isURL.getSelection())));
+			}
+
+		});
+		GridData isURLData = new GridData(GridData.FILL_HORIZONTAL);
+		isURLData.horizontalSpan = 2;
+		isURL.setLayoutData(isURLData);
+		EditingUtils.setID(isURL, HitroViewsRepository.Huiproperty.Type.isURL);
+		EditingUtils.setEEFtype(isURL, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Type.isURL, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createIsURLCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createMinText(Composite parent) {
+		createDescription(parent, HitroViewsRepository.Huiproperty.Type.min, HitroMessages.HuipropertyPropertiesEditionPart_MinLabel);
+		min = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData minData = new GridData(GridData.FILL_HORIZONTAL);
+		min.setLayoutData(minData);
+		min.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Type.min, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, min.getText()));
+			}
+
+		});
+		min.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Type.min, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, min.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(min, HitroViewsRepository.Huiproperty.Type.min);
+		EditingUtils.setEEFtype(min, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Type.min, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createMinText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createMaxText(Composite parent) {
+		createDescription(parent, HitroViewsRepository.Huiproperty.Type.max, HitroMessages.HuipropertyPropertiesEditionPart_MaxLabel);
+		max = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData maxData = new GridData(GridData.FILL_HORIZONTAL);
+		max.setLayoutData(maxData);
+		max.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Type.max, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, max.getText()));
+			}
+
+		});
+		max.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Type.max, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, max.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(max, HitroViewsRepository.Huiproperty.Type.max);
+		EditingUtils.setEEFtype(max, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Type.max, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createMaxText
+
+		// End of user code
+		return parent;
 	}
 
 	/**
@@ -251,159 +552,6 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		return propertiesGroup;
-	}
-
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createDependsAdvancedTableComposition(Composite parent) {
-		this.depends = new ReferencesTable(getDescription(HitroViewsRepository.Huiproperty.Properties.depends, HitroMessages.HuipropertyPropertiesEditionPart_DependsLabel), new ReferencesTableListener() {
-			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.depends, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				depends.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.depends, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				depends.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.depends, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				depends.refresh();
-			}
-			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.depends, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				depends.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.dependsFilters) {
-			this.depends.addFilter(filter);
-		}
-		this.depends.setHelpText(propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Properties.depends, HitroViewsRepository.SWT_KIND));
-		this.depends.createControls(parent);
-		this.depends.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.depends, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData dependsData = new GridData(GridData.FILL_HORIZONTAL);
-		dependsData.horizontalSpan = 3;
-		this.depends.setLayoutData(dependsData);
-		this.depends.setLowerBound(0);
-		this.depends.setUpperBound(-1);
-		depends.setID(HitroViewsRepository.Huiproperty.Properties.depends);
-		depends.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createDependsAdvancedTableComposition
-
-		// End of user code
-		return parent;
-	}
-
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createValidationRuleAdvancedTableComposition(Composite parent) {
-		this.validationRule = new ReferencesTable(getDescription(HitroViewsRepository.Huiproperty.Properties.validationRule, HitroMessages.HuipropertyPropertiesEditionPart_ValidationRuleLabel), new ReferencesTableListener() {
-			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.validationRule, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				validationRule.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.validationRule, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				validationRule.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.validationRule, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				validationRule.refresh();
-			}
-			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.validationRule, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				validationRule.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.validationRuleFilters) {
-			this.validationRule.addFilter(filter);
-		}
-		this.validationRule.setHelpText(propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Properties.validationRule, HitroViewsRepository.SWT_KIND));
-		this.validationRule.createControls(parent);
-		this.validationRule.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.validationRule, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData validationRuleData = new GridData(GridData.FILL_HORIZONTAL);
-		validationRuleData.horizontalSpan = 3;
-		this.validationRule.setLayoutData(validationRuleData);
-		this.validationRule.setLowerBound(0);
-		this.validationRule.setUpperBound(-1);
-		validationRule.setID(HitroViewsRepository.Huiproperty.Properties.validationRule);
-		validationRule.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createValidationRuleAdvancedTableComposition
-
-		// End of user code
-		return parent;
-	}
-
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createOptionAdvancedTableComposition(Composite parent) {
-		this.option = new ReferencesTable(getDescription(HitroViewsRepository.Huiproperty.Properties.option, HitroMessages.HuipropertyPropertiesEditionPart_OptionLabel), new ReferencesTableListener() {
-			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.option, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				option.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.option, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				option.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.option, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				option.refresh();
-			}
-			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.option, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				option.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.optionFilters) {
-			this.option.addFilter(filter);
-		}
-		this.option.setHelpText(propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Properties.option, HitroViewsRepository.SWT_KIND));
-		this.option.createControls(parent);
-		this.option.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.option, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData optionData = new GridData(GridData.FILL_HORIZONTAL);
-		optionData.horizontalSpan = 3;
-		this.option.setLayoutData(optionData);
-		this.option.setLowerBound(0);
-		this.option.setUpperBound(-1);
-		option.setID(HitroViewsRepository.Huiproperty.Properties.option);
-		option.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createOptionAdvancedTableComposition
-
-		// End of user code
-		return parent;
 	}
 
 	
@@ -540,262 +688,6 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		EditingUtils.setEEFtype(focus, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Properties.focus, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createFocusCheckbox
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createIdText(Composite parent) {
-		createDescription(parent, HitroViewsRepository.Huiproperty.Properties.id, HitroMessages.HuipropertyPropertiesEditionPart_IdLabel);
-		id = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData idData = new GridData(GridData.FILL_HORIZONTAL);
-		id.setLayoutData(idData);
-		id.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.id, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, id.getText()));
-			}
-
-		});
-		id.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.id, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, id.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(id, HitroViewsRepository.Huiproperty.Properties.id);
-		EditingUtils.setEEFtype(id, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Properties.id, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createIdText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createInputtypeEMFComboViewer(Composite parent) {
-		createDescription(parent, HitroViewsRepository.Huiproperty.Properties.inputtype, HitroMessages.HuipropertyPropertiesEditionPart_InputtypeLabel);
-		inputtype = new EMFComboViewer(parent);
-		inputtype.setContentProvider(new ArrayContentProvider());
-		inputtype.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData inputtypeData = new GridData(GridData.FILL_HORIZONTAL);
-		inputtype.getCombo().setLayoutData(inputtypeData);
-		inputtype.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.inputtype, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputtype()));
-			}
-
-		});
-		inputtype.setID(HitroViewsRepository.Huiproperty.Properties.inputtype);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Properties.inputtype, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createInputtypeEMFComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createIsURLCheckbox(Composite parent) {
-		isURL = new Button(parent, SWT.CHECK);
-		isURL.setText(getDescription(HitroViewsRepository.Huiproperty.Properties.isURL, HitroMessages.HuipropertyPropertiesEditionPart_IsURLLabel));
-		isURL.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.isURL, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isURL.getSelection())));
-			}
-
-		});
-		GridData isURLData = new GridData(GridData.FILL_HORIZONTAL);
-		isURLData.horizontalSpan = 2;
-		isURL.setLayoutData(isURLData);
-		EditingUtils.setID(isURL, HitroViewsRepository.Huiproperty.Properties.isURL);
-		EditingUtils.setEEFtype(isURL, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Properties.isURL, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createIsURLCheckbox
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createMaxText(Composite parent) {
-		createDescription(parent, HitroViewsRepository.Huiproperty.Properties.max, HitroMessages.HuipropertyPropertiesEditionPart_MaxLabel);
-		max = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData maxData = new GridData(GridData.FILL_HORIZONTAL);
-		max.setLayoutData(maxData);
-		max.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.max, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, max.getText()));
-			}
-
-		});
-		max.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.max, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, max.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(max, HitroViewsRepository.Huiproperty.Properties.max);
-		EditingUtils.setEEFtype(max, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Properties.max, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createMaxText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createMinText(Composite parent) {
-		createDescription(parent, HitroViewsRepository.Huiproperty.Properties.min, HitroMessages.HuipropertyPropertiesEditionPart_MinLabel);
-		min = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData minData = new GridData(GridData.FILL_HORIZONTAL);
-		min.setLayoutData(minData);
-		min.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.min, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, min.getText()));
-			}
-
-		});
-		min.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.min, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, min.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(min, HitroViewsRepository.Huiproperty.Properties.min);
-		EditingUtils.setEEFtype(min, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Properties.min, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createMinText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createNameText(Composite parent) {
-		createDescription(parent, HitroViewsRepository.Huiproperty.Properties.name, HitroMessages.HuipropertyPropertiesEditionPart_NameLabel);
-		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
-		name.setLayoutData(nameData);
-		name.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-			}
-
-		});
-		name.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(name, HitroViewsRepository.Huiproperty.Properties.name);
-		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Properties.name, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createNameText
 
 		// End of user code
 		return parent;
@@ -1068,6 +960,174 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		return parent;
 	}
 
+	/**
+	 * 
+	 */
+	protected Composite createChildsGroup(Composite parent) {
+		Group childsGroup = new Group(parent, SWT.NONE);
+		childsGroup.setText(HitroMessages.HuipropertyPropertiesEditionPart_ChildsGroupLabel);
+		GridData childsGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		childsGroupData.horizontalSpan = 3;
+		childsGroup.setLayoutData(childsGroupData);
+		GridLayout childsGroupLayout = new GridLayout();
+		childsGroupLayout.numColumns = 3;
+		childsGroup.setLayout(childsGroupLayout);
+		return childsGroup;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createDependsAdvancedTableComposition(Composite parent) {
+		this.depends = new ReferencesTable(getDescription(HitroViewsRepository.Huiproperty.Childs.depends, HitroMessages.HuipropertyPropertiesEditionPart_DependsLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.depends, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				depends.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.depends, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				depends.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.depends, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				depends.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.depends, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				depends.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.dependsFilters) {
+			this.depends.addFilter(filter);
+		}
+		this.depends.setHelpText(propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Childs.depends, HitroViewsRepository.SWT_KIND));
+		this.depends.createControls(parent);
+		this.depends.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.depends, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData dependsData = new GridData(GridData.FILL_HORIZONTAL);
+		dependsData.horizontalSpan = 3;
+		this.depends.setLayoutData(dependsData);
+		this.depends.setLowerBound(0);
+		this.depends.setUpperBound(-1);
+		depends.setID(HitroViewsRepository.Huiproperty.Childs.depends);
+		depends.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createDependsAdvancedTableComposition
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createValidationRuleAdvancedTableComposition(Composite parent) {
+		this.validationRule = new ReferencesTable(getDescription(HitroViewsRepository.Huiproperty.Childs.validationRule, HitroMessages.HuipropertyPropertiesEditionPart_ValidationRuleLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.validationRule, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				validationRule.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.validationRule, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				validationRule.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.validationRule, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				validationRule.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.validationRule, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				validationRule.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.validationRuleFilters) {
+			this.validationRule.addFilter(filter);
+		}
+		this.validationRule.setHelpText(propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Childs.validationRule, HitroViewsRepository.SWT_KIND));
+		this.validationRule.createControls(parent);
+		this.validationRule.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.validationRule, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData validationRuleData = new GridData(GridData.FILL_HORIZONTAL);
+		validationRuleData.horizontalSpan = 3;
+		this.validationRule.setLayoutData(validationRuleData);
+		this.validationRule.setLowerBound(0);
+		this.validationRule.setUpperBound(-1);
+		validationRule.setID(HitroViewsRepository.Huiproperty.Childs.validationRule);
+		validationRule.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createValidationRuleAdvancedTableComposition
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createOptionAdvancedTableComposition(Composite parent) {
+		this.option = new ReferencesTable(getDescription(HitroViewsRepository.Huiproperty.Childs.option, HitroMessages.HuipropertyPropertiesEditionPart_OptionLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.option, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				option.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.option, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				option.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.option, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				option.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.option, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				option.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.optionFilters) {
+			this.option.addFilter(filter);
+		}
+		this.option.setHelpText(propertiesEditionComponent.getHelpContent(HitroViewsRepository.Huiproperty.Childs.option, HitroViewsRepository.SWT_KIND));
+		this.option.createControls(parent);
+		this.option.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HuipropertyPropertiesEditionPartImpl.this, HitroViewsRepository.Huiproperty.Childs.option, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData optionData = new GridData(GridData.FILL_HORIZONTAL);
+		optionData.horizontalSpan = 3;
+		this.option.setLayoutData(optionData);
+		this.option.setLowerBound(0);
+		this.option.setUpperBound(-1);
+		option.setID(HitroViewsRepository.Huiproperty.Childs.option);
+		option.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createOptionAdvancedTableComposition
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -1081,25 +1141,34 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		// End of user code
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getId()
+	 * 
+	 */
+	public String getId() {
+		return id.getText();
+	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#initDepends(EObject current, EReference containingFeature, EReference feature)
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setId(String newValue)
+	 * 
 	 */
-	public void initDepends(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		depends.setContentProvider(contentProvider);
-		depends.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Properties.depends);
-		if (eefElementEditorReadOnlyState && depends.isEnabled()) {
-			depends.setEnabled(false);
-			depends.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !depends.isEnabled()) {
-			depends.setEnabled(true);
+	public void setId(String newValue) {
+		if (newValue != null) {
+			id.setText(newValue);
+		} else {
+			id.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Base.id);
+		if (eefElementEditorReadOnlyState && id.isEnabled()) {
+			id.setEnabled(false);
+			id.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !id.isEnabled()) {
+			id.setEnabled(true);
 		}	
 		
 	}
@@ -1107,65 +1176,31 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#updateDepends()
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getName()
 	 * 
 	 */
-	public void updateDepends() {
-	depends.refresh();
-}
+	public String getName() {
+		return name.getText();
+	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addFilterDepends(ViewerFilter filter)
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
-	public void addFilterToDepends(ViewerFilter filter) {
-		dependsFilters.add(filter);
-		if (this.depends != null) {
-			this.depends.addFilter(filter);
+	public void setName(String newValue) {
+		if (newValue != null) {
+			name.setText(newValue);
+		} else {
+			name.setText(""); //$NON-NLS-1$
 		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addBusinessFilterDepends(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToDepends(ViewerFilter filter) {
-		dependsBusinessFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#isContainedInDependsTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInDependsTable(EObject element) {
-		return ((ReferencesTableSettings)depends.getInput()).contains(element);
-	}
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#initValidationRule(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initValidationRule(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		validationRule.setContentProvider(contentProvider);
-		validationRule.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Properties.validationRule);
-		if (eefElementEditorReadOnlyState && validationRule.isEnabled()) {
-			validationRule.setEnabled(false);
-			validationRule.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !validationRule.isEnabled()) {
-			validationRule.setEnabled(true);
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Base.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
 		}	
 		
 	}
@@ -1173,65 +1208,28 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#updateValidationRule()
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getInputtype()
 	 * 
 	 */
-	public void updateValidationRule() {
-	validationRule.refresh();
-}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addFilterValidationRule(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToValidationRule(ViewerFilter filter) {
-		validationRuleFilters.add(filter);
-		if (this.validationRule != null) {
-			this.validationRule.addFilter(filter);
-		}
+	public Enumerator getInputtype() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) inputtype.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addBusinessFilterValidationRule(ViewerFilter filter)
-	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#initInputtype(Object input, Enumerator current)
 	 */
-	public void addBusinessFilterToValidationRule(ViewerFilter filter) {
-		validationRuleBusinessFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#isContainedInValidationRuleTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInValidationRuleTable(EObject element) {
-		return ((ReferencesTableSettings)validationRule.getInput()).contains(element);
-	}
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#initOption(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initOption(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		option.setContentProvider(contentProvider);
-		option.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Properties.option);
-		if (eefElementEditorReadOnlyState && option.isEnabled()) {
-			option.setEnabled(false);
-			option.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !option.isEnabled()) {
-			option.setEnabled(true);
+	public void initInputtype(Object input, Enumerator current) {
+		inputtype.setInput(input);
+		inputtype.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Type.inputtype);
+		if (eefElementEditorReadOnlyState && inputtype.isEnabled()) {
+			inputtype.setEnabled(false);
+			inputtype.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !inputtype.isEnabled()) {
+			inputtype.setEnabled(true);
 		}	
 		
 	}
@@ -1239,44 +1237,115 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#updateOption()
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setInputtype(Enumerator newValue)
 	 * 
 	 */
-	public void updateOption() {
-	option.refresh();
-}
+	public void setInputtype(Enumerator newValue) {
+		inputtype.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Type.inputtype);
+		if (eefElementEditorReadOnlyState && inputtype.isEnabled()) {
+			inputtype.setEnabled(false);
+			inputtype.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !inputtype.isEnabled()) {
+			inputtype.setEnabled(true);
+		}	
+		
+	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addFilterOption(ViewerFilter filter)
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getIsURL()
 	 * 
 	 */
-	public void addFilterToOption(ViewerFilter filter) {
-		optionFilters.add(filter);
-		if (this.option != null) {
-			this.option.addFilter(filter);
+	public Boolean getIsURL() {
+		return Boolean.valueOf(isURL.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setIsURL(Boolean newValue)
+	 * 
+	 */
+	public void setIsURL(Boolean newValue) {
+		if (newValue != null) {
+			isURL.setSelection(newValue.booleanValue());
+		} else {
+			isURL.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Type.isURL);
+		if (eefElementEditorReadOnlyState && isURL.isEnabled()) {
+			isURL.setEnabled(false);
+			isURL.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isURL.isEnabled()) {
+			isURL.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addBusinessFilterOption(ViewerFilter filter)
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getMin()
 	 * 
 	 */
-	public void addBusinessFilterToOption(ViewerFilter filter) {
-		optionBusinessFilters.add(filter);
+	public String getMin() {
+		return min.getText();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#isContainedInOptionTable(EObject element)
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setMin(String newValue)
 	 * 
 	 */
-	public boolean isContainedInOptionTable(EObject element) {
-		return ((ReferencesTableSettings)option.getInput()).contains(element);
+	public void setMin(String newValue) {
+		if (newValue != null) {
+			min.setText(newValue);
+		} else {
+			min.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Type.min);
+		if (eefElementEditorReadOnlyState && min.isEnabled()) {
+			min.setEnabled(false);
+			min.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !min.isEnabled()) {
+			min.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getMax()
+	 * 
+	 */
+	public String getMax() {
+		return max.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setMax(String newValue)
+	 * 
+	 */
+	public void setMax(String newValue) {
+		if (newValue != null) {
+			max.setText(newValue);
+		} else {
+			max.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Type.max);
+		if (eefElementEditorReadOnlyState && max.isEnabled()) {
+			max.setEnabled(false);
+			max.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !max.isEnabled()) {
+			max.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1403,213 +1472,6 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 			focus.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !focus.isEnabled()) {
 			focus.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getId()
-	 * 
-	 */
-	public String getId() {
-		return id.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setId(String newValue)
-	 * 
-	 */
-	public void setId(String newValue) {
-		if (newValue != null) {
-			id.setText(newValue);
-		} else {
-			id.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Properties.id);
-		if (eefElementEditorReadOnlyState && id.isEnabled()) {
-			id.setEnabled(false);
-			id.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !id.isEnabled()) {
-			id.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getInputtype()
-	 * 
-	 */
-	public Enumerator getInputtype() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) inputtype.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#initInputtype(Object input, Enumerator current)
-	 */
-	public void initInputtype(Object input, Enumerator current) {
-		inputtype.setInput(input);
-		inputtype.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Properties.inputtype);
-		if (eefElementEditorReadOnlyState && inputtype.isEnabled()) {
-			inputtype.setEnabled(false);
-			inputtype.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !inputtype.isEnabled()) {
-			inputtype.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setInputtype(Enumerator newValue)
-	 * 
-	 */
-	public void setInputtype(Enumerator newValue) {
-		inputtype.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Properties.inputtype);
-		if (eefElementEditorReadOnlyState && inputtype.isEnabled()) {
-			inputtype.setEnabled(false);
-			inputtype.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !inputtype.isEnabled()) {
-			inputtype.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getIsURL()
-	 * 
-	 */
-	public Boolean getIsURL() {
-		return Boolean.valueOf(isURL.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setIsURL(Boolean newValue)
-	 * 
-	 */
-	public void setIsURL(Boolean newValue) {
-		if (newValue != null) {
-			isURL.setSelection(newValue.booleanValue());
-		} else {
-			isURL.setSelection(false);
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Properties.isURL);
-		if (eefElementEditorReadOnlyState && isURL.isEnabled()) {
-			isURL.setEnabled(false);
-			isURL.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !isURL.isEnabled()) {
-			isURL.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getMax()
-	 * 
-	 */
-	public String getMax() {
-		return max.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setMax(String newValue)
-	 * 
-	 */
-	public void setMax(String newValue) {
-		if (newValue != null) {
-			max.setText(newValue);
-		} else {
-			max.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Properties.max);
-		if (eefElementEditorReadOnlyState && max.isEnabled()) {
-			max.setEnabled(false);
-			max.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !max.isEnabled()) {
-			max.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getMin()
-	 * 
-	 */
-	public String getMin() {
-		return min.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setMin(String newValue)
-	 * 
-	 */
-	public void setMin(String newValue) {
-		if (newValue != null) {
-			min.setText(newValue);
-		} else {
-			min.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Properties.min);
-		if (eefElementEditorReadOnlyState && min.isEnabled()) {
-			min.setEnabled(false);
-			min.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !min.isEnabled()) {
-			min.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#getName()
-	 * 
-	 */
-	public String getName() {
-		return name.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#setName(String newValue)
-	 * 
-	 */
-	public void setName(String newValue) {
-		if (newValue != null) {
-			name.setText(newValue);
-		} else {
-			name.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Properties.name);
-		if (eefElementEditorReadOnlyState && name.isEnabled()) {
-			name.setEnabled(false);
-			name.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
-			name.setEnabled(true);
 		}	
 		
 	}
@@ -1836,6 +1698,204 @@ public class HuipropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 			visible.setEnabled(true);
 		}	
 		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#initDepends(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initDepends(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		depends.setContentProvider(contentProvider);
+		depends.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Childs.depends);
+		if (eefElementEditorReadOnlyState && depends.isEnabled()) {
+			depends.setEnabled(false);
+			depends.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !depends.isEnabled()) {
+			depends.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#updateDepends()
+	 * 
+	 */
+	public void updateDepends() {
+	depends.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addFilterDepends(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToDepends(ViewerFilter filter) {
+		dependsFilters.add(filter);
+		if (this.depends != null) {
+			this.depends.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addBusinessFilterDepends(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToDepends(ViewerFilter filter) {
+		dependsBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#isContainedInDependsTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInDependsTable(EObject element) {
+		return ((ReferencesTableSettings)depends.getInput()).contains(element);
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#initValidationRule(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initValidationRule(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		validationRule.setContentProvider(contentProvider);
+		validationRule.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Childs.validationRule);
+		if (eefElementEditorReadOnlyState && validationRule.isEnabled()) {
+			validationRule.setEnabled(false);
+			validationRule.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !validationRule.isEnabled()) {
+			validationRule.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#updateValidationRule()
+	 * 
+	 */
+	public void updateValidationRule() {
+	validationRule.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addFilterValidationRule(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToValidationRule(ViewerFilter filter) {
+		validationRuleFilters.add(filter);
+		if (this.validationRule != null) {
+			this.validationRule.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addBusinessFilterValidationRule(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToValidationRule(ViewerFilter filter) {
+		validationRuleBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#isContainedInValidationRuleTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInValidationRuleTable(EObject element) {
+		return ((ReferencesTableSettings)validationRule.getInput()).contains(element);
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#initOption(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initOption(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		option.setContentProvider(contentProvider);
+		option.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.Huiproperty.Childs.option);
+		if (eefElementEditorReadOnlyState && option.isEnabled()) {
+			option.setEnabled(false);
+			option.setToolTipText(HitroMessages.Huiproperty_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !option.isEnabled()) {
+			option.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#updateOption()
+	 * 
+	 */
+	public void updateOption() {
+	option.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addFilterOption(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToOption(ViewerFilter filter) {
+		optionFilters.add(filter);
+		if (this.option != null) {
+			this.option.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#addBusinessFilterOption(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToOption(ViewerFilter filter) {
+		optionBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart#isContainedInOptionTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInOptionTable(EObject element) {
+		return ((ReferencesTableSettings)option.getInput()).contains(element);
 	}
 
 

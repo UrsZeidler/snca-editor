@@ -15,7 +15,7 @@
    <windowImages/>
 
 
-   <launcher>
+   <launcher name="snca-editor">
       <win useIco="false">
          <bmp/>
       </win>
@@ -24,7 +24,6 @@
 
    <vm>
    </vm>
-
 
    <plugins>
    </plugins>

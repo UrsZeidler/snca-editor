@@ -16,32 +16,6 @@ import org.eclipse.emf.common.util.EList;
 public interface HuientityPropertiesEditionPart {
 
 	/**
-	 * @return the group
-	 * 
-	 */
-	public EList getGroup();
-
-	/**
-	 * Defines a new group
-	 * @param newValue the new group to set
-	 * 
-	 */
-	public void setGroup(EList newValue);
-
-	/**
-	 * Add a value to the group multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToGroup(Object newValue);
-
-	/**
-	 * Remove a value to the group multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToGroup(Object newValue);
-
-
-	/**
 	 * @return the id
 	 * 
 	 */
