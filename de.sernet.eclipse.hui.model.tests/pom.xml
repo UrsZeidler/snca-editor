@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   
   <modelVersion>4.0.0</modelVersion>
-  <packaging>eclipse-plugin</packaging>
+  <packaging>eclipse-test-plugin</packaging>
   
   <artifactId>de.sernet.eclipse.hui.model.tests</artifactId>
   <version>1.0.0-SNAPSHOT</version>
@@ -12,5 +12,42 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../de.sernet.eclipse.hui.parent/pom.xml</relativePath>
     </parent>
+
+
+    <build>
+        <plugins>
+<!--             <plugin> -->
+<!--                 <groupId>org.eclipse.tycho</groupId> -->
+<!--                 <artifactId>tycho-surefire-plugin</artifactId> -->
+<!--                 <configuration> -->
+<!--                     UI or headless -->
+<!--                     <useUIHarness>false</useUIHarness> -->
+<!--                     <argLine>${jvm-flags}</argLine> -->
+<!--                 </configuration> -->
+<!--             </plugin> -->
+
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.12.4</version>
+    <executions>
+      <execution>
+        <id>test</id>
+        <phase>test</phase>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+        </configuration>
+        <goals>
+          <goal>test</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
+
+        </plugins>
+    </build>
+
 
 </project>

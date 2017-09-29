@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <category
+            id="de.sernet.eclipse.hui.ui.importWizards.SNCACategory"
+            name="SNCA Import">
+      </category>
+      <wizard
+            category="de.sernet.eclipse.hui.ui.importWizards.SNCACategory"
+            class="de.sernet.eclipse.hui.ui.importWizards.ImportSNCAWizard"
+            icon="icons/sample.png"
+            id="de.sernet.eclipse.hui.ui.importWizards.ImportSNCAWizard"
+            name="Import SNCA XML File">
+         <description>
+            Import a file from the local file system into the workspace.
+         </description>
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <wizard
+            category="de.sernet.eclipse.hui.ui.importWizards.SNCACategory"
+            class="de.sernet.eclipse.hui.ui.exportWizards.ExportSNCAWizard"
+            icon="icons/sample.png"
+            id="de.sernet.eclipse.hui.ui.exportWizards.ExportWizard"
+            name="Export SNCA">
+      </wizard>
+   </extension>
+
+</plugin>

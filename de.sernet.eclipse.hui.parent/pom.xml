@@ -29,7 +29,7 @@ BUILD INSTRUCTIONS
 			[ERROR] To fix this, you can either build against Eclipse Mars or newer (recommended) or go back to Tycho <= 0.22.0
          -->
         <!-- <tycho-version>1.0.0</tycho-version> -->
-        <tycho-version>0.22.0</tycho-version>
+        <tycho-version>0.24.0</tycho-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -41,9 +41,10 @@ BUILD INSTRUCTIONS
         <module>../de.sernet.eclipse.hui.model</module>
         <module>../de.sernet.eclipse.hui.model.edit</module>
         <module>../de.sernet.eclipse.hui.model.editor</module>
-        <module>../de.sernet.eclipse.hui.model.tests</module>
+<!--         <module>../de.sernet.eclipse.hui.model.tests</module> -->
         <module>../de.sernet.eclipse.hui.eef</module>
         <module>../de.sernet.eclipse.hui.parsley</module>
+        <module>../de.sernet.eclipse.hui.ui</module>
 
         <module>../de.sernet.eclipse.hui.feature</module>
         <module>../de.sernet.eclipse.hui.depedencies.feature</module>
@@ -77,8 +78,8 @@ BUILD INSTRUCTIONS
                 
                 <configuration>
                 	<!-- source and target options can be ommited as soon as we upgrade to Tycho 1.0.0 -->
-  					<source>1.7</source>
-  					<target>1.7</target>
+  					<source>1.8</source>
+  					<target>1.8</target>
   					<!-- otherwise you will get numerous API access restriction errors when tycho version < 1.0.0 -->
                 	<compilerArgument>-err:none</compilerArgument>
 				</configuration>
@@ -97,9 +98,6 @@ BUILD INSTRUCTIONS
                             <version>1.0.0-SNAPSHOT</version>
                         </artifact>
                     </target>
-
-                    <!-- It seems that Tycho can't consume the target runtime environment from
-                        the target platform file at the moment. -->
 					<environments>
 						<environment>
 							<os>win32</os>

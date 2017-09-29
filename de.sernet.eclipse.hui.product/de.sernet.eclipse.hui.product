@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="huiEditor" uid="de.sernet.eclipse.hui.product" application="org.eclipse.ui.ide.workbench" useFeatures="true" includeLaunchers="true">
-
+<product name="huiEditor" uid="de.sernet.eclipse.hui.product" application="org.eclipse.ui.ide.workbench" version="0.0.1" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -14,13 +13,11 @@
 
    <windowImages/>
 
-
    <launcher name="snca-editor">
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>

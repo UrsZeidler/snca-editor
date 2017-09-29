@@ -43,6 +43,9 @@
                label="Base"
                category="default">
          </propertyTab>
+        <propertyTab id="advanced.tab" label="advanced"
+               category="advanced">
+         </propertyTab>
 
       </propertyTabs>
    </extension>
@@ -50,6 +53,26 @@
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
             contributorId="de.sernet.eclipse.hitro.properties">
+       
+	<propertySection
+       class="org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection"
+       id="de.sernet.eclipse.hitro.section.Advanced"
+       tab="advanced.tab">
+    <input
+          type="de.sernet.eclipse.hitro.Huientities">
+    </input>
+    <input
+          type="de.sernet.eclipse.hitro.Huientity">
+    </input>
+    <input
+          type="de.sernet.eclipse.hitro.Huiproperty">
+    </input>
+            
+          </propertySection>
+            
+
+            
+            
          <propertySection
                class="de.sernet.eclipse.hitro.parts.forms.DefaultRulePropertiesEditionPartForm"
                filter="de.sernet.eclipse.hitro.providers.DefaultRulePropertiesEditionProvider$EditionFilter"

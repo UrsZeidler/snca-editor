@@ -103,7 +103,7 @@ public class DefaultRulePropertiesEditionComponent extends SinglePartPropertiesE
 				basePart.initParam(paramSettings);
 			}
 			if (isAccessible(HitroViewsRepository.DefaultRule.Properties.class_))
-				basePart.setClass_(EEFConverterUtil.convertToString(XMLTypePackage.Literals.STRING, defaultRule.getClass()));
+				basePart.setClass_(EEFConverterUtil.convertToString(XMLTypePackage.Literals.STRING, defaultRule.getClass_()));//  .getClass()));
 			
 			// init filters
 			if (isAccessible(HitroViewsRepository.DefaultRule.Properties.param)) {
