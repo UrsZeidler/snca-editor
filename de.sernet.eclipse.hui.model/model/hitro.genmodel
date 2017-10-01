@@ -4,7 +4,7 @@
     editorDirectory="/de.sernet.eclipse.hui.model.editor/src" modelPluginID="de.sernet.eclipse.hui.model"
     modelName="Hitro" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.xsd.ecore.importer" complianceLevel="8.0" copyrightFields="false"
-    operationReflection="true" importOrganizing="true">
+    operationReflection="true" importOrganizing="true" decoration="Live">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.xsd.ecore.importer">
     <details key="createMap" value="true"/>
   </genAnnotations>
