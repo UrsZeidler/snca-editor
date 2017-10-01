@@ -3,56 +3,79 @@
  */
 package de.sernet.eclipse.hui.ui.exportWizards;
 
-import org.eclipse.core.resources.IFile;
+import java.io.IOException;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
 
-import de.sernet.eclipse.hui.ui.importWizards.ImportSNCAWizardPage;
+import de.sernet.eclipse.hui.ui.Activator;
 
 /**
  * @author urszeidler
  *
  */
 public class ExportSNCAWizard extends Wizard implements IExportWizard {
-
+	public static final String EXPORT_WIZARD = "EXPORT_WIZARD";
+	public static final String TARGET_FILE = "TARGET_FILE";
 	private ExportSNCAWizardPage mainPage;
 
 	/**
 	 * 
 	 */
 	public ExportSNCAWizard() {
-		// TODO Auto-generated constructor stub
+		setDialogSettings(Activator.getDefault().getDialogSettings());
+		initalizeDialogSettings();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench, org.eclipse.jface.viewers.IStructuredSelection)
+	private void initalizeDialogSettings() {
+		IDialogSettings section = getDialogSettings().getSection(EXPORT_WIZARD);
+		if (section == null) {
+			IDialogSettings newSection = getDialogSettings().addNewSection(EXPORT_WIZARD);
+			newSection.put(ExportSNCAWizard.TARGET_FILE, "");
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
+	 * org.eclipse.jface.viewers.IStructuredSelection)
 	 */
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		setWindowTitle("File Import Wizard"); //NON-NLS-1
+		setWindowTitle("SNCA Export Wizard");
 		setNeedsProgressMonitor(true);
-		mainPage = new ExportSNCAWizardPage("Import SNCA XML File",selection); //NON-NLS-1
+		mainPage = new ExportSNCAWizardPage(selection);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.jface.wizard.Wizard#performFinish()
 	 */
 	@Override
 	public boolean performFinish() {
-		IFile file = mainPage.createNewFile();
-        if (file == null)
-            return false;
-        return true;
+		try {
+			mainPage.saveFile();
+		} catch (CoreException | IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
-	/* (non-Javadoc)
-     * @see org.eclipse.jface.wizard.IWizard#addPages()
-     */
-    public void addPages() {
-        super.addPages(); 
-        addPage(mainPage);        
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.jface.wizard.IWizard#addPages()
+	 */
+	public void addPages() {
+		super.addPages();
+		addPage(mainPage);
+	}
 
 }

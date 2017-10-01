@@ -9,3 +9,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jface,
  org.eclipse.ui.ide,
  org.eclipse.ui
+Bundle-Activator: de.sernet.eclipse.hui.ui.Activator
+Bundle-ActivationPolicy: lazy
