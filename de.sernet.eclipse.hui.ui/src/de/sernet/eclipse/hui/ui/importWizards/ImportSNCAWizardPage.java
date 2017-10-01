@@ -82,14 +82,16 @@ public class ImportSNCAWizardPage extends WizardNewFileCreationPage {
 	protected InputStream getInitialContents() {
 		try {
 			FileInputStream fileInputStream = new FileInputStream(new File(editor.getStringValue()));
-
 			BufferedReader d = new BufferedReader(new InputStreamReader(fileInputStream));
+			try {
+				String collect = d.lines().collect(Collectors.joining("\n"));
+				collect = collect.replaceAll("huientities", "hitro:huientities");
+				collect = collect.replaceFirst("xmlns=", "xmlns:hitro=");
 
-			String collect = d.lines().collect(Collectors.joining("\n"));
-			collect = collect.replaceAll("huientities", "hitro:huientities");
-			collect = collect.replaceFirst("xmlns=", "xmlns:hitro=");
-
-			return new ByteArrayInputStream(collect.getBytes("UTF-8"));
+				return new ByteArrayInputStream(collect.getBytes("UTF-8"));
+			} finally {
+				d.close();
+			}
 		} catch (FileNotFoundException e) {
 			return null;
 		} catch (IOException e) {
