@@ -513,11 +513,11 @@ public class HuipropertyItemProvider
 	public String getText(Object object) {
 		Huiproperty huiproperty = (Huiproperty)object;
 		String label = huiproperty.getName();
+		if(label==null)
+			label = "";
 		
-		label += " ["+huiproperty.getInputtype()+"]";
-		return label == null || label.length() == 0 ?
-			getString("_UI_Huiproperty_type") :
-			getString("_UI_Huiproperty_type") + " " + label;
+		label += " ["+huiproperty.getId()+"]";
+		return getString("_UI_Huiproperty_type") + " " + label;
 	}
 	
 

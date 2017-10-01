@@ -168,9 +168,10 @@ public class HuientityItemProvider extends ItemProviderAdapter implements IEditi
 		if (label == null)
 			label = huientity.getId();
 
+		String id = huientity.getId();
 		
 		return label == null || label.length() == 0 ? getString("_UI_Huientity_type")
-				: getString("_UI_Huientity_type") + " " + label;
+				: getString("_UI_Huientity_type") + " " + label + " ["+id+"]";
 	}
 
 	/**

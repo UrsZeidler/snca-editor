@@ -201,7 +201,7 @@ public class HuirelationItemProvider
 		Huirelation huirelation = (Huirelation)object;
 		String label = huirelation.getName();
 		if(huirelation.getTo()!=null)
-			label = label+" -> "+huirelation.getTo().getName();
+			label = label+ " ["+huirelation.getId()+"] -> "+huirelation.getTo().getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Huirelation_type") :
 			getString("_UI_Huirelation_type") + " " + label;

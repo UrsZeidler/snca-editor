@@ -3,17 +3,12 @@
 package de.sernet.eclipse.hitro.provider;
 
 
-import de.sernet.eclipse.hitro.Depends;
-import de.sernet.eclipse.hitro.HitroPackage;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -24,6 +19,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.sernet.eclipse.hitro.Depends;
+import de.sernet.eclipse.hitro.HitroPackage;
 
 /**
  * This is the item provider adapter for a {@link de.sernet.eclipse.hitro.Depends} object.
@@ -148,12 +146,20 @@ public class DependsItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated not
 	 */
 	@Override
 	public String getText(Object object) {
 		Depends depends = (Depends)object;
-		return getString("_UI_Depends_type") + " " + depends.isInverse();
+		String label = "";
+		if(depends.getOption()!=null) {
+			IItemLabelProvider labelprovider = (IItemLabelProvider) getRootAdapterFactory().adapt(depends.getOption(),
+					IItemLabelProvider.class);
+			String text = labelprovider.getText(depends.getOption());
+			label = "--> "+ text;
+		}
+
+		return getString("_UI_Depends_type") + " " + label;
 	}
 	
 
