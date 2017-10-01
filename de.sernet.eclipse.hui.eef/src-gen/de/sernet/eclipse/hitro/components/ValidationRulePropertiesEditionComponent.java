@@ -103,7 +103,7 @@ public class ValidationRulePropertiesEditionComponent extends SinglePartProperti
 				basePart.initParam(paramSettings);
 			}
 			if (isAccessible(HitroViewsRepository.ValidationRule.Properties.class_))
-				basePart.setClass_(EEFConverterUtil.convertToString(XMLTypePackage.Literals.STRING, validationRule.getClass()));
+				basePart.setClass_(EEFConverterUtil.convertToString(XMLTypePackage.Literals.STRING, validationRule.getClass_()));
 			
 			if (isAccessible(HitroViewsRepository.ValidationRule.Properties.hint))
 				basePart.setHint(EEFConverterUtil.convertToString(XMLTypePackage.Literals.STRING, validationRule.getHint()));
