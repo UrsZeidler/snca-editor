@@ -50,7 +50,6 @@ public class ExportSNCAWizardPage extends WizardPage {
 		super("wizardPage");
 		setTitle("Wizard Page title");
 		setDescription("Wizard Page description");
-		
 	}
 
 	public ExportSNCAWizardPage(IStructuredSelection selection) {

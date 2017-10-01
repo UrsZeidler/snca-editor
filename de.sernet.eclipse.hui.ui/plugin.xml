@@ -28,5 +28,13 @@
             name="Export SNCA">
       </wizard>
    </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="de.sernet.eclipse.hui.ui.perspective.SNCAPerspective"
+            id="de.sernet.eclipse.hui.ui.perspective.SNCAPerspective"
+            name="SNCA Perspective">
+      </perspective>
+   </extension>
 
 </plugin>
