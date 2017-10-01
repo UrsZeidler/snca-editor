@@ -170,6 +170,7 @@ public class ExportSNCAWizardPage extends WizardPage {
 		FileWriter fileWriter = new FileWriter(targetFile, false);
 		fileWriter.append(collect);
 		fileWriter.close();
+		d.close();
 
 		IDialogSettings section = getDialogSettings().getSection(ExportSNCAWizard.EXPORT_WIZARD);
 		section.put(ExportSNCAWizard.TARGET_FILE, targetFile.getAbsolutePath());
