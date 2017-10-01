@@ -55,17 +55,20 @@
             contributorId="de.sernet.eclipse.hitro.properties">
        
 	<propertySection
-       class="org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection"
+       class="org.eclipse.emf.eef.runtime.ui.properties.sections.EEFAdvancedPropertySection"
        id="de.sernet.eclipse.hitro.section.Advanced"
        tab="advanced.tab">
     <input
-          type="de.sernet.eclipse.hitro.Huientities">
+          type="org.eclipse.emf.ecore.EObject">
     </input>
     <input
-          type="de.sernet.eclipse.hitro.Huientity">
+          type="org.eclipse.emf.ecore.EDataType">
     </input>
     <input
-          type="de.sernet.eclipse.hitro.Huiproperty">
+          type="java.lang.String">
+    </input>
+    <input
+          type="java.lang.Object">
     </input>
             
           </propertySection>
