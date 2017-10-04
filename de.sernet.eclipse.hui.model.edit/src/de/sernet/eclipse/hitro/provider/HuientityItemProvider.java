@@ -116,13 +116,15 @@ public class HuientityItemProvider extends ItemProviderAdapter implements IEditi
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated not
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(HitroPackage.Literals.HUIENTITY__GROUP);
+			childrenFeatures.add(HitroPackage.Literals.HUIENTITY__HUIRELATION);
+			childrenFeatures.add(HitroPackage.Literals.HUIENTITY__HUIPROPERTY);
+			childrenFeatures.add(HitroPackage.Literals.HUIENTITY__HUIPROPERTYGROUP);
 		}
 		return childrenFeatures;
 	}
