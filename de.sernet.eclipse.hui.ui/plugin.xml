@@ -14,19 +14,26 @@
             id="de.sernet.eclipse.hui.ui.importWizards.ImportSNCAWizard"
             name="Import SNCA XML File">
          <description>
-            Import a file from the local file system into the workspace.
+            Import a SNCA file from the local file system into the workspace and transform it a hitro file.
          </description>
       </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.exportWizards">
       <wizard
-            category="de.sernet.eclipse.hui.ui.importWizards.SNCACategory"
+            category="de.sernet.eclipse.hui.ui.exportWizards.SNCACategory"
             class="de.sernet.eclipse.hui.ui.exportWizards.ExportSNCAWizard"
             icon="icons/sample.png"
             id="de.sernet.eclipse.hui.ui.exportWizards.ExportWizard"
             name="Export SNCA">
+         <description>
+            Export the hitro file to a SNCA xml file.
+         </description>
       </wizard>
+      <category
+            id="de.sernet.eclipse.hui.ui.exportWizards.SNCACategory"
+            name="SNCA Export">
+      </category>
    </extension>
    <extension
          point="org.eclipse.ui.perspectives">
@@ -36,5 +43,13 @@
             name="SNCA Perspective">
       </perspective>
    </extension>
+
+<extension
+    point="org.eclipse.core.contenttype.contentTypes">
+  <file-association
+      content-type="org.eclipse.emf.ecore.xmi"
+      file-extensions="hitro"
+      file-names="*"/>
+</extension>
 
 </plugin>
