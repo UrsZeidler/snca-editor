@@ -1,7 +1,5 @@
 package de.sernet.eclipse.hitro.presentation.util;
 
-import java.io.ObjectInputStream.GetField;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.EStructuralFeatureImpl.ContainmentUpdatingFeatureMapEntry;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
