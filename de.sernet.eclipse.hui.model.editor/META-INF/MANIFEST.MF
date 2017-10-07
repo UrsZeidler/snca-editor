@@ -8,7 +8,8 @@ Bundle-Activator: de.sernet.eclipse.hitro.presentation.HitroEditorPlugin$Impleme
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.sernet.eclipse.hitro.presentation
+Export-Package: de.sernet.eclipse.hitro.lang,
+ de.sernet.eclipse.hitro.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  de.sernet.eclipse.hui.model.edit;visibility:=reexport,

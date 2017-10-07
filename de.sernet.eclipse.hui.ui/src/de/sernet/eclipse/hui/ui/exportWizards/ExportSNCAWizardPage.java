@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +16,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
@@ -32,8 +35,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ResourceSelectionDialog;
 
-public class ExportSNCAWizardPage extends WizardPage {
+import de.sernet.eclipse.hitro.lang.HitropPropertiesUtil;
 
+public class ExportSNCAWizardPage extends WizardPage {
 
 	private Text sourceFileText;
 	private Text targetFileText;
@@ -106,8 +110,7 @@ public class ExportSNCAWizardPage extends WizardPage {
 			}
 		});
 		btnNewButton.setText("select");
-		
-		
+
 		IDialogSettings section = getDialogSettings().getSection(ExportSNCAWizard.EXPORT_WIZARD);
 		String targetfile = section.get(ExportSNCAWizard.TARGET_FILE);
 
@@ -117,6 +120,7 @@ public class ExportSNCAWizardPage extends WizardPage {
 		targetFileText = new Text(grpSource, SWT.BORDER);
 		targetFileText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		targetFileText.setText(targetfile);
+		
 		Button btnNewButton_1 = new Button(grpSource, SWT.NONE);
 		btnNewButton_1.addSelectionListener(new SelectionAdapter() {
 
@@ -159,6 +163,9 @@ public class ExportSNCAWizardPage extends WizardPage {
 	}
 
 	protected void saveFile() throws CoreException, IOException {
+		targetFile = new File(targetFileText.getText());
+		sourceFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(sourceFileText.getText()));
+		
 		InputStream contents = sourceFile.getContents(true);
 		BufferedReader d = new BufferedReader(new InputStreamReader(contents));
 
@@ -168,12 +175,23 @@ public class ExportSNCAWizardPage extends WizardPage {
 		collect = collect.replaceFirst("xmlns:hitro=", "xmlns=");
 
 		FileWriter fileWriter = new FileWriter(targetFile, false);
-		fileWriter.append(collect);
-		fileWriter.close();
-		d.close();
+		try {
+			fileWriter.append(collect);
+		} finally {
+			fileWriter.close();
+			d.close();
+		}
 
 		IDialogSettings section = getDialogSettings().getSection(ExportSNCAWizard.EXPORT_WIZARD);
 		section.put(ExportSNCAWizard.TARGET_FILE, targetFile.getAbsolutePath());
+
+		String basePath = HitropPropertiesUtil.platformBasePath(sourceFile);
+		String fileBasePath = HitropPropertiesUtil.fileBasePath(targetFile);
+		for (String lang : HitropPropertiesUtil.LANGS) {
+			File sourceFile = HitropPropertiesUtil.TO_WORKSPACE_FILE.toFile(basePath + lang);
+			File targetFile = HitropPropertiesUtil.TO_FILE.toFile(fileBasePath + lang);
+			Files.copy(sourceFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+		}
 	}
 
 }

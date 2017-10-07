@@ -43,9 +43,14 @@
                label="Base"
                category="default">
          </propertyTab>
-        <propertyTab id="advanced.tab" label="advanced"
+        <propertyTab id="advanced.tab" label="Advanced"
                category="advanced">
          </propertyTab>
+        <propertyTab
+              category="extended"
+              id="language"
+              label="Language">
+        </propertyTab>
 
       </propertyTabs>
    </extension>
@@ -147,6 +152,20 @@
                filter="de.sernet.eclipse.hitro.providers.ValidationRulePropertiesEditionProvider$EditionFilter"
                id="de.sernet.eclipse.hitro.section.ValidationRule"
                tab="Base">
+         </propertySection>
+         <propertySection
+               class="de.sernet.eclipse.hui.eef.properties.LanguageSection"
+               id="de.sernet.eclipse.hui.eef.propertySection1"
+               tab="language">
+            <input
+                  type="de.sernet.eclipse.hitro.Huientity">
+            </input>
+            <input
+                  type="de.sernet.eclipse.hitro.Huiproperty">
+            </input>
+            <input
+                  type="org.eclipse.emf.ecore.EObject">
+            </input>
          </propertySection>
       </propertySections>
    </extension>

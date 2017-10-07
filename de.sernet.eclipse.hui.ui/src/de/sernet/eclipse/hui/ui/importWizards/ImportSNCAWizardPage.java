@@ -27,6 +27,7 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 public class ImportSNCAWizardPage extends WizardNewFileCreationPage {
 
 	protected FileFieldEditor editor;
+	protected String orgFilename;
 
 	public ImportSNCAWizardPage(String pageName, IStructuredSelection selection) {
 		super(pageName, selection);
@@ -59,6 +60,7 @@ public class ImportSNCAWizardPage extends WizardNewFileCreationPage {
 				IPath path = new Path(ImportSNCAWizardPage.this.editor.getStringValue());
 				String lastSegment = path.removeFileExtension().lastSegment();
 				setFileName(lastSegment + ".hitro");
+				orgFilename = path.toString();
 			}
 		});
 		String[] extensions = new String[] { "*.xml", "*.*" }; // NON-NLS-1
@@ -117,5 +119,9 @@ public class ImportSNCAWizardPage extends WizardNewFileCreationPage {
 	 */
 	protected IStatus validateLinkedResource() {
 		return new Status(IStatus.OK, "de.sernet.eclipse.hui.ui", IStatus.OK, "", null); // NON-NLS-1 //NON-NLS-2
+	}
+
+	public String getOrgFilename() {
+		return orgFilename;
 	}
 }

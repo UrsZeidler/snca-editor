@@ -127,6 +127,8 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
+import de.sernet.eclipse.hitro.lang.HitropPropertiesUtil;
+import de.sernet.eclipse.hitro.lang.LanguagesEntry;
 import de.sernet.eclipse.hitro.provider.HitroItemProviderAdapterFactory;
 
 /**
@@ -512,6 +514,7 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 			}
 		}
 	};
+	private Map<EObject, LanguagesEntry> entryMap;
 
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
@@ -947,7 +950,7 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 	 * resource set based on the editor's input. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated not
 	 */
 	public void createModel() {
 		URI resourceURI = EditUIUtil.getURI(getEditorInput(), editingDomain.getResourceSet().getURIConverter());
@@ -957,7 +960,11 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 			// Load the resource through the editing domain.
 			//
 			resource = editingDomain.getResourceSet().getResource(resourceURI, true);
+			IFile file = HitropPropertiesUtil.getFile(resource);
+			String basePath = file.getFullPath().removeFileExtension().toString().toLowerCase()+"-messages";
+			entryMap = HitropPropertiesUtil.loadPropertyResources(resource.getContents(), basePath, HitropPropertiesUtil.TO_WORKSPACE_FILE);
 		} catch (Exception e) {
+			System.out.println(e.fillInStackTrace());
 			exception = e;
 			resource = editingDomain.getResourceSet().getResource(resourceURI, false);
 		}
@@ -1492,7 +1499,7 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 	 * This is for implementing {@link IEditorPart} and simply saves the model file.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated not
 	 */
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
@@ -1530,6 +1537,7 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 						first = false;
 					}
 				}
+				savePropertyFiles();
 			}
 		};
 
@@ -1551,6 +1559,16 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 		updateProblemIndication = true;
 		updateProblemIndication();
 	}
+
+	private void savePropertyFiles() {
+		URI resourceURI = EditUIUtil.getURI(getEditorInput(), editingDomain.getResourceSet().getURIConverter());
+		Resource resource = editingDomain.getResourceSet().getResource(resourceURI, false);
+		IFile file = HitropPropertiesUtil.getFile(resource);
+		String basePath = HitropPropertiesUtil.platformBasePath(file);
+		
+		HitropPropertiesUtil.savePropertyFile(resource, basePath, entryMap, HitropPropertiesUtil.TO_WORKSPACE_FILE);
+	}
+
 
 	/**
 	 * This returns whether something has been persisted to the URI of the specified
@@ -1849,6 +1867,10 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 	 */
 	public String getContributorId() {
 		return PROPERTIES_CONTRIBUTOR;
+	}
+
+	public Map<EObject, LanguagesEntry> getEntryMap() {
+		return entryMap;
 	}
 
 }
