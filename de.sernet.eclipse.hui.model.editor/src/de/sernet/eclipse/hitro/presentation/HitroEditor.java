@@ -75,10 +75,10 @@ import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.util.LocalSelectionTransfer;
-import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -87,7 +87,6 @@ import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
@@ -99,13 +98,9 @@ import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -114,10 +109,12 @@ import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
@@ -129,6 +126,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import de.sernet.eclipse.hitro.lang.HitropPropertiesUtil;
 import de.sernet.eclipse.hitro.lang.LanguagesEntry;
+import de.sernet.eclipse.hitro.presentation.actions.PatternFilterAction;
 import de.sernet.eclipse.hitro.provider.HitroItemProviderAdapterFactory;
 
 /**
@@ -961,8 +959,10 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 			//
 			resource = editingDomain.getResourceSet().getResource(resourceURI, true);
 			IFile file = HitropPropertiesUtil.getFile(resource);
-			String basePath = file.getFullPath().removeFileExtension().toString().toLowerCase()+"-messages";
-			entryMap = HitropPropertiesUtil.loadPropertyResources(resource.getContents(), basePath, HitropPropertiesUtil.TO_WORKSPACE_FILE);
+			String basePath = HitropPropertiesUtil.platformBasePath(file); // file.getFullPath().removeFileExtension().toString().toLowerCase()
+																			// + "-messages";
+			entryMap = HitropPropertiesUtil.loadPropertyResources(resource.getContents(), basePath,
+					HitropPropertiesUtil.TO_WORKSPACE_FILE);
 		} catch (Exception e) {
 			System.out.println(e.fillInStackTrace());
 			exception = e;
@@ -1004,7 +1004,7 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 	 * This is the method used by the framework to install your own controls. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated not
 	 */
 	@Override
 	public void createPages() {
@@ -1046,6 +1046,14 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 						new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
 				viewerPane.setTitle(editingDomain.getResourceSet());
 
+				addActionToToolbar(viewerPane.getToolBarManager());
+				PatternFilter filter = new PatternFilter();
+				selectionViewer.addFilter(filter);
+				HitroEditorPlugin.getPlugin();
+				viewerPane.getToolBarManager().add(new PatternFilterAction("", filter, viewerPane,
+						AbstractUIPlugin.imageDescriptorFromPlugin("de.sernet.eclipse.hui.model.editor", "icons/actions/filter.png")));
+				viewerPane.updateActionBars();
+
 				new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
 				new ColumnViewerInformationControlToolTipSupport(selectionViewer,
 						new DiagnosticDecorator.EditingDomainLocationListener(editingDomain, selectionViewer));
@@ -1057,190 +1065,207 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 
 			// Create a page for the parent tree view.
 			//
-			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), HitroEditor.this) {
-					@Override
-					public Viewer createViewer(Composite composite) {
-						Tree tree = new Tree(composite, SWT.MULTI);
-						TreeViewer newTreeViewer = new TreeViewer(tree);
-						return newTreeViewer;
-					}
-
-					@Override
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-				viewerPane.createControl(getContainer());
-
-				parentViewer = (TreeViewer) viewerPane.getViewer();
-				parentViewer.setAutoExpandLevel(30);
-				parentViewer.setContentProvider(new ReverseAdapterFactoryContentProvider(adapterFactory));
-				parentViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-				createContextMenuFor(parentViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_ParentPage_label"));
-			}
-
-			// This is the page for the list viewer
+			// {
+			// ViewerPane viewerPane = new ViewerPane(getSite().getPage(), HitroEditor.this)
+			// {
+			// @Override
+			// public Viewer createViewer(Composite composite) {
+			// Tree tree = new Tree(composite, SWT.MULTI);
+			// TreeViewer newTreeViewer = new TreeViewer(tree);
+			// return newTreeViewer;
+			// }
 			//
-			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), HitroEditor.this) {
-					@Override
-					public Viewer createViewer(Composite composite) {
-						return new ListViewer(composite);
-					}
-
-					@Override
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-				viewerPane.createControl(getContainer());
-				listViewer = (ListViewer) viewerPane.getViewer();
-				listViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				listViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-				createContextMenuFor(listViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_ListPage_label"));
-			}
-
-			// This is the page for the tree viewer
+			// @Override
+			// public void requestActivation() {
+			// super.requestActivation();
+			// setCurrentViewerPane(this);
+			// }
+			// };
+			// viewerPane.createControl(getContainer());
 			//
-			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), HitroEditor.this) {
-					@Override
-					public Viewer createViewer(Composite composite) {
-						return new TreeViewer(composite);
-					}
-
-					@Override
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-				viewerPane.createControl(getContainer());
-				treeViewer = (TreeViewer) viewerPane.getViewer();
-				treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				treeViewer.setLabelProvider(
-						new DecoratingColumLabelProvider(new AdapterFactoryLabelProvider(adapterFactory),
-								new DiagnosticDecorator(editingDomain, treeViewer)));
-
-				new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
-				new ColumnViewerInformationControlToolTipSupport(treeViewer,
-						new DiagnosticDecorator.EditingDomainLocationListener(editingDomain, treeViewer));
-
-				createContextMenuFor(treeViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_TreePage_label"));
-			}
+			// parentViewer = (TreeViewer) viewerPane.getViewer();
+			// parentViewer.setAutoExpandLevel(30);
+			// parentViewer.setContentProvider(new
+			// ReverseAdapterFactoryContentProvider(adapterFactory));
+			// parentViewer.setLabelProvider(new
+			// AdapterFactoryLabelProvider(adapterFactory));
+			//
+			// createContextMenuFor(parentViewer);
+			// int pageIndex = addPage(viewerPane.getControl());
+			// setPageText(pageIndex, getString("_UI_ParentPage_label"));
+			// }
+			//
+			// // This is the page for the list viewer
+			// //
+			// {
+			// ViewerPane viewerPane = new ViewerPane(getSite().getPage(), HitroEditor.this)
+			// {
+			// @Override
+			// public Viewer createViewer(Composite composite) {
+			// return new ListViewer(composite);
+			// }
+			//
+			// @Override
+			// public void requestActivation() {
+			// super.requestActivation();
+			// setCurrentViewerPane(this);
+			// }
+			// };
+			// viewerPane.createControl(getContainer());
+			// listViewer = (ListViewer) viewerPane.getViewer();
+			// listViewer.setContentProvider(new
+			// AdapterFactoryContentProvider(adapterFactory));
+			// listViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+			//
+			// createContextMenuFor(listViewer);
+			// int pageIndex = addPage(viewerPane.getControl());
+			// setPageText(pageIndex, getString("_UI_ListPage_label"));
+			// }
+			//
+			// // This is the page for the tree viewer
+			// //
+			// {
+			// ViewerPane viewerPane = new ViewerPane(getSite().getPage(), HitroEditor.this)
+			// {
+			// @Override
+			// public Viewer createViewer(Composite composite) {
+			// return new TreeViewer(composite);
+			// }
+			//
+			// @Override
+			// public void requestActivation() {
+			// super.requestActivation();
+			// setCurrentViewerPane(this);
+			// }
+			// };
+			// viewerPane.createControl(getContainer());
+			// treeViewer = (TreeViewer) viewerPane.getViewer();
+			// treeViewer.setContentProvider(new
+			// AdapterFactoryContentProvider(adapterFactory));
+			// treeViewer.setLabelProvider(
+			// new DecoratingColumLabelProvider(new
+			// AdapterFactoryLabelProvider(adapterFactory),
+			// new DiagnosticDecorator(editingDomain, treeViewer)));
+			//
+			// new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
+			// new ColumnViewerInformationControlToolTipSupport(treeViewer,
+			// new DiagnosticDecorator.EditingDomainLocationListener(editingDomain,
+			// treeViewer));
+			//
+			// createContextMenuFor(treeViewer);
+			// int pageIndex = addPage(viewerPane.getControl());
+			// setPageText(pageIndex, getString("_UI_TreePage_label"));
+			// }
 
 			// This is the page for the table viewer.
 			//
-			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), HitroEditor.this) {
-					@Override
-					public Viewer createViewer(Composite composite) {
-						return new TableViewer(composite);
-					}
-
-					@Override
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-				viewerPane.createControl(getContainer());
-				tableViewer = (TableViewer) viewerPane.getViewer();
-
-				Table table = tableViewer.getTable();
-				TableLayout layout = new TableLayout();
-				table.setLayout(layout);
-				table.setHeaderVisible(true);
-				table.setLinesVisible(true);
-
-				TableColumn objectColumn = new TableColumn(table, SWT.NONE);
-				layout.addColumnData(new ColumnWeightData(3, 100, true));
-				objectColumn.setText(getString("_UI_ObjectColumn_label"));
-				objectColumn.setResizable(true);
-
-				TableColumn selfColumn = new TableColumn(table, SWT.NONE);
-				layout.addColumnData(new ColumnWeightData(2, 100, true));
-				selfColumn.setText(getString("_UI_SelfColumn_label"));
-				selfColumn.setResizable(true);
-
-				tableViewer.setColumnProperties(new String[] { "a", "b" });
-				tableViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				tableViewer.setLabelProvider(new DecoratingColumLabelProvider(
-						new AdapterFactoryLabelProvider(adapterFactory), new DiagnosticDecorator(editingDomain,
-								tableViewer, HitroEditorPlugin.getPlugin().getDialogSettings())));
-
-				new ColumnViewerInformationControlToolTipSupport(tableViewer,
-						new DiagnosticDecorator.EditingDomainLocationListener(editingDomain, tableViewer));
-
-				createContextMenuFor(tableViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_TablePage_label"));
-			}
+			// {
+			// ViewerPane viewerPane = new ViewerPane(getSite().getPage(), HitroEditor.this)
+			// {
+			// @Override
+			// public Viewer createViewer(Composite composite) {
+			// return new TableViewer(composite);
+			// }
+			//
+			// @Override
+			// public void requestActivation() {
+			// super.requestActivation();
+			// setCurrentViewerPane(this);
+			// }
+			// };
+			// viewerPane.createControl(getContainer());
+			// tableViewer = (TableViewer) viewerPane.getViewer();
+			//
+			// Table table = tableViewer.getTable();
+			// TableLayout layout = new TableLayout();
+			// table.setLayout(layout);
+			// table.setHeaderVisible(true);
+			// table.setLinesVisible(true);
+			//
+			// TableColumn objectColumn = new TableColumn(table, SWT.NONE);
+			// layout.addColumnData(new ColumnWeightData(3, 100, true));
+			// objectColumn.setText(getString("_UI_ObjectColumn_label"));
+			// objectColumn.setResizable(true);
+			//
+			// TableColumn selfColumn = new TableColumn(table, SWT.NONE);
+			// layout.addColumnData(new ColumnWeightData(2, 100, true));
+			// selfColumn.setText(getString("_UI_SelfColumn_label"));
+			// selfColumn.setResizable(true);
+			//
+			// tableViewer.setColumnProperties(new String[] { "a", "b" });
+			// tableViewer.setContentProvider(new
+			// AdapterFactoryContentProvider(adapterFactory));
+			// tableViewer.setLabelProvider(new DecoratingColumLabelProvider(
+			// new AdapterFactoryLabelProvider(adapterFactory), new
+			// DiagnosticDecorator(editingDomain,
+			// tableViewer, HitroEditorPlugin.getPlugin().getDialogSettings())));
+			//
+			// new ColumnViewerInformationControlToolTipSupport(tableViewer,
+			// new DiagnosticDecorator.EditingDomainLocationListener(editingDomain,
+			// tableViewer));
+			//
+			// createContextMenuFor(tableViewer);
+			// int pageIndex = addPage(viewerPane.getControl());
+			// setPageText(pageIndex, getString("_UI_TablePage_label"));
+			// }
 
 			// This is the page for the table tree viewer.
 			//
-			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), HitroEditor.this) {
-					@Override
-					public Viewer createViewer(Composite composite) {
-						return new TreeViewer(composite);
-					}
-
-					@Override
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-				viewerPane.createControl(getContainer());
-
-				treeViewerWithColumns = (TreeViewer) viewerPane.getViewer();
-
-				Tree tree = treeViewerWithColumns.getTree();
-				tree.setLayoutData(new FillLayout());
-				tree.setHeaderVisible(true);
-				tree.setLinesVisible(true);
-
-				TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
-				objectColumn.setText(getString("_UI_ObjectColumn_label"));
-				objectColumn.setResizable(true);
-				objectColumn.setWidth(250);
-
-				TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
-				selfColumn.setText(getString("_UI_SelfColumn_label"));
-				selfColumn.setResizable(true);
-				selfColumn.setWidth(200);
-
-				treeViewerWithColumns.setColumnProperties(new String[] { "a", "b" });
-				treeViewerWithColumns.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				treeViewerWithColumns.setLabelProvider(new DecoratingColumLabelProvider(
-						new AdapterFactoryLabelProvider(adapterFactory), new DiagnosticDecorator(editingDomain,
-								treeViewerWithColumns, HitroEditorPlugin.getPlugin().getDialogSettings())));
-
-				new ColumnViewerInformationControlToolTipSupport(treeViewerWithColumns,
-						new DiagnosticDecorator.EditingDomainLocationListener(editingDomain, treeViewerWithColumns));
-
-				createContextMenuFor(treeViewerWithColumns);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
-			}
-
-			getSite().getShell().getDisplay().asyncExec(new Runnable() {
-				public void run() {
-					setActivePage(0);
-				}
-			});
+			// {
+			// ViewerPane viewerPane = new ViewerPane(getSite().getPage(), HitroEditor.this)
+			// {
+			// @Override
+			// public Viewer createViewer(Composite composite) {
+			// return new TreeViewer(composite);
+			// }
+			//
+			// @Override
+			// public void requestActivation() {
+			// super.requestActivation();
+			// setCurrentViewerPane(this);
+			// }
+			// };
+			// viewerPane.createControl(getContainer());
+			//
+			// treeViewerWithColumns = (TreeViewer) viewerPane.getViewer();
+			//
+			// Tree tree = treeViewerWithColumns.getTree();
+			// tree.setLayoutData(new FillLayout());
+			// tree.setHeaderVisible(true);
+			// tree.setLinesVisible(true);
+			//
+			// TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
+			// objectColumn.setText(getString("_UI_ObjectColumn_label"));
+			// objectColumn.setResizable(true);
+			// objectColumn.setWidth(250);
+			//
+			// TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
+			// selfColumn.setText(getString("_UI_SelfColumn_label"));
+			// selfColumn.setResizable(true);
+			// selfColumn.setWidth(200);
+			//
+			// treeViewerWithColumns.setColumnProperties(new String[] { "a", "b" });
+			// treeViewerWithColumns.setContentProvider(new
+			// AdapterFactoryContentProvider(adapterFactory));
+			// treeViewerWithColumns.setLabelProvider(new DecoratingColumLabelProvider(
+			// new AdapterFactoryLabelProvider(adapterFactory), new
+			// DiagnosticDecorator(editingDomain,
+			// treeViewerWithColumns, HitroEditorPlugin.getPlugin().getDialogSettings())));
+			//
+			// new ColumnViewerInformationControlToolTipSupport(treeViewerWithColumns,
+			// new DiagnosticDecorator.EditingDomainLocationListener(editingDomain,
+			// treeViewerWithColumns));
+			//
+			// createContextMenuFor(treeViewerWithColumns);
+			// int pageIndex = addPage(viewerPane.getControl());
+			// setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
+			// }
+			//
+			// getSite().getShell().getDisplay().asyncExec(new Runnable() {
+			// public void run() {
+			// setActivePage(0);
+			// }
+			// });
 		}
 
 		// Ensures that this editor will only display the page's tab
@@ -1264,6 +1289,12 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 				updateProblemIndication();
 			}
 		});
+	}
+
+	private void addActionToToolbar(ToolBarManager toolBarManager) {
+		// toolBarManager.add(new Action("filter") {
+		// });
+
 	}
 
 	/**
@@ -1565,10 +1596,9 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 		Resource resource = editingDomain.getResourceSet().getResource(resourceURI, false);
 		IFile file = HitropPropertiesUtil.getFile(resource);
 		String basePath = HitropPropertiesUtil.platformBasePath(file);
-		
+
 		HitropPropertiesUtil.savePropertyFile(resource, basePath, entryMap, HitropPropertiesUtil.TO_WORKSPACE_FILE);
 	}
-
 
 	/**
 	 * This returns whether something has been persisted to the URI of the specified
