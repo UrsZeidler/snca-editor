@@ -154,7 +154,7 @@ public class HuientityItemProvider extends ItemProviderAdapter implements IEditi
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Huientity"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/entity"));
 	}
 
 	/**
