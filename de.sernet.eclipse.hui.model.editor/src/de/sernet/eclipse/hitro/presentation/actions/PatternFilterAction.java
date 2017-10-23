@@ -30,7 +30,7 @@ public class PatternFilterAction extends Action {
 	@Override
 	public void run() {
 		InputDialog inputDialog = new InputDialog(Display.getCurrent().getActiveShell(), "Filter",
-				"Filter tree with an pattern, * / ? are allowed.", pattern, null);
+				"Filter tree with a pattern, * / ? are allowed.", pattern, null);
 		if (inputDialog.open() == SWT.CANCEL)
 			return;
 		String patternString = inputDialog.getValue();
