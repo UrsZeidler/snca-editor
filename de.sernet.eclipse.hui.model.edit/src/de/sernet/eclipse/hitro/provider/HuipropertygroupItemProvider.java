@@ -169,7 +169,7 @@ public class HuipropertygroupItemProvider extends ItemProviderAdapter implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Huipropertygroup"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertyGroup"));
 	}
 
 	/**
