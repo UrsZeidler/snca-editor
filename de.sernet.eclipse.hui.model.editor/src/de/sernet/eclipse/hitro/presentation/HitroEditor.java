@@ -958,16 +958,15 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 			// Load the resource through the editing domain.
 			//
 			resource = editingDomain.getResourceSet().getResource(resourceURI, true);
-			IFile file = HitropPropertiesUtil.getFile(resource);
-			String basePath = HitropPropertiesUtil.platformBasePath(file); // file.getFullPath().removeFileExtension().toString().toLowerCase()
-																			// + "-messages";
-			entryMap = HitropPropertiesUtil.loadPropertyResources(resource.getContents(), basePath,
-					HitropPropertiesUtil.TO_WORKSPACE_FILE);
 		} catch (Exception e) {
 			System.out.println(e.fillInStackTrace());
 			exception = e;
 			resource = editingDomain.getResourceSet().getResource(resourceURI, false);
 		}
+		IFile file = HitropPropertiesUtil.getFile(resource);
+		String basePath = HitropPropertiesUtil.platformBasePath(file);
+		entryMap = HitropPropertiesUtil.loadPropertyResources(resource.getContents(), basePath,
+				HitropPropertiesUtil.TO_WORKSPACE_FILE);
 
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
