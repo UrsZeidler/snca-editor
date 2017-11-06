@@ -29,7 +29,7 @@ BUILD INSTRUCTIONS
 			[ERROR] To fix this, you can either build against Eclipse Mars or newer (recommended) or go back to Tycho <= 0.22.0
          -->
         <!-- <tycho-version>1.0.0</tycho-version> -->
-        <tycho-version>0.24.0</tycho-version>
+        <tycho-version>1.0.0</tycho-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -77,11 +77,11 @@ BUILD INSTRUCTIONS
                 <version>${tycho-version}</version>
                 
                 <configuration>
-                	<!-- source and target options can be ommited as soon as we upgrade to Tycho 1.0.0 -->
   					<source>1.8</source>
   					<target>1.8</target>
-  					<!-- otherwise you will get numerous API access restriction errors when tycho version < 1.0.0 -->
-                	<compilerArgument>-err:none</compilerArgument>
+                	<compilerArgument>-warn:+allDeadCode,allDeprecation,noEffectAssign
+                	,serial,unchecked,unusedImport,unusedParam,warningToken,unusedLocal
+                	,unusedTypeArgs,unusedPrivate,null,noEffectAssign,finally,discouraged</compilerArgument>
 				</configuration>
             </plugin>
 
