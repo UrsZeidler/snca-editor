@@ -42,6 +42,7 @@ BUILD INSTRUCTIONS
         <module>../de.sernet.eclipse.hui.model.edit</module>
         <module>../de.sernet.eclipse.hui.model.editor</module>
 <!--         <module>../de.sernet.eclipse.hui.model.tests</module> -->
+        <module>../de.sernet.eclipse.hui.model.validation</module>
         <module>../de.sernet.eclipse.hui.eef</module>
         <module>../de.sernet.eclipse.hui.parsley</module>
         <module>../de.sernet.eclipse.hui.ui</module>
