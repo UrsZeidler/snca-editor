@@ -1,5 +1,22 @@
 /**
- * Generated with Acceleo
+ * 
+ * Copyright (c) 2017 Urs Zeidler.
+ * 
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.
+ * If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Contributors:
+ *     Urs Zeidler uz[at]sernet.de - initial API and implementation
  */
 package de.sernet.eclipse.hitro.parts.forms;
 
@@ -71,7 +88,7 @@ import org.eclipse.ui.forms.widgets.Section;
 // End of user code
 
 /**
- * 
+ * @author Urs Zeidler
  * 
  */
 public class DocumentRootPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, DocumentRootPropertiesEditionPart {
@@ -79,12 +96,6 @@ public class DocumentRootPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Text mixed;
 	protected Button editMixed;
 	protected EList mixedList;
-	protected ReferencesTable xMLNSPrefixMap;
-	protected List<ViewerFilter> xMLNSPrefixMapBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> xMLNSPrefixMapFilters = new ArrayList<ViewerFilter>();
-	protected ReferencesTable xSISchemaLocation;
-	protected List<ViewerFilter> xSISchemaLocationBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> xSISchemaLocationFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -129,10 +140,9 @@ public class DocumentRootPropertiesEditionPartForm extends SectionPropertiesEdit
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence documentRootStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = documentRootStep.addStep(HitroViewsRepository.DocumentRoot.Properties.class);
-		propertiesStep.addStep(HitroViewsRepository.DocumentRoot.Properties.mixed);
-		propertiesStep.addStep(HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap);
-		propertiesStep.addStep(HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation);
+		documentRootStep
+			.addStep(HitroViewsRepository.DocumentRoot.Properties.class)
+			.addStep(HitroViewsRepository.DocumentRoot.Properties.mixed);
 		
 		
 		composer = new PartComposer(documentRootStep) {
@@ -144,12 +154,6 @@ public class DocumentRootPropertiesEditionPartForm extends SectionPropertiesEdit
 				}
 				if (key == HitroViewsRepository.DocumentRoot.Properties.mixed) {
 					return createMixedMultiValuedEditor(widgetFactory, parent);
-				}
-				if (key == HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap) {
-					return createXMLNSPrefixMapTableComposition(widgetFactory, parent);
-				}
-				if (key == HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation) {
-					return createXSISchemaLocationTableComposition(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -219,108 +223,6 @@ public class DocumentRootPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createXMLNSPrefixMapTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.xMLNSPrefixMap = new ReferencesTable(getDescription(HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap, HitroMessages.DocumentRootPropertiesEditionPart_XMLNSPrefixMapLabel), new ReferencesTableListener() {
-			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartForm.this, HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				xMLNSPrefixMap.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartForm.this, HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				xMLNSPrefixMap.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartForm.this, HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				xMLNSPrefixMap.refresh();
-			}
-			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartForm.this, HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				xMLNSPrefixMap.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.xMLNSPrefixMapFilters) {
-			this.xMLNSPrefixMap.addFilter(filter);
-		}
-		this.xMLNSPrefixMap.setHelpText(propertiesEditionComponent.getHelpContent(HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap, HitroViewsRepository.FORM_KIND));
-		this.xMLNSPrefixMap.createControls(parent, widgetFactory);
-		this.xMLNSPrefixMap.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartForm.this, HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData xMLNSPrefixMapData = new GridData(GridData.FILL_HORIZONTAL);
-		xMLNSPrefixMapData.horizontalSpan = 3;
-		this.xMLNSPrefixMap.setLayoutData(xMLNSPrefixMapData);
-		this.xMLNSPrefixMap.setLowerBound(0);
-		this.xMLNSPrefixMap.setUpperBound(-1);
-		xMLNSPrefixMap.setID(HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap);
-		xMLNSPrefixMap.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createXMLNSPrefixMapTableComposition
-
-		// End of user code
-		return parent;
-	}
-
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createXSISchemaLocationTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.xSISchemaLocation = new ReferencesTable(getDescription(HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation, HitroMessages.DocumentRootPropertiesEditionPart_XSISchemaLocationLabel), new ReferencesTableListener() {
-			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartForm.this, HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				xSISchemaLocation.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartForm.this, HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				xSISchemaLocation.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartForm.this, HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				xSISchemaLocation.refresh();
-			}
-			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartForm.this, HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				xSISchemaLocation.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.xSISchemaLocationFilters) {
-			this.xSISchemaLocation.addFilter(filter);
-		}
-		this.xSISchemaLocation.setHelpText(propertiesEditionComponent.getHelpContent(HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation, HitroViewsRepository.FORM_KIND));
-		this.xSISchemaLocation.createControls(parent, widgetFactory);
-		this.xSISchemaLocation.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartForm.this, HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData xSISchemaLocationData = new GridData(GridData.FILL_HORIZONTAL);
-		xSISchemaLocationData.horizontalSpan = 3;
-		this.xSISchemaLocation.setLayoutData(xSISchemaLocationData);
-		this.xSISchemaLocation.setLowerBound(0);
-		this.xSISchemaLocation.setUpperBound(-1);
-		xSISchemaLocation.setID(HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation);
-		xSISchemaLocation.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createXSISchemaLocationTableComposition
-
-		// End of user code
-		return parent;
-	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -383,138 +285,6 @@ public class DocumentRootPropertiesEditionPartForm extends SectionPropertiesEdit
 		} else {
 			mixed.setText(""); //$NON-NLS-1$
 		}
-	}
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#initXMLNSPrefixMap(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initXMLNSPrefixMap(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		xMLNSPrefixMap.setContentProvider(contentProvider);
-		xMLNSPrefixMap.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap);
-		if (eefElementEditorReadOnlyState && xMLNSPrefixMap.isEnabled()) {
-			xMLNSPrefixMap.setEnabled(false);
-			xMLNSPrefixMap.setToolTipText(HitroMessages.DocumentRoot_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !xMLNSPrefixMap.isEnabled()) {
-			xMLNSPrefixMap.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#updateXMLNSPrefixMap()
-	 * 
-	 */
-	public void updateXMLNSPrefixMap() {
-	xMLNSPrefixMap.refresh();
-}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#addFilterXMLNSPrefixMap(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToXMLNSPrefixMap(ViewerFilter filter) {
-		xMLNSPrefixMapFilters.add(filter);
-		if (this.xMLNSPrefixMap != null) {
-			this.xMLNSPrefixMap.addFilter(filter);
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#addBusinessFilterXMLNSPrefixMap(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToXMLNSPrefixMap(ViewerFilter filter) {
-		xMLNSPrefixMapBusinessFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#isContainedInXMLNSPrefixMapTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInXMLNSPrefixMapTable(EObject element) {
-		return ((ReferencesTableSettings)xMLNSPrefixMap.getInput()).contains(element);
-	}
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#initXSISchemaLocation(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initXSISchemaLocation(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		xSISchemaLocation.setContentProvider(contentProvider);
-		xSISchemaLocation.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation);
-		if (eefElementEditorReadOnlyState && xSISchemaLocation.isEnabled()) {
-			xSISchemaLocation.setEnabled(false);
-			xSISchemaLocation.setToolTipText(HitroMessages.DocumentRoot_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !xSISchemaLocation.isEnabled()) {
-			xSISchemaLocation.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#updateXSISchemaLocation()
-	 * 
-	 */
-	public void updateXSISchemaLocation() {
-	xSISchemaLocation.refresh();
-}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#addFilterXSISchemaLocation(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToXSISchemaLocation(ViewerFilter filter) {
-		xSISchemaLocationFilters.add(filter);
-		if (this.xSISchemaLocation != null) {
-			this.xSISchemaLocation.addFilter(filter);
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#addBusinessFilterXSISchemaLocation(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToXSISchemaLocation(ViewerFilter filter) {
-		xSISchemaLocationBusinessFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#isContainedInXSISchemaLocationTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInXSISchemaLocationTable(EObject element) {
-		return ((ReferencesTableSettings)xSISchemaLocation.getInput()).contains(element);
 	}
 
 

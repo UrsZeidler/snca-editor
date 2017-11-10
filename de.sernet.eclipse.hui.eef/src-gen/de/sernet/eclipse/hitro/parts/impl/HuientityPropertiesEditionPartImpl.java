@@ -1,5 +1,22 @@
 /**
- * Generated with Acceleo
+ * 
+ * Copyright (c) 2017 Urs Zeidler.
+ * 
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.
+ * If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Contributors:
+ *     Urs Zeidler uz[at]sernet.de - initial API and implementation
  */
 package de.sernet.eclipse.hitro.parts.impl;
 
@@ -59,13 +76,17 @@ import org.eclipse.swt.widgets.Text;
 // End of user code
 
 /**
- * 
+ * @author Urs Zeidler
  * 
  */
 public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, HuientityPropertiesEditionPart {
 
 	protected Text id;
 	protected Text name;
+	// Start of user code  for TestName widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -107,6 +128,10 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 		baseStep.addStep(HitroViewsRepository.Huientity.Base.id);
 		baseStep.addStep(HitroViewsRepository.Huientity.Base.name);
 		
+		huientityStep
+			.addStep(HitroViewsRepository.Huientity.Test.class)
+			.addStep(HitroViewsRepository.Huientity.Test.testName);
+		
 		
 		composer = new PartComposer(huientityStep) {
 
@@ -121,6 +146,12 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 				if (key == HitroViewsRepository.Huientity.Base.name) {
 					return createNameText(parent);
 				}
+				if (key == HitroViewsRepository.Huientity.Test.class) {
+					return createTestGroup(parent);
+				}
+				// Start of user code for TestName addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -240,6 +271,21 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 		return parent;
 	}
 
+	/**
+	 * 
+	 */
+	protected Composite createTestGroup(Composite parent) {
+		Group testGroup = new Group(parent, SWT.NONE);
+		testGroup.setText(HitroMessages.HuientityPropertiesEditionPart_TestGroupLabel);
+		GridData testGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		testGroupData.horizontalSpan = 3;
+		testGroup.setLayoutData(testGroupData);
+		GridLayout testGroupLayout = new GridLayout();
+		testGroupLayout.numColumns = 3;
+		testGroup.setLayout(testGroupLayout);
+		return testGroup;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -321,6 +367,10 @@ public class HuientityPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 
 
+
+	// Start of user code for TestName specific getters and setters implementation
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

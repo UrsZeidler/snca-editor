@@ -1,10 +1,27 @@
 /**
- * Generated with Acceleo
+ * 
+ * Copyright (c) 2017 Urs Zeidler.
+ * 
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.
+ * If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Contributors:
+ *     Urs Zeidler uz[at]sernet.de - initial API and implementation
  */
 package de.sernet.eclipse.hitro.parts;
 
 /**
- * 
+ * @author Urs Zeidler
  * 
  */
 public class HitroViewsRepository {
@@ -63,12 +80,6 @@ public class HitroViewsRepository {
 			
 			public static String mixed = "hitro::DocumentRoot::properties::mixed";
 			
-			
-			public static String xMLNSPrefixMap = "hitro::DocumentRoot::properties::xMLNSPrefixMap";
-			
-			
-			public static String xSISchemaLocation = "hitro::DocumentRoot::properties::xSISchemaLocation";
-			
 	
 		}
 	
@@ -101,6 +112,15 @@ public class HitroViewsRepository {
 			
 			
 			public static String name = "hitro::Huientity::base::name";
+			
+	
+		}
+	
+		public static class Test {
+	
+			// Start of user code for TestName ElementEditor key
+			public static String testName = "hitro::Huientity::Test::TestName";
+			// End of user code
 			
 	
 		}

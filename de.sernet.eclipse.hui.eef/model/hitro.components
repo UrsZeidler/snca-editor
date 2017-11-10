@@ -27,12 +27,6 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4awJfsEeeiucnkHK0wDQ" name="mixed" views="_sc4bBpfsEeeiucnkHK0wDQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DocumentRoot/mixed"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4awZfsEeeiucnkHK0wDQ" name="xMLNSPrefixMap" views="_sc4bB5fsEeeiucnkHK0wDQ">
-          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DocumentRoot/xMLNSPrefixMap"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sc4awpfsEeeiucnkHK0wDQ" name="xSISchemaLocation" views="_sc4bCJfsEeeiucnkHK0wDQ">
-          <model xsi:type="ecore:EReference" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DocumentRoot/xSISchemaLocation"/>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/de.sernet.eclipse.hui.model/model/hitro.ecore#//DocumentRoot"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sc4aw5fsEeeiucnkHK0wDQ" name="Huientities" views="_sc4bCZfsEeeiucnkHK0wDQ">
@@ -232,12 +226,6 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bBpfsEeeiucnkHK0wDQ" name="mixed">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bB5fsEeeiucnkHK0wDQ" name="xMLNSPrefixMap">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bCJfsEeeiucnkHK0wDQ" name="xSISchemaLocation">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
         </elements>
       </views>
       <views xmi:id="_sc4bCZfsEeeiucnkHK0wDQ" name="Huientities">
@@ -257,6 +245,10 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_sc4bEJfsEeeiucnkHK0wDQ" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_FWsv0MZXEee9MfVU7Zhb0w" name="Test">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_GtqiwMZXEee9MfVU7Zhb0w" name="TestName"/>
         </elements>
       </views>
       <views xmi:id="_sc4bEZfsEeeiucnkHK0wDQ" name="Huiproperty">

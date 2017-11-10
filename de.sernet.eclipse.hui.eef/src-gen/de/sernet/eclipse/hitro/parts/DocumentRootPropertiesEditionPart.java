@@ -1,5 +1,22 @@
 /**
- * Generated with Acceleo
+ * 
+ * Copyright (c) 2017 Urs Zeidler.
+ * 
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.
+ * If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Contributors:
+ *     Urs Zeidler uz[at]sernet.de - initial API and implementation
  */
 package de.sernet.eclipse.hitro.parts;
 
@@ -16,7 +33,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 // End of user code
 
 /**
- * 
+ * @author Urs Zeidler
  * 
  */
 public interface DocumentRootPropertiesEditionPart {
@@ -45,94 +62,6 @@ public interface DocumentRootPropertiesEditionPart {
 	 * @param newValue the value to remove
 	 */
 	public void removeToMixed(Object newValue);
-
-
-
-
-	/**
-	 * Init the xMLNSPrefixMap
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initXMLNSPrefixMap(ReferencesTableSettings settings);
-
-	/**
-	 * Update the xMLNSPrefixMap
-	 * @param newValue the xMLNSPrefixMap to update
-	 * 
-	 */
-	public void updateXMLNSPrefixMap();
-
-	/**
-	 * Adds the given filter to the xMLNSPrefixMap edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToXMLNSPrefixMap(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the xMLNSPrefixMap edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToXMLNSPrefixMap(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the xMLNSPrefixMap table
-	 * 
-	 */
-	public boolean isContainedInXMLNSPrefixMapTable(EObject element);
-
-
-
-
-	/**
-	 * Init the xSISchemaLocation
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initXSISchemaLocation(ReferencesTableSettings settings);
-
-	/**
-	 * Update the xSISchemaLocation
-	 * @param newValue the xSISchemaLocation to update
-	 * 
-	 */
-	public void updateXSISchemaLocation();
-
-	/**
-	 * Adds the given filter to the xSISchemaLocation edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToXSISchemaLocation(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the xSISchemaLocation edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToXSISchemaLocation(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the xSISchemaLocation table
-	 * 
-	 */
-	public boolean isContainedInXSISchemaLocationTable(EObject element);
 
 
 

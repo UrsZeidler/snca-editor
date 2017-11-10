@@ -1,5 +1,22 @@
 /**
- * Generated with Acceleo
+ * 
+ * Copyright (c) 2017 Urs Zeidler.
+ * 
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.
+ * If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Contributors:
+ *     Urs Zeidler uz[at]sernet.de - initial API and implementation
  */
 package de.sernet.eclipse.hitro.components;
 
@@ -61,7 +78,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 // End of user code
 
 /**
- * 
+ * @author Urs Zeidler
  * 
  */
 public class DocumentRootPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
@@ -69,16 +86,6 @@ public class DocumentRootPropertiesEditionComponent extends SinglePartProperties
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	
-	/**
-	 * Settings for xMLNSPrefixMap ReferencesTable
-	 */
-	protected ReferencesTableSettings xMLNSPrefixMapSettings;
-	
-	/**
-	 * Settings for xSISchemaLocation ReferencesTable
-	 */
-	protected ReferencesTableSettings xSISchemaLocationSettings;
 	
 	
 	/**
@@ -110,46 +117,8 @@ public class DocumentRootPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(HitroViewsRepository.DocumentRoot.Properties.mixed))
 				basePart.setMixed(documentRoot.getMixed());
 			
-			if (isAccessible(HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap)) {
-				xMLNSPrefixMapSettings = new ReferencesTableSettings(documentRoot, HitroPackage.eINSTANCE.getDocumentRoot_XMLNSPrefixMap());
-				basePart.initXMLNSPrefixMap(xMLNSPrefixMapSettings);
-			}
-			if (isAccessible(HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation)) {
-				xSISchemaLocationSettings = new ReferencesTableSettings(documentRoot, HitroPackage.eINSTANCE.getDocumentRoot_XSISchemaLocation());
-				basePart.initXSISchemaLocation(xSISchemaLocationSettings);
-			}
 			// init filters
 			
-			if (isAccessible(HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap)) {
-				basePart.addFilterToXMLNSPrefixMap(new ViewerFilter() {
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Entry); //$NON-NLS-1$ 
-					}
-			
-				});
-				// Start of user code for additional businessfilters for xMLNSPrefixMap
-				// End of user code
-			}
-			if (isAccessible(HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation)) {
-				basePart.addFilterToXSISchemaLocation(new ViewerFilter() {
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Entry); //$NON-NLS-1$ 
-					}
-			
-				});
-				// Start of user code for additional businessfilters for xSISchemaLocation
-				// End of user code
-			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -161,8 +130,6 @@ public class DocumentRootPropertiesEditionComponent extends SinglePartProperties
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -170,12 +137,6 @@ public class DocumentRootPropertiesEditionComponent extends SinglePartProperties
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == HitroViewsRepository.DocumentRoot.Properties.mixed) {
 			return HitroPackage.eINSTANCE.getDocumentRoot_Mixed();
-		}
-		if (editorKey == HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap) {
-			return HitroPackage.eINSTANCE.getDocumentRoot_XMLNSPrefixMap();
-		}
-		if (editorKey == HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation) {
-			return HitroPackage.eINSTANCE.getDocumentRoot_XSISchemaLocation();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -191,56 +152,6 @@ public class DocumentRootPropertiesEditionComponent extends SinglePartProperties
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				documentRoot.getMixed().clear();
 				documentRoot.getMixed().addAll(((EList) event.getNewValue()));
-			}
-		}
-		if (HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, xMLNSPrefixMapSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				xMLNSPrefixMapSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-//				xMLNSPrefixMapSettings.move(event.getNewIndex(), (Entry) event.getNewValue());
-			}
-		}
-		if (HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, xSISchemaLocationSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				xSISchemaLocationSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-//				xSISchemaLocationSettings.move(event.getNewIndex(), (Entry) event.getNewValue());
 			}
 		}
 	}
@@ -265,10 +176,6 @@ public class DocumentRootPropertiesEditionComponent extends SinglePartProperties
 				}
 			}
 			
-			if (HitroPackage.eINSTANCE.getDocumentRoot_XMLNSPrefixMap().equals(msg.getFeature()) && isAccessible(HitroViewsRepository.DocumentRoot.Properties.xMLNSPrefixMap))
-				basePart.updateXMLNSPrefixMap();
-			if (HitroPackage.eINSTANCE.getDocumentRoot_XSISchemaLocation().equals(msg.getFeature()) && isAccessible(HitroViewsRepository.DocumentRoot.Properties.xSISchemaLocation))
-				basePart.updateXSISchemaLocation();
 			
 		}
 	}
@@ -281,9 +188,7 @@ public class DocumentRootPropertiesEditionComponent extends SinglePartProperties
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			HitroPackage.eINSTANCE.getDocumentRoot_Mixed(),
-			HitroPackage.eINSTANCE.getDocumentRoot_XMLNSPrefixMap(),
-			HitroPackage.eINSTANCE.getDocumentRoot_XSISchemaLocation()		);
+			HitroPackage.eINSTANCE.getDocumentRoot_Mixed()		);
 		return new NotificationFilter[] {filter,};
 	}
 
