@@ -57,6 +57,9 @@ public class HitropPropertiesUtil {
 		public File toFile(String baseNamePath) {
 			IPath filePath = new Path(baseNamePath + ".properties");
 			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(filePath);
+			if(!file.exists()) {
+				return null;
+			}
 			File javaFile = file.getRawLocation().toFile();
 			return javaFile;
 		}
@@ -162,7 +165,7 @@ public class HitropPropertiesUtil {
 
 			File file2 = toFile.toFile(basePath + lang);
 			try {
-				if (file2.exists()) {
+				if (file2!=null && file2.exists()) {
 					FileInputStream in = new FileInputStream(file2);
 					Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
 
