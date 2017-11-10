@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="de.sernet.eclipse.hui.model.validation.Startup">
+      </startup>
+   </extension>
+
+
+   <extension point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+         id="org.eclipse.emf.validation.examples.adapter.expressions.EObjectPropertyTester"
+         type="org.eclipse.emf.ecore.EObject"
+         namespace="de.sernet.eclipse.hui.model.validation"
+         properties="ePackage"
+         class="de.sernet.eclipse.hui.model.validation.expressions.EObjectPropertyTester">
+      </propertyTester>
+   </extension>
+
+   <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+     <clientContext
+            default="false"
+            id="de.sernet.eclipse.hui.model.validation.clientContext">
+         <enablement>
+ 			<and>
+               <instanceof value="org.eclipse.emf.ecore.EObject"/>
+               <test
+                  property="de.sernet.eclipse.hui.model.validation.ePackage"
+                  value="http://www.sernet.de/hitro"/>
+            </and>         
+         </enablement>
+      </clientContext>
+
+      <binding
+            category="de.sernet.eclipse.hui.model.validation"
+            context="de.sernet.eclipse.hui.model.validation.clientContext">
+         <constraint
+               ref="de.sernet.eclipse.hui.model.validation.basicConstrain">
+         </constraint>
+      </binding>
+    </extension>
+
+
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            id="de.sernet.eclipse.hui.model.validation"
+            name="basic validation">
+      </category>
+      <category
+            id="de.sernet.eclipse.hui.model.validation.category1"
+            name="second">
+      </category>
+      
+      <constraintProvider
+            cache="false">
+         <package  namespaceUri="http://www.sernet.de/hitro">
+         </package>
+         <constraints
+               categories="de.sernet.eclipse.hui.model.validation">
+            <constraint
+                  class="de.sernet.eclipse.hui.model.validation.contrains.TestNameNotEmpty"
+                  id="de.sernet.eclipse.hui.model.validation.basicConstrain"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Live"
+                  name="BasicValidations"
+                  severity="INFO"
+                  statusCode="de.sernet.eclipse.hui.model.validation.constraint3">
+               <message>
+                  The name of {0} is not set.
+               </message>
+               <description>
+                  Test for the name to be not empty.
+Works on Huientity and Huiproperty.
+               </description>
+               <target
+                     class="Huientity"></target>
+               <target
+                     class="Huiproperty">
+               </target>
+            </constraint>
+            <constraint
+                  class="de.sernet.eclipse.hui.model.validation.contrains.TestRuleClasses"
+                  id="de.sernet.eclipse.hui.model.validation.constraint1"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Live"
+                  name="RuleClasses"
+                  severity="ERROR"
+                  statusCode="de.sernet.eclipse.hui.model.validation.constraint1">
+               <message>
+                  The rule {0} defined in {1} is not valid.
+               </message>
+               <description>
+                  Test the calss of the defaultRule element.
+               </description>
+               <target
+                     class="DefaultRule">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="de.sernet.eclipse.hui.model.validation.category1">
+            <constraint
+                  class="de.sernet.eclipse.hui.model.validation.contrains.Test1"
+                  id="de.sernet.eclipse.hui.model.validation.constraint2"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="name-1contrain"
+                  severity="ERROR"
+                  statusCode="de.sernet.eclipse.hui.model.validation.constraint2">
+               <message>
+                  message body text
+               </message>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.validationListeners">
+      <listener
+            class="de.sernet.eclipse.hui.model.validation.BasicValidationListener">
+         <clientContext
+               id="de.sernet.eclipse.hui.model.validation.clientContext">
+         </clientContext>
+       </listener>
+   </extension>
+
+
+</plugin>

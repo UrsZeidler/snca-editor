@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Validation
+Bundle-SymbolicName: de.sernet.eclipse.hui.model.validation;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: de.sernet.eclipse.hui.model.validation.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ de.sernet.eclipse.hui.model;bundle-version="1.0.0",
+ org.eclipse.emf.validation,
+ org.eclipse.emf.validation.ui,
+ org.eclipse.core.expressions;bundle-version="3.6.0",
+ com.google.guava;bundle-version="21.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
