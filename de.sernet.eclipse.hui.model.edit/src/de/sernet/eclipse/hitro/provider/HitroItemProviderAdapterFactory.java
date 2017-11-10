@@ -1,4 +1,22 @@
 /**
+ * 
+ * Copyright (c) 2017 Urs Zeidler.
+ * 
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.
+ * If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Contributors:
+ *     Urs Zeidler uz[at]sernet.de - initial API and implementation
  */
 package de.sernet.eclipse.hitro.provider;
 
@@ -33,431 +51,431 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * @generated
  */
 public class HitroItemProviderAdapterFactory extends HitroAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
-	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ComposedAdapterFactory parentAdapterFactory;
+    /**
+     * This keeps track of the root adapter factory that delegates to this adapter factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ComposedAdapterFactory parentAdapterFactory;
 
-	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IChangeNotifier changeNotifier = new ChangeNotifier();
+    /**
+     * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
-	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Collection<Object> supportedTypes = new ArrayList<Object>();
+    /**
+     * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
-	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HitroItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    /**
+     * This constructs an instance.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public HitroItemProviderAdapterFactory() {
+        supportedTypes.add(IEditingDomainItemProvider.class);
+        supportedTypes.add(IStructuredItemContentProvider.class);
+        supportedTypes.add(ITreeItemContentProvider.class);
+        supportedTypes.add(IItemLabelProvider.class);
+        supportedTypes.add(IItemPropertySource.class);
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.DefaultRule} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DefaultRuleItemProvider defaultRuleItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.DefaultRule} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DefaultRuleItemProvider defaultRuleItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.DefaultRule}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDefaultRuleAdapter() {
-		if (defaultRuleItemProvider == null) {
-			defaultRuleItemProvider = new DefaultRuleItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.DefaultRule}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDefaultRuleAdapter() {
+        if (defaultRuleItemProvider == null) {
+            defaultRuleItemProvider = new DefaultRuleItemProvider(this);
+        }
 
-		return defaultRuleItemProvider;
-	}
+        return defaultRuleItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Depends} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DependsItemProvider dependsItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Depends} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DependsItemProvider dependsItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.Depends}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDependsAdapter() {
-		if (dependsItemProvider == null) {
-			dependsItemProvider = new DependsItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.Depends}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDependsAdapter() {
+        if (dependsItemProvider == null) {
+            dependsItemProvider = new DependsItemProvider(this);
+        }
 
-		return dependsItemProvider;
-	}
+        return dependsItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.DocumentRoot} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DocumentRootItemProvider documentRootItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.DocumentRoot} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DocumentRootItemProvider documentRootItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.DocumentRoot}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDocumentRootAdapter() {
-		if (documentRootItemProvider == null) {
-			documentRootItemProvider = new DocumentRootItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.DocumentRoot}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDocumentRootAdapter() {
+        if (documentRootItemProvider == null) {
+            documentRootItemProvider = new DocumentRootItemProvider(this);
+        }
 
-		return documentRootItemProvider;
-	}
+        return documentRootItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Huientities} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HuientitiesItemProvider huientitiesItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Huientities} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected HuientitiesItemProvider huientitiesItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.Huientities}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHuientitiesAdapter() {
-		if (huientitiesItemProvider == null) {
-			huientitiesItemProvider = new HuientitiesItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.Huientities}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createHuientitiesAdapter() {
+        if (huientitiesItemProvider == null) {
+            huientitiesItemProvider = new HuientitiesItemProvider(this);
+        }
 
-		return huientitiesItemProvider;
-	}
+        return huientitiesItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Huientity} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HuientityItemProvider huientityItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Huientity} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected HuientityItemProvider huientityItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.Huientity}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHuientityAdapter() {
-		if (huientityItemProvider == null) {
-			huientityItemProvider = new HuientityItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.Huientity}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createHuientityAdapter() {
+        if (huientityItemProvider == null) {
+            huientityItemProvider = new HuientityItemProvider(this);
+        }
 
-		return huientityItemProvider;
-	}
+        return huientityItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Huiproperty} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HuipropertyItemProvider huipropertyItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Huiproperty} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected HuipropertyItemProvider huipropertyItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.Huiproperty}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHuipropertyAdapter() {
-		if (huipropertyItemProvider == null) {
-			huipropertyItemProvider = new HuipropertyItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.Huiproperty}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createHuipropertyAdapter() {
+        if (huipropertyItemProvider == null) {
+            huipropertyItemProvider = new HuipropertyItemProvider(this);
+        }
 
-		return huipropertyItemProvider;
-	}
+        return huipropertyItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Huipropertygroup} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HuipropertygroupItemProvider huipropertygroupItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Huipropertygroup} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected HuipropertygroupItemProvider huipropertygroupItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.Huipropertygroup}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHuipropertygroupAdapter() {
-		if (huipropertygroupItemProvider == null) {
-			huipropertygroupItemProvider = new HuipropertygroupItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.Huipropertygroup}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createHuipropertygroupAdapter() {
+        if (huipropertygroupItemProvider == null) {
+            huipropertygroupItemProvider = new HuipropertygroupItemProvider(this);
+        }
 
-		return huipropertygroupItemProvider;
-	}
+        return huipropertygroupItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Huirelation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HuirelationItemProvider huirelationItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Huirelation} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected HuirelationItemProvider huirelationItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.Huirelation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHuirelationAdapter() {
-		if (huirelationItemProvider == null) {
-			huirelationItemProvider = new HuirelationItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.Huirelation}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createHuirelationAdapter() {
+        if (huirelationItemProvider == null) {
+            huirelationItemProvider = new HuirelationItemProvider(this);
+        }
 
-		return huirelationItemProvider;
-	}
+        return huirelationItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Option} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OptionItemProvider optionItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Option} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected OptionItemProvider optionItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.Option}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOptionAdapter() {
-		if (optionItemProvider == null) {
-			optionItemProvider = new OptionItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.Option}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createOptionAdapter() {
+        if (optionItemProvider == null) {
+            optionItemProvider = new OptionItemProvider(this);
+        }
 
-		return optionItemProvider;
-	}
+        return optionItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Param} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ParamItemProvider paramItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Param} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ParamItemProvider paramItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.Param}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createParamAdapter() {
-		if (paramItemProvider == null) {
-			paramItemProvider = new ParamItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.Param}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createParamAdapter() {
+        if (paramItemProvider == null) {
+            paramItemProvider = new ParamItemProvider(this);
+        }
 
-		return paramItemProvider;
-	}
+        return paramItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Reference} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ReferenceItemProvider referenceItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.Reference} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ReferenceItemProvider referenceItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.Reference}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createReferenceAdapter() {
-		if (referenceItemProvider == null) {
-			referenceItemProvider = new ReferenceItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.Reference}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createReferenceAdapter() {
+        if (referenceItemProvider == null) {
+            referenceItemProvider = new ReferenceItemProvider(this);
+        }
 
-		return referenceItemProvider;
-	}
+        return referenceItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.ValidationRule} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ValidationRuleItemProvider validationRuleItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link de.sernet.eclipse.hitro.ValidationRule} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ValidationRuleItemProvider validationRuleItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link de.sernet.eclipse.hitro.ValidationRule}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createValidationRuleAdapter() {
-		if (validationRuleItemProvider == null) {
-			validationRuleItemProvider = new ValidationRuleItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link de.sernet.eclipse.hitro.ValidationRule}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createValidationRuleAdapter() {
+        if (validationRuleItemProvider == null) {
+            validationRuleItemProvider = new ValidationRuleItemProvider(this);
+        }
 
-		return validationRuleItemProvider;
-	}
+        return validationRuleItemProvider;
+    }
 
-	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    /**
+     * This returns the root adapter factory that contains this factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public ComposeableAdapterFactory getRootAdapterFactory() {
+        return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+    }
 
-	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    /**
+     * This sets the composed adapter factory that contains this factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+        this.parentAdapterFactory = parentAdapterFactory;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public boolean isFactoryForType(Object type) {
+        return supportedTypes.contains(type) || super.isFactoryForType(type);
+    }
 
-	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    /**
+     * This implementation substitutes the factory itself as the key for the adapter.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter adapt(Notifier notifier, Object type) {
+        return super.adapt(notifier, this);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Object adapt(Object object, Object type) {
+        if (isFactoryForType(type)) {
+            Object adapter = super.adapt(object, type);
+            if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+                return adapter;
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    /**
+     * This adds a listener.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void addListener(INotifyChangedListener notifyChangedListener) {
+        changeNotifier.addListener(notifyChangedListener);
+    }
 
-	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    /**
+     * This removes a listener.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void removeListener(INotifyChangedListener notifyChangedListener) {
+        changeNotifier.removeListener(notifyChangedListener);
+    }
 
-	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    /**
+     * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void fireNotifyChanged(Notification notification) {
+        changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+        if (parentAdapterFactory != null) {
+            parentAdapterFactory.fireNotifyChanged(notification);
+        }
+    }
 
-	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void dispose() {
-		if (defaultRuleItemProvider != null) defaultRuleItemProvider.dispose();
-		if (dependsItemProvider != null) dependsItemProvider.dispose();
-		if (documentRootItemProvider != null) documentRootItemProvider.dispose();
-		if (huientitiesItemProvider != null) huientitiesItemProvider.dispose();
-		if (huientityItemProvider != null) huientityItemProvider.dispose();
-		if (huipropertyItemProvider != null) huipropertyItemProvider.dispose();
-		if (huipropertygroupItemProvider != null) huipropertygroupItemProvider.dispose();
-		if (huirelationItemProvider != null) huirelationItemProvider.dispose();
-		if (optionItemProvider != null) optionItemProvider.dispose();
-		if (paramItemProvider != null) paramItemProvider.dispose();
-		if (referenceItemProvider != null) referenceItemProvider.dispose();
-		if (validationRuleItemProvider != null) validationRuleItemProvider.dispose();
-	}
+    /**
+     * This disposes all of the item providers created by this factory. 
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void dispose() {
+        if (defaultRuleItemProvider != null) defaultRuleItemProvider.dispose();
+        if (dependsItemProvider != null) dependsItemProvider.dispose();
+        if (documentRootItemProvider != null) documentRootItemProvider.dispose();
+        if (huientitiesItemProvider != null) huientitiesItemProvider.dispose();
+        if (huientityItemProvider != null) huientityItemProvider.dispose();
+        if (huipropertyItemProvider != null) huipropertyItemProvider.dispose();
+        if (huipropertygroupItemProvider != null) huipropertygroupItemProvider.dispose();
+        if (huirelationItemProvider != null) huirelationItemProvider.dispose();
+        if (optionItemProvider != null) optionItemProvider.dispose();
+        if (paramItemProvider != null) paramItemProvider.dispose();
+        if (referenceItemProvider != null) referenceItemProvider.dispose();
+        if (validationRuleItemProvider != null) validationRuleItemProvider.dispose();
+    }
 
 }

@@ -18,72 +18,72 @@ import junit.textui.TestRunner;
 public class HuipropertyTest extends TestCase {
 
 	/**
-	 * The fixture for this Huiproperty test case.
-	 * <!-- begin-user-doc -->
+     * The fixture for this Huiproperty test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected Huiproperty fixture = null;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(HuipropertyTest.class);
-	}
+        TestRunner.run(HuipropertyTest.class);
+    }
 
 	/**
-	 * Constructs a new Huiproperty test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Huiproperty test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public HuipropertyTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Sets the fixture for this Huiproperty test case.
-	 * <!-- begin-user-doc -->
+     * Sets the fixture for this Huiproperty test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void setFixture(Huiproperty fixture) {
-		this.fixture = fixture;
-	}
+        this.fixture = fixture;
+    }
 
 	/**
-	 * Returns the fixture for this Huiproperty test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Huiproperty test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected Huiproperty getFixture() {
-		return fixture;
-	}
+        return fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(HitroFactory.eINSTANCE.createHuiproperty());
-	}
+        setFixture(HitroFactory.eINSTANCE.createHuiproperty());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //HuipropertyTest

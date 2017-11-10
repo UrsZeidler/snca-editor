@@ -26,111 +26,111 @@ import junit.textui.TestRunner;
 public class HuientityTest extends TestCase {
 
 	/**
-	 * The fixture for this Huientity test case.
-	 * <!-- begin-user-doc -->
+     * The fixture for this Huientity test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected Huientity fixture = null;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(HuientityTest.class);
-	}
+        TestRunner.run(HuientityTest.class);
+    }
 
 	/**
-	 * Constructs a new Huientity test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Huientity test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public HuientityTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Sets the fixture for this Huientity test case.
-	 * <!-- begin-user-doc -->
+     * Sets the fixture for this Huientity test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void setFixture(Huientity fixture) {
-		this.fixture = fixture;
-	}
+        this.fixture = fixture;
+    }
 
 	/**
-	 * Returns the fixture for this Huientity test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Huientity test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected Huientity getFixture() {
-		return fixture;
-	}
+        return fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(HitroFactory.eINSTANCE.createHuientity());
-	}
+        setFixture(HitroFactory.eINSTANCE.createHuientity());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 	/**
-	 * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuiproperty() <em>Huiproperty</em>}' feature getter.
-	 * <!-- begin-user-doc -->
+     * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuiproperty() <em>Huiproperty</em>}' feature getter.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.sernet.eclipse.hitro.Huientity#getHuiproperty()
-	 * @generated
-	 */
+     * @see de.sernet.eclipse.hitro.Huientity#getHuiproperty()
+     * @generated
+     */
 	public void testGetHuiproperty() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
+        // TODO: implement this feature getter test method
+        // Ensure that you remove @generated or mark it @generated NOT
+        fail();
+    }
 
 	/**
-	 * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuipropertygroup() <em>Huipropertygroup</em>}' feature getter.
-	 * <!-- begin-user-doc -->
+     * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuipropertygroup() <em>Huipropertygroup</em>}' feature getter.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.sernet.eclipse.hitro.Huientity#getHuipropertygroup()
-	 * @generated
-	 */
+     * @see de.sernet.eclipse.hitro.Huientity#getHuipropertygroup()
+     * @generated
+     */
 	public void testGetHuipropertygroup() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
+        // TODO: implement this feature getter test method
+        // Ensure that you remove @generated or mark it @generated NOT
+        fail();
+    }
 
 	/**
-	 * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuirelation() <em>Huirelation</em>}' feature getter.
-	 * <!-- begin-user-doc -->
+     * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuirelation() <em>Huirelation</em>}' feature getter.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.sernet.eclipse.hitro.Huientity#getHuirelation()
-	 * @generated
-	 */
+     * @see de.sernet.eclipse.hitro.Huientity#getHuirelation()
+     * @generated
+     */
 	public void testGetHuirelation() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
+        // TODO: implement this feature getter test method
+        // Ensure that you remove @generated or mark it @generated NOT
+        fail();
+    }
 
 } //HuientityTest

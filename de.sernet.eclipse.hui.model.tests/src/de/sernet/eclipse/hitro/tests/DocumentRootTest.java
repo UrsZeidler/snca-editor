@@ -24,98 +24,98 @@ import junit.textui.TestRunner;
 public class DocumentRootTest extends TestCase {
 
 	/**
-	 * The fixture for this Document Root test case.
-	 * <!-- begin-user-doc -->
+     * The fixture for this Document Root test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected DocumentRoot fixture = null;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(DocumentRootTest.class);
-	}
+        TestRunner.run(DocumentRootTest.class);
+    }
 
 	/**
-	 * Constructs a new Document Root test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Document Root test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public DocumentRootTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Sets the fixture for this Document Root test case.
-	 * <!-- begin-user-doc -->
+     * Sets the fixture for this Document Root test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void setFixture(DocumentRoot fixture) {
-		this.fixture = fixture;
-	}
+        this.fixture = fixture;
+    }
 
 	/**
-	 * Returns the fixture for this Document Root test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Document Root test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected DocumentRoot getFixture() {
-		return fixture;
-	}
+        return fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(HitroFactory.eINSTANCE.createDocumentRoot());
-	}
+        setFixture(HitroFactory.eINSTANCE.createDocumentRoot());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 	/**
-	 * Tests the '{@link de.sernet.eclipse.hitro.DocumentRoot#getHuientities() <em>Huientities</em>}' feature getter.
-	 * <!-- begin-user-doc -->
+     * Tests the '{@link de.sernet.eclipse.hitro.DocumentRoot#getHuientities() <em>Huientities</em>}' feature getter.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.sernet.eclipse.hitro.DocumentRoot#getHuientities()
-	 * @generated
-	 */
+     * @see de.sernet.eclipse.hitro.DocumentRoot#getHuientities()
+     * @generated
+     */
 	public void testGetHuientities() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
+        // TODO: implement this feature getter test method
+        // Ensure that you remove @generated or mark it @generated NOT
+        fail();
+    }
 
 	/**
-	 * Tests the '{@link de.sernet.eclipse.hitro.DocumentRoot#setHuientities(de.sernet.eclipse.hitro.Huientities) <em>Huientities</em>}' feature setter.
-	 * <!-- begin-user-doc -->
+     * Tests the '{@link de.sernet.eclipse.hitro.DocumentRoot#setHuientities(de.sernet.eclipse.hitro.Huientities) <em>Huientities</em>}' feature setter.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.sernet.eclipse.hitro.DocumentRoot#setHuientities(de.sernet.eclipse.hitro.Huientities)
-	 * @generated
-	 */
+     * @see de.sernet.eclipse.hitro.DocumentRoot#setHuientities(de.sernet.eclipse.hitro.Huientities)
+     * @generated
+     */
 	public void testSetHuientities() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
+        // TODO: implement this feature setter test method
+        // Ensure that you remove @generated or mark it @generated NOT
+        fail();
+    }
 
 } //DocumentRootTest
