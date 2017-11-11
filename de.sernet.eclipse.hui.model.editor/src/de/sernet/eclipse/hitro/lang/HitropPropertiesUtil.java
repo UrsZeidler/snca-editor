@@ -55,238 +55,244 @@ import de.sernet.eclipse.hitro.presentation.HitroEditorPlugin;
  *
  */
 public class HitropPropertiesUtil {
-	public static final String[] LANGS = { "", "_de" };
+    public static final String[] LANGS = { "", "_de" };
 
-	/**
-	 * Transformer from basePath to a file.
-	 */
-	public interface ToFile {
-		File toFile(String basePath);
-	}
+    /**
+     * Transformer from basePath to a file.
+     */
+    public interface ToFile {
+        File toFile(String basePath);
+    }
 
-	/**
-	 * Transform to a workspace file.
-	 */
-	public static final ToFile TO_WORKSPACE_FILE = new ToFile() {
+    /**
+     * Transform to a workspace file.
+     */
+    public static final ToFile TO_WORKSPACE_FILE = new ToFile() {
 
-		@Override
-		public File toFile(String baseNamePath) {
-			IPath filePath = new Path(baseNamePath + ".properties");
-			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(filePath);
-			if(!file.exists()) {
-				return null;
-			}
-			File javaFile = file.getRawLocation().toFile();
-			return javaFile;
-		}
-	};
+        @Override
+        public File toFile(String baseNamePath) {
+            IPath filePath = new Path(baseNamePath + ".properties");
+            IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(filePath);
+            File javaFile = file.getRawLocation().toFile();
+            return javaFile;
+        }
+    };
 
-	/**
-	 * Transform to a filesystem file.
-	 */
-	public static final ToFile TO_FILE = new ToFile() {
+    /**
+     * Transform to a filesystem file.
+     */
+    public static final ToFile TO_FILE = new ToFile() {
 
-		@Override
-		public File toFile(String basePath) {
-			return new File(basePath + ".properties");
-		}
+        @Override
+        public File toFile(String basePath) {
+            return new File(basePath + ".properties");
+        }
 
-	};
+    };
 
-	/**
-	 * Return the base file plus path from a platfrom file.
-	 * 
-	 * @param file
-	 * @return
-	 */
-	public static String platformBasePath(IFile file) {
-		return file.getFullPath().removeFileExtension().toString().toLowerCase() + "-messages";
-	}
+    /**
+     * Return the base file plus path from a platfrom file.
+     * 
+     * @param file
+     * @return
+     */
+    public static String platformBasePath(IFile file) {
+        String filename = file.getFullPath().removeFileExtension().lastSegment();
+        return file.getFullPath().removeFileExtension().toString().replaceFirst(filename,
+                filename.toLowerCase()) + "-messages";
+    }
 
-	/**
-	 * Return the base file name plus path from a file.
-	 * 
-	 * @param file
-	 * @return
-	 */
-	public static String fileBasePath(File file) {
-		String extension = file.getName().substring(file.getName().lastIndexOf('.'), file.getName().length());
-		return file.getParentFile().getAbsolutePath() + "/" + file.getName().replace(extension, "").toLowerCase()
-				+ "-messages";
-	}
+    /**
+     * Return the base file name plus path from a file.
+     * 
+     * @param file
+     * @return
+     */
+    public static String fileBasePath(File file) {
+        String extension = file.getName().substring(file.getName().lastIndexOf('.'),
+                file.getName().length());
+        return file.getParentFile().getAbsolutePath() + "/"
+                + file.getName().replace(extension, "").toLowerCase() + "-messages";
+    }
 
-	/**
-	 * Loads the languages properties and build the mapping structure.
-	 * 
-	 * @param contents
-	 * @param basePath
-	 * @param toFile
-	 * @return
-	 */
-	public static Map<EObject, LanguagesEntry> loadPropertyResources(EList<EObject> contents, String basePath,
-			ToFile toFile) {
-		if (contents.isEmpty())
-			return Collections.emptyMap();
+    /**
+     * Loads the languages properties and build the mapping structure.
+     * 
+     * @param contents
+     * @param basePath
+     * @param toFile
+     * @return
+     */
+    public static Map<EObject, LanguagesEntry> loadPropertyResources(EList<EObject> contents,
+            String basePath, ToFile toFile) {
+        if (contents.isEmpty())
+            return Collections.emptyMap();
 
-		Map<EObject, LanguagesEntry> entryMap = new HashMap<EObject, LanguagesEntry>();
-		Hitro2LangEntrySwitch hitroSwitch = new Hitro2LangEntrySwitch();
-		Map<String, Properties> map = HitropPropertiesUtil.getLangProperties(basePath, toFile);
+        Map<EObject, LanguagesEntry> entryMap = new HashMap<EObject, LanguagesEntry>();
+        Hitro2LangEntrySwitch hitroSwitch = new Hitro2LangEntrySwitch();
+        Map<String, Properties> map = HitropPropertiesUtil.getLangProperties(basePath, toFile);
 
-		EObject eObject = contents.get(0);
-		if (eObject instanceof DocumentRoot) {
-			DocumentRoot dr = (DocumentRoot) eObject;
-			Huientities huientities = dr.getHuientities();
-			TreeIterator<EObject> eAllContents = huientities.eAllContents();
-			for (; eAllContents.hasNext();) {
-				EObject next = eAllContents.next();
-				LanguagesEntry languagesEntry = hitroSwitch.doSwitch(next);
-				if (languagesEntry == null) {
-					continue;
-				}
-				entryMap.put(next, languagesEntry);
-				for (String lang : map.keySet()) {
-					Properties properties = map.get(lang);
-					String property = languagesEntry.getId() == null ? null
-							: properties.getProperty(languagesEntry.getId());
-					if (property != null)
-						languagesEntry.getEntries().add(new LangEntry(lang, property));
-					else {
-						languagesEntry.getEntries().add(new LangEntry(lang, ""));
-					}
-				}
-			}
-		}
-		return entryMap;
-	}
+        EObject eObject = contents.get(0);
+        if (eObject instanceof DocumentRoot) {
+            DocumentRoot dr = (DocumentRoot) eObject;
+            Huientities huientities = dr.getHuientities();
+            TreeIterator<EObject> eAllContents = huientities.eAllContents();
+            for (; eAllContents.hasNext();) {
+                EObject next = eAllContents.next();
+                LanguagesEntry languagesEntry = hitroSwitch.doSwitch(next);
+                if (languagesEntry == null) {
+                    continue;
+                }
+                entryMap.put(next, languagesEntry);
+                for (String lang : map.keySet()) {
+                    Properties properties = map.get(lang);
+                    String property = languagesEntry.getId() == null ? null
+                            : properties.getProperty(languagesEntry.getId());
+                    if (property != null)
+                        languagesEntry.getEntries().add(new LangEntry(lang, property));
+                    else {
+                        languagesEntry.getEntries().add(new LangEntry(lang, ""));
+                    }
+                }
+            }
+        }
+        return entryMap;
+    }
 
-	/**
-	 * Load the properties from the given path.
-	 * 
-	 * @param basePath
-	 * @param toFile
-	 * @return
-	 */
-	public static Map<String, Properties> getLangProperties(String basePath, ToFile toFile) {
-		Map<String, Properties> map = new HashMap<>();
+    /**
+     * Load the properties from the given path.
+     * 
+     * @param basePath
+     * @param toFile
+     * @return
+     */
+    public static Map<String, Properties> getLangProperties(String basePath, ToFile toFile) {
+        Map<String, Properties> map = new HashMap<>();
 
-		for (String lang : LANGS) {
-			Properties properties = new Properties() {
-				private static final long serialVersionUID = 5598658684137906202L;
+        for (String lang : LANGS) {
+            Properties properties = new Properties() {
+                private static final long serialVersionUID = 5598658684137906202L;
 
-				@Override
-				public synchronized Enumeration<Object> keys() {
-					return Collections.enumeration(new TreeSet<Object>(super.keySet()));
-				}
-			};
+                @Override
+                public synchronized Enumeration<Object> keys() {
+                    return Collections.enumeration(new TreeSet<Object>(super.keySet()));
+                }
+            };
 
-			File file2 = toFile.toFile(basePath + lang);
-			try {
-				if (file2!=null && file2.exists()) {
-					FileInputStream in = new FileInputStream(file2);
-					Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
+            File file2 = toFile.toFile(basePath + lang);
+            try {
+                if (file2 != null && file2.exists()) {
+                    FileInputStream in = new FileInputStream(file2);
+                    Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
 
-					try {
-						properties.load(reader);
-					} finally {
-						reader.close();
-						in.close();
-					}
-				}
-			} catch (IOException e) {
-				HitroEditorPlugin.INSTANCE.log(e);
-			}
-			map.put(lang, properties);
-		}
+                    try {
+                        properties.load(reader);
+                    } finally {
+                        reader.close();
+                        in.close();
+                    }
+                }
+            } catch (IOException e) {
+                HitroEditorPlugin.INSTANCE.log(e);
+            }
+            map.put(lang, properties);
+        }
 
-		return map;
-	}
+        return map;
+    }
 
-	/**
-	 * Get the file from a resource.
-	 * 
-	 * @param resource
-	 * @return
-	 */
-	public static IFile getFile(Resource resource) {
-		if (resource != null) {
-			org.eclipse.emf.common.util.URI uri = resource.getURI();
-			uri = resource.getResourceSet().getURIConverter().normalize(uri);
-			String scheme = uri.scheme();
-			if ("platform".equals(scheme) && uri.segmentCount() > 1 && "resource".equals(uri.segment(0))) {
-				StringBuffer platformResourcePath = new StringBuffer();
-				for (int j = 1, size = uri.segmentCount(); j < size; ++j) {
-					platformResourcePath.append('/');
-					platformResourcePath.append(uri.segment(j));
-				}
-				return ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformResourcePath.toString()));
-			}
-		}
-		return null;
-	}
+    /**
+     * Get the file from a resource.
+     * 
+     * @param resource
+     * @return
+     */
+    public static IFile getFile(Resource resource) {
+        if (resource != null) {
+            org.eclipse.emf.common.util.URI uri = resource.getURI();
+            uri = resource.getResourceSet().getURIConverter().normalize(uri);
+            String scheme = uri.scheme();
+            if ("platform".equals(scheme) && uri.segmentCount() > 1
+                    && "resource".equals(uri.segment(0))) {
+                StringBuffer platformResourcePath = new StringBuffer();
+                for (int j = 1, size = uri.segmentCount(); j < size; ++j) {
+                    platformResourcePath.append('/');
+                    platformResourcePath.append(uri.segment(j));
+                }
+                return ResourcesPlugin.getWorkspace().getRoot()
+                        .getFile(new Path(platformResourcePath.toString()));
+            }
+        }
+        return null;
+    }
 
-	/**
-	 * Sync the languages entries than save the properties.
-	 * 
-	 * @param resource
-	 * @param basePath
-	 * @param entryMap
-	 * @param toFile
-	 */
-	public static void savePropertyFile(Resource resource, String basePath, Map<EObject, LanguagesEntry> entryMap,
-			ToFile toFile) {
-		Hitro2LangEntrySwitch entrySwitch = new Hitro2LangEntrySwitch();
-		Map<String, Properties> langProperties = getLangProperties(basePath, toFile);
+    /**
+     * Sync the languages entries than save the properties.
+     * 
+     * @param resource
+     * @param basePath
+     * @param entryMap
+     * @param toFile
+     */
+    public static void savePropertyFile(Resource resource, String basePath,
+            Map<EObject, LanguagesEntry> entryMap, ToFile toFile) {
+        Hitro2LangEntrySwitch entrySwitch = new Hitro2LangEntrySwitch();
+        Map<String, Properties> langProperties = getLangProperties(basePath, toFile);
 
-		EList<EObject> contents = resource.getContents();
-		EObject eObject = contents.get(0);
-		TreeIterator<EObject> eAllContents = eObject.eAllContents();
+        EList<EObject> contents = resource.getContents();
+        EObject eObject = contents.get(0);
+        TreeIterator<EObject> eAllContents = eObject.eAllContents();
 
-		for (; eAllContents.hasNext();) {
-			EObject next = eAllContents.next();
-			LanguagesEntry languagesEntry = entryMap.get(next);
-			if (languagesEntry != null) {
-				languagesEntry.setId(entrySwitch.doSwitch(next).getId());
-				if (languagesEntry.getId() == null)
-					continue;
+        for (; eAllContents.hasNext();) {
+            EObject next = eAllContents.next();
+            LanguagesEntry languagesEntry = entryMap.get(next);
+            if (languagesEntry != null) {
+                languagesEntry.setId(entrySwitch.doSwitch(next).getId());
+                if (languagesEntry.getId() == null)
+                    continue;
 
-				List<LangEntry> entries = languagesEntry.getEntries();
-				for (LangEntry langEntry : entries) {
-					Properties properties = langProperties.get(langEntry.getLang());
-					String text = langEntry.getText();
-					// try {
-					// text = new String(langEntry.getText().getBytes("ISO-8859-1"), "UTF-8");
-					// } catch (UnsupportedEncodingException e1) {
-					// e1.printStackTrace();
-					// }
-					properties.put(languagesEntry.getId(), text);
-				}
-			}
-		}
-		savePropertyFile(basePath, langProperties, toFile);
-	}
+                List<LangEntry> entries = languagesEntry.getEntries();
+                for (LangEntry langEntry : entries) {
+                    Properties properties = langProperties.get(langEntry.getLang());
+                    String text = langEntry.getText();
+                    // try {
+                    // text = new
+                    // String(langEntry.getText().getBytes("ISO-8859-1"),
+                    // "UTF-8");
+                    // } catch (UnsupportedEncodingException e1) {
+                    // e1.printStackTrace();
+                    // }
+                    properties.put(languagesEntry.getId(), text);
+                }
+            }
+        }
+        savePropertyFile(basePath, langProperties, toFile);
+    }
 
-	/**
-	 * Save all the property files.
-	 * 
-	 * @param basePath
-	 * @param langProperties
-	 * @param toFile
-	 */
-	public static void savePropertyFile(String basePath, Map<String, Properties> langProperties, ToFile toFile) {
-		for (Entry<String, Properties> e : langProperties.entrySet()) {
-			File javaFile = toFile.toFile(basePath + e.getKey());
-			FileWriter fileWriter;
-			try {
-				fileWriter = new FileWriter(javaFile);
-				try {
-					e.getValue().store(fileWriter, "automatic generated properties file for " + e.getKey());
-				} finally {
-					fileWriter.close();
-				}
-			} catch (IOException e1) {
-				HitroEditorPlugin.INSTANCE.log(e);
-			}
-		}
+    /**
+     * Save all the property files.
+     * 
+     * @param basePath
+     * @param langProperties
+     * @param toFile
+     */
+    public static void savePropertyFile(String basePath, Map<String, Properties> langProperties,
+            ToFile toFile) {
+        for (Entry<String, Properties> e : langProperties.entrySet()) {
+            File javaFile = toFile.toFile(basePath + e.getKey());
+            FileWriter fileWriter;
+            try {
+                fileWriter = new FileWriter(javaFile);
+                try {
+                    e.getValue().store(fileWriter,
+                            "automatic generated properties file for " + e.getKey());
+                } finally {
+                    fileWriter.close();
+                }
+            } catch (IOException e1) {
+                HitroEditorPlugin.INSTANCE.log(e);
+            }
+        }
 
-	}
+    }
 }
