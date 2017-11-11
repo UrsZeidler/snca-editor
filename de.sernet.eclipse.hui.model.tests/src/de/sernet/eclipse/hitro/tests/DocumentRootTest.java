@@ -1,4 +1,22 @@
 /**
+ * 
+ * Copyright (c) 2017 Urs Zeidler.
+ * 
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.
+ * If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Contributors:
+ *     Urs Zeidler uz[at]sernet.de - initial API and implementation
  */
 package de.sernet.eclipse.hitro.tests;
 
@@ -23,96 +41,96 @@ import junit.textui.TestRunner;
  */
 public class DocumentRootTest extends TestCase {
 
-	/**
+    /**
      * The fixture for this Document Root test case.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected DocumentRoot fixture = null;
+    protected DocumentRoot fixture = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         TestRunner.run(DocumentRootTest.class);
     }
 
-	/**
+    /**
      * Constructs a new Document Root test case with the given name.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public DocumentRootTest(String name) {
+    public DocumentRootTest(String name) {
         super(name);
     }
 
-	/**
+    /**
      * Sets the fixture for this Document Root test case.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected void setFixture(DocumentRoot fixture) {
+    protected void setFixture(DocumentRoot fixture) {
         this.fixture = fixture;
     }
 
-	/**
+    /**
      * Returns the fixture for this Document Root test case.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected DocumentRoot getFixture() {
+    protected DocumentRoot getFixture() {
         return fixture;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
-	@Override
-	protected void setUp() throws Exception {
+    @Override
+    protected void setUp() throws Exception {
         setFixture(HitroFactory.eINSTANCE.createDocumentRoot());
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
-	@Override
-	protected void tearDown() throws Exception {
+    @Override
+    protected void tearDown() throws Exception {
         setFixture(null);
     }
 
-	/**
+    /**
      * Tests the '{@link de.sernet.eclipse.hitro.DocumentRoot#getHuientities() <em>Huientities</em>}' feature getter.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see de.sernet.eclipse.hitro.DocumentRoot#getHuientities()
      * @generated
      */
-	public void testGetHuientities() {
+    public void testGetHuientities() {
         // TODO: implement this feature getter test method
         // Ensure that you remove @generated or mark it @generated NOT
         fail();
     }
 
-	/**
+    /**
      * Tests the '{@link de.sernet.eclipse.hitro.DocumentRoot#setHuientities(de.sernet.eclipse.hitro.Huientities) <em>Huientities</em>}' feature setter.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see de.sernet.eclipse.hitro.DocumentRoot#setHuientities(de.sernet.eclipse.hitro.Huientities)
      * @generated
      */
-	public void testSetHuientities() {
+    public void testSetHuientities() {
         // TODO: implement this feature setter test method
         // Ensure that you remove @generated or mark it @generated NOT
         fail();

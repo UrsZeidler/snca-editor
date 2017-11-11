@@ -1,4 +1,22 @@
 /**
+ * 
+ * Copyright (c) 2017 Urs Zeidler.
+ * 
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.
+ * If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Contributors:
+ *     Urs Zeidler uz[at]sernet.de - initial API and implementation
  */
 package de.sernet.eclipse.hitro.tests;
 
@@ -31,14 +49,14 @@ import org.eclipse.emf.ecore.util.Diagnostician;
  * @generated
  */
 public class HitroExample {
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * Load all the argument file paths or URIs as instances of the model.
-	 * <!-- end-user-doc -->
+     * Load all the argument file paths or URIs as instances of the model.
+     * <!-- end-user-doc -->
      * @param args the file paths or URIs.
      * @generated
      */
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         // Create a resource set to hold the resources.
         //
         ResourceSet resourceSet = new ResourceSetImpl();
@@ -104,16 +122,16 @@ public class HitroExample {
             }
         }
     }
-	
-	/**
+    
+    /**
      * <!-- begin-user-doc -->
-	 * Prints diagnostics with indentation.
-	 * <!-- end-user-doc -->
+     * Prints diagnostics with indentation.
+     * <!-- end-user-doc -->
      * @param diagnostic the diagnostic to print.
      * @param indent the indentation for printing.
      * @generated
      */
-	protected static void printDiagnostic(Diagnostic diagnostic, String indent) {
+    protected static void printDiagnostic(Diagnostic diagnostic, String indent) {
         System.out.print(indent);
         System.out.println(diagnostic.getMessage());
         for (Diagnostic child : diagnostic.getChildren()) {
