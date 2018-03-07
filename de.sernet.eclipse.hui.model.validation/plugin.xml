@@ -103,6 +103,26 @@ Works on Huientity and Huiproperty.
                      class="DefaultRule">
                </target>
             </constraint>
+                        <constraint
+                  class="de.sernet.eclipse.hui.model.validation.contrains.TestValidationRuleClasses"
+                  id="de.sernet.eclipse.hui.model.validation.ValidationRuleClasses"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Live"
+                  name="ValidationRuleClasses"
+                  severity="ERROR"
+                  statusCode="de.sernet.eclipse.hui.model.validation.constraint1">
+               <message>
+                  The rule {0} defined in {1} is not valid.
+               </message>
+               <description>
+                  Test the class of the ValidationRule element.
+               </description>
+               <target
+                     class="ValidationRule">
+               </target>
+            </constraint>
+            
          </constraints>
          <constraints
                categories="de.sernet.eclipse.hui.model.validation.category1">

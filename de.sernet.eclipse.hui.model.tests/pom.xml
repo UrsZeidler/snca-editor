@@ -16,20 +16,21 @@
 
     <build>
         <plugins>
-<!--             <plugin> -->
-<!--                 <groupId>org.eclipse.tycho</groupId> -->
-<!--                 <artifactId>tycho-surefire-plugin</artifactId> -->
-<!--                 <configuration> -->
-<!--                     UI or headless -->
-<!--                     <useUIHarness>false</useUIHarness> -->
-<!--                     <argLine>${jvm-flags}</argLine> -->
-<!--                 </configuration> -->
-<!--             </plugin> -->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-surefire-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                    
+                    <useUIHarness>false</useUIHarness>
+                    <argLine>${jvm-flags}</argLine>
+                </configuration>
+            </plugin>
 
   <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-surefire-plugin</artifactId>
-    <version>2.12.4</version>
+    <version>2.20.1</version>
     <executions>
       <execution>
         <id>test</id>
@@ -45,6 +46,29 @@
       </execution>
     </executions>
   </plugin>
+
+<!--       <plugin> -->
+<!--         <groupId>org.apache.maven.plugins</groupId> -->
+<!--         <artifactId>maven-surefire-plugin</artifactId> -->
+<!--         <version>2.20.1</version> -->
+<!--         <dependencies> -->
+<!--           explicitly declare surefire provider for JUnit4, see http://maven.apache.org/surefire/maven-surefire-plugin/examples/providers.html -->
+<!--           <dependency> -->
+<!--             <groupId>org.apache.maven.surefire</groupId> -->
+<!--             <artifactId>surefire-junit4</artifactId> -->
+<!--             <version>2.20.1</version> -->
+<!--           </dependency> -->
+<!--         </dependencies> -->
+<!--         <executions> -->
+<!--           <execution> -->
+<!--             <id>default-test</id> -->
+<!--             <phase>test</phase> -->
+<!--             <goals> -->
+<!--               <goal>test</goal> -->
+<!--             </goals> -->
+<!--           </execution> -->
+<!--         </executions> -->
+<!--       </plugin> -->
 
         </plugins>
     </build>

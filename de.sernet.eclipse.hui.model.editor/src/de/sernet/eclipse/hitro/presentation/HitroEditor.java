@@ -635,7 +635,7 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
                 try {
                     addPage(++lastEditorPage, problemEditorPart, getEditorInput());
                     setPageText(lastEditorPage, problemEditorPart.getPartName());
-                    setActivePage(lastEditorPage);
+//                    setActivePage(lastEditorPage);
                     showTabs();
                 }
                 catch (PartInitException exception) {

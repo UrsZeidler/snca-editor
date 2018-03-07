@@ -50,26 +50,17 @@ public class TestNameNotEmpty extends AbstractModelConstraint {
         HitroSwitch<String> hitroSwitch = new HitroSwitch<String>() {
             @Override
             public String caseHuientity(Huientity object) {
-                String name = object.getName();
-                if (name == null || name.isEmpty())
-                    return null;
-                return name;
+                return object.getName();
             }
 
             @Override
             public String caseHuiproperty(Huiproperty object) {
-                String name = object.getName();
-                if (name == null || name.isEmpty())
-                    return null;
-                return name;
+                return object.getName();
             }
 
             @Override
             public String caseHuipropertygroup(Huipropertygroup object) {
-                String name = object.getName();
-                if (name == null || name.isEmpty())
-                    return null;
-                return name;
+                return object.getName();
             }
         };
         String doSwitch = hitroSwitch.doSwitch(target);
