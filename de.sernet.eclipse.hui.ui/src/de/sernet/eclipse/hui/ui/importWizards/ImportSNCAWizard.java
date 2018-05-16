@@ -10,6 +10,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -19,6 +20,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.ide.IDE;
+import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 
 import de.sernet.eclipse.hitro.lang.HitropPropertiesUtil;
 import de.sernet.eclipse.hui.ui.Activator;
@@ -29,6 +31,15 @@ public class ImportSNCAWizard extends Wizard implements IImportWizard {
 
 	public ImportSNCAWizard() {
 		super();
+	       IDialogSettings workbenchSettings = IDEWorkbenchPlugin.getDefault()
+	                .getDialogSettings();
+	        IDialogSettings wizardSettings = workbenchSettings
+	                .getSection("ImportSNCAWizard"); //$NON-NLS-1$
+	        if (wizardSettings == null) {
+	            wizardSettings = workbenchSettings.addNewSection("ImportSNCAWizard"); //$NON-NLS-1$
+	        }
+	        setDialogSettings(wizardSettings);
+		
 	}
 
 	/* (non-Javadoc)
@@ -85,7 +96,7 @@ public class ImportSNCAWizard extends Wizard implements IImportWizard {
 		setNeedsProgressMonitor(true);
 		mainPage = new ImportSNCAWizardPage("Import SNCA XML File",selection); //NON-NLS-1
 	}
-	
+
 	/* (non-Javadoc)
      * @see org.eclipse.jface.wizard.IWizard#addPages()
      */
