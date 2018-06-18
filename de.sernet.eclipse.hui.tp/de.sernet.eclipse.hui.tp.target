@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target includeMode="feature" name="hui-platfrom" sequenceNumber="34">
+<?pde version="3.8"?><target includeMode="feature" name="hui-platfrom" sequenceNumber="35">
 <locations>
-<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.equinox.sdk.feature.group" version="3.13.1.v20170906-1529"/>
 <unit id="org.eclipse.platform.ide" version="4.7.1.M20170906-1700"/>
 <unit id="org.eclipse.platform.sdk" version="4.7.1.M20170906-1700"/>
@@ -10,7 +10,7 @@
 <unit id="org.eclipse.sdk.ide" version="4.7.1.M20170906-1700"/>
 <repository location="http://download.eclipse.org/eclipse/updates/4.7"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="com.google.guava" version="15.0.0.v201403281430"/>
 <unit id="com.google.guava" version="21.0.0.v20170206-1425"/>
 <unit id="com.google.guava.source" version="15.0.0.v201403281430"/>
@@ -20,7 +20,7 @@
 <unit id="javax.xml" version="1.3.4.v201005080400"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.compare.egit.feature.group" version="1.2.2.201709090201"/>
 <unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="3.3.2.201709090201"/>
 <unit id="org.eclipse.emf.diffmerge.sdk.feature.feature.group" version="0.8.0.201706120810"/>
@@ -34,7 +34,7 @@
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.12.0.v20170519-1412"/>
 <repository location="http://download.eclipse.org/releases/oxygen/"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="3.3.2.201709090201"/>
 <unit id="org.eclipse.emf.compare.diagram.gmf.source.feature.group" version="3.3.2.201709090201"/>
 <unit id="org.eclipse.emf.compare.diagram.papyrus.feature.group" version="3.3.2.201709090201"/>
@@ -55,7 +55,7 @@
 <unit id="org.eclipse.emf.compare.uml2.source.feature.group" version="3.3.2.201709090201"/>
 <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/latest"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.ecp.sdk.feature.feature.group" version="1.16.0.20180305-1637"/>
 <repository location="http://download.eclipse.org/releases/oxygen/"/>
 </location>
