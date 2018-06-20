@@ -29,37 +29,36 @@ BUILD INSTRUCTIONS
 			[ERROR] To fix this, you can either build against Eclipse Mars or newer (recommended) or go back to Tycho <= 0.22.0
          -->
         <!-- <tycho-version>1.0.0</tycho-version> -->
-        <tycho-version>1.0.0</tycho-version>
+        <tycho-version>1.2.0</tycho-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <!-- Aggregation -->
     <modules>
         <!-- Target platform definition -->
-        <module>../de.sernet.eclipse.hui.tp</module>
+        <module>de.sernet.eclipse.hui.tp</module>
+		<!-- bundels -->        
+        <module>de.sernet.eclipse.hui.model</module>
+        <module>de.sernet.eclipse.hui.model.edit</module>
+        <module>de.sernet.eclipse.hui.model.editor</module>
+        <module>de.sernet.eclipse.hui.model.validation</module>
+        <module>de.sernet.eclipse.hui.eef</module>
+        <module>de.sernet.eclipse.hui.parsley</module>
+        <module>de.sernet.eclipse.hui.ui</module>
+		<!-- tests -->
+        <module>de.sernet.eclipse.hui.model.tests</module>
+		<!-- features -->
+        <module>de.sernet.eclipse.hui.feature</module>
+        <module>de.sernet.eclipse.hui.depedencies.feature</module>
+		<!-- update site -->
+        <module>de.sernet.eclipse.hui.p2</module>
+        <!-- product -->
+        <module>de.sernet.eclipse.hui.product</module>   
         
-        <module>../de.sernet.eclipse.hui.model</module>
-        <module>../de.sernet.eclipse.hui.model.edit</module>
-        <module>../de.sernet.eclipse.hui.model.editor</module>
-<!--         <module>../de.sernet.eclipse.hui.model.tests</module> -->
-        <module>../de.sernet.eclipse.hui.model.validation</module>
-        <module>../de.sernet.eclipse.hui.eef</module>
-        <module>../de.sernet.eclipse.hui.parsley</module>
-        <module>../de.sernet.eclipse.hui.ui</module>
-
-        <module>../de.sernet.eclipse.hui.feature</module>
-        <module>../de.sernet.eclipse.hui.depedencies.feature</module>
-
-        <module>../de.sernet.eclipse.hui.p2</module>
-        <module>../de.sernet.eclipse.hui.product</module>   
-        
-        
-            
     </modules>
 
     <build>
         <plugins>
-
             <plugin>
                 <!-- enable tycho build extension -->
                 <groupId>org.eclipse.tycho</groupId>
