@@ -20,6 +20,8 @@
  */
 package de.sernet.eclipse.hitro.tests;
 
+import org.junit.Ignore;
+
 import de.sernet.eclipse.hitro.HitroFactory;
 import de.sernet.eclipse.hitro.Huiproperty;
 
@@ -33,6 +35,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
+@Ignore
 public class HuipropertyTest extends TestCase {
 
     /**

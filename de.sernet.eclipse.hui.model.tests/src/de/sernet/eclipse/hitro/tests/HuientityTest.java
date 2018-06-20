@@ -20,6 +20,8 @@
  */
 package de.sernet.eclipse.hitro.tests;
 
+import org.junit.Ignore;
+
 import de.sernet.eclipse.hitro.HitroFactory;
 import de.sernet.eclipse.hitro.Huientity;
 
@@ -41,6 +43,7 @@ import junit.textui.TestRunner;
  * </p>
  * @generated
  */
+@Ignore
 public class HuientityTest extends TestCase {
 
     /**

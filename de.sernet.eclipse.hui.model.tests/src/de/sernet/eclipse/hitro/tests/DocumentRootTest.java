@@ -115,12 +115,10 @@ public class DocumentRootTest extends TestCase {
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see de.sernet.eclipse.hitro.DocumentRoot#getHuientities()
-     * @generated
+     * @generated not
      */
     public void testGetHuientities() {
-        // TODO: implement this feature getter test method
-        // Ensure that you remove @generated or mark it @generated NOT
-        fail();
+        assertNull(getFixture().getHuientities());
     }
 
     /**
@@ -128,12 +126,11 @@ public class DocumentRootTest extends TestCase {
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see de.sernet.eclipse.hitro.DocumentRoot#setHuientities(de.sernet.eclipse.hitro.Huientities)
-     * @generated
+     * @generated not
      */
     public void testSetHuientities() {
-        // TODO: implement this feature setter test method
-        // Ensure that you remove @generated or mark it @generated NOT
-        fail();
+        getFixture().setHuientities(HitroFactory.eINSTANCE.createHuientities());
+        assertNotNull(getFixture().getHuientities());
     }
 
 } //DocumentRootTest
