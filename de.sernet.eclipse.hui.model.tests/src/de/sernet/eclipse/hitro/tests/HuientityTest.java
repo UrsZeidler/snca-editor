@@ -43,7 +43,6 @@ import junit.textui.TestRunner;
  * </p>
  * @generated
  */
-@Ignore
 public class HuientityTest extends TestCase {
 
     /**
@@ -120,12 +119,10 @@ public class HuientityTest extends TestCase {
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see de.sernet.eclipse.hitro.Huientity#getHuiproperty()
-     * @generated
+     * @generated not
      */
     public void testGetHuiproperty() {
-        // TODO: implement this feature getter test method
-        // Ensure that you remove @generated or mark it @generated NOT
-        fail();
+        assertEquals(0,getFixture().getHuiproperty().size());
     }
 
     /**
@@ -133,12 +130,10 @@ public class HuientityTest extends TestCase {
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see de.sernet.eclipse.hitro.Huientity#getHuipropertygroup()
-     * @generated
+     * @generated not
      */
     public void testGetHuipropertygroup() {
-        // TODO: implement this feature getter test method
-        // Ensure that you remove @generated or mark it @generated NOT
-        fail();
+        assertEquals(0, getFixture().getHuipropertygroup().size());
     }
 
     /**
@@ -146,12 +141,10 @@ public class HuientityTest extends TestCase {
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see de.sernet.eclipse.hitro.Huientity#getHuirelation()
-     * @generated
+     * @generated not
      */
     public void testGetHuirelation() {
-        // TODO: implement this feature getter test method
-        // Ensure that you remove @generated or mark it @generated NOT
-        fail();
+        assertEquals(0, getFixture().getHuirelation().size());
     }
 
 } //HuientityTest
