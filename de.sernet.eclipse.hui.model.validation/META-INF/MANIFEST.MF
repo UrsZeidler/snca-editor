@@ -10,6 +10,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.validation,
  org.eclipse.emf.validation.ui,
  org.eclipse.core.expressions;bundle-version="3.6.0",
- com.google.guava;bundle-version="21.0.0"
+ com.google.guava;bundle-version="21.0.0",
+ de.sernet.eclipse.hui.service;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
