@@ -10,7 +10,6 @@
 		<groupId>sernet.verinice</groupId>
 		<artifactId>de.sernet.eclipse.hui.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../de.sernet.eclipse.hui.parent/pom.xml</relativePath>
 	</parent>
 
 	<build>
