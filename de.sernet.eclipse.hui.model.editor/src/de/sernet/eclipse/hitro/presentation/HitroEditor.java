@@ -124,8 +124,10 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.dialogs.SaveAsDialog;
@@ -142,10 +144,11 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import de.sernet.eclipse.hitro.lang.HitropPropertiesUtil;
-import de.sernet.eclipse.hitro.lang.LanguagesEntry;
 import de.sernet.eclipse.hitro.presentation.actions.PatternFilterAction;
 import de.sernet.eclipse.hitro.provider.HitroItemProviderAdapterFactory;
+import de.sernet.eclipse.hui.service.localization.LocalizationService;
+import de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil;
+import de.sernet.eclipse.hui.service.localization.lang.LanguagesEntry;
 
 /**
  * This is an example of a Hitro model editor.
@@ -983,10 +986,10 @@ public class HitroEditor extends MultiPageEditorPart implements IEditingDomainPr
 			exception = e;
 			resource = editingDomain.getResourceSet().getResource(resourceURI, false);
 		}
-		IFile file = HitropPropertiesUtil.getFile(resource);
-		String basePath = HitropPropertiesUtil.platformBasePath(file);
-		entryMap = HitropPropertiesUtil.loadPropertyResources(resource.getContents(), basePath,
-				HitropPropertiesUtil.TO_WORKSPACE_FILE);
+
+		LocalizationService localizationService = getSite().getService(LocalizationService.class);
+        entryMap = localizationService
+                .getLanguageEntries(resource);
 
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {

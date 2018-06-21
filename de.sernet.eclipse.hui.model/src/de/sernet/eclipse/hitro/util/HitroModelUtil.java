@@ -30,7 +30,12 @@ import de.sernet.eclipse.hitro.Huipropertygroup;
  *
  */
 public class HitroModelUtil {
-
+    /**
+     * Create an id for the given object.
+     * 
+     * @param object
+     * @return
+     */
     public static String createId(EObject object) {
         HitroSwitch<String> hitroSwitch = new HitroSwitch<String>() {
 
