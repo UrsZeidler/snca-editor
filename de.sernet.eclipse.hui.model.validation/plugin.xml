@@ -49,11 +49,11 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <category
             id="de.sernet.eclipse.hui.model.validation"
-            name="basic validation">
+            name="basic validation">One categorie.
       </category>
       <category
             id="de.sernet.eclipse.hui.model.validation.category1"
-            name="second">
+            name="second">Another Categorie
       </category>
       
       <constraintProvider
@@ -138,10 +138,10 @@ Works on Huientity and Huiproperty.
                               severity="ERROR"
                               statusCode="de.sernet.eclipse.hui.model.validation.testmessageproperties">
                            <message>
-                              Keine Sprache {0} für {1} definiert.
+                              No localization {0} for {1} defined.
                            </message>
                            <description>
-                              Prüft ob Übersetzungen für die Elemente Definiert ist.
+                              Check if the element has all localization defined.
                            </description>
                            <target
                                  class="Huiproperty">
@@ -155,6 +155,25 @@ Works on Huientity and Huiproperty.
                            <target
                                  class="Huiproperty">
                            </target>
+                        </constraint>
+                        <constraint
+                              class="de.sernet.eclipse.hui.model.validation.contrains.TestNumericOption"
+                              id="de.sernet.eclipse.hui.model.validation.testnumericoption"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Live"
+                              name="Validate numeric option"
+                              severity="ERROR"
+                              statusCode="de.sernet.eclipse.hui.model.validation.numericoption">
+                           <message>
+                              The property {0} has an inconsitent numeric setting. {1}
+                           </message>
+                           <target
+                                 class="Huiproperty">
+                           </target>
+                           <description>
+                              Validates that the numeric option is consitent with the defined values.
+                           </description>
                         </constraint>
             
          </constraints>
