@@ -20,9 +20,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.ide.IDE;
-import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 
-import de.sernet.eclipse.hitro.lang.HitropPropertiesUtil;
+import de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil;
 import de.sernet.eclipse.hui.ui.Activator;
 
 public class ImportSNCAWizard extends Wizard implements IImportWizard {
@@ -31,7 +30,7 @@ public class ImportSNCAWizard extends Wizard implements IImportWizard {
 
 	public ImportSNCAWizard() {
 		super();
-	       IDialogSettings workbenchSettings = IDEWorkbenchPlugin.getDefault()
+	       IDialogSettings workbenchSettings = Activator.getDefault()
 	                .getDialogSettings();
 	        IDialogSettings wizardSettings = workbenchSettings
 	                .getSection("ImportSNCAWizard"); //$NON-NLS-1$
