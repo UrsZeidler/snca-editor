@@ -46,6 +46,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import de.sernet.eclipse.hitro.DocumentRoot;
 import de.sernet.eclipse.hitro.Huientities;
+import de.sernet.eclipse.hui.service.Activator;
 
 /**
  * Collection of useful methods.
@@ -192,7 +193,7 @@ public class HitropPropertiesUtil {
                     }
                 }
             } catch (IOException e) {
-//                HitroEditorPlugin.INSTANCE.log(e);
+                Activator.logError("Error getting " + lang + " propperty file.", e);
             }
             map.put(lang, properties);
         }
@@ -253,7 +254,7 @@ public class HitropPropertiesUtil {
                 List<LangEntry> entries = languagesEntry.getEntries();
                 for (LangEntry langEntry : entries) {
                     Properties properties = langProperties.get(langEntry.getLang());
-                    String text = langEntry.getText();
+                    String text = langEntry.getText();// TODO: write in ISO-8859
                     // try {
                     // text = new
                     // String(langEntry.getText().getBytes("ISO-8859-1"),
@@ -289,9 +290,8 @@ public class HitropPropertiesUtil {
                     fileWriter.close();
                 }
             } catch (IOException e1) {
-//                HitroEditorPlugin.INSTANCE.log(e);
+                Activator.logError("Error saving property file: ", e1);
             }
         }
-
     }
 }
