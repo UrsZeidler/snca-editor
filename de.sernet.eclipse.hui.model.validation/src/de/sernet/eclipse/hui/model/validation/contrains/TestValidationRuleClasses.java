@@ -1,7 +1,6 @@
-/**
- * 
+/*******************************************************************************
  * Copyright (c) 2017 Urs Zeidler.
- * 
+ *
  * This program is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
  * as published by the Free Software Foundation, either version 3
@@ -10,39 +9,48 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty
  * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.
  * If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Urs Zeidler uz[at]sernet.de - initial API and implementation
- */
+ ******************************************************************************/
 package de.sernet.eclipse.hui.model.validation.contrains;
+
+import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 
-import de.sernet.eclipse.hitro.Huientity;
-import de.sernet.eclipse.hitro.Huiproperty;
-import de.sernet.eclipse.hitro.Huipropertygroup;
-import de.sernet.eclipse.hitro.Option;
+import com.google.common.collect.Sets;
+
+import de.sernet.eclipse.hitro.ValidationRule;
 import de.sernet.eclipse.hitro.util.HitroSwitch;
 
 /**
- * @author urszeidler
+ * @author uz[at]sernet.de
  *
  */
-public class TestNameNotEmpty extends AbstractModelConstraint {
+public class TestValidationRuleClasses extends AbstractModelConstraint {
+    private static final Set<String> KNOWN_RULES = Sets.newHashSet("DateAfterRule",
+            "DateBeforeRule", "NotEmpty", "RegExRule");
+
+    /**
+     * 
+     */
+    public TestValidationRuleClasses() {
+    }
 
     /*
      * (non-Javadoc)
      * 
      * @see
      * org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.
-     * emf. validation.IValidationContext)
+     * emf.validation.IValidationContext)
      */
     @Override
     public IStatus validate(IValidationContext ctx) {
@@ -50,30 +58,15 @@ public class TestNameNotEmpty extends AbstractModelConstraint {
 
         HitroSwitch<String> hitroSwitch = new HitroSwitch<String>() {
             @Override
-            public String caseHuientity(Huientity object) {
-                return object.getName();
-            }
-
-            @Override
-            public String caseHuiproperty(Huiproperty object) {
-                return object.getName();
-            }
-
-            @Override
-            public String caseHuipropertygroup(Huipropertygroup object) {
-                return object.getName();
-            }
-            
-            @Override
-            public String caseOption(Option object) {
-                return object.getName();
+            public String caseValidationRule(ValidationRule object) {
+                return object.getClass_();
             }
         };
-        String doSwitch = hitroSwitch.doSwitch(target);
-        if (doSwitch == null) {
-            return ctx.createFailureStatus(target);
-        }
 
+        String ruleName = hitroSwitch.doSwitch(target);
+        if (!KNOWN_RULES.contains(ruleName)) {
+            return ctx.createFailureStatus(ruleName, target);
+        }
         return null;
     }
 

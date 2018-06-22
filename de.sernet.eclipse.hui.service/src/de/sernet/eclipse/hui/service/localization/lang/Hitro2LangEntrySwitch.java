@@ -17,7 +17,7 @@
  * Contributors:
  *     Urs Zeidler uz[at]sernet.de - initial API and implementation
  ******************************************************************************/
-package de.sernet.eclipse.hitro.lang;
+package de.sernet.eclipse.hui.service.localization.lang;
 
 import de.sernet.eclipse.hitro.Huientity;
 import de.sernet.eclipse.hitro.Huiproperty;

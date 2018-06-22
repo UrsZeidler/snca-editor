@@ -68,7 +68,7 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Live"
-                  name="BasicValidations"
+                  name="Name not empty"
                   severity="INFO"
                   statusCode="de.sernet.eclipse.hui.model.validation.constraint3">
                <message>
@@ -82,6 +82,12 @@ Works on Huientity and Huiproperty.
                      class="Huientity"></target>
                <target
                      class="Huiproperty">
+               </target>
+               <target
+                     class="Option">
+               </target>
+               <target
+                     class="Huipropertygroup">
                </target>
             </constraint>
             <constraint
@@ -122,6 +128,34 @@ Works on Huientity and Huiproperty.
                      class="ValidationRule">
                </target>
             </constraint>
+                        <constraint
+                              class="de.sernet.eclipse.hui.model.validation.contrains.TestNameLocalized"
+                              id="de.sernet.eclipse.hui.model.validation.testmessageproperties"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Live"
+                              name="Element Übersetzung"
+                              severity="ERROR"
+                              statusCode="de.sernet.eclipse.hui.model.validation.testmessageproperties">
+                           <message>
+                              Keine Sprache {0} für {1} definiert.
+                           </message>
+                           <description>
+                              Prüft ob Übersetzungen für die Elemente Definiert ist.
+                           </description>
+                           <target
+                                 class="Huiproperty">
+                           </target>
+                           <target
+                                 class="Option">
+                           </target>
+                           <target
+                                 class="Huipropertygroup">
+                           </target>
+                           <target
+                                 class="Huiproperty">
+                           </target>
+                        </constraint>
             
          </constraints>
          <constraints

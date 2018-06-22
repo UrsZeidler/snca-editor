@@ -46,9 +46,9 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import de.sernet.eclipse.hitro.lang.LangEntry;
-import de.sernet.eclipse.hitro.lang.LanguagesEntry;
 import de.sernet.eclipse.hitro.presentation.HitroEditor;
+import de.sernet.eclipse.hui.service.localization.lang.LangEntry;
+import de.sernet.eclipse.hui.service.localization.lang.LanguagesEntry;
 
 
 /**

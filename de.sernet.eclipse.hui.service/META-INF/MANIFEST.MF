@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Hui Service
+Bundle-SymbolicName: de.sernet.eclipse.hui.service;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: de.sernet.eclipse.hui.service.Activator
+Bundle-Vendor: SerNet
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ de.sernet.eclipse.hui.model;bundle-version="1.0.0",
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: de.sernet.eclipse.hui.service
+Bundle-ActivationPolicy: lazy
+Export-Package: de.sernet.eclipse.hui.service,
+ de.sernet.eclipse.hui.service.localization,
+ de.sernet.eclipse.hui.service.localization.lang

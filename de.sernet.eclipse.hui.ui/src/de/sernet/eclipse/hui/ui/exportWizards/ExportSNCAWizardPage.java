@@ -35,7 +35,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ResourceSelectionDialog;
 
-import de.sernet.eclipse.hitro.lang.HitropPropertiesUtil;
+import de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil;
 
 public class ExportSNCAWizardPage extends WizardPage {
 
