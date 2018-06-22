@@ -28,12 +28,16 @@ import org.eclipse.emf.validation.service.ValidationEvent;
  */
 public class BasicValidationListener implements IValidationListener {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.validation.service.IValidationListener#validationOccurred(org.eclipse.emf.validation.service.ValidationEvent)
-	 */
-	@Override
-	public void validationOccurred(ValidationEvent event) {
-		System.out.println("BasicValidationListener:->"+event);
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.emf.validation.service.IValidationListener#validationOccurred
+     * (org.eclipse.emf.validation.service.ValidationEvent)
+     */
+    @Override
+    public void validationOccurred(ValidationEvent event) {
+        System.out.println("BasicValidationListener:->" + event);
+    }
 
 }

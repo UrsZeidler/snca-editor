@@ -30,14 +30,14 @@ import de.sernet.eclipse.hitro.HitroPackage;
  */
 public class Startup implements IStartup {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.ui.IStartup#earlyStartup()
-	 */
-	@Override
-	public void earlyStartup() {
-		EValidator.Registry.INSTANCE.put(
-				HitroPackage.eINSTANCE,
-				new EValidatorAdapter());
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.ui.IStartup#earlyStartup()
+     */
+    @Override
+    public void earlyStartup() {
+        EValidator.Registry.INSTANCE.put(HitroPackage.eINSTANCE, new EValidatorAdapter());
+    }
 
 }

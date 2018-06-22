@@ -13,22 +13,22 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  */
 @SuppressWarnings("all")
 public class ParsleyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
-  public ParsleyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
-    super(plugin);
-  }
-  
-  @Override
-  public Class<? extends IEditingStrategy> bindIEditingStrategy() {
-    return UndoableEditingStrategy.class;
-  }
-  
-  @Override
-  public int valueTreeFormSashStyle() {
-    return SWT.HORIZONTAL;
-  }
-  
-  @Override
-  public Class<? extends ILabelProvider> bindILabelProvider() {
-    return ParsleyLabelProvider.class;
-  }
+    public ParsleyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
+        super(plugin);
+    }
+
+    @Override
+    public Class<? extends IEditingStrategy> bindIEditingStrategy() {
+        return UndoableEditingStrategy.class;
+    }
+
+    @Override
+    public int valueTreeFormSashStyle() {
+        return SWT.HORIZONTAL;
+    }
+
+    @Override
+    public Class<? extends ILabelProvider> bindILabelProvider() {
+        return ParsleyLabelProvider.class;
+    }
 }

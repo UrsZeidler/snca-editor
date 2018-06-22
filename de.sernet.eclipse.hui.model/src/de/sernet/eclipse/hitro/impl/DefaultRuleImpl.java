@@ -41,24 +41,25 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Default Rule</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Default
+ * Rule</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sernet.eclipse.hitro.impl.DefaultRuleImpl#getParam <em>Param</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.DefaultRuleImpl#getClass_ <em>Class</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.DefaultRuleImpl#getParam
+ * <em>Param</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.DefaultRuleImpl#getClass_
+ * <em>Class</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DefaultRuleImpl extends MinimalEObjectImpl.Container implements DefaultRule {
     /**
-     * The cached value of the '{@link #getParam() <em>Param</em>}' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getParam() <em>Param</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getParam()
      * @generated
      * @ordered
@@ -67,8 +68,8 @@ public class DefaultRuleImpl extends MinimalEObjectImpl.Container implements Def
 
     /**
      * The default value of the '{@link #getClass_() <em>Class</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getClass_()
      * @generated
      * @ordered
@@ -77,8 +78,8 @@ public class DefaultRuleImpl extends MinimalEObjectImpl.Container implements Def
 
     /**
      * The cached value of the '{@link #getClass_() <em>Class</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getClass_()
      * @generated
      * @ordered
@@ -86,8 +87,8 @@ public class DefaultRuleImpl extends MinimalEObjectImpl.Container implements Def
     protected String class_ = CLASS_EDEFAULT;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected DefaultRuleImpl() {
@@ -95,8 +96,8 @@ public class DefaultRuleImpl extends MinimalEObjectImpl.Container implements Def
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -105,20 +106,21 @@ public class DefaultRuleImpl extends MinimalEObjectImpl.Container implements Def
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<Param> getParam() {
         if (param == null) {
-            param = new EObjectContainmentEList<Param>(Param.class, this, HitroPackage.DEFAULT_RULE__PARAM);
+            param = new EObjectContainmentEList<Param>(Param.class, this,
+                    HitroPackage.DEFAULT_RULE__PARAM);
         }
         return param;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getClass_() {
@@ -126,109 +128,112 @@ public class DefaultRuleImpl extends MinimalEObjectImpl.Container implements Def
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setClass(String newClass) {
         String oldClass = class_;
         class_ = newClass;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.DEFAULT_RULE__CLASS, oldClass, class_));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.DEFAULT_RULE__CLASS,
+                    oldClass, class_));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+            NotificationChain msgs) {
         switch (featureID) {
-            case HitroPackage.DEFAULT_RULE__PARAM:
-                return ((InternalEList<?>)getParam()).basicRemove(otherEnd, msgs);
+        case HitroPackage.DEFAULT_RULE__PARAM:
+            return ((InternalEList<?>) getParam()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case HitroPackage.DEFAULT_RULE__PARAM:
-                return getParam();
-            case HitroPackage.DEFAULT_RULE__CLASS:
-                return getClass_();
+        case HitroPackage.DEFAULT_RULE__PARAM:
+            return getParam();
+        case HitroPackage.DEFAULT_RULE__CLASS:
+            return getClass_();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case HitroPackage.DEFAULT_RULE__PARAM:
-                getParam().clear();
-                getParam().addAll((Collection<? extends Param>)newValue);
-                return;
-            case HitroPackage.DEFAULT_RULE__CLASS:
-                setClass((String)newValue);
-                return;
+        case HitroPackage.DEFAULT_RULE__PARAM:
+            getParam().clear();
+            getParam().addAll((Collection<? extends Param>) newValue);
+            return;
+        case HitroPackage.DEFAULT_RULE__CLASS:
+            setClass((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case HitroPackage.DEFAULT_RULE__PARAM:
-                getParam().clear();
-                return;
-            case HitroPackage.DEFAULT_RULE__CLASS:
-                setClass(CLASS_EDEFAULT);
-                return;
+        case HitroPackage.DEFAULT_RULE__PARAM:
+            getParam().clear();
+            return;
+        case HitroPackage.DEFAULT_RULE__CLASS:
+            setClass(CLASS_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case HitroPackage.DEFAULT_RULE__PARAM:
-                return param != null && !param.isEmpty();
-            case HitroPackage.DEFAULT_RULE__CLASS:
-                return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
+        case HitroPackage.DEFAULT_RULE__PARAM:
+            return param != null && !param.isEmpty();
+        case HitroPackage.DEFAULT_RULE__CLASS:
+            return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
         }
         return super.eIsSet(featureID);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (class: ");
@@ -237,4 +242,4 @@ public class DefaultRuleImpl extends MinimalEObjectImpl.Container implements Def
         return result.toString();
     }
 
-} //DefaultRuleImpl
+} // DefaultRuleImpl

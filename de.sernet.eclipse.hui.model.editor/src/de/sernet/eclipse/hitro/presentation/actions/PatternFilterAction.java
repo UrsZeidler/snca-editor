@@ -29,33 +29,35 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.dialogs.PatternFilter;
 
 public class PatternFilterAction extends Action {
-	/**
-	 * 
-	 */
-	private final PatternFilter filter;
-	private final ViewerPane viewer;
-	private String pattern = "*";
+    /**
+     * 
+     */
+    private final PatternFilter filter;
+    private final ViewerPane viewer;
+    private String pattern = "*";
 
-	public PatternFilterAction(String text, PatternFilter filter, ViewerPane viewerPane) {
-		super(text);
-		this.filter = filter;
-		this.viewer = viewerPane;
-	}
-	public PatternFilterAction(String text, PatternFilter filter, ViewerPane viewerPane, ImageDescriptor image) {
-		super(text, image);
-		this.filter = filter;
-		this.viewer = viewerPane;
-	}
+    public PatternFilterAction(String text, PatternFilter filter, ViewerPane viewerPane) {
+        super(text);
+        this.filter = filter;
+        this.viewer = viewerPane;
+    }
 
-	@Override
-	public void run() {
-		InputDialog inputDialog = new InputDialog(Display.getCurrent().getActiveShell(), "Filter",
-				"Filter tree with a pattern, * / ? are allowed.", pattern, null);
-		if (inputDialog.open() == SWT.CANCEL)
-			return;
-		String patternString = inputDialog.getValue();
-		filter.setPattern(patternString);
-		pattern = patternString;
-		viewer.getViewer().refresh();
-	}
+    public PatternFilterAction(String text, PatternFilter filter, ViewerPane viewerPane,
+            ImageDescriptor image) {
+        super(text, image);
+        this.filter = filter;
+        this.viewer = viewerPane;
+    }
+
+    @Override
+    public void run() {
+        InputDialog inputDialog = new InputDialog(Display.getCurrent().getActiveShell(), "Filter",
+                "Filter tree with a pattern, * / ? are allowed.", pattern, null);
+        if (inputDialog.open() == SWT.CANCEL)
+            return;
+        String patternString = inputDialog.getValue();
+        filter.setPattern(patternString);
+        pattern = patternString;
+        viewer.getViewer().refresh();
+    }
 }

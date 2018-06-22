@@ -23,12 +23,11 @@ package de.sernet.eclipse.hitro;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Depends</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Depends</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- *  Complex type to define dependency to other properties of an entity.
+ * <!-- begin-model-doc --> Complex type to define dependency to other
+ * properties of an entity.
  * 
  * <!-- end-model-doc -->
  *
@@ -36,9 +35,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.sernet.eclipse.hitro.Depends#isInverse <em>Inverse</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Depends#getOption <em>Option</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Depends#getValue <em>Value</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Depends#isInverse <em>Inverse</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Depends#getOption <em>Option</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Depends#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see de.sernet.eclipse.hitro.HitroPackage#getDepends()
@@ -47,30 +46,33 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Depends extends EObject {
     /**
-     * Returns the value of the '<em><b>Inverse</b></em>' attribute.
-     * The default value is <code>"false"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Inverse</b></em>' attribute. The default
+     * value is <code>"false"</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Inverse</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Inverse</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Inverse</em>' attribute.
      * @see #isSetInverse()
      * @see #unsetInverse()
      * @see #setInverse(boolean)
      * @see de.sernet.eclipse.hitro.HitroPackage#getDepends_Inverse()
-     * @model default="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @model default="false" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Boolean"
      *        extendedMetaData="kind='attribute' name='inverse'"
      * @generated
      */
     boolean isInverse();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Depends#isInverse <em>Inverse</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Inverse</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Depends#isInverse
+     * <em>Inverse</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @param value
+     *            the new value of the '<em>Inverse</em>' attribute.
      * @see #isSetInverse()
      * @see #unsetInverse()
      * @see #isInverse()
@@ -79,9 +81,10 @@ public interface Depends extends EObject {
     void setInverse(boolean value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Depends#isInverse <em>Inverse</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Depends#isInverse
+     * <em>Inverse</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #isSetInverse()
      * @see #isInverse()
      * @see #setInverse(boolean)
@@ -90,9 +93,10 @@ public interface Depends extends EObject {
     void unsetInverse();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Depends#isInverse <em>Inverse</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Depends#isInverse <em>Inverse</em>}'
+     * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return whether the value of the '<em>Inverse</em>' attribute is set.
      * @see #unsetInverse()
      * @see #isInverse()
@@ -102,13 +106,14 @@ public interface Depends extends EObject {
     boolean isSetInverse();
 
     /**
-     * Returns the value of the '<em><b>Option</b></em>' reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Option</b></em>' reference. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Option</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Option</em>' reference isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Option</em>' reference.
      * @see #setOption(Huiproperty)
      * @see de.sernet.eclipse.hitro.HitroPackage#getDepends_Option()
@@ -119,23 +124,26 @@ public interface Depends extends EObject {
     Huiproperty getOption();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Depends#getOption <em>Option</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Option</em>' reference.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Depends#getOption
+     * <em>Option</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @param value
+     *            the new value of the '<em>Option</em>' reference.
      * @see #getOption()
      * @generated
      */
     void setOption(Huiproperty value);
 
     /**
-     * Returns the value of the '<em><b>Value</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Value</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Value</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Value</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see de.sernet.eclipse.hitro.HitroPackage#getDepends_Value()
@@ -146,10 +154,11 @@ public interface Depends extends EObject {
     String getValue();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Depends#getValue <em>Value</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Value</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Depends#getValue
+     * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()
      * @generated
      */

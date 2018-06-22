@@ -28,30 +28,31 @@ import junit.framework.TestCase;
 import junit.textui.TestRunner;
 
 /**
- * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Document Root</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test case for the model object '<em><b>Document
+ * Root</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link de.sernet.eclipse.hitro.DocumentRoot#getHuientities() <em>Huientities</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.DocumentRoot#getHuientities()
+ * <em>Huientities</em>}</li>
  * </ul>
  * </p>
+ * 
  * @generated
  */
 public class DocumentRootTest extends TestCase {
 
     /**
-     * The fixture for this Document Root test case.
-     * <!-- begin-user-doc -->
+     * The fixture for this Document Root test case. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected DocumentRoot fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static void main(String[] args) {
@@ -59,9 +60,9 @@ public class DocumentRootTest extends TestCase {
     }
 
     /**
-     * Constructs a new Document Root test case with the given name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Constructs a new Document Root test case with the given name. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DocumentRootTest(String name) {
@@ -69,9 +70,9 @@ public class DocumentRootTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Document Root test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Sets the fixture for this Document Root test case. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void setFixture(DocumentRoot fixture) {
@@ -79,9 +80,9 @@ public class DocumentRootTest extends TestCase {
     }
 
     /**
-     * Returns the fixture for this Document Root test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the fixture for this Document Root test case. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected DocumentRoot getFixture() {
@@ -89,8 +90,8 @@ public class DocumentRootTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
@@ -100,8 +101,8 @@ public class DocumentRootTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
@@ -111,9 +112,10 @@ public class DocumentRootTest extends TestCase {
     }
 
     /**
-     * Tests the '{@link de.sernet.eclipse.hitro.DocumentRoot#getHuientities() <em>Huientities</em>}' feature getter.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Tests the '{@link de.sernet.eclipse.hitro.DocumentRoot#getHuientities()
+     * <em>Huientities</em>}' feature getter. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see de.sernet.eclipse.hitro.DocumentRoot#getHuientities()
      * @generated not
      */
@@ -122,9 +124,11 @@ public class DocumentRootTest extends TestCase {
     }
 
     /**
-     * Tests the '{@link de.sernet.eclipse.hitro.DocumentRoot#setHuientities(de.sernet.eclipse.hitro.Huientities) <em>Huientities</em>}' feature setter.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Tests the
+     * '{@link de.sernet.eclipse.hitro.DocumentRoot#setHuientities(de.sernet.eclipse.hitro.Huientities)
+     * <em>Huientities</em>}' feature setter. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see de.sernet.eclipse.hitro.DocumentRoot#setHuientities(de.sernet.eclipse.hitro.Huientities)
      * @generated not
      */
@@ -133,4 +137,4 @@ public class DocumentRootTest extends TestCase {
         assertNotNull(getFixture().getHuientities());
     }
 
-} //DocumentRootTest
+} // DocumentRootTest

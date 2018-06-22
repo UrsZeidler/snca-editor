@@ -39,159 +39,162 @@ import de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil;
 
 public class ExportSNCAWizardPage extends WizardPage {
 
-	private Text sourceFileText;
-	private Text targetFileText;
-	private IStructuredSelection selection;
-	private IFile sourceFile;
-	private File targetFile;
+    private Text sourceFileText;
+    private Text targetFileText;
+    private IStructuredSelection selection;
+    private IFile sourceFile;
+    private File targetFile;
 
-	/**
-	 * Create the wizard.
-	 * 
-	 * @wbp.parser.constructor
-	 */
-	public ExportSNCAWizardPage() {
-		super("wizardPage");
-		setTitle("Wizard Page title");
-		setDescription("Wizard Page description");
-	}
+    /**
+     * Create the wizard.
+     * 
+     * @wbp.parser.constructor
+     */
+    public ExportSNCAWizardPage() {
+        super("wizardPage");
+        setTitle("Wizard Page title");
+        setDescription("Wizard Page description");
+    }
 
-	public ExportSNCAWizardPage(IStructuredSelection selection) {
-		this();
-		this.selection = selection;
-	}
+    public ExportSNCAWizardPage(IStructuredSelection selection) {
+        this();
+        this.selection = selection;
+    }
 
-	/**
-	 * Create contents of the wizard.
-	 * 
-	 * @param parent
-	 */
-	public void createControl(Composite parent) {
-		Composite container = new Composite(parent, SWT.NONE);
+    /**
+     * Create contents of the wizard.
+     * 
+     * @param parent
+     */
+    public void createControl(Composite parent) {
+        Composite container = new Composite(parent, SWT.NONE);
 
-		setControl(container);
-		container.setLayout(new GridLayout(1, false));
+        setControl(container);
+        container.setLayout(new GridLayout(1, false));
 
-		Group grpSource = new Group(container, SWT.NONE);
-		grpSource.setText("export");
-		grpSource.setLayout(new GridLayout(3, false));
-		grpSource.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+        Group grpSource = new Group(container, SWT.NONE);
+        grpSource.setText("export");
+        grpSource.setLayout(new GridLayout(3, false));
+        grpSource.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-		Label lblNewLabel = new Label(grpSource, SWT.NONE);
-		lblNewLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblNewLabel.setText("source file");
+        Label lblNewLabel = new Label(grpSource, SWT.NONE);
+        lblNewLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+        lblNewLabel.setText("source file");
 
-		sourceFileText = new Text(grpSource, SWT.BORDER);
-		sourceFileText.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
-				pageComplete();
-			}
-		});
-		sourceFileText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+        sourceFileText = new Text(grpSource, SWT.BORDER);
+        sourceFileText.addModifyListener(new ModifyListener() {
+            public void modifyText(ModifyEvent e) {
+                pageComplete();
+            }
+        });
+        sourceFileText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-		Button btnNewButton = new Button(grpSource, SWT.NONE);
-		btnNewButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				ResourceSelectionDialog dialog = new ResourceSelectionDialog(getShell(),
-						ResourcesPlugin.getWorkspace().getRoot(), "Select hitro file.");
-				IResource member = ResourcesPlugin.getWorkspace().getRoot().findMember(sourceFileText.getText());
-				List<?> selectedElements = Collections.singletonList(member);
-				dialog.setInitialElementSelections(selectedElements);
-				int open = dialog.open();
-				if (open == SWT.OK) {
-					Object[] result = dialog.getResult();
-					if (result.length > 0) {
-						Object object = result[0];
-						sourceFileText.setText((String) object);
-					}
-					pageComplete();
-				}
-			}
-		});
-		btnNewButton.setText("select");
+        Button btnNewButton = new Button(grpSource, SWT.NONE);
+        btnNewButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                ResourceSelectionDialog dialog = new ResourceSelectionDialog(getShell(),
+                        ResourcesPlugin.getWorkspace().getRoot(), "Select hitro file.");
+                IResource member = ResourcesPlugin.getWorkspace().getRoot()
+                        .findMember(sourceFileText.getText());
+                List<?> selectedElements = Collections.singletonList(member);
+                dialog.setInitialElementSelections(selectedElements);
+                int open = dialog.open();
+                if (open == SWT.OK) {
+                    Object[] result = dialog.getResult();
+                    if (result.length > 0) {
+                        Object object = result[0];
+                        sourceFileText.setText((String) object);
+                    }
+                    pageComplete();
+                }
+            }
+        });
+        btnNewButton.setText("select");
 
-		IDialogSettings section = getDialogSettings().getSection(ExportSNCAWizard.EXPORT_WIZARD);
-		String targetfile = section.get(ExportSNCAWizard.TARGET_FILE);
+        IDialogSettings section = getDialogSettings().getSection(ExportSNCAWizard.EXPORT_WIZARD);
+        String targetfile = section.get(ExportSNCAWizard.TARGET_FILE);
 
-		Label lblNewLabel_1 = new Label(grpSource, SWT.NONE);
-		lblNewLabel_1.setText("target file");
+        Label lblNewLabel_1 = new Label(grpSource, SWT.NONE);
+        lblNewLabel_1.setText("target file");
 
-		targetFileText = new Text(grpSource, SWT.BORDER);
-		targetFileText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		targetFileText.setText(targetfile);
-		
-		Button btnNewButton_1 = new Button(grpSource, SWT.NONE);
-		btnNewButton_1.addSelectionListener(new SelectionAdapter() {
+        targetFileText = new Text(grpSource, SWT.BORDER);
+        targetFileText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+        targetFileText.setText(targetfile);
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				FileDialog fileDialog = new FileDialog(getShell(), SWT.SAVE);
-				fileDialog.setFileName("SNCA.xml");
-				String open = fileDialog.open();
-				if (open != null) {
-					targetFileText.setText(open);
-					targetFile = new File(open);
-					pageComplete();
-				}
-			}
-		});
-		btnNewButton_1.setText("select");
+        Button btnNewButton_1 = new Button(grpSource, SWT.NONE);
+        btnNewButton_1.addSelectionListener(new SelectionAdapter() {
 
-		if (selection != null) {
-			Object element = selection.getFirstElement();
-			if (element instanceof IFile) {
-				IFile f = (IFile) element;
-				sourceFileText.setText(f.getFullPath().toString());
-				sourceFile = f;
-			}
-		}
-	}
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                FileDialog fileDialog = new FileDialog(getShell(), SWT.SAVE);
+                fileDialog.setFileName("SNCA.xml");
+                String open = fileDialog.open();
+                if (open != null) {
+                    targetFileText.setText(open);
+                    targetFile = new File(open);
+                    pageComplete();
+                }
+            }
+        });
+        btnNewButton_1.setText("select");
 
-	protected void pageComplete() {
-		String source = sourceFileText.getText();
-		String target = targetFileText.getText();
+        if (selection != null) {
+            Object element = selection.getFirstElement();
+            if (element instanceof IFile) {
+                IFile f = (IFile) element;
+                sourceFileText.setText(f.getFullPath().toString());
+                sourceFile = f;
+            }
+        }
+    }
 
-		File file = new File(target);
-		if (file.exists()) {
-			setMessage("File exist and will be overridden.");
-		}
-		IResource member = ResourcesPlugin.getWorkspace().getRoot().findMember(source);
-		if (member == null || !member.exists()) {
-			setMessage("Source fle don't exist.");
-		}
-	}
+    protected void pageComplete() {
+        String source = sourceFileText.getText();
+        String target = targetFileText.getText();
 
-	protected void saveFile() throws CoreException, IOException {
-		targetFile = new File(targetFileText.getText());
-		sourceFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(sourceFileText.getText()));
-		
-		InputStream contents = sourceFile.getContents(true);
-		BufferedReader d = new BufferedReader(new InputStreamReader(contents));
+        File file = new File(target);
+        if (file.exists()) {
+            setMessage("File exist and will be overridden.");
+        }
+        IResource member = ResourcesPlugin.getWorkspace().getRoot().findMember(source);
+        if (member == null || !member.exists()) {
+            setMessage("Source fle don't exist.");
+        }
+    }
 
-		String collect = d.lines().collect(Collectors.joining("\n"));
+    protected void saveFile() throws CoreException, IOException {
+        targetFile = new File(targetFileText.getText());
+        sourceFile = ResourcesPlugin.getWorkspace().getRoot()
+                .getFile(new Path(sourceFileText.getText()));
 
-		collect = collect.replaceAll("hitro:huientities", "huientities");
-		collect = collect.replaceFirst("xmlns:hitro=", "xmlns=");
+        InputStream contents = sourceFile.getContents(true);
+        BufferedReader d = new BufferedReader(new InputStreamReader(contents));
 
-		FileWriter fileWriter = new FileWriter(targetFile, false);
-		try {
-			fileWriter.append(collect);
-		} finally {
-			fileWriter.close();
-			d.close();
-		}
+        String collect = d.lines().collect(Collectors.joining("\n"));
 
-		IDialogSettings section = getDialogSettings().getSection(ExportSNCAWizard.EXPORT_WIZARD);
-		section.put(ExportSNCAWizard.TARGET_FILE, targetFile.getAbsolutePath());
+        collect = collect.replaceAll("hitro:huientities", "huientities");
+        collect = collect.replaceFirst("xmlns:hitro=", "xmlns=");
 
-		String basePath = HitropPropertiesUtil.platformBasePath(sourceFile);
-		String fileBasePath = HitropPropertiesUtil.fileBasePath(targetFile);
-		for (String lang : HitropPropertiesUtil.LANGS) {
-			File sourceFile = HitropPropertiesUtil.TO_WORKSPACE_FILE.toFile(basePath + lang);
-			File targetFile = HitropPropertiesUtil.TO_FILE.toFile(fileBasePath + lang);
-			Files.copy(sourceFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-		}
-	}
+        FileWriter fileWriter = new FileWriter(targetFile, false);
+        try {
+            fileWriter.append(collect);
+        } finally {
+            fileWriter.close();
+            d.close();
+        }
+
+        IDialogSettings section = getDialogSettings().getSection(ExportSNCAWizard.EXPORT_WIZARD);
+        section.put(ExportSNCAWizard.TARGET_FILE, targetFile.getAbsolutePath());
+
+        String basePath = HitropPropertiesUtil.platformBasePath(sourceFile);
+        String fileBasePath = HitropPropertiesUtil.fileBasePath(targetFile);
+        for (String lang : HitropPropertiesUtil.LANGS) {
+            File sourceFile = HitropPropertiesUtil.TO_WORKSPACE_FILE.toFile(basePath + lang);
+            File targetFile = HitropPropertiesUtil.TO_FILE.toFile(fileBasePath + lang);
+            Files.copy(sourceFile.toPath(), targetFile.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+        }
+    }
 
 }

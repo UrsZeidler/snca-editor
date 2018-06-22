@@ -27,19 +27,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Inputtypes</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration
+ * '<em><b>Inputtypes</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see de.sernet.eclipse.hitro.HitroPackage#getInputtypes()
  * @model extendedMetaData="name='inputtypes'"
  * @generated
  */
 public enum Inputtypes implements Enumerator {
     /**
-     * The '<em><b>Line</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The '<em><b>Line</b></em>' literal object. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #LINE_VALUE
      * @generated
      * @ordered
@@ -47,9 +47,9 @@ public enum Inputtypes implements Enumerator {
     LINE(0, "line", "line"),
 
     /**
-     * The '<em><b>Singleoption</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The '<em><b>Singleoption</b></em>' literal object. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #SINGLEOPTION_VALUE
      * @generated
      * @ordered
@@ -57,9 +57,9 @@ public enum Inputtypes implements Enumerator {
     SINGLEOPTION(1, "singleoption", "singleoption"),
 
     /**
-     * The '<em><b>Multioption</b></em>' literal object.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Multioption</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #MULTIOPTION_VALUE
      * @generated
      * @ordered
@@ -67,9 +67,9 @@ public enum Inputtypes implements Enumerator {
     MULTIOPTION(2, "multioption", "multioption"),
 
     /**
-     * The '<em><b>Text</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The '<em><b>Text</b></em>' literal object. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #TEXT_VALUE
      * @generated
      * @ordered
@@ -77,9 +77,9 @@ public enum Inputtypes implements Enumerator {
     TEXT(3, "text", "text"),
 
     /**
-     * The '<em><b>Reference</b></em>' literal object.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Reference</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #REFERENCE_VALUE
      * @generated
      * @ordered
@@ -87,9 +87,9 @@ public enum Inputtypes implements Enumerator {
     REFERENCE(4, "reference", "reference"),
 
     /**
-     * The '<em><b>Cnalink Reference</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The '<em><b>Cnalink Reference</b></em>' literal object. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #CNALINK_REFERENCE_VALUE
      * @generated
      * @ordered
@@ -97,9 +97,9 @@ public enum Inputtypes implements Enumerator {
     CNALINK_REFERENCE(5, "cnalinkReference", "cnalink-reference"),
 
     /**
-     * The '<em><b>Date</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The '<em><b>Date</b></em>' literal object. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #DATE_VALUE
      * @generated
      * @ordered
@@ -107,9 +107,9 @@ public enum Inputtypes implements Enumerator {
     DATE(6, "date", "date"),
 
     /**
-     * The '<em><b>Numericoption</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The '<em><b>Numericoption</b></em>' literal object. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #NUMERICOPTION_VALUE
      * @generated
      * @ordered
@@ -117,9 +117,9 @@ public enum Inputtypes implements Enumerator {
     NUMERICOPTION(7, "numericoption", "numericoption"),
 
     /**
-     * The '<em><b>Booleanoption</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The '<em><b>Booleanoption</b></em>' literal object. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #BOOLEANOPTION_VALUE
      * @generated
      * @ordered
@@ -127,13 +127,13 @@ public enum Inputtypes implements Enumerator {
     BOOLEANOPTION(8, "booleanoption", "booleanoption");
 
     /**
-     * The '<em><b>Line</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Line</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>Line</b></em>' literal object isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #LINE
      * @model name="line"
      * @generated
@@ -142,13 +142,13 @@ public enum Inputtypes implements Enumerator {
     public static final int LINE_VALUE = 0;
 
     /**
-     * The '<em><b>Singleoption</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Singleoption</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Singleoption</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Singleoption</b></em>' literal object isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SINGLEOPTION
      * @model name="singleoption"
      * @generated
@@ -157,13 +157,13 @@ public enum Inputtypes implements Enumerator {
     public static final int SINGLEOPTION_VALUE = 1;
 
     /**
-     * The '<em><b>Multioption</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Multioption</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Multioption</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Multioption</b></em>' literal object isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #MULTIOPTION
      * @model name="multioption"
      * @generated
@@ -172,13 +172,13 @@ public enum Inputtypes implements Enumerator {
     public static final int MULTIOPTION_VALUE = 2;
 
     /**
-     * The '<em><b>Text</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Text</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>Text</b></em>' literal object isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TEXT
      * @model name="text"
      * @generated
@@ -187,13 +187,13 @@ public enum Inputtypes implements Enumerator {
     public static final int TEXT_VALUE = 3;
 
     /**
-     * The '<em><b>Reference</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Reference</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>Reference</b></em>' literal object isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #REFERENCE
      * @model name="reference"
      * @generated
@@ -202,13 +202,14 @@ public enum Inputtypes implements Enumerator {
     public static final int REFERENCE_VALUE = 4;
 
     /**
-     * The '<em><b>Cnalink Reference</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Cnalink Reference</b></em>' literal value. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Cnalink Reference</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Cnalink Reference</b></em>' literal object
+     * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #CNALINK_REFERENCE
      * @model name="cnalinkReference" literal="cnalink-reference"
      * @generated
@@ -217,13 +218,13 @@ public enum Inputtypes implements Enumerator {
     public static final int CNALINK_REFERENCE_VALUE = 5;
 
     /**
-     * The '<em><b>Date</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Date</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>Date</b></em>' literal object isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #DATE
      * @model name="date"
      * @generated
@@ -232,13 +233,14 @@ public enum Inputtypes implements Enumerator {
     public static final int DATE_VALUE = 6;
 
     /**
-     * The '<em><b>Numericoption</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Numericoption</b></em>' literal value. <!-- begin-user-doc
+     * -->
      * <p>
-     * If the meaning of '<em><b>Numericoption</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Numericoption</b></em>' literal object isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #NUMERICOPTION
      * @model name="numericoption"
      * @generated
@@ -247,13 +249,14 @@ public enum Inputtypes implements Enumerator {
     public static final int NUMERICOPTION_VALUE = 7;
 
     /**
-     * The '<em><b>Booleanoption</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Booleanoption</b></em>' literal value. <!-- begin-user-doc
+     * -->
      * <p>
-     * If the meaning of '<em><b>Booleanoption</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Booleanoption</b></em>' literal object isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #BOOLEANOPTION
      * @model name="booleanoption"
      * @generated
@@ -262,37 +265,29 @@ public enum Inputtypes implements Enumerator {
     public static final int BOOLEANOPTION_VALUE = 8;
 
     /**
-     * An array of all the '<em><b>Inputtypes</b></em>' enumerators.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * An array of all the '<em><b>Inputtypes</b></em>' enumerators. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final Inputtypes[] VALUES_ARRAY =
-        new Inputtypes[] {
-            LINE,
-            SINGLEOPTION,
-            MULTIOPTION,
-            TEXT,
-            REFERENCE,
-            CNALINK_REFERENCE,
-            DATE,
-            NUMERICOPTION,
-            BOOLEANOPTION,
-        };
+    private static final Inputtypes[] VALUES_ARRAY = new Inputtypes[] { LINE, SINGLEOPTION,
+            MULTIOPTION, TEXT, REFERENCE, CNALINK_REFERENCE, DATE, NUMERICOPTION, BOOLEANOPTION, };
 
     /**
-     * A public read-only list of all the '<em><b>Inputtypes</b></em>' enumerators.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * A public read-only list of all the '<em><b>Inputtypes</b></em>'
+     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
-    public static final List<Inputtypes> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<Inputtypes> VALUES = Collections
+            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Inputtypes</b></em>' literal with the specified literal value.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param literal the literal.
+     * Returns the '<em><b>Inputtypes</b></em>' literal with the specified
+     * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param literal
+     *            the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
@@ -308,9 +303,10 @@ public enum Inputtypes implements Enumerator {
 
     /**
      * Returns the '<em><b>Inputtypes</b></em>' literal with the specified name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param name the name.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param name
+     *            the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
@@ -325,53 +321,63 @@ public enum Inputtypes implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Inputtypes</b></em>' literal with the specified integer value.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the integer value.
+     * Returns the '<em><b>Inputtypes</b></em>' literal with the specified
+     * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static Inputtypes get(int value) {
         switch (value) {
-            case LINE_VALUE: return LINE;
-            case SINGLEOPTION_VALUE: return SINGLEOPTION;
-            case MULTIOPTION_VALUE: return MULTIOPTION;
-            case TEXT_VALUE: return TEXT;
-            case REFERENCE_VALUE: return REFERENCE;
-            case CNALINK_REFERENCE_VALUE: return CNALINK_REFERENCE;
-            case DATE_VALUE: return DATE;
-            case NUMERICOPTION_VALUE: return NUMERICOPTION;
-            case BOOLEANOPTION_VALUE: return BOOLEANOPTION;
+        case LINE_VALUE:
+            return LINE;
+        case SINGLEOPTION_VALUE:
+            return SINGLEOPTION;
+        case MULTIOPTION_VALUE:
+            return MULTIOPTION;
+        case TEXT_VALUE:
+            return TEXT;
+        case REFERENCE_VALUE:
+            return REFERENCE;
+        case CNALINK_REFERENCE_VALUE:
+            return CNALINK_REFERENCE;
+        case DATE_VALUE:
+            return DATE;
+        case NUMERICOPTION_VALUE:
+            return NUMERICOPTION;
+        case BOOLEANOPTION_VALUE:
+            return BOOLEANOPTION;
         }
         return null;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Only this class can construct instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     private Inputtypes(int value, String name, String literal) {
@@ -381,41 +387,41 @@ public enum Inputtypes implements Enumerator {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string representation.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the literal value of the enumerator, which is its string
+     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
         return literal;
     }
-    
-} //Inputtypes
+
+} // Inputtypes

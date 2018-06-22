@@ -37,24 +37,24 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Param</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Param</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sernet.eclipse.hitro.impl.ParamImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.ParamImpl#getId <em>Id</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.ParamImpl#getMixed
+ * <em>Mixed</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.ParamImpl#getId <em>Id</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ParamImpl extends MinimalEObjectImpl.Container implements Param {
     /**
-     * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getMixed()
      * @generated
      * @ordered
@@ -62,9 +62,9 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param {
     protected FeatureMap mixed;
 
     /**
-     * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getId()
      * @generated
      * @ordered
@@ -72,9 +72,9 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param {
     protected static final String ID_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getId()
      * @generated
      * @ordered
@@ -82,8 +82,8 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param {
     protected String id = ID_EDEFAULT;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ParamImpl() {
@@ -91,8 +91,8 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -101,8 +101,8 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public FeatureMap getMixed() {
@@ -113,8 +113,8 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getId() {
@@ -122,108 +122,112 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setId(String newId) {
         String oldId = id;
         id = newId;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.PARAM__ID, oldId, id));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.PARAM__ID, oldId,
+                    id));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+            NotificationChain msgs) {
         switch (featureID) {
-            case HitroPackage.PARAM__MIXED:
-                return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
+        case HitroPackage.PARAM__MIXED:
+            return ((InternalEList<?>) getMixed()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case HitroPackage.PARAM__MIXED:
-                if (coreType) return getMixed();
-                return ((FeatureMap.Internal)getMixed()).getWrapper();
-            case HitroPackage.PARAM__ID:
-                return getId();
+        case HitroPackage.PARAM__MIXED:
+            if (coreType)
+                return getMixed();
+            return ((FeatureMap.Internal) getMixed()).getWrapper();
+        case HitroPackage.PARAM__ID:
+            return getId();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case HitroPackage.PARAM__MIXED:
-                ((FeatureMap.Internal)getMixed()).set(newValue);
-                return;
-            case HitroPackage.PARAM__ID:
-                setId((String)newValue);
-                return;
+        case HitroPackage.PARAM__MIXED:
+            ((FeatureMap.Internal) getMixed()).set(newValue);
+            return;
+        case HitroPackage.PARAM__ID:
+            setId((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case HitroPackage.PARAM__MIXED:
-                getMixed().clear();
-                return;
-            case HitroPackage.PARAM__ID:
-                setId(ID_EDEFAULT);
-                return;
+        case HitroPackage.PARAM__MIXED:
+            getMixed().clear();
+            return;
+        case HitroPackage.PARAM__ID:
+            setId(ID_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case HitroPackage.PARAM__MIXED:
-                return mixed != null && !mixed.isEmpty();
-            case HitroPackage.PARAM__ID:
-                return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+        case HitroPackage.PARAM__MIXED:
+            return mixed != null && !mixed.isEmpty();
+        case HitroPackage.PARAM__ID:
+            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
         }
         return super.eIsSet(featureID);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (mixed: ");
@@ -234,4 +238,4 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param {
         return result.toString();
     }
 
-} //ParamImpl
+} // ParamImpl

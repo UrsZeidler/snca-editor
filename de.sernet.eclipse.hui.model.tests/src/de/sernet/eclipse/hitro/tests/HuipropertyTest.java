@@ -30,25 +30,25 @@ import junit.framework.TestCase;
 import junit.textui.TestRunner;
 
 /**
- * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Huiproperty</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test case for the model object
+ * '<em><b>Huiproperty</b></em>'. <!-- end-user-doc -->
+ * 
  * @generated
  */
 @Ignore
 public class HuipropertyTest extends TestCase {
 
     /**
-     * The fixture for this Huiproperty test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The fixture for this Huiproperty test case. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected Huiproperty fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static void main(String[] args) {
@@ -56,9 +56,9 @@ public class HuipropertyTest extends TestCase {
     }
 
     /**
-     * Constructs a new Huiproperty test case with the given name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Constructs a new Huiproperty test case with the given name. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public HuipropertyTest(String name) {
@@ -66,9 +66,9 @@ public class HuipropertyTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Huiproperty test case.
-     * <!-- begin-user-doc -->
+     * Sets the fixture for this Huiproperty test case. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void setFixture(Huiproperty fixture) {
@@ -76,9 +76,9 @@ public class HuipropertyTest extends TestCase {
     }
 
     /**
-     * Returns the fixture for this Huiproperty test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the fixture for this Huiproperty test case. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Huiproperty getFixture() {
@@ -86,8 +86,8 @@ public class HuipropertyTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
@@ -97,8 +97,8 @@ public class HuipropertyTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
@@ -107,4 +107,4 @@ public class HuipropertyTest extends TestCase {
         setFixture(null);
     }
 
-} //HuipropertyTest
+} // HuipropertyTest

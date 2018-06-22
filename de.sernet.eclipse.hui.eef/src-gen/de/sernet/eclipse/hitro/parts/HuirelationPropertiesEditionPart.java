@@ -29,7 +29,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-
 // End of user code
 
 /**
@@ -38,122 +37,128 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface HuirelationPropertiesEditionPart {
 
-	/**
-	 * @return the id
-	 * 
-	 */
-	public String getId();
+    /**
+     * @return the id
+     * 
+     */
+    public String getId();
 
-	/**
-	 * Defines a new id
-	 * @param newValue the new id to set
-	 * 
-	 */
-	public void setId(String newValue);
+    /**
+     * Defines a new id
+     * 
+     * @param newValue
+     *            the new id to set
+     * 
+     */
+    public void setId(String newValue);
 
+    /**
+     * @return the name
+     * 
+     */
+    public String getName();
 
-	/**
-	 * @return the name
-	 * 
-	 */
-	public String getName();
+    /**
+     * Defines a new name
+     * 
+     * @param newValue
+     *            the new name to set
+     * 
+     */
+    public void setName(String newValue);
 
-	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
-	 * 
-	 */
-	public void setName(String newValue);
+    /**
+     * @return the reversename
+     * 
+     */
+    public String getReversename();
 
+    /**
+     * Defines a new reversename
+     * 
+     * @param newValue
+     *            the new reversename to set
+     * 
+     */
+    public void setReversename(String newValue);
 
-	/**
-	 * @return the reversename
-	 * 
-	 */
-	public String getReversename();
+    /**
+     * @return the to
+     * 
+     */
+    public EObject getTo();
 
-	/**
-	 * Defines a new reversename
-	 * @param newValue the new reversename to set
-	 * 
-	 */
-	public void setReversename(String newValue);
+    /**
+     * Init the to
+     * 
+     * @param settings
+     *            the combo setting
+     */
+    public void initTo(EObjectFlatComboSettings settings);
 
+    /**
+     * Defines a new to
+     * 
+     * @param newValue
+     *            the new to to set
+     * 
+     */
+    public void setTo(EObject newValue);
 
-	/**
-	 * @return the to
-	 * 
-	 */
-	public EObject getTo();
+    /**
+     * Defines the button mode
+     * 
+     * @param newValue
+     *            the new mode to set
+     * 
+     */
+    public void setToButtonMode(ButtonsModeEnum newValue);
 
-	/**
-	 * Init the to
-	 * @param settings the combo setting
-	 */
-	public void initTo(EObjectFlatComboSettings settings);
+    /**
+     * Adds the given filter to the to edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addFilterToTo(ViewerFilter filter);
 
-	/**
-	 * Defines a new to
-	 * @param newValue the new to to set
-	 * 
-	 */
-	public void setTo(EObject newValue);
+    /**
+     * Adds the given filter to the to edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addBusinessFilterToTo(ViewerFilter filter);
 
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 * 
-	 */
-	public void setToButtonMode(ButtonsModeEnum newValue);
+    /**
+     * @return the tooltip
+     * 
+     */
+    public String getTooltip();
 
-	/**
-	 * Adds the given filter to the to edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToTo(ViewerFilter filter);
+    /**
+     * Defines a new tooltip
+     * 
+     * @param newValue
+     *            the new tooltip to set
+     * 
+     */
+    public void setTooltip(String newValue);
 
-	/**
-	 * Adds the given filter to the to edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToTo(ViewerFilter filter);
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
+    // Start of user code for additional methods
 
-	/**
-	 * @return the tooltip
-	 * 
-	 */
-	public String getTooltip();
-
-	/**
-	 * Defines a new tooltip
-	 * @param newValue the new tooltip to set
-	 * 
-	 */
-	public void setTooltip(String newValue);
-
-
-
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

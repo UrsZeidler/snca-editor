@@ -30,26 +30,25 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Adapter Factory</b> for the model.
- * It provides an adapter <code>createXXX</code> method for each class of the model.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
+ * an adapter <code>createXXX</code> method for each class of the model. <!--
+ * end-user-doc -->
+ * 
  * @see de.sernet.eclipse.hitro.HitroPackage
  * @generated
  */
 public class HitroAdapterFactory extends AdapterFactoryImpl {
     /**
-     * The cached model package.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected static HitroPackage modelPackage;
 
     /**
-     * Creates an instance of the adapter factory.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public HitroAdapterFactory() {
@@ -60,9 +59,10 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Returns whether this factory is applicable for the type of the object.
-     * <!-- begin-user-doc -->
-     * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> This implementation returns <code>true</code> if
+     * the object is either the model's package or is an instance object of the
+     * model. <!-- end-user-doc -->
+     * 
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
@@ -72,93 +72,105 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject)object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == modelPackage;
         }
         return false;
     }
 
     /**
-     * The switch that delegates to the <code>createXXX</code> methods.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The switch that delegates to the <code>createXXX</code> methods. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
-    protected HitroSwitch<Adapter> modelSwitch =
-        new HitroSwitch<Adapter>() {
-            @Override
-            public Adapter caseDefaultRule(DefaultRule object) {
-                return createDefaultRuleAdapter();
-            }
-            @Override
-            public Adapter caseDepends(Depends object) {
-                return createDependsAdapter();
-            }
-            @Override
-            public Adapter caseDocumentRoot(DocumentRoot object) {
-                return createDocumentRootAdapter();
-            }
-            @Override
-            public Adapter caseHuientities(Huientities object) {
-                return createHuientitiesAdapter();
-            }
-            @Override
-            public Adapter caseHuientity(Huientity object) {
-                return createHuientityAdapter();
-            }
-            @Override
-            public Adapter caseHuiproperty(Huiproperty object) {
-                return createHuipropertyAdapter();
-            }
-            @Override
-            public Adapter caseHuipropertygroup(Huipropertygroup object) {
-                return createHuipropertygroupAdapter();
-            }
-            @Override
-            public Adapter caseHuirelation(Huirelation object) {
-                return createHuirelationAdapter();
-            }
-            @Override
-            public Adapter caseOption(Option object) {
-                return createOptionAdapter();
-            }
-            @Override
-            public Adapter caseParam(Param object) {
-                return createParamAdapter();
-            }
-            @Override
-            public Adapter caseReference(Reference object) {
-                return createReferenceAdapter();
-            }
-            @Override
-            public Adapter caseValidationRule(ValidationRule object) {
-                return createValidationRuleAdapter();
-            }
-            @Override
-            public Adapter defaultCase(EObject object) {
-                return createEObjectAdapter();
-            }
-        };
+    protected HitroSwitch<Adapter> modelSwitch = new HitroSwitch<Adapter>() {
+        @Override
+        public Adapter caseDefaultRule(DefaultRule object) {
+            return createDefaultRuleAdapter();
+        }
+
+        @Override
+        public Adapter caseDepends(Depends object) {
+            return createDependsAdapter();
+        }
+
+        @Override
+        public Adapter caseDocumentRoot(DocumentRoot object) {
+            return createDocumentRootAdapter();
+        }
+
+        @Override
+        public Adapter caseHuientities(Huientities object) {
+            return createHuientitiesAdapter();
+        }
+
+        @Override
+        public Adapter caseHuientity(Huientity object) {
+            return createHuientityAdapter();
+        }
+
+        @Override
+        public Adapter caseHuiproperty(Huiproperty object) {
+            return createHuipropertyAdapter();
+        }
+
+        @Override
+        public Adapter caseHuipropertygroup(Huipropertygroup object) {
+            return createHuipropertygroupAdapter();
+        }
+
+        @Override
+        public Adapter caseHuirelation(Huirelation object) {
+            return createHuirelationAdapter();
+        }
+
+        @Override
+        public Adapter caseOption(Option object) {
+            return createOptionAdapter();
+        }
+
+        @Override
+        public Adapter caseParam(Param object) {
+            return createParamAdapter();
+        }
+
+        @Override
+        public Adapter caseReference(Reference object) {
+            return createReferenceAdapter();
+        }
+
+        @Override
+        public Adapter caseValidationRule(ValidationRule object) {
+            return createValidationRuleAdapter();
+        }
+
+        @Override
+        public Adapter defaultCase(EObject object) {
+            return createEObjectAdapter();
+        }
+    };
 
     /**
-     * Creates an adapter for the <code>target</code>.
-     * <!-- begin-user-doc -->
+     * Creates an adapter for the <code>target</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param target the object to adapt.
+     * 
+     * @param target
+     *            the object to adapt.
      * @return the adapter for the <code>target</code>.
      * @generated
      */
     @Override
     public Adapter createAdapter(Notifier target) {
-        return modelSwitch.doSwitch((EObject)target);
+        return modelSwitch.doSwitch((EObject) target);
     }
 
-
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.DefaultRule <em>Default Rule</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.DefaultRule <em>Default Rule</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.DefaultRule
      * @generated
@@ -168,11 +180,12 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.Depends <em>Depends</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.Depends <em>Depends</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.Depends
      * @generated
@@ -182,11 +195,12 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.DocumentRoot <em>Document Root</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.DocumentRoot <em>Document Root</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.DocumentRoot
      * @generated
@@ -196,11 +210,12 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.Huientities <em>Huientities</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.Huientities <em>Huientities</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.Huientities
      * @generated
@@ -210,11 +225,12 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.Huientity <em>Huientity</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.Huientity <em>Huientity</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.Huientity
      * @generated
@@ -224,11 +240,12 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.Huiproperty <em>Huiproperty</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.Huiproperty <em>Huiproperty</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.Huiproperty
      * @generated
@@ -238,11 +255,13 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.Huipropertygroup <em>Huipropertygroup</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.Huipropertygroup
+     * <em>Huipropertygroup</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.Huipropertygroup
      * @generated
@@ -252,11 +271,12 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.Huirelation <em>Huirelation</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.Huirelation <em>Huirelation</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.Huirelation
      * @generated
@@ -266,11 +286,12 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.Option <em>Option</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.Option <em>Option</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.Option
      * @generated
@@ -280,11 +301,12 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.Param <em>Param</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.Param <em>Param</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.Param
      * @generated
@@ -294,11 +316,12 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.Reference <em>Reference</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.Reference <em>Reference</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.Reference
      * @generated
@@ -308,11 +331,12 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.sernet.eclipse.hitro.ValidationRule <em>Validation Rule</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link de.sernet.eclipse.hitro.ValidationRule <em>Validation
+     * Rule</em>}'. <!-- begin-user-doc --> This default implementation returns
+     * null so that we can easily ignore cases; it's useful to ignore a case
+     * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see de.sernet.eclipse.hitro.ValidationRule
      * @generated
@@ -322,10 +346,9 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for the default case.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for the default case. <!-- begin-user-doc --> This
+     * default implementation returns null. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @generated
      */
@@ -333,4 +356,4 @@ public class HitroAdapterFactory extends AdapterFactoryImpl {
         return null;
     }
 
-} //HitroAdapterFactory
+} // HitroAdapterFactory

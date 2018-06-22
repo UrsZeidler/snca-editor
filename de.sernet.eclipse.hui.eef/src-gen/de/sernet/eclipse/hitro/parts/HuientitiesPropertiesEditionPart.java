@@ -27,7 +27,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-
 // End of user code
 
 /**
@@ -36,63 +35,63 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface HuientitiesPropertiesEditionPart {
 
+    /**
+     * Init the huientity
+     * 
+     * @param current
+     *            the current value
+     * @param containgFeature
+     *            the feature where to navigate if necessary
+     * @param feature
+     *            the feature to manage
+     */
+    public void initHuientity(ReferencesTableSettings settings);
 
+    /**
+     * Update the huientity
+     * 
+     * @param newValue
+     *            the huientity to update
+     * 
+     */
+    public void updateHuientity();
 
-	/**
-	 * Init the huientity
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initHuientity(ReferencesTableSettings settings);
+    /**
+     * Adds the given filter to the huientity edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addFilterToHuientity(ViewerFilter filter);
 
-	/**
-	 * Update the huientity
-	 * @param newValue the huientity to update
-	 * 
-	 */
-	public void updateHuientity();
+    /**
+     * Adds the given filter to the huientity edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addBusinessFilterToHuientity(ViewerFilter filter);
 
-	/**
-	 * Adds the given filter to the huientity edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToHuientity(ViewerFilter filter);
+    /**
+     * @return true if the given element is contained inside the huientity table
+     * 
+     */
+    public boolean isContainedInHuientityTable(EObject element);
 
-	/**
-	 * Adds the given filter to the huientity edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToHuientity(ViewerFilter filter);
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
-	/**
-	 * @return true if the given element is contained inside the huientity table
-	 * 
-	 */
-	public boolean isContainedInHuientityTable(EObject element);
+    // Start of user code for additional methods
 
-
-
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

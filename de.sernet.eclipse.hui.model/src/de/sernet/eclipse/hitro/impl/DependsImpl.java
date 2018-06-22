@@ -32,25 +32,27 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Depends</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Depends</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sernet.eclipse.hitro.impl.DependsImpl#isInverse <em>Inverse</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.DependsImpl#getOption <em>Option</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.DependsImpl#getValue <em>Value</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.DependsImpl#isInverse
+ * <em>Inverse</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.DependsImpl#getOption
+ * <em>Option</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.DependsImpl#getValue
+ * <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DependsImpl extends MinimalEObjectImpl.Container implements Depends {
     /**
-     * The default value of the '{@link #isInverse() <em>Inverse</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isInverse() <em>Inverse</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isInverse()
      * @generated
      * @ordered
@@ -58,9 +60,9 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
     protected static final boolean INVERSE_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isInverse() <em>Inverse</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isInverse() <em>Inverse</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isInverse()
      * @generated
      * @ordered
@@ -68,9 +70,9 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
     protected boolean inverse = INVERSE_EDEFAULT;
 
     /**
-     * This is true if the Inverse attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Inverse attribute has been set. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
@@ -78,8 +80,8 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
 
     /**
      * The cached value of the '{@link #getOption() <em>Option</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOption()
      * @generated
      * @ordered
@@ -88,8 +90,8 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
 
     /**
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -98,8 +100,8 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
 
     /**
      * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -107,8 +109,8 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
     protected String value = VALUE_EDEFAULT;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected DependsImpl() {
@@ -116,8 +118,8 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -126,8 +128,8 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isInverse() {
@@ -135,8 +137,8 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setInverse(boolean newInverse) {
@@ -145,12 +147,13 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
         boolean oldInverseESet = inverseESet;
         inverseESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.DEPENDS__INVERSE, oldInverse, inverse, !oldInverseESet));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.DEPENDS__INVERSE,
+                    oldInverse, inverse, !oldInverseESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetInverse() {
@@ -159,12 +162,13 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
         inverse = INVERSE_EDEFAULT;
         inverseESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.DEPENDS__INVERSE, oldInverse, INVERSE_EDEFAULT, oldInverseESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.DEPENDS__INVERSE,
+                    oldInverse, INVERSE_EDEFAULT, oldInverseESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetInverse() {
@@ -172,8 +176,8 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Huiproperty getOption() {
@@ -181,20 +185,21 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setOption(Huiproperty newOption) {
         Huiproperty oldOption = option;
         option = newOption;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.DEPENDS__OPTION, oldOption, option));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.DEPENDS__OPTION,
+                    oldOption, option));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getValue() {
@@ -202,111 +207,116 @@ public class DependsImpl extends MinimalEObjectImpl.Container implements Depends
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setValue(String newValue) {
         String oldValue = value;
         value = newValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.DEPENDS__VALUE, oldValue, value));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.DEPENDS__VALUE,
+                    oldValue, value));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case HitroPackage.DEPENDS__INVERSE:
-                return isInverse();
-            case HitroPackage.DEPENDS__OPTION:
-                return getOption();
-            case HitroPackage.DEPENDS__VALUE:
-                return getValue();
+        case HitroPackage.DEPENDS__INVERSE:
+            return isInverse();
+        case HitroPackage.DEPENDS__OPTION:
+            return getOption();
+        case HitroPackage.DEPENDS__VALUE:
+            return getValue();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case HitroPackage.DEPENDS__INVERSE:
-                setInverse((Boolean)newValue);
-                return;
-            case HitroPackage.DEPENDS__OPTION:
-                setOption((Huiproperty)newValue);
-                return;
-            case HitroPackage.DEPENDS__VALUE:
-                setValue((String)newValue);
-                return;
+        case HitroPackage.DEPENDS__INVERSE:
+            setInverse((Boolean) newValue);
+            return;
+        case HitroPackage.DEPENDS__OPTION:
+            setOption((Huiproperty) newValue);
+            return;
+        case HitroPackage.DEPENDS__VALUE:
+            setValue((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case HitroPackage.DEPENDS__INVERSE:
-                unsetInverse();
-                return;
-            case HitroPackage.DEPENDS__OPTION:
-                setOption((Huiproperty)null);
-                return;
-            case HitroPackage.DEPENDS__VALUE:
-                setValue(VALUE_EDEFAULT);
-                return;
+        case HitroPackage.DEPENDS__INVERSE:
+            unsetInverse();
+            return;
+        case HitroPackage.DEPENDS__OPTION:
+            setOption((Huiproperty) null);
+            return;
+        case HitroPackage.DEPENDS__VALUE:
+            setValue(VALUE_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case HitroPackage.DEPENDS__INVERSE:
-                return isSetInverse();
-            case HitroPackage.DEPENDS__OPTION:
-                return option != null;
-            case HitroPackage.DEPENDS__VALUE:
-                return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+        case HitroPackage.DEPENDS__INVERSE:
+            return isSetInverse();
+        case HitroPackage.DEPENDS__OPTION:
+            return option != null;
+        case HitroPackage.DEPENDS__VALUE:
+            return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
         }
         return super.eIsSet(featureID);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (inverse: ");
-        if (inverseESet) result.append(inverse); else result.append("<unset>");
+        if (inverseESet)
+            result.append(inverse);
+        else
+            result.append("<unset>");
         result.append(", value: ");
         result.append(value);
         result.append(')');
         return result.toString();
     }
 
-} //DependsImpl
+} // DependsImpl

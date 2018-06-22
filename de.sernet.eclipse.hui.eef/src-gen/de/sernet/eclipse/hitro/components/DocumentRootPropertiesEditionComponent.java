@@ -74,7 +74,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
-
 // End of user code
 
 /**
@@ -83,145 +82,143 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public class DocumentRootPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-	
-	public static String BASE_PART = "Base"; //$NON-NLS-1$
+    public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	
-	
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public DocumentRootPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject documentRoot, String editing_mode) {
-		super(editingContext, documentRoot, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = HitroViewsRepository.class;
-		partKey = HitroViewsRepository.DocumentRoot.class;
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public DocumentRootPropertiesEditionComponent(PropertiesEditingContext editingContext,
+            EObject documentRoot, String editing_mode) {
+        super(editingContext, documentRoot, editing_mode);
+        parts = new String[] { BASE_PART };
+        repositoryKey = HitroViewsRepository.class;
+        partKey = HitroViewsRepository.DocumentRoot.class;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
-	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
-	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final DocumentRoot documentRoot = (DocumentRoot)elt;
-			final DocumentRootPropertiesEditionPart basePart = (DocumentRootPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(HitroViewsRepository.DocumentRoot.Properties.mixed))
-				basePart.setMixed(documentRoot.getMixed());
-			
-			// init filters
-			
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+     *      int, org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.emf.ecore.resource.ResourceSet)
+     * 
+     */
+    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+        setInitializing(true);
+        if (editingPart != null && key == partKey) {
+            editingPart.setContext(elt, allResource);
 
+            final DocumentRoot documentRoot = (DocumentRoot) elt;
+            final DocumentRootPropertiesEditionPart basePart = (DocumentRootPropertiesEditionPart) editingPart;
+            // init values
+            if (isAccessible(HitroViewsRepository.DocumentRoot.Properties.mixed))
+                basePart.setMixed(documentRoot.getMixed());
 
+            // init filters
 
+            // init values for referenced views
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-	 */
-	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == HitroViewsRepository.DocumentRoot.Properties.mixed) {
-			return HitroPackage.eINSTANCE.getDocumentRoot_Mixed();
-		}
-		return super.associatedFeature(editorKey);
-	}
+            // init filters for referenced views
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		DocumentRoot documentRoot = (DocumentRoot)semanticObject;
-		if (HitroViewsRepository.DocumentRoot.Properties.mixed == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				documentRoot.getMixed().clear();
-				documentRoot.getMixed().addAll(((EList) event.getNewValue()));
-			}
-		}
-	}
+        }
+        setInitializing(false);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-	 */
-	public void updatePart(Notification msg) {
-		super.updatePart(msg);
-		if (editingPart.isVisible()) {
-			DocumentRootPropertiesEditionPart basePart = (DocumentRootPropertiesEditionPart)editingPart;
-			if (HitroPackage.eINSTANCE.getDocumentRoot_Mixed().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(HitroViewsRepository.DocumentRoot.Properties.mixed)) {
-				if (msg.getNewValue() instanceof EList<?>) {
-					basePart.setMixed((EList<?>)msg.getNewValue());
-				} else if (msg.getNewValue() == null) {
-					basePart.setMixed(new BasicEList<Object>());
-				} else {
-					BasicEList<Object> newValueAsList = new BasicEList<Object>();
-					newValueAsList.add(msg.getNewValue());
-					basePart.setMixed(newValueAsList);
-				}
-			}
-			
-			
-		}
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+     */
+    public EStructuralFeature associatedFeature(Object editorKey) {
+        if (editorKey == HitroViewsRepository.DocumentRoot.Properties.mixed) {
+            return HitroPackage.eINSTANCE.getDocumentRoot_Mixed();
+        }
+        return super.associatedFeature(editorKey);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-	 */
-	@Override
-	protected NotificationFilter[] getNotificationFilters() {
-		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			HitroPackage.eINSTANCE.getDocumentRoot_Mixed()		);
-		return new NotificationFilter[] {filter,};
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void updateSemanticModel(final IPropertiesEditionEvent event) {
+        DocumentRoot documentRoot = (DocumentRoot) semanticObject;
+        if (HitroViewsRepository.DocumentRoot.Properties.mixed == event.getAffectedEditor()) {
+            if (event.getKind() == PropertiesEditionEvent.SET) {
+                documentRoot.getMixed().clear();
+                documentRoot.getMixed().addAll(((EList) event.getNewValue()));
+            }
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+     */
+    public void updatePart(Notification msg) {
+        super.updatePart(msg);
+        if (editingPart.isVisible()) {
+            DocumentRootPropertiesEditionPart basePart = (DocumentRootPropertiesEditionPart) editingPart;
+            if (HitroPackage.eINSTANCE.getDocumentRoot_Mixed().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(HitroViewsRepository.DocumentRoot.Properties.mixed)) {
+                if (msg.getNewValue() instanceof EList<?>) {
+                    basePart.setMixed((EList<?>) msg.getNewValue());
+                } else if (msg.getNewValue() == null) {
+                    basePart.setMixed(new BasicEList<Object>());
+                } else {
+                    BasicEList<Object> newValueAsList = new BasicEList<Object>();
+                    newValueAsList.add(msg.getNewValue());
+                    basePart.setMixed(newValueAsList);
+                }
+            }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (HitroViewsRepository.DocumentRoot.Properties.mixed == event.getAffectedEditor()) {
-					BasicDiagnostic chain = new BasicDiagnostic();
-					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
-						chain.add(Diagnostician.INSTANCE.validate(HitroPackage.eINSTANCE.getDocumentRoot_Mixed().getEAttributeType(), iterator.next()));
-					}
-					ret = chain;
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+     */
+    @Override
+    protected NotificationFilter[] getNotificationFilters() {
+        NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+                HitroPackage.eINSTANCE.getDocumentRoot_Mixed());
+        return new NotificationFilter[] { filter, };
+    }
 
-	
-
-	
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public Diagnostic validateValue(IPropertiesEditionEvent event) {
+        Diagnostic ret = Diagnostic.OK_INSTANCE;
+        if (event.getNewValue() != null) {
+            try {
+                if (HitroViewsRepository.DocumentRoot.Properties.mixed == event
+                        .getAffectedEditor()) {
+                    BasicDiagnostic chain = new BasicDiagnostic();
+                    for (Iterator iterator = ((List) event.getNewValue()).iterator(); iterator
+                            .hasNext();) {
+                        chain.add(Diagnostician.INSTANCE.validate(
+                                HitroPackage.eINSTANCE.getDocumentRoot_Mixed().getEAttributeType(),
+                                iterator.next()));
+                    }
+                    ret = chain;
+                }
+            } catch (IllegalArgumentException iae) {
+                ret = BasicDiagnostic.toDiagnostic(iae);
+            } catch (WrappedException we) {
+                ret = BasicDiagnostic.toDiagnostic(we);
+            }
+        }
+        return ret;
+    }
 
 }

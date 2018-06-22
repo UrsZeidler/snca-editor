@@ -25,48 +25,58 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Huiproperty</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Huiproperty</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- *   A property to be documented.
+ * <!-- begin-model-doc --> A property to be documented.
  * 
- *   May have dependencies, which means it will only
- *   be displayed when one of the given options has been previously selected.
+ * May have dependencies, which means it will only be displayed when one of the
+ * given options has been previously selected.
  * 
- *   Attributes:
- *   name:        name of property, i.e. "Colour"
- *   enum:        free text entry, or selection of fixed options?
- *   multiselect: can user select multiple items at once?
- * <!-- end-model-doc -->
+ * Attributes: name: name of property, i.e. "Colour" enum: free text entry, or
+ * selection of fixed options? multiselect: can user select multiple items at
+ * once? <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getDepends <em>Depends</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getReferences <em>References</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultRule <em>Default Rule</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getValidationRule <em>Validation Rule</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getOption <em>Option</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#isCrudButtons <em>Crud Buttons</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultValue <em>Default Value</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#isEditable <em>Editable</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#isFocus <em>Focus</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getId <em>Id</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getInputtype <em>Inputtype</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#isIsURL <em>Is URL</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getMax <em>Max</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getMin <em>Min</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getName <em>Name</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#isReport <em>Report</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#isRequired <em>Required</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#isShowInObjectBrowser <em>Show In Object Browser</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getTags <em>Tags</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getTextrows <em>Textrows</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#getTooltip <em>Tooltip</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huiproperty#isVisible <em>Visible</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getDepends
+ * <em>Depends</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getReferences
+ * <em>References</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultRule <em>Default
+ * Rule</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getValidationRule
+ * <em>Validation Rule</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getOption
+ * <em>Option</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#isCrudButtons <em>Crud
+ * Buttons</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultValue <em>Default
+ * Value</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#isEditable
+ * <em>Editable</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#isFocus <em>Focus</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getId <em>Id</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getInputtype
+ * <em>Inputtype</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#isIsURL <em>Is URL</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getMax <em>Max</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getMin <em>Min</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getName <em>Name</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#isReport <em>Report</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#isRequired
+ * <em>Required</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#isShowInObjectBrowser <em>Show
+ * In Object Browser</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getTags <em>Tags</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getTextrows
+ * <em>Textrows</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#getTooltip
+ * <em>Tooltip</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huiproperty#isVisible
+ * <em>Visible</em>}</li>
  * </ul>
  *
  * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty()
@@ -75,135 +85,151 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Huiproperty extends EObject {
     /**
-     * Returns the value of the '<em><b>Depends</b></em>' containment reference list.
-     * The list contents are of type {@link de.sernet.eclipse.hitro.Depends}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Depends</b></em>' containment reference
+     * list. The list contents are of type
+     * {@link de.sernet.eclipse.hitro.Depends}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Depends</em>' containment reference list isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Depends</em>' containment reference list isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Depends</em>' containment reference list.
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Depends()
-     * @model containment="true"
-     *        extendedMetaData="kind='element' name='depends'"
+     * @model containment="true" extendedMetaData="kind='element'
+     *        name='depends'"
      * @generated
      */
     EList<Depends> getDepends();
 
     /**
-     * Returns the value of the '<em><b>References</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>References</b></em>' containment
+     * reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>References</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>References</em>' containment reference isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>References</em>' containment reference.
      * @see #setReferences(Reference)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_References()
-     * @model containment="true"
-     *        extendedMetaData="kind='element' name='references'"
+     * @model containment="true" extendedMetaData="kind='element'
+     *        name='references'"
      * @generated
      */
     Reference getReferences();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getReferences <em>References</em>}' containment reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>References</em>' containment reference.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getReferences
+     * <em>References</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>References</em>' containment
+     *            reference.
      * @see #getReferences()
      * @generated
      */
     void setReferences(Reference value);
 
     /**
-     * Returns the value of the '<em><b>Default Rule</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Default Rule</b></em>' containment
+     * reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Default Rule</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Default Rule</em>' containment reference isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Default Rule</em>' containment reference.
      * @see #setDefaultRule(DefaultRule)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_DefaultRule()
-     * @model containment="true"
-     *        extendedMetaData="kind='element' name='defaultRule'"
+     * @model containment="true" extendedMetaData="kind='element'
+     *        name='defaultRule'"
      * @generated
      */
     DefaultRule getDefaultRule();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultRule <em>Default Rule</em>}' containment reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Default Rule</em>' containment reference.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultRule <em>Default
+     * Rule</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Default Rule</em>' containment
+     *            reference.
      * @see #getDefaultRule()
      * @generated
      */
     void setDefaultRule(DefaultRule value);
 
     /**
-     * Returns the value of the '<em><b>Validation Rule</b></em>' containment reference list.
-     * The list contents are of type {@link de.sernet.eclipse.hitro.ValidationRule}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Validation Rule</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link de.sernet.eclipse.hitro.ValidationRule}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Validation Rule</em>' containment reference list isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Validation Rule</em>' containment reference
+     * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Validation Rule</em>' containment reference list.
+     * 
+     * @return the value of the '<em>Validation Rule</em>' containment reference
+     *         list.
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_ValidationRule()
-     * @model containment="true"
-     *        extendedMetaData="kind='element' name='validationRule'"
+     * @model containment="true" extendedMetaData="kind='element'
+     *        name='validationRule'"
      * @generated
      */
     EList<ValidationRule> getValidationRule();
 
     /**
-     * Returns the value of the '<em><b>Option</b></em>' containment reference list.
-     * The list contents are of type {@link de.sernet.eclipse.hitro.Option}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Option</b></em>' containment reference
+     * list. The list contents are of type
+     * {@link de.sernet.eclipse.hitro.Option}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Option</em>' containment reference list isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Option</em>' containment reference list isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Option</em>' containment reference list.
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Option()
-     * @model containment="true"
-     *        extendedMetaData="kind='element' name='option'"
+     * @model containment="true" extendedMetaData="kind='element' name='option'"
      * @generated
      */
     EList<Option> getOption();
 
     /**
-     * Returns the value of the '<em><b>Crud Buttons</b></em>' attribute.
-     * The default value is <code>"false"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Crud Buttons</b></em>' attribute. The
+     * default value is <code>"false"</code>. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Crud Buttons</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Crud Buttons</em>' attribute.
      * @see #isSetCrudButtons()
      * @see #unsetCrudButtons()
      * @see #setCrudButtons(boolean)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_CrudButtons()
-     * @model default="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @model default="false" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Boolean"
      *        extendedMetaData="kind='attribute' name='crudButtons'"
      * @generated
      */
     boolean isCrudButtons();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isCrudButtons <em>Crud Buttons</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Crud Buttons</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isCrudButtons <em>Crud
+     * Buttons</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Crud Buttons</em>' attribute.
      * @see #isSetCrudButtons()
      * @see #unsetCrudButtons()
      * @see #isCrudButtons()
@@ -212,9 +238,10 @@ public interface Huiproperty extends EObject {
     void setCrudButtons(boolean value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isCrudButtons <em>Crud Buttons</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isCrudButtons <em>Crud
+     * Buttons</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isSetCrudButtons()
      * @see #isCrudButtons()
      * @see #setCrudButtons(boolean)
@@ -223,10 +250,13 @@ public interface Huiproperty extends EObject {
     void unsetCrudButtons();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isCrudButtons <em>Crud Buttons</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return whether the value of the '<em>Crud Buttons</em>' attribute is set.
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isCrudButtons <em>Crud
+     * Buttons</em>}' attribute is set. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return whether the value of the '<em>Crud Buttons</em>' attribute is
+     *         set.
      * @see #unsetCrudButtons()
      * @see #isCrudButtons()
      * @see #setCrudButtons(boolean)
@@ -235,30 +265,33 @@ public interface Huiproperty extends EObject {
     boolean isSetCrudButtons();
 
     /**
-     * Returns the value of the '<em><b>Default Value</b></em>' attribute.
-     * The default value is <code>"0"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Default Value</b></em>' attribute. The
+     * default value is <code>"0"</code>. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Default Value</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Default Value</em>' attribute.
      * @see #isSetDefaultValue()
      * @see #unsetDefaultValue()
      * @see #setDefaultValue(int)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_DefaultValue()
-     * @model default="0" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int"
+     * @model default="0" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Int"
      *        extendedMetaData="kind='attribute' name='defaultValue'"
      * @generated
      */
     int getDefaultValue();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultValue <em>Default Value</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Default Value</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultValue <em>Default
+     * Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Default Value</em>' attribute.
      * @see #isSetDefaultValue()
      * @see #unsetDefaultValue()
      * @see #getDefaultValue()
@@ -267,9 +300,10 @@ public interface Huiproperty extends EObject {
     void setDefaultValue(int value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultValue <em>Default Value</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultValue <em>Default
+     * Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isSetDefaultValue()
      * @see #getDefaultValue()
      * @see #setDefaultValue(int)
@@ -278,10 +312,13 @@ public interface Huiproperty extends EObject {
     void unsetDefaultValue();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultValue <em>Default Value</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return whether the value of the '<em>Default Value</em>' attribute is set.
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getDefaultValue <em>Default
+     * Value</em>}' attribute is set. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return whether the value of the '<em>Default Value</em>' attribute is
+     *         set.
      * @see #unsetDefaultValue()
      * @see #getDefaultValue()
      * @see #setDefaultValue(int)
@@ -290,30 +327,34 @@ public interface Huiproperty extends EObject {
     boolean isSetDefaultValue();
 
     /**
-     * Returns the value of the '<em><b>Editable</b></em>' attribute.
-     * The default value is <code>"true"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Editable</b></em>' attribute. The
+     * default value is <code>"true"</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Editable</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Editable</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Editable</em>' attribute.
      * @see #isSetEditable()
      * @see #unsetEditable()
      * @see #setEditable(boolean)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Editable()
-     * @model default="true" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @model default="true" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Boolean"
      *        extendedMetaData="kind='attribute' name='editable'"
      * @generated
      */
     boolean isEditable();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isEditable <em>Editable</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Editable</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isEditable
+     * <em>Editable</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @param value
+     *            the new value of the '<em>Editable</em>' attribute.
      * @see #isSetEditable()
      * @see #unsetEditable()
      * @see #isEditable()
@@ -322,9 +363,11 @@ public interface Huiproperty extends EObject {
     void setEditable(boolean value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isEditable <em>Editable</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isEditable
+     * <em>Editable</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #isSetEditable()
      * @see #isEditable()
      * @see #setEditable(boolean)
@@ -333,9 +376,11 @@ public interface Huiproperty extends EObject {
     void unsetEditable();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isEditable <em>Editable</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isEditable
+     * <em>Editable</em>}' attribute is set. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @return whether the value of the '<em>Editable</em>' attribute is set.
      * @see #unsetEditable()
      * @see #isEditable()
@@ -345,30 +390,32 @@ public interface Huiproperty extends EObject {
     boolean isSetEditable();
 
     /**
-     * Returns the value of the '<em><b>Focus</b></em>' attribute.
-     * The default value is <code>"false"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Focus</b></em>' attribute. The default
+     * value is <code>"false"</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Focus</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Focus</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Focus</em>' attribute.
      * @see #isSetFocus()
      * @see #unsetFocus()
      * @see #setFocus(boolean)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Focus()
-     * @model default="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @model default="false" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Boolean"
      *        extendedMetaData="kind='attribute' name='focus'"
      * @generated
      */
     boolean isFocus();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isFocus <em>Focus</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Focus</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isFocus
+     * <em>Focus</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Focus</em>' attribute.
      * @see #isSetFocus()
      * @see #unsetFocus()
      * @see #isFocus()
@@ -377,9 +424,10 @@ public interface Huiproperty extends EObject {
     void setFocus(boolean value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isFocus <em>Focus</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isFocus <em>Focus</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isSetFocus()
      * @see #isFocus()
      * @see #setFocus(boolean)
@@ -388,9 +436,10 @@ public interface Huiproperty extends EObject {
     void unsetFocus();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isFocus <em>Focus</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isFocus <em>Focus</em>}'
+     * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return whether the value of the '<em>Focus</em>' attribute is set.
      * @see #unsetFocus()
      * @see #isFocus()
@@ -400,42 +449,45 @@ public interface Huiproperty extends EObject {
     boolean isSetFocus();
 
     /**
-     * Returns the value of the '<em><b>Id</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Id</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Id()
-     * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
-     *        extendedMetaData="kind='attribute' name='id'"
+     * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID"
+     *        required="true" extendedMetaData="kind='attribute' name='id'"
      * @generated
      */
     String getId();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getId <em>Id</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Id</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getId
+     * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
      * @generated
      */
     void setId(String value);
 
     /**
-     * Returns the value of the '<em><b>Inputtype</b></em>' attribute.
-     * The default value is <code>"line"</code>.
-     * The literals are from the enumeration {@link de.sernet.eclipse.hitro.Inputtypes}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Inputtype</b></em>' attribute. The
+     * default value is <code>"line"</code>. The literals are from the
+     * enumeration {@link de.sernet.eclipse.hitro.Inputtypes}. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Inputtype</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Inputtype</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Inputtype</em>' attribute.
      * @see de.sernet.eclipse.hitro.Inputtypes
      * @see #isSetInputtype()
@@ -449,10 +501,13 @@ public interface Huiproperty extends EObject {
     Inputtypes getInputtype();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getInputtype <em>Inputtype</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Inputtype</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getInputtype
+     * <em>Inputtype</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @param value
+     *            the new value of the '<em>Inputtype</em>' attribute.
      * @see de.sernet.eclipse.hitro.Inputtypes
      * @see #isSetInputtype()
      * @see #unsetInputtype()
@@ -462,9 +517,11 @@ public interface Huiproperty extends EObject {
     void setInputtype(Inputtypes value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getInputtype <em>Inputtype</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getInputtype
+     * <em>Inputtype</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #isSetInputtype()
      * @see #getInputtype()
      * @see #setInputtype(Inputtypes)
@@ -473,9 +530,11 @@ public interface Huiproperty extends EObject {
     void unsetInputtype();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getInputtype <em>Inputtype</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getInputtype
+     * <em>Inputtype</em>}' attribute is set. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @return whether the value of the '<em>Inputtype</em>' attribute is set.
      * @see #unsetInputtype()
      * @see #getInputtype()
@@ -485,30 +544,33 @@ public interface Huiproperty extends EObject {
     boolean isSetInputtype();
 
     /**
-     * Returns the value of the '<em><b>Is URL</b></em>' attribute.
-     * The default value is <code>"false"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Is URL</b></em>' attribute. The default
+     * value is <code>"false"</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Is URL</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Is URL</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Is URL</em>' attribute.
      * @see #isSetIsURL()
      * @see #unsetIsURL()
      * @see #setIsURL(boolean)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_IsURL()
-     * @model default="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @model default="false" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Boolean"
      *        extendedMetaData="kind='attribute' name='isURL'"
      * @generated
      */
     boolean isIsURL();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isIsURL <em>Is URL</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Is URL</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isIsURL
+     * <em>Is URL</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @param value
+     *            the new value of the '<em>Is URL</em>' attribute.
      * @see #isSetIsURL()
      * @see #unsetIsURL()
      * @see #isIsURL()
@@ -517,9 +579,10 @@ public interface Huiproperty extends EObject {
     void setIsURL(boolean value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isIsURL <em>Is URL</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isIsURL <em>Is URL</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isSetIsURL()
      * @see #isIsURL()
      * @see #setIsURL(boolean)
@@ -528,9 +591,10 @@ public interface Huiproperty extends EObject {
     void unsetIsURL();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isIsURL <em>Is URL</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isIsURL <em>Is URL</em>}'
+     * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return whether the value of the '<em>Is URL</em>' attribute is set.
      * @see #unsetIsURL()
      * @see #isIsURL()
@@ -540,13 +604,14 @@ public interface Huiproperty extends EObject {
     boolean isSetIsURL();
 
     /**
-     * Returns the value of the '<em><b>Max</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Max</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Max</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Max</em>' attribute isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Max</em>' attribute.
      * @see #isSetMax()
      * @see #unsetMax()
@@ -559,10 +624,11 @@ public interface Huiproperty extends EObject {
     int getMax();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getMax <em>Max</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Max</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getMax
+     * <em>Max</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Max</em>' attribute.
      * @see #isSetMax()
      * @see #unsetMax()
      * @see #getMax()
@@ -571,9 +637,10 @@ public interface Huiproperty extends EObject {
     void setMax(int value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getMax <em>Max</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getMax <em>Max</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isSetMax()
      * @see #getMax()
      * @see #setMax(int)
@@ -582,9 +649,10 @@ public interface Huiproperty extends EObject {
     void unsetMax();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getMax <em>Max</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getMax <em>Max</em>}'
+     * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return whether the value of the '<em>Max</em>' attribute is set.
      * @see #unsetMax()
      * @see #getMax()
@@ -594,13 +662,14 @@ public interface Huiproperty extends EObject {
     boolean isSetMax();
 
     /**
-     * Returns the value of the '<em><b>Min</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Min</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Min</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Min</em>' attribute isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Min</em>' attribute.
      * @see #isSetMin()
      * @see #unsetMin()
@@ -613,10 +682,11 @@ public interface Huiproperty extends EObject {
     int getMin();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getMin <em>Min</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Min</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getMin
+     * <em>Min</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Min</em>' attribute.
      * @see #isSetMin()
      * @see #unsetMin()
      * @see #getMin()
@@ -625,9 +695,10 @@ public interface Huiproperty extends EObject {
     void setMin(int value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getMin <em>Min</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getMin <em>Min</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isSetMin()
      * @see #getMin()
      * @see #setMin(int)
@@ -636,9 +707,10 @@ public interface Huiproperty extends EObject {
     void unsetMin();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getMin <em>Min</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getMin <em>Min</em>}'
+     * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return whether the value of the '<em>Min</em>' attribute is set.
      * @see #unsetMin()
      * @see #getMin()
@@ -648,13 +720,14 @@ public interface Huiproperty extends EObject {
     boolean isSetMin();
 
     /**
-     * Returns the value of the '<em><b>Name</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Name</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Name()
@@ -665,40 +738,44 @@ public interface Huiproperty extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getName <em>Name</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Name</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getName
+     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
      */
     void setName(String value);
 
     /**
-     * Returns the value of the '<em><b>Report</b></em>' attribute.
-     * The default value is <code>"true"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Report</b></em>' attribute. The default
+     * value is <code>"true"</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Report</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Report</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Report</em>' attribute.
      * @see #isSetReport()
      * @see #unsetReport()
      * @see #setReport(boolean)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Report()
-     * @model default="true" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @model default="true" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Boolean"
      *        extendedMetaData="kind='attribute' name='report'"
      * @generated
      */
     boolean isReport();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isReport <em>Report</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Report</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isReport <em>Report</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Report</em>' attribute.
      * @see #isSetReport()
      * @see #unsetReport()
      * @see #isReport()
@@ -707,9 +784,10 @@ public interface Huiproperty extends EObject {
     void setReport(boolean value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isReport <em>Report</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isReport <em>Report</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isSetReport()
      * @see #isReport()
      * @see #setReport(boolean)
@@ -718,9 +796,10 @@ public interface Huiproperty extends EObject {
     void unsetReport();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isReport <em>Report</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isReport <em>Report</em>}'
+     * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return whether the value of the '<em>Report</em>' attribute is set.
      * @see #unsetReport()
      * @see #isReport()
@@ -730,30 +809,34 @@ public interface Huiproperty extends EObject {
     boolean isSetReport();
 
     /**
-     * Returns the value of the '<em><b>Required</b></em>' attribute.
-     * The default value is <code>"false"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Required</b></em>' attribute. The
+     * default value is <code>"false"</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Required</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Required</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Required</em>' attribute.
      * @see #isSetRequired()
      * @see #unsetRequired()
      * @see #setRequired(boolean)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Required()
-     * @model default="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @model default="false" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Boolean"
      *        extendedMetaData="kind='attribute' name='required'"
      * @generated
      */
     boolean isRequired();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isRequired <em>Required</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Required</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isRequired
+     * <em>Required</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @param value
+     *            the new value of the '<em>Required</em>' attribute.
      * @see #isSetRequired()
      * @see #unsetRequired()
      * @see #isRequired()
@@ -762,9 +845,11 @@ public interface Huiproperty extends EObject {
     void setRequired(boolean value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isRequired <em>Required</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isRequired
+     * <em>Required</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #isSetRequired()
      * @see #isRequired()
      * @see #setRequired(boolean)
@@ -773,9 +858,11 @@ public interface Huiproperty extends EObject {
     void unsetRequired();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isRequired <em>Required</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isRequired
+     * <em>Required</em>}' attribute is set. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @return whether the value of the '<em>Required</em>' attribute is set.
      * @see #unsetRequired()
      * @see #isRequired()
@@ -785,30 +872,36 @@ public interface Huiproperty extends EObject {
     boolean isSetRequired();
 
     /**
-     * Returns the value of the '<em><b>Show In Object Browser</b></em>' attribute.
-     * The default value is <code>"false"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Show In Object Browser</b></em>'
+     * attribute. The default value is <code>"false"</code>. <!-- begin-user-doc
+     * -->
      * <p>
-     * If the meaning of the '<em>Show In Object Browser</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Show In Object Browser</em>' attribute isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Show In Object Browser</em>' attribute.
      * @see #isSetShowInObjectBrowser()
      * @see #unsetShowInObjectBrowser()
      * @see #setShowInObjectBrowser(boolean)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_ShowInObjectBrowser()
-     * @model default="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @model default="false" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Boolean"
      *        extendedMetaData="kind='attribute' name='showInObjectBrowser'"
      * @generated
      */
     boolean isShowInObjectBrowser();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isShowInObjectBrowser <em>Show In Object Browser</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Show In Object Browser</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isShowInObjectBrowser
+     * <em>Show In Object Browser</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Show In Object Browser</em>'
+     *            attribute.
      * @see #isSetShowInObjectBrowser()
      * @see #unsetShowInObjectBrowser()
      * @see #isShowInObjectBrowser()
@@ -817,9 +910,11 @@ public interface Huiproperty extends EObject {
     void setShowInObjectBrowser(boolean value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isShowInObjectBrowser <em>Show In Object Browser</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isShowInObjectBrowser
+     * <em>Show In Object Browser</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isSetShowInObjectBrowser()
      * @see #isShowInObjectBrowser()
      * @see #setShowInObjectBrowser(boolean)
@@ -828,10 +923,13 @@ public interface Huiproperty extends EObject {
     void unsetShowInObjectBrowser();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isShowInObjectBrowser <em>Show In Object Browser</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return whether the value of the '<em>Show In Object Browser</em>' attribute is set.
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isShowInObjectBrowser
+     * <em>Show In Object Browser</em>}' attribute is set. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @return whether the value of the '<em>Show In Object Browser</em>'
+     *         attribute is set.
      * @see #unsetShowInObjectBrowser()
      * @see #isShowInObjectBrowser()
      * @see #setShowInObjectBrowser(boolean)
@@ -840,13 +938,14 @@ public interface Huiproperty extends EObject {
     boolean isSetShowInObjectBrowser();
 
     /**
-     * Returns the value of the '<em><b>Tags</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Tags</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Tags</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Tags</em>' attribute isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Tags</em>' attribute.
      * @see #setTags(String)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Tags()
@@ -857,40 +956,45 @@ public interface Huiproperty extends EObject {
     String getTags();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getTags <em>Tags</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Tags</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getTags
+     * <em>Tags</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Tags</em>' attribute.
      * @see #getTags()
      * @generated
      */
     void setTags(String value);
 
     /**
-     * Returns the value of the '<em><b>Textrows</b></em>' attribute.
-     * The default value is <code>"4"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Textrows</b></em>' attribute. The
+     * default value is <code>"4"</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Textrows</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Textrows</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Textrows</em>' attribute.
      * @see #isSetTextrows()
      * @see #unsetTextrows()
      * @see #setTextrows(int)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Textrows()
-     * @model default="4" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int"
+     * @model default="4" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Int"
      *        extendedMetaData="kind='attribute' name='textrows'"
      * @generated
      */
     int getTextrows();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getTextrows <em>Textrows</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Textrows</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getTextrows
+     * <em>Textrows</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @param value
+     *            the new value of the '<em>Textrows</em>' attribute.
      * @see #isSetTextrows()
      * @see #unsetTextrows()
      * @see #getTextrows()
@@ -899,9 +1003,11 @@ public interface Huiproperty extends EObject {
     void setTextrows(int value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getTextrows <em>Textrows</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getTextrows
+     * <em>Textrows</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #isSetTextrows()
      * @see #getTextrows()
      * @see #setTextrows(int)
@@ -910,9 +1016,11 @@ public interface Huiproperty extends EObject {
     void unsetTextrows();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getTextrows <em>Textrows</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getTextrows
+     * <em>Textrows</em>}' attribute is set. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @return whether the value of the '<em>Textrows</em>' attribute is set.
      * @see #unsetTextrows()
      * @see #getTextrows()
@@ -922,13 +1030,14 @@ public interface Huiproperty extends EObject {
     boolean isSetTextrows();
 
     /**
-     * Returns the value of the '<em><b>Tooltip</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Tooltip</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Tooltip</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Tooltip</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Tooltip</em>' attribute.
      * @see #setTooltip(String)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Tooltip()
@@ -939,40 +1048,45 @@ public interface Huiproperty extends EObject {
     String getTooltip();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#getTooltip <em>Tooltip</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Tooltip</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#getTooltip <em>Tooltip</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Tooltip</em>' attribute.
      * @see #getTooltip()
      * @generated
      */
     void setTooltip(String value);
 
     /**
-     * Returns the value of the '<em><b>Visible</b></em>' attribute.
-     * The default value is <code>"true"</code>.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Visible</b></em>' attribute. The default
+     * value is <code>"true"</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Visible</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Visible</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Visible</em>' attribute.
      * @see #isSetVisible()
      * @see #unsetVisible()
      * @see #setVisible(boolean)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuiproperty_Visible()
-     * @model default="true" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @model default="true" unsettable="true"
+     *        dataType="org.eclipse.emf.ecore.xml.type.Boolean"
      *        extendedMetaData="kind='attribute' name='visible'"
      * @generated
      */
     boolean isVisible();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isVisible <em>Visible</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Visible</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isVisible <em>Visible</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Visible</em>' attribute.
      * @see #isSetVisible()
      * @see #unsetVisible()
      * @see #isVisible()
@@ -981,9 +1095,10 @@ public interface Huiproperty extends EObject {
     void setVisible(boolean value);
 
     /**
-     * Unsets the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isVisible <em>Visible</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Unsets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isVisible <em>Visible</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isSetVisible()
      * @see #isVisible()
      * @see #setVisible(boolean)
@@ -992,9 +1107,10 @@ public interface Huiproperty extends EObject {
     void unsetVisible();
 
     /**
-     * Returns whether the value of the '{@link de.sernet.eclipse.hitro.Huiproperty#isVisible <em>Visible</em>}' attribute is set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns whether the value of the
+     * '{@link de.sernet.eclipse.hitro.Huiproperty#isVisible <em>Visible</em>}'
+     * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return whether the value of the '<em>Visible</em>' attribute is set.
      * @see #unsetVisible()
      * @see #isVisible()

@@ -30,18 +30,22 @@ import org.eclipse.emf.validation.IValidationContext;
  */
 public class Test1 extends AbstractModelConstraint {
 
-	/**
-	 * 
-	 */
-	public Test1() {
-	}
+    /**
+     * 
+     */
+    public Test1() {
+    }
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
-	 */
-	@Override
-	public IStatus validate(IValidationContext ctx) {
-		return null;
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.
+     * emf.validation.IValidationContext)
+     */
+    @Override
+    public IStatus validate(IValidationContext ctx) {
+        return null;
+    }
 
 }

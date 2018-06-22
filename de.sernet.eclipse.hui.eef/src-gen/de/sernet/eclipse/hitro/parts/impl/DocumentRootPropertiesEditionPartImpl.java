@@ -89,209 +89,209 @@ import org.eclipse.swt.widgets.Text;
  * @author Urs Zeidler
  * 
  */
-public class DocumentRootPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, DocumentRootPropertiesEditionPart {
+public class DocumentRootPropertiesEditionPartImpl extends CompositePropertiesEditionPart
+        implements ISWTPropertiesEditionPart, DocumentRootPropertiesEditionPart {
 
-	protected Text mixed;
-	protected Button editMixed;
-	protected EList mixedList;
+    protected Text mixed;
+    protected Button editMixed;
+    protected EList mixedList;
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent
+     *            the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public DocumentRootPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public Composite createFigure(final Composite parent) {
+        view = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(view);
+        return view;
+    }
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public DocumentRootPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createControls(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(Composite view) {
+        CompositionSequence documentRootStep = new BindingCompositionSequence(
+                propertiesEditionComponent);
+        documentRootStep.addStep(HitroViewsRepository.DocumentRoot.Properties.class)
+                .addStep(HitroViewsRepository.DocumentRoot.Properties.mixed);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+        composer = new PartComposer(documentRootStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(Composite view) { 
-		CompositionSequence documentRootStep = new BindingCompositionSequence(propertiesEditionComponent);
-		documentRootStep
-			.addStep(HitroViewsRepository.DocumentRoot.Properties.class)
-			.addStep(HitroViewsRepository.DocumentRoot.Properties.mixed);
-		
-		
-		composer = new PartComposer(documentRootStep) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == HitroViewsRepository.DocumentRoot.Properties.class) {
+                    return createPropertiesGroup(parent);
+                }
+                if (key == HitroViewsRepository.DocumentRoot.Properties.mixed) {
+                    return createMixedMultiValuedEditor(parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == HitroViewsRepository.DocumentRoot.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == HitroViewsRepository.DocumentRoot.Properties.mixed) {
-					return createMixedMultiValuedEditor(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+    /**
+     * 
+     */
+    protected Composite createPropertiesGroup(Composite parent) {
+        Group propertiesGroup = new Group(parent, SWT.NONE);
+        propertiesGroup
+                .setText(HitroMessages.DocumentRootPropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesGroupData.horizontalSpan = 3;
+        propertiesGroup.setLayoutData(propertiesGroupData);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        return propertiesGroup;
+    }
 
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(HitroMessages.DocumentRootPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    protected Composite createMixedMultiValuedEditor(Composite parent) {
+        mixed = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+        GridData mixedData = new GridData(GridData.FILL_HORIZONTAL);
+        mixedData.horizontalSpan = 2;
+        mixed.setLayoutData(mixedData);
+        EditingUtils.setID(mixed, HitroViewsRepository.DocumentRoot.Properties.mixed);
+        EditingUtils.setEEFtype(mixed, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
+        editMixed = new Button(parent, SWT.NONE);
+        editMixed.setText(getDescription(HitroViewsRepository.DocumentRoot.Properties.mixed,
+                HitroMessages.DocumentRootPropertiesEditionPart_MixedLabel));
+        GridData editMixedData = new GridData();
+        editMixed.setLayoutData(editMixedData);
+        editMixed.addSelectionListener(new SelectionAdapter() {
 
-	protected Composite createMixedMultiValuedEditor(Composite parent) {
-		mixed = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
-		GridData mixedData = new GridData(GridData.FILL_HORIZONTAL);
-		mixedData.horizontalSpan = 2;
-		mixed.setLayoutData(mixedData);
-		EditingUtils.setID(mixed, HitroViewsRepository.DocumentRoot.Properties.mixed);
-		EditingUtils.setEEFtype(mixed, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editMixed = new Button(parent, SWT.NONE);
-		editMixed.setText(getDescription(HitroViewsRepository.DocumentRoot.Properties.mixed, HitroMessages.DocumentRootPropertiesEditionPart_MixedLabel));
-		GridData editMixedData = new GridData();
-		editMixed.setLayoutData(editMixedData);
-		editMixed.addSelectionListener(new SelectionAdapter() {
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+             */
+            public void widgetSelected(SelectionEvent e) {
+                EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(mixed.getShell(),
+                        "DocumentRoot", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+                        mixedList, HitroPackage.eINSTANCE.getDocumentRoot_Mixed().getEType(), null,
+                        false, true, null, null);
+                if (dialog.open() == Window.OK) {
+                    mixedList = dialog.getResult();
+                    if (mixedList == null) {
+                        mixedList = new BasicEList();
+                    }
+                    mixed.setText(mixedList.toString());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(DocumentRootPropertiesEditionPartImpl.this,
+                                    HitroViewsRepository.DocumentRoot.Properties.mixed,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    new BasicEList(mixedList)));
+                    setHasChanged(true);
+                }
+            }
+        });
+        EditingUtils.setID(editMixed, HitroViewsRepository.DocumentRoot.Properties.mixed);
+        EditingUtils.setEEFtype(editMixed, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+        // Start of user code for createMixedMultiValuedEditor
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-						mixed.getShell(), "DocumentRoot", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
-						mixedList, HitroPackage.eINSTANCE.getDocumentRoot_Mixed().getEType(), null,
-						false, true, 
-						null, null);
-				if (dialog.open() == Window.OK) {
-					mixedList = dialog.getResult();
-					if (mixedList == null) {
-						mixedList = new BasicEList();
-					}
-					mixed.setText(mixedList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentRootPropertiesEditionPartImpl.this, HitroViewsRepository.DocumentRoot.Properties.mixed, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(mixedList)));
-					setHasChanged(true);
-				}
-			}
-		});
-		EditingUtils.setID(editMixed, HitroViewsRepository.DocumentRoot.Properties.mixed);
-		EditingUtils.setEEFtype(editMixed, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
-		// Start of user code for createMixedMultiValuedEditor
+        // End of user code
+        return parent;
+    }
 
-		// End of user code
-		return parent;
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#getMixed()
+     * 
+     */
+    public EList getMixed() {
+        return mixedList;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#getMixed()
-	 * 
-	 */
-	public EList getMixed() {
-		return mixedList;
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#setMixed(EList
+     *      newValue)
+     * 
+     */
+    public void setMixed(EList newValue) {
+        mixedList = newValue;
+        if (newValue != null) {
+            mixed.setText(mixedList.toString());
+        } else {
+            mixed.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                HitroViewsRepository.DocumentRoot.Properties.mixed);
+        if (eefElementEditorReadOnlyState && mixed.isEnabled()) {
+            mixed.setEnabled(false);
+            mixed.setToolTipText(HitroMessages.DocumentRoot_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !mixed.isEnabled()) {
+            mixed.setEnabled(true);
+        }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DocumentRootPropertiesEditionPart#setMixed(EList newValue)
-	 * 
-	 */
-	public void setMixed(EList newValue) {
-		mixedList = newValue;
-		if (newValue != null) {
-			mixed.setText(mixedList.toString());
-		} else {
-			mixed.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.DocumentRoot.Properties.mixed);
-		if (eefElementEditorReadOnlyState && mixed.isEnabled()) {
-			mixed.setEnabled(false);
-			mixed.setToolTipText(HitroMessages.DocumentRoot_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !mixed.isEnabled()) {
-			mixed.setEnabled(true);
-		}	
-		
-	}
+    }
 
-	public void addToMixed(Object newValue) {
-		mixedList.add(newValue);
-		if (newValue != null) {
-			mixed.setText(mixedList.toString());
-		} else {
-			mixed.setText(""); //$NON-NLS-1$
-		}
-	}
+    public void addToMixed(Object newValue) {
+        mixedList.add(newValue);
+        if (newValue != null) {
+            mixed.setText(mixedList.toString());
+        } else {
+            mixed.setText(""); //$NON-NLS-1$
+        }
+    }
 
-	public void removeToMixed(Object newValue) {
-		mixedList.remove(newValue);
-		if (newValue != null) {
-			mixed.setText(mixedList.toString());
-		} else {
-			mixed.setText(""); //$NON-NLS-1$
-		}
-	}
+    public void removeToMixed(Object newValue) {
+        mixedList.remove(newValue);
+        if (newValue != null) {
+            mixed.setText(mixedList.toString());
+        } else {
+            mixed.setText(""); //$NON-NLS-1$
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return HitroMessages.DocumentRoot_Part_Title;
+    }
 
+    // Start of user code additional methods
 
-
-
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return HitroMessages.DocumentRoot_Part_Title;
-	}
-
-	// Start of user code additional methods
-	
-	// End of user code
-
+    // End of user code
 
 }

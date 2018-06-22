@@ -46,44 +46,65 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Huiproperty</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Huiproperty</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getDepends <em>Depends</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getReferences <em>References</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getDefaultRule <em>Default Rule</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getValidationRule <em>Validation Rule</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getOption <em>Option</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isCrudButtons <em>Crud Buttons</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getDefaultValue <em>Default Value</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isEditable <em>Editable</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isFocus <em>Focus</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getId <em>Id</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getInputtype <em>Inputtype</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isIsURL <em>Is URL</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getMax <em>Max</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getMin <em>Min</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isReport <em>Report</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isRequired <em>Required</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isShowInObjectBrowser <em>Show In Object Browser</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getTags <em>Tags</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getTextrows <em>Textrows</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getTooltip <em>Tooltip</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isVisible <em>Visible</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getDepends
+ * <em>Depends</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getReferences
+ * <em>References</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getDefaultRule
+ * <em>Default Rule</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getValidationRule
+ * <em>Validation Rule</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getOption
+ * <em>Option</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isCrudButtons
+ * <em>Crud Buttons</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getDefaultValue
+ * <em>Default Value</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isEditable
+ * <em>Editable</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isFocus
+ * <em>Focus</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getId
+ * <em>Id</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getInputtype
+ * <em>Inputtype</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isIsURL <em>Is
+ * URL</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getMax
+ * <em>Max</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getMin
+ * <em>Min</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getName
+ * <em>Name</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isReport
+ * <em>Report</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isRequired
+ * <em>Required</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isShowInObjectBrowser
+ * <em>Show In Object Browser</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getTags
+ * <em>Tags</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getTextrows
+ * <em>Textrows</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#getTooltip
+ * <em>Tooltip</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.impl.HuipropertyImpl#isVisible
+ * <em>Visible</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Huiproperty {
     /**
-     * The cached value of the '{@link #getDepends() <em>Depends</em>}' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getDepends() <em>Depends</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getDepends()
      * @generated
      * @ordered
@@ -91,9 +112,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected EList<Depends> depends;
 
     /**
-     * The cached value of the '{@link #getReferences() <em>References</em>}' containment reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getReferences() <em>References</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getReferences()
      * @generated
      * @ordered
@@ -101,9 +122,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected Reference references;
 
     /**
-     * The cached value of the '{@link #getDefaultRule() <em>Default Rule</em>}' containment reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getDefaultRule() <em>Default Rule</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getDefaultRule()
      * @generated
      * @ordered
@@ -111,9 +132,10 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected DefaultRule defaultRule;
 
     /**
-     * The cached value of the '{@link #getValidationRule() <em>Validation Rule</em>}' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getValidationRule() <em>Validation
+     * Rule</em>}' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getValidationRule()
      * @generated
      * @ordered
@@ -121,9 +143,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected EList<ValidationRule> validationRule;
 
     /**
-     * The cached value of the '{@link #getOption() <em>Option</em>}' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getOption() <em>Option</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOption()
      * @generated
      * @ordered
@@ -131,9 +153,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected EList<Option> option;
 
     /**
-     * The default value of the '{@link #isCrudButtons() <em>Crud Buttons</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isCrudButtons() <em>Crud Buttons</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isCrudButtons()
      * @generated
      * @ordered
@@ -141,9 +163,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final boolean CRUD_BUTTONS_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isCrudButtons() <em>Crud Buttons</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isCrudButtons() <em>Crud Buttons</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isCrudButtons()
      * @generated
      * @ordered
@@ -151,18 +173,18 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected boolean crudButtons = CRUD_BUTTONS_EDEFAULT;
 
     /**
-     * This is true if the Crud Buttons attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Crud Buttons attribute has been set. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     protected boolean crudButtonsESet;
 
     /**
-     * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getDefaultValue() <em>Default
+     * Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getDefaultValue()
      * @generated
      * @ordered
@@ -170,9 +192,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final int DEFAULT_VALUE_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getDefaultValue() <em>Default
+     * Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getDefaultValue()
      * @generated
      * @ordered
@@ -180,18 +202,18 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected int defaultValue = DEFAULT_VALUE_EDEFAULT;
 
     /**
-     * This is true if the Default Value attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Default Value attribute has been set. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     protected boolean defaultValueESet;
 
     /**
-     * The default value of the '{@link #isEditable() <em>Editable</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isEditable() <em>Editable</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isEditable()
      * @generated
      * @ordered
@@ -199,9 +221,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final boolean EDITABLE_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #isEditable() <em>Editable</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isEditable() <em>Editable</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isEditable()
      * @generated
      * @ordered
@@ -209,9 +231,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected boolean editable = EDITABLE_EDEFAULT;
 
     /**
-     * This is true if the Editable attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Editable attribute has been set. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
@@ -219,8 +241,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
 
     /**
      * The default value of the '{@link #isFocus() <em>Focus</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isFocus()
      * @generated
      * @ordered
@@ -229,8 +251,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
 
     /**
      * The cached value of the '{@link #isFocus() <em>Focus</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isFocus()
      * @generated
      * @ordered
@@ -238,18 +260,18 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected boolean focus = FOCUS_EDEFAULT;
 
     /**
-     * This is true if the Focus attribute has been set.
-     * <!-- begin-user-doc -->
+     * This is true if the Focus attribute has been set. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     protected boolean focusESet;
 
     /**
-     * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getId()
      * @generated
      * @ordered
@@ -257,9 +279,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final String ID_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getId()
      * @generated
      * @ordered
@@ -267,9 +289,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected String id = ID_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getInputtype() <em>Inputtype</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getInputtype() <em>Inputtype</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getInputtype()
      * @generated
      * @ordered
@@ -277,9 +299,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final Inputtypes INPUTTYPE_EDEFAULT = Inputtypes.LINE;
 
     /**
-     * The cached value of the '{@link #getInputtype() <em>Inputtype</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getInputtype() <em>Inputtype</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getInputtype()
      * @generated
      * @ordered
@@ -287,9 +309,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected Inputtypes inputtype = INPUTTYPE_EDEFAULT;
 
     /**
-     * This is true if the Inputtype attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Inputtype attribute has been set. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
@@ -297,8 +319,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
 
     /**
      * The default value of the '{@link #isIsURL() <em>Is URL</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isIsURL()
      * @generated
      * @ordered
@@ -307,8 +329,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
 
     /**
      * The cached value of the '{@link #isIsURL() <em>Is URL</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isIsURL()
      * @generated
      * @ordered
@@ -316,18 +338,18 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected boolean isURL = IS_URL_EDEFAULT;
 
     /**
-     * This is true if the Is URL attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Is URL attribute has been set. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     protected boolean isURLESet;
 
     /**
-     * The default value of the '{@link #getMax() <em>Max</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getMax() <em>Max</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getMax()
      * @generated
      * @ordered
@@ -335,9 +357,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final int MAX_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getMax() <em>Max</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getMax() <em>Max</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getMax()
      * @generated
      * @ordered
@@ -345,18 +367,18 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected int max = MAX_EDEFAULT;
 
     /**
-     * This is true if the Max attribute has been set.
-     * <!-- begin-user-doc -->
+     * This is true if the Max attribute has been set. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     protected boolean maxESet;
 
     /**
-     * The default value of the '{@link #getMin() <em>Min</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getMin() <em>Min</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getMin()
      * @generated
      * @ordered
@@ -364,9 +386,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final int MIN_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getMin() <em>Min</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getMin() <em>Min</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getMin()
      * @generated
      * @ordered
@@ -374,9 +396,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected int min = MIN_EDEFAULT;
 
     /**
-     * This is true if the Min attribute has been set.
-     * <!-- begin-user-doc -->
+     * This is true if the Min attribute has been set. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
@@ -384,8 +406,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -394,8 +416,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -404,8 +426,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
 
     /**
      * The default value of the '{@link #isReport() <em>Report</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isReport()
      * @generated
      * @ordered
@@ -414,8 +436,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
 
     /**
      * The cached value of the '{@link #isReport() <em>Report</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isReport()
      * @generated
      * @ordered
@@ -423,18 +445,18 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected boolean report = REPORT_EDEFAULT;
 
     /**
-     * This is true if the Report attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Report attribute has been set. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     protected boolean reportESet;
 
     /**
-     * The default value of the '{@link #isRequired() <em>Required</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isRequired() <em>Required</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isRequired()
      * @generated
      * @ordered
@@ -442,9 +464,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final boolean REQUIRED_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isRequired() <em>Required</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isRequired() <em>Required</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isRequired()
      * @generated
      * @ordered
@@ -452,18 +474,19 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected boolean required = REQUIRED_EDEFAULT;
 
     /**
-     * This is true if the Required attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Required attribute has been set. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     protected boolean requiredESet;
 
     /**
-     * The default value of the '{@link #isShowInObjectBrowser() <em>Show In Object Browser</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isShowInObjectBrowser() <em>Show In
+     * Object Browser</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isShowInObjectBrowser()
      * @generated
      * @ordered
@@ -471,9 +494,10 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final boolean SHOW_IN_OBJECT_BROWSER_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isShowInObjectBrowser() <em>Show In Object Browser</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isShowInObjectBrowser() <em>Show In
+     * Object Browser</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isShowInObjectBrowser()
      * @generated
      * @ordered
@@ -481,9 +505,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected boolean showInObjectBrowser = SHOW_IN_OBJECT_BROWSER_EDEFAULT;
 
     /**
-     * This is true if the Show In Object Browser attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Show In Object Browser attribute has been set. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
@@ -491,8 +515,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
 
     /**
      * The default value of the '{@link #getTags() <em>Tags</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getTags()
      * @generated
      * @ordered
@@ -501,8 +525,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
 
     /**
      * The cached value of the '{@link #getTags() <em>Tags</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getTags()
      * @generated
      * @ordered
@@ -510,9 +534,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected String tags = TAGS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTextrows() <em>Textrows</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getTextrows() <em>Textrows</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getTextrows()
      * @generated
      * @ordered
@@ -520,9 +544,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final int TEXTROWS_EDEFAULT = 4;
 
     /**
-     * The cached value of the '{@link #getTextrows() <em>Textrows</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getTextrows() <em>Textrows</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getTextrows()
      * @generated
      * @ordered
@@ -530,18 +554,18 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected int textrows = TEXTROWS_EDEFAULT;
 
     /**
-     * This is true if the Textrows attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Textrows attribute has been set. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     protected boolean textrowsESet;
 
     /**
-     * The default value of the '{@link #getTooltip() <em>Tooltip</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getTooltip() <em>Tooltip</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getTooltip()
      * @generated
      * @ordered
@@ -549,9 +573,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final String TOOLTIP_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTooltip() <em>Tooltip</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getTooltip() <em>Tooltip</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getTooltip()
      * @generated
      * @ordered
@@ -559,9 +583,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected String tooltip = TOOLTIP_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isVisible() <em>Visible</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isVisible() <em>Visible</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isVisible()
      * @generated
      * @ordered
@@ -569,9 +593,9 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected static final boolean VISIBLE_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #isVisible() <em>Visible</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isVisible() <em>Visible</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isVisible()
      * @generated
      * @ordered
@@ -579,17 +603,17 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     protected boolean visible = VISIBLE_EDEFAULT;
 
     /**
-     * This is true if the Visible attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This is true if the Visible attribute has been set. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     protected boolean visibleESet;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected HuipropertyImpl() {
@@ -597,8 +621,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -607,20 +631,21 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<Depends> getDepends() {
         if (depends == null) {
-            depends = new EObjectContainmentEList<Depends>(Depends.class, this, HitroPackage.HUIPROPERTY__DEPENDS);
+            depends = new EObjectContainmentEList<Depends>(Depends.class, this,
+                    HitroPackage.HUIPROPERTY__DEPENDS);
         }
         return depends;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Reference getReferences() {
@@ -628,42 +653,49 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetReferences(Reference newReferences, NotificationChain msgs) {
         Reference oldReferences = references;
         references = newReferences;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__REFERENCES, oldReferences, newReferences);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__REFERENCES, oldReferences, newReferences);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setReferences(Reference newReferences) {
         if (newReferences != references) {
             NotificationChain msgs = null;
             if (references != null)
-                msgs = ((InternalEObject)references).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HitroPackage.HUIPROPERTY__REFERENCES, null, msgs);
+                msgs = ((InternalEObject) references).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - HitroPackage.HUIPROPERTY__REFERENCES, null, msgs);
             if (newReferences != null)
-                msgs = ((InternalEObject)newReferences).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HitroPackage.HUIPROPERTY__REFERENCES, null, msgs);
+                msgs = ((InternalEObject) newReferences).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - HitroPackage.HUIPROPERTY__REFERENCES, null, msgs);
             msgs = basicSetReferences(newReferences, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__REFERENCES, newReferences, newReferences));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__REFERENCES, newReferences, newReferences));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DefaultRule getDefaultRule() {
@@ -671,66 +703,78 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
-    public NotificationChain basicSetDefaultRule(DefaultRule newDefaultRule, NotificationChain msgs) {
+    public NotificationChain basicSetDefaultRule(DefaultRule newDefaultRule,
+            NotificationChain msgs) {
         DefaultRule oldDefaultRule = defaultRule;
         defaultRule = newDefaultRule;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__DEFAULT_RULE, oldDefaultRule, newDefaultRule);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__DEFAULT_RULE, oldDefaultRule, newDefaultRule);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setDefaultRule(DefaultRule newDefaultRule) {
         if (newDefaultRule != defaultRule) {
             NotificationChain msgs = null;
             if (defaultRule != null)
-                msgs = ((InternalEObject)defaultRule).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HitroPackage.HUIPROPERTY__DEFAULT_RULE, null, msgs);
+                msgs = ((InternalEObject) defaultRule).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - HitroPackage.HUIPROPERTY__DEFAULT_RULE, null,
+                        msgs);
             if (newDefaultRule != null)
-                msgs = ((InternalEObject)newDefaultRule).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HitroPackage.HUIPROPERTY__DEFAULT_RULE, null, msgs);
+                msgs = ((InternalEObject) newDefaultRule).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - HitroPackage.HUIPROPERTY__DEFAULT_RULE, null,
+                        msgs);
             msgs = basicSetDefaultRule(newDefaultRule, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__DEFAULT_RULE, newDefaultRule, newDefaultRule));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__DEFAULT_RULE, newDefaultRule, newDefaultRule));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<ValidationRule> getValidationRule() {
         if (validationRule == null) {
-            validationRule = new EObjectContainmentEList<ValidationRule>(ValidationRule.class, this, HitroPackage.HUIPROPERTY__VALIDATION_RULE);
+            validationRule = new EObjectContainmentEList<ValidationRule>(ValidationRule.class, this,
+                    HitroPackage.HUIPROPERTY__VALIDATION_RULE);
         }
         return validationRule;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<Option> getOption() {
         if (option == null) {
-            option = new EObjectContainmentEList<Option>(Option.class, this, HitroPackage.HUIPROPERTY__OPTION);
+            option = new EObjectContainmentEList<Option>(Option.class, this,
+                    HitroPackage.HUIPROPERTY__OPTION);
         }
         return option;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isCrudButtons() {
@@ -738,8 +782,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setCrudButtons(boolean newCrudButtons) {
@@ -748,12 +792,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldCrudButtonsESet = crudButtonsESet;
         crudButtonsESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__CRUD_BUTTONS, oldCrudButtons, crudButtons, !oldCrudButtonsESet));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__CRUD_BUTTONS, oldCrudButtons, crudButtons,
+                    !oldCrudButtonsESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetCrudButtons() {
@@ -762,12 +808,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         crudButtons = CRUD_BUTTONS_EDEFAULT;
         crudButtonsESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__CRUD_BUTTONS, oldCrudButtons, CRUD_BUTTONS_EDEFAULT, oldCrudButtonsESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET,
+                    HitroPackage.HUIPROPERTY__CRUD_BUTTONS, oldCrudButtons, CRUD_BUTTONS_EDEFAULT,
+                    oldCrudButtonsESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetCrudButtons() {
@@ -775,8 +823,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getDefaultValue() {
@@ -784,8 +832,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setDefaultValue(int newDefaultValue) {
@@ -794,12 +842,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldDefaultValueESet = defaultValueESet;
         defaultValueESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__DEFAULT_VALUE, oldDefaultValue, defaultValue, !oldDefaultValueESet));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__DEFAULT_VALUE, oldDefaultValue, defaultValue,
+                    !oldDefaultValueESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetDefaultValue() {
@@ -808,12 +858,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         defaultValue = DEFAULT_VALUE_EDEFAULT;
         defaultValueESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__DEFAULT_VALUE, oldDefaultValue, DEFAULT_VALUE_EDEFAULT, oldDefaultValueESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET,
+                    HitroPackage.HUIPROPERTY__DEFAULT_VALUE, oldDefaultValue,
+                    DEFAULT_VALUE_EDEFAULT, oldDefaultValueESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetDefaultValue() {
@@ -821,8 +873,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isEditable() {
@@ -830,8 +882,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setEditable(boolean newEditable) {
@@ -840,12 +892,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldEditableESet = editableESet;
         editableESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__EDITABLE, oldEditable, editable, !oldEditableESet));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__EDITABLE, oldEditable, editable, !oldEditableESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetEditable() {
@@ -854,12 +907,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         editable = EDITABLE_EDEFAULT;
         editableESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__EDITABLE, oldEditable, EDITABLE_EDEFAULT, oldEditableESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET,
+                    HitroPackage.HUIPROPERTY__EDITABLE, oldEditable, EDITABLE_EDEFAULT,
+                    oldEditableESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetEditable() {
@@ -867,8 +922,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isFocus() {
@@ -876,8 +931,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setFocus(boolean newFocus) {
@@ -886,12 +941,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldFocusESet = focusESet;
         focusESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__FOCUS, oldFocus, focus, !oldFocusESet));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__FOCUS,
+                    oldFocus, focus, !oldFocusESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetFocus() {
@@ -900,12 +956,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         focus = FOCUS_EDEFAULT;
         focusESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__FOCUS, oldFocus, FOCUS_EDEFAULT, oldFocusESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__FOCUS,
+                    oldFocus, FOCUS_EDEFAULT, oldFocusESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetFocus() {
@@ -913,8 +970,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getId() {
@@ -922,20 +979,21 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setId(String newId) {
         String oldId = id;
         id = newId;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__ID, oldId, id));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__ID,
+                    oldId, id));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Inputtypes getInputtype() {
@@ -943,8 +1001,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setInputtype(Inputtypes newInputtype) {
@@ -953,12 +1011,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldInputtypeESet = inputtypeESet;
         inputtypeESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__INPUTTYPE, oldInputtype, inputtype, !oldInputtypeESet));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__INPUTTYPE, oldInputtype, inputtype,
+                    !oldInputtypeESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetInputtype() {
@@ -967,12 +1027,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         inputtype = INPUTTYPE_EDEFAULT;
         inputtypeESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__INPUTTYPE, oldInputtype, INPUTTYPE_EDEFAULT, oldInputtypeESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET,
+                    HitroPackage.HUIPROPERTY__INPUTTYPE, oldInputtype, INPUTTYPE_EDEFAULT,
+                    oldInputtypeESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetInputtype() {
@@ -980,8 +1042,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isIsURL() {
@@ -989,8 +1051,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setIsURL(boolean newIsURL) {
@@ -999,12 +1061,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldIsURLESet = isURLESet;
         isURLESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__IS_URL, oldIsURL, isURL, !oldIsURLESet));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__IS_URL,
+                    oldIsURL, isURL, !oldIsURLESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetIsURL() {
@@ -1013,12 +1076,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         isURL = IS_URL_EDEFAULT;
         isURLESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__IS_URL, oldIsURL, IS_URL_EDEFAULT, oldIsURLESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET,
+                    HitroPackage.HUIPROPERTY__IS_URL, oldIsURL, IS_URL_EDEFAULT, oldIsURLESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetIsURL() {
@@ -1026,8 +1090,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getMax() {
@@ -1035,8 +1099,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setMax(int newMax) {
@@ -1045,12 +1109,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldMaxESet = maxESet;
         maxESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__MAX, oldMax, max, !oldMaxESet));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__MAX,
+                    oldMax, max, !oldMaxESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetMax() {
@@ -1059,12 +1124,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         max = MAX_EDEFAULT;
         maxESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__MAX, oldMax, MAX_EDEFAULT, oldMaxESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__MAX,
+                    oldMax, MAX_EDEFAULT, oldMaxESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetMax() {
@@ -1072,8 +1138,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getMin() {
@@ -1081,8 +1147,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setMin(int newMin) {
@@ -1091,12 +1157,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldMinESet = minESet;
         minESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__MIN, oldMin, min, !oldMinESet));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__MIN,
+                    oldMin, min, !oldMinESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetMin() {
@@ -1105,12 +1172,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         min = MIN_EDEFAULT;
         minESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__MIN, oldMin, MIN_EDEFAULT, oldMinESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__MIN,
+                    oldMin, MIN_EDEFAULT, oldMinESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetMin() {
@@ -1118,8 +1186,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
@@ -1127,20 +1195,21 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setName(String newName) {
         String oldName = name;
         name = newName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__NAME, oldName, name));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__NAME,
+                    oldName, name));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isReport() {
@@ -1148,8 +1217,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setReport(boolean newReport) {
@@ -1158,12 +1227,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldReportESet = reportESet;
         reportESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__REPORT, oldReport, report, !oldReportESet));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__REPORT,
+                    oldReport, report, !oldReportESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetReport() {
@@ -1172,12 +1242,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         report = REPORT_EDEFAULT;
         reportESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__REPORT, oldReport, REPORT_EDEFAULT, oldReportESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET,
+                    HitroPackage.HUIPROPERTY__REPORT, oldReport, REPORT_EDEFAULT, oldReportESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetReport() {
@@ -1185,8 +1256,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isRequired() {
@@ -1194,8 +1265,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setRequired(boolean newRequired) {
@@ -1204,12 +1275,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldRequiredESet = requiredESet;
         requiredESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__REQUIRED, oldRequired, required, !oldRequiredESet));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__REQUIRED, oldRequired, required, !oldRequiredESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetRequired() {
@@ -1218,12 +1290,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         required = REQUIRED_EDEFAULT;
         requiredESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__REQUIRED, oldRequired, REQUIRED_EDEFAULT, oldRequiredESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET,
+                    HitroPackage.HUIPROPERTY__REQUIRED, oldRequired, REQUIRED_EDEFAULT,
+                    oldRequiredESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetRequired() {
@@ -1231,8 +1305,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isShowInObjectBrowser() {
@@ -1240,8 +1314,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setShowInObjectBrowser(boolean newShowInObjectBrowser) {
@@ -1250,12 +1324,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldShowInObjectBrowserESet = showInObjectBrowserESet;
         showInObjectBrowserESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER, oldShowInObjectBrowser, showInObjectBrowser, !oldShowInObjectBrowserESet));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER, oldShowInObjectBrowser,
+                    showInObjectBrowser, !oldShowInObjectBrowserESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetShowInObjectBrowser() {
@@ -1264,12 +1340,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         showInObjectBrowser = SHOW_IN_OBJECT_BROWSER_EDEFAULT;
         showInObjectBrowserESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER, oldShowInObjectBrowser, SHOW_IN_OBJECT_BROWSER_EDEFAULT, oldShowInObjectBrowserESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET,
+                    HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER, oldShowInObjectBrowser,
+                    SHOW_IN_OBJECT_BROWSER_EDEFAULT, oldShowInObjectBrowserESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetShowInObjectBrowser() {
@@ -1277,8 +1355,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getTags() {
@@ -1286,20 +1364,21 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setTags(String newTags) {
         String oldTags = tags;
         tags = newTags;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__TAGS, oldTags, tags));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__TAGS,
+                    oldTags, tags));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getTextrows() {
@@ -1307,8 +1386,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setTextrows(int newTextrows) {
@@ -1317,12 +1396,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldTextrowsESet = textrowsESet;
         textrowsESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__TEXTROWS, oldTextrows, textrows, !oldTextrowsESet));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    HitroPackage.HUIPROPERTY__TEXTROWS, oldTextrows, textrows, !oldTextrowsESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetTextrows() {
@@ -1331,12 +1411,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         textrows = TEXTROWS_EDEFAULT;
         textrowsESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__TEXTROWS, oldTextrows, TEXTROWS_EDEFAULT, oldTextrowsESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET,
+                    HitroPackage.HUIPROPERTY__TEXTROWS, oldTextrows, TEXTROWS_EDEFAULT,
+                    oldTextrowsESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetTextrows() {
@@ -1344,8 +1426,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getTooltip() {
@@ -1353,20 +1435,21 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setTooltip(String newTooltip) {
         String oldTooltip = tooltip;
         tooltip = newTooltip;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__TOOLTIP, oldTooltip, tooltip));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__TOOLTIP,
+                    oldTooltip, tooltip));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isVisible() {
@@ -1374,8 +1457,8 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setVisible(boolean newVisible) {
@@ -1384,12 +1467,13 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         boolean oldVisibleESet = visibleESet;
         visibleESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__VISIBLE, oldVisible, visible, !oldVisibleESet));
+            eNotify(new ENotificationImpl(this, Notification.SET, HitroPackage.HUIPROPERTY__VISIBLE,
+                    oldVisible, visible, !oldVisibleESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void unsetVisible() {
@@ -1398,12 +1482,14 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
         visible = VISIBLE_EDEFAULT;
         visibleESet = false;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.UNSET, HitroPackage.HUIPROPERTY__VISIBLE, oldVisible, VISIBLE_EDEFAULT, oldVisibleESet));
+            eNotify(new ENotificationImpl(this, Notification.UNSET,
+                    HitroPackage.HUIPROPERTY__VISIBLE, oldVisible, VISIBLE_EDEFAULT,
+                    oldVisibleESet));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isSetVisible() {
@@ -1411,345 +1497,386 @@ public class HuipropertyImpl extends MinimalEObjectImpl.Container implements Hui
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+            NotificationChain msgs) {
         switch (featureID) {
-            case HitroPackage.HUIPROPERTY__DEPENDS:
-                return ((InternalEList<?>)getDepends()).basicRemove(otherEnd, msgs);
-            case HitroPackage.HUIPROPERTY__REFERENCES:
-                return basicSetReferences(null, msgs);
-            case HitroPackage.HUIPROPERTY__DEFAULT_RULE:
-                return basicSetDefaultRule(null, msgs);
-            case HitroPackage.HUIPROPERTY__VALIDATION_RULE:
-                return ((InternalEList<?>)getValidationRule()).basicRemove(otherEnd, msgs);
-            case HitroPackage.HUIPROPERTY__OPTION:
-                return ((InternalEList<?>)getOption()).basicRemove(otherEnd, msgs);
+        case HitroPackage.HUIPROPERTY__DEPENDS:
+            return ((InternalEList<?>) getDepends()).basicRemove(otherEnd, msgs);
+        case HitroPackage.HUIPROPERTY__REFERENCES:
+            return basicSetReferences(null, msgs);
+        case HitroPackage.HUIPROPERTY__DEFAULT_RULE:
+            return basicSetDefaultRule(null, msgs);
+        case HitroPackage.HUIPROPERTY__VALIDATION_RULE:
+            return ((InternalEList<?>) getValidationRule()).basicRemove(otherEnd, msgs);
+        case HitroPackage.HUIPROPERTY__OPTION:
+            return ((InternalEList<?>) getOption()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case HitroPackage.HUIPROPERTY__DEPENDS:
-                return getDepends();
-            case HitroPackage.HUIPROPERTY__REFERENCES:
-                return getReferences();
-            case HitroPackage.HUIPROPERTY__DEFAULT_RULE:
-                return getDefaultRule();
-            case HitroPackage.HUIPROPERTY__VALIDATION_RULE:
-                return getValidationRule();
-            case HitroPackage.HUIPROPERTY__OPTION:
-                return getOption();
-            case HitroPackage.HUIPROPERTY__CRUD_BUTTONS:
-                return isCrudButtons();
-            case HitroPackage.HUIPROPERTY__DEFAULT_VALUE:
-                return getDefaultValue();
-            case HitroPackage.HUIPROPERTY__EDITABLE:
-                return isEditable();
-            case HitroPackage.HUIPROPERTY__FOCUS:
-                return isFocus();
-            case HitroPackage.HUIPROPERTY__ID:
-                return getId();
-            case HitroPackage.HUIPROPERTY__INPUTTYPE:
-                return getInputtype();
-            case HitroPackage.HUIPROPERTY__IS_URL:
-                return isIsURL();
-            case HitroPackage.HUIPROPERTY__MAX:
-                return getMax();
-            case HitroPackage.HUIPROPERTY__MIN:
-                return getMin();
-            case HitroPackage.HUIPROPERTY__NAME:
-                return getName();
-            case HitroPackage.HUIPROPERTY__REPORT:
-                return isReport();
-            case HitroPackage.HUIPROPERTY__REQUIRED:
-                return isRequired();
-            case HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER:
-                return isShowInObjectBrowser();
-            case HitroPackage.HUIPROPERTY__TAGS:
-                return getTags();
-            case HitroPackage.HUIPROPERTY__TEXTROWS:
-                return getTextrows();
-            case HitroPackage.HUIPROPERTY__TOOLTIP:
-                return getTooltip();
-            case HitroPackage.HUIPROPERTY__VISIBLE:
-                return isVisible();
+        case HitroPackage.HUIPROPERTY__DEPENDS:
+            return getDepends();
+        case HitroPackage.HUIPROPERTY__REFERENCES:
+            return getReferences();
+        case HitroPackage.HUIPROPERTY__DEFAULT_RULE:
+            return getDefaultRule();
+        case HitroPackage.HUIPROPERTY__VALIDATION_RULE:
+            return getValidationRule();
+        case HitroPackage.HUIPROPERTY__OPTION:
+            return getOption();
+        case HitroPackage.HUIPROPERTY__CRUD_BUTTONS:
+            return isCrudButtons();
+        case HitroPackage.HUIPROPERTY__DEFAULT_VALUE:
+            return getDefaultValue();
+        case HitroPackage.HUIPROPERTY__EDITABLE:
+            return isEditable();
+        case HitroPackage.HUIPROPERTY__FOCUS:
+            return isFocus();
+        case HitroPackage.HUIPROPERTY__ID:
+            return getId();
+        case HitroPackage.HUIPROPERTY__INPUTTYPE:
+            return getInputtype();
+        case HitroPackage.HUIPROPERTY__IS_URL:
+            return isIsURL();
+        case HitroPackage.HUIPROPERTY__MAX:
+            return getMax();
+        case HitroPackage.HUIPROPERTY__MIN:
+            return getMin();
+        case HitroPackage.HUIPROPERTY__NAME:
+            return getName();
+        case HitroPackage.HUIPROPERTY__REPORT:
+            return isReport();
+        case HitroPackage.HUIPROPERTY__REQUIRED:
+            return isRequired();
+        case HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER:
+            return isShowInObjectBrowser();
+        case HitroPackage.HUIPROPERTY__TAGS:
+            return getTags();
+        case HitroPackage.HUIPROPERTY__TEXTROWS:
+            return getTextrows();
+        case HitroPackage.HUIPROPERTY__TOOLTIP:
+            return getTooltip();
+        case HitroPackage.HUIPROPERTY__VISIBLE:
+            return isVisible();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case HitroPackage.HUIPROPERTY__DEPENDS:
-                getDepends().clear();
-                getDepends().addAll((Collection<? extends Depends>)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__REFERENCES:
-                setReferences((Reference)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__DEFAULT_RULE:
-                setDefaultRule((DefaultRule)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__VALIDATION_RULE:
-                getValidationRule().clear();
-                getValidationRule().addAll((Collection<? extends ValidationRule>)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__OPTION:
-                getOption().clear();
-                getOption().addAll((Collection<? extends Option>)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__CRUD_BUTTONS:
-                setCrudButtons((Boolean)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__DEFAULT_VALUE:
-                setDefaultValue((Integer)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__EDITABLE:
-                setEditable((Boolean)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__FOCUS:
-                setFocus((Boolean)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__ID:
-                setId((String)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__INPUTTYPE:
-                setInputtype((Inputtypes)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__IS_URL:
-                setIsURL((Boolean)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__MAX:
-                setMax((Integer)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__MIN:
-                setMin((Integer)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__NAME:
-                setName((String)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__REPORT:
-                setReport((Boolean)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__REQUIRED:
-                setRequired((Boolean)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER:
-                setShowInObjectBrowser((Boolean)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__TAGS:
-                setTags((String)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__TEXTROWS:
-                setTextrows((Integer)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__TOOLTIP:
-                setTooltip((String)newValue);
-                return;
-            case HitroPackage.HUIPROPERTY__VISIBLE:
-                setVisible((Boolean)newValue);
-                return;
+        case HitroPackage.HUIPROPERTY__DEPENDS:
+            getDepends().clear();
+            getDepends().addAll((Collection<? extends Depends>) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__REFERENCES:
+            setReferences((Reference) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__DEFAULT_RULE:
+            setDefaultRule((DefaultRule) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__VALIDATION_RULE:
+            getValidationRule().clear();
+            getValidationRule().addAll((Collection<? extends ValidationRule>) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__OPTION:
+            getOption().clear();
+            getOption().addAll((Collection<? extends Option>) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__CRUD_BUTTONS:
+            setCrudButtons((Boolean) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__DEFAULT_VALUE:
+            setDefaultValue((Integer) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__EDITABLE:
+            setEditable((Boolean) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__FOCUS:
+            setFocus((Boolean) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__ID:
+            setId((String) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__INPUTTYPE:
+            setInputtype((Inputtypes) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__IS_URL:
+            setIsURL((Boolean) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__MAX:
+            setMax((Integer) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__MIN:
+            setMin((Integer) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__NAME:
+            setName((String) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__REPORT:
+            setReport((Boolean) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__REQUIRED:
+            setRequired((Boolean) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER:
+            setShowInObjectBrowser((Boolean) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__TAGS:
+            setTags((String) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__TEXTROWS:
+            setTextrows((Integer) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__TOOLTIP:
+            setTooltip((String) newValue);
+            return;
+        case HitroPackage.HUIPROPERTY__VISIBLE:
+            setVisible((Boolean) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case HitroPackage.HUIPROPERTY__DEPENDS:
-                getDepends().clear();
-                return;
-            case HitroPackage.HUIPROPERTY__REFERENCES:
-                setReferences((Reference)null);
-                return;
-            case HitroPackage.HUIPROPERTY__DEFAULT_RULE:
-                setDefaultRule((DefaultRule)null);
-                return;
-            case HitroPackage.HUIPROPERTY__VALIDATION_RULE:
-                getValidationRule().clear();
-                return;
-            case HitroPackage.HUIPROPERTY__OPTION:
-                getOption().clear();
-                return;
-            case HitroPackage.HUIPROPERTY__CRUD_BUTTONS:
-                unsetCrudButtons();
-                return;
-            case HitroPackage.HUIPROPERTY__DEFAULT_VALUE:
-                unsetDefaultValue();
-                return;
-            case HitroPackage.HUIPROPERTY__EDITABLE:
-                unsetEditable();
-                return;
-            case HitroPackage.HUIPROPERTY__FOCUS:
-                unsetFocus();
-                return;
-            case HitroPackage.HUIPROPERTY__ID:
-                setId(ID_EDEFAULT);
-                return;
-            case HitroPackage.HUIPROPERTY__INPUTTYPE:
-                unsetInputtype();
-                return;
-            case HitroPackage.HUIPROPERTY__IS_URL:
-                unsetIsURL();
-                return;
-            case HitroPackage.HUIPROPERTY__MAX:
-                unsetMax();
-                return;
-            case HitroPackage.HUIPROPERTY__MIN:
-                unsetMin();
-                return;
-            case HitroPackage.HUIPROPERTY__NAME:
-                setName(NAME_EDEFAULT);
-                return;
-            case HitroPackage.HUIPROPERTY__REPORT:
-                unsetReport();
-                return;
-            case HitroPackage.HUIPROPERTY__REQUIRED:
-                unsetRequired();
-                return;
-            case HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER:
-                unsetShowInObjectBrowser();
-                return;
-            case HitroPackage.HUIPROPERTY__TAGS:
-                setTags(TAGS_EDEFAULT);
-                return;
-            case HitroPackage.HUIPROPERTY__TEXTROWS:
-                unsetTextrows();
-                return;
-            case HitroPackage.HUIPROPERTY__TOOLTIP:
-                setTooltip(TOOLTIP_EDEFAULT);
-                return;
-            case HitroPackage.HUIPROPERTY__VISIBLE:
-                unsetVisible();
-                return;
+        case HitroPackage.HUIPROPERTY__DEPENDS:
+            getDepends().clear();
+            return;
+        case HitroPackage.HUIPROPERTY__REFERENCES:
+            setReferences((Reference) null);
+            return;
+        case HitroPackage.HUIPROPERTY__DEFAULT_RULE:
+            setDefaultRule((DefaultRule) null);
+            return;
+        case HitroPackage.HUIPROPERTY__VALIDATION_RULE:
+            getValidationRule().clear();
+            return;
+        case HitroPackage.HUIPROPERTY__OPTION:
+            getOption().clear();
+            return;
+        case HitroPackage.HUIPROPERTY__CRUD_BUTTONS:
+            unsetCrudButtons();
+            return;
+        case HitroPackage.HUIPROPERTY__DEFAULT_VALUE:
+            unsetDefaultValue();
+            return;
+        case HitroPackage.HUIPROPERTY__EDITABLE:
+            unsetEditable();
+            return;
+        case HitroPackage.HUIPROPERTY__FOCUS:
+            unsetFocus();
+            return;
+        case HitroPackage.HUIPROPERTY__ID:
+            setId(ID_EDEFAULT);
+            return;
+        case HitroPackage.HUIPROPERTY__INPUTTYPE:
+            unsetInputtype();
+            return;
+        case HitroPackage.HUIPROPERTY__IS_URL:
+            unsetIsURL();
+            return;
+        case HitroPackage.HUIPROPERTY__MAX:
+            unsetMax();
+            return;
+        case HitroPackage.HUIPROPERTY__MIN:
+            unsetMin();
+            return;
+        case HitroPackage.HUIPROPERTY__NAME:
+            setName(NAME_EDEFAULT);
+            return;
+        case HitroPackage.HUIPROPERTY__REPORT:
+            unsetReport();
+            return;
+        case HitroPackage.HUIPROPERTY__REQUIRED:
+            unsetRequired();
+            return;
+        case HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER:
+            unsetShowInObjectBrowser();
+            return;
+        case HitroPackage.HUIPROPERTY__TAGS:
+            setTags(TAGS_EDEFAULT);
+            return;
+        case HitroPackage.HUIPROPERTY__TEXTROWS:
+            unsetTextrows();
+            return;
+        case HitroPackage.HUIPROPERTY__TOOLTIP:
+            setTooltip(TOOLTIP_EDEFAULT);
+            return;
+        case HitroPackage.HUIPROPERTY__VISIBLE:
+            unsetVisible();
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case HitroPackage.HUIPROPERTY__DEPENDS:
-                return depends != null && !depends.isEmpty();
-            case HitroPackage.HUIPROPERTY__REFERENCES:
-                return references != null;
-            case HitroPackage.HUIPROPERTY__DEFAULT_RULE:
-                return defaultRule != null;
-            case HitroPackage.HUIPROPERTY__VALIDATION_RULE:
-                return validationRule != null && !validationRule.isEmpty();
-            case HitroPackage.HUIPROPERTY__OPTION:
-                return option != null && !option.isEmpty();
-            case HitroPackage.HUIPROPERTY__CRUD_BUTTONS:
-                return isSetCrudButtons();
-            case HitroPackage.HUIPROPERTY__DEFAULT_VALUE:
-                return isSetDefaultValue();
-            case HitroPackage.HUIPROPERTY__EDITABLE:
-                return isSetEditable();
-            case HitroPackage.HUIPROPERTY__FOCUS:
-                return isSetFocus();
-            case HitroPackage.HUIPROPERTY__ID:
-                return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-            case HitroPackage.HUIPROPERTY__INPUTTYPE:
-                return isSetInputtype();
-            case HitroPackage.HUIPROPERTY__IS_URL:
-                return isSetIsURL();
-            case HitroPackage.HUIPROPERTY__MAX:
-                return isSetMax();
-            case HitroPackage.HUIPROPERTY__MIN:
-                return isSetMin();
-            case HitroPackage.HUIPROPERTY__NAME:
-                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-            case HitroPackage.HUIPROPERTY__REPORT:
-                return isSetReport();
-            case HitroPackage.HUIPROPERTY__REQUIRED:
-                return isSetRequired();
-            case HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER:
-                return isSetShowInObjectBrowser();
-            case HitroPackage.HUIPROPERTY__TAGS:
-                return TAGS_EDEFAULT == null ? tags != null : !TAGS_EDEFAULT.equals(tags);
-            case HitroPackage.HUIPROPERTY__TEXTROWS:
-                return isSetTextrows();
-            case HitroPackage.HUIPROPERTY__TOOLTIP:
-                return TOOLTIP_EDEFAULT == null ? tooltip != null : !TOOLTIP_EDEFAULT.equals(tooltip);
-            case HitroPackage.HUIPROPERTY__VISIBLE:
-                return isSetVisible();
+        case HitroPackage.HUIPROPERTY__DEPENDS:
+            return depends != null && !depends.isEmpty();
+        case HitroPackage.HUIPROPERTY__REFERENCES:
+            return references != null;
+        case HitroPackage.HUIPROPERTY__DEFAULT_RULE:
+            return defaultRule != null;
+        case HitroPackage.HUIPROPERTY__VALIDATION_RULE:
+            return validationRule != null && !validationRule.isEmpty();
+        case HitroPackage.HUIPROPERTY__OPTION:
+            return option != null && !option.isEmpty();
+        case HitroPackage.HUIPROPERTY__CRUD_BUTTONS:
+            return isSetCrudButtons();
+        case HitroPackage.HUIPROPERTY__DEFAULT_VALUE:
+            return isSetDefaultValue();
+        case HitroPackage.HUIPROPERTY__EDITABLE:
+            return isSetEditable();
+        case HitroPackage.HUIPROPERTY__FOCUS:
+            return isSetFocus();
+        case HitroPackage.HUIPROPERTY__ID:
+            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+        case HitroPackage.HUIPROPERTY__INPUTTYPE:
+            return isSetInputtype();
+        case HitroPackage.HUIPROPERTY__IS_URL:
+            return isSetIsURL();
+        case HitroPackage.HUIPROPERTY__MAX:
+            return isSetMax();
+        case HitroPackage.HUIPROPERTY__MIN:
+            return isSetMin();
+        case HitroPackage.HUIPROPERTY__NAME:
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+        case HitroPackage.HUIPROPERTY__REPORT:
+            return isSetReport();
+        case HitroPackage.HUIPROPERTY__REQUIRED:
+            return isSetRequired();
+        case HitroPackage.HUIPROPERTY__SHOW_IN_OBJECT_BROWSER:
+            return isSetShowInObjectBrowser();
+        case HitroPackage.HUIPROPERTY__TAGS:
+            return TAGS_EDEFAULT == null ? tags != null : !TAGS_EDEFAULT.equals(tags);
+        case HitroPackage.HUIPROPERTY__TEXTROWS:
+            return isSetTextrows();
+        case HitroPackage.HUIPROPERTY__TOOLTIP:
+            return TOOLTIP_EDEFAULT == null ? tooltip != null : !TOOLTIP_EDEFAULT.equals(tooltip);
+        case HitroPackage.HUIPROPERTY__VISIBLE:
+            return isSetVisible();
         }
         return super.eIsSet(featureID);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (crudButtons: ");
-        if (crudButtonsESet) result.append(crudButtons); else result.append("<unset>");
+        if (crudButtonsESet)
+            result.append(crudButtons);
+        else
+            result.append("<unset>");
         result.append(", defaultValue: ");
-        if (defaultValueESet) result.append(defaultValue); else result.append("<unset>");
+        if (defaultValueESet)
+            result.append(defaultValue);
+        else
+            result.append("<unset>");
         result.append(", editable: ");
-        if (editableESet) result.append(editable); else result.append("<unset>");
+        if (editableESet)
+            result.append(editable);
+        else
+            result.append("<unset>");
         result.append(", focus: ");
-        if (focusESet) result.append(focus); else result.append("<unset>");
+        if (focusESet)
+            result.append(focus);
+        else
+            result.append("<unset>");
         result.append(", id: ");
         result.append(id);
         result.append(", inputtype: ");
-        if (inputtypeESet) result.append(inputtype); else result.append("<unset>");
+        if (inputtypeESet)
+            result.append(inputtype);
+        else
+            result.append("<unset>");
         result.append(", isURL: ");
-        if (isURLESet) result.append(isURL); else result.append("<unset>");
+        if (isURLESet)
+            result.append(isURL);
+        else
+            result.append("<unset>");
         result.append(", max: ");
-        if (maxESet) result.append(max); else result.append("<unset>");
+        if (maxESet)
+            result.append(max);
+        else
+            result.append("<unset>");
         result.append(", min: ");
-        if (minESet) result.append(min); else result.append("<unset>");
+        if (minESet)
+            result.append(min);
+        else
+            result.append("<unset>");
         result.append(", name: ");
         result.append(name);
         result.append(", report: ");
-        if (reportESet) result.append(report); else result.append("<unset>");
+        if (reportESet)
+            result.append(report);
+        else
+            result.append("<unset>");
         result.append(", required: ");
-        if (requiredESet) result.append(required); else result.append("<unset>");
+        if (requiredESet)
+            result.append(required);
+        else
+            result.append("<unset>");
         result.append(", showInObjectBrowser: ");
-        if (showInObjectBrowserESet) result.append(showInObjectBrowser); else result.append("<unset>");
+        if (showInObjectBrowserESet)
+            result.append(showInObjectBrowser);
+        else
+            result.append("<unset>");
         result.append(", tags: ");
         result.append(tags);
         result.append(", textrows: ");
-        if (textrowsESet) result.append(textrows); else result.append("<unset>");
+        if (textrowsESet)
+            result.append(textrows);
+        else
+            result.append("<unset>");
         result.append(", tooltip: ");
         result.append(tooltip);
         result.append(", visible: ");
-        if (visibleESet) result.append(visible); else result.append("<unset>");
+        if (visibleESet)
+            result.append(visible);
+        else
+            result.append("<unset>");
         result.append(')');
         return result.toString();
     }
 
-} //HuipropertyImpl
+} // HuipropertyImpl

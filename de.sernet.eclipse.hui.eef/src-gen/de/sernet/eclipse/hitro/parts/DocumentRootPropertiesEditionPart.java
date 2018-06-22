@@ -29,7 +29,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-
 // End of user code
 
 /**
@@ -38,45 +37,47 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface DocumentRootPropertiesEditionPart {
 
-	/**
-	 * @return the mixed
-	 * 
-	 */
-	public EList getMixed();
+    /**
+     * @return the mixed
+     * 
+     */
+    public EList getMixed();
 
-	/**
-	 * Defines a new mixed
-	 * @param newValue the new mixed to set
-	 * 
-	 */
-	public void setMixed(EList newValue);
+    /**
+     * Defines a new mixed
+     * 
+     * @param newValue
+     *            the new mixed to set
+     * 
+     */
+    public void setMixed(EList newValue);
 
-	/**
-	 * Add a value to the mixed multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToMixed(Object newValue);
+    /**
+     * Add a value to the mixed multivalued attribute.
+     * 
+     * @param newValue
+     *            the value to add
+     */
+    public void addToMixed(Object newValue);
 
-	/**
-	 * Remove a value to the mixed multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToMixed(Object newValue);
+    /**
+     * Remove a value to the mixed multivalued attribute.
+     * 
+     * @param newValue
+     *            the value to remove
+     */
+    public void removeToMixed(Object newValue);
 
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
+    // Start of user code for additional methods
 
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

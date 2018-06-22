@@ -32,35 +32,35 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
 public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     /**
-     * Creates the default factory implementation.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public static HitroFactory init() {
         try {
-            HitroFactory theHitroFactory = (HitroFactory)EPackage.Registry.INSTANCE.getEFactory(HitroPackage.eNS_URI);
+            HitroFactory theHitroFactory = (HitroFactory) EPackage.Registry.INSTANCE
+                    .getEFactory(HitroPackage.eNS_URI);
             if (theHitroFactory != null) {
                 return theHitroFactory;
             }
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             EcorePlugin.INSTANCE.log(exception);
         }
         return new HitroFactoryImpl();
     }
 
     /**
-     * Creates an instance of the factory.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public HitroFactoryImpl() {
@@ -68,67 +68,82 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
-            case HitroPackage.DEFAULT_RULE: return createDefaultRule();
-            case HitroPackage.DEPENDS: return createDepends();
-            case HitroPackage.DOCUMENT_ROOT: return createDocumentRoot();
-            case HitroPackage.HUIENTITIES: return createHuientities();
-            case HitroPackage.HUIENTITY: return createHuientity();
-            case HitroPackage.HUIPROPERTY: return createHuiproperty();
-            case HitroPackage.HUIPROPERTYGROUP: return createHuipropertygroup();
-            case HitroPackage.HUIRELATION: return createHuirelation();
-            case HitroPackage.OPTION: return createOption();
-            case HitroPackage.PARAM: return createParam();
-            case HitroPackage.REFERENCE: return createReference();
-            case HitroPackage.VALIDATION_RULE: return createValidationRule();
-            default:
-                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+        case HitroPackage.DEFAULT_RULE:
+            return createDefaultRule();
+        case HitroPackage.DEPENDS:
+            return createDepends();
+        case HitroPackage.DOCUMENT_ROOT:
+            return createDocumentRoot();
+        case HitroPackage.HUIENTITIES:
+            return createHuientities();
+        case HitroPackage.HUIENTITY:
+            return createHuientity();
+        case HitroPackage.HUIPROPERTY:
+            return createHuiproperty();
+        case HitroPackage.HUIPROPERTYGROUP:
+            return createHuipropertygroup();
+        case HitroPackage.HUIRELATION:
+            return createHuirelation();
+        case HitroPackage.OPTION:
+            return createOption();
+        case HitroPackage.PARAM:
+            return createParam();
+        case HitroPackage.REFERENCE:
+            return createReference();
+        case HitroPackage.VALIDATION_RULE:
+            return createValidationRule();
+        default:
+            throw new IllegalArgumentException(
+                    "The class '" + eClass.getName() + "' is not a valid classifier");
         }
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object createFromString(EDataType eDataType, String initialValue) {
         switch (eDataType.getClassifierID()) {
-            case HitroPackage.INPUTTYPES:
-                return createInputtypesFromString(eDataType, initialValue);
-            case HitroPackage.INPUTTYPES_OBJECT:
-                return createInputtypesObjectFromString(eDataType, initialValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+        case HitroPackage.INPUTTYPES:
+            return createInputtypesFromString(eDataType, initialValue);
+        case HitroPackage.INPUTTYPES_OBJECT:
+            return createInputtypesObjectFromString(eDataType, initialValue);
+        default:
+            throw new IllegalArgumentException(
+                    "The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String convertToString(EDataType eDataType, Object instanceValue) {
         switch (eDataType.getClassifierID()) {
-            case HitroPackage.INPUTTYPES:
-                return convertInputtypesToString(eDataType, instanceValue);
-            case HitroPackage.INPUTTYPES_OBJECT:
-                return convertInputtypesObjectToString(eDataType, instanceValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+        case HitroPackage.INPUTTYPES:
+            return convertInputtypesToString(eDataType, instanceValue);
+        case HitroPackage.INPUTTYPES_OBJECT:
+            return convertInputtypesObjectToString(eDataType, instanceValue);
+        default:
+            throw new IllegalArgumentException(
+                    "The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DefaultRule createDefaultRule() {
@@ -137,8 +152,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Depends createDepends() {
@@ -147,8 +162,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DocumentRoot createDocumentRoot() {
@@ -157,8 +172,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Huientities createHuientities() {
@@ -167,8 +182,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Huientity createHuientity() {
@@ -177,8 +192,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Huiproperty createHuiproperty() {
@@ -187,8 +202,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Huipropertygroup createHuipropertygroup() {
@@ -197,8 +212,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Huirelation createHuirelation() {
@@ -207,8 +222,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Option createOption() {
@@ -217,8 +232,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Param createParam() {
@@ -227,8 +242,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Reference createReference() {
@@ -237,8 +252,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ValidationRule createValidationRule() {
@@ -247,19 +262,21 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Inputtypes createInputtypesFromString(EDataType eDataType, String initialValue) {
         Inputtypes result = Inputtypes.get(initialValue);
-        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        if (result == null)
+            throw new IllegalArgumentException("The value '" + initialValue
+                    + "' is not a valid enumerator of '" + eDataType.getName() + "'");
         return result;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String convertInputtypesToString(EDataType eDataType, Object instanceValue) {
@@ -267,8 +284,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Inputtypes createInputtypesObjectFromString(EDataType eDataType, String initialValue) {
@@ -276,8 +293,8 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String convertInputtypesObjectToString(EDataType eDataType, Object instanceValue) {
@@ -285,17 +302,17 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public HitroPackage getHitroPackage() {
-        return (HitroPackage)getEPackage();
+        return (HitroPackage) getEPackage();
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @deprecated
      * @generated
      */
@@ -304,4 +321,4 @@ public class HitroFactoryImpl extends EFactoryImpl implements HitroFactory {
         return HitroPackage.eINSTANCE;
     }
 
-} //HitroFactoryImpl
+} // HitroFactoryImpl

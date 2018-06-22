@@ -27,7 +27,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-
 // End of user code
 
 /**
@@ -36,91 +35,93 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface ValidationRulePropertiesEditionPart {
 
+    /**
+     * Init the param
+     * 
+     * @param current
+     *            the current value
+     * @param containgFeature
+     *            the feature where to navigate if necessary
+     * @param feature
+     *            the feature to manage
+     */
+    public void initParam(ReferencesTableSettings settings);
 
+    /**
+     * Update the param
+     * 
+     * @param newValue
+     *            the param to update
+     * 
+     */
+    public void updateParam();
 
-	/**
-	 * Init the param
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initParam(ReferencesTableSettings settings);
+    /**
+     * Adds the given filter to the param edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addFilterToParam(ViewerFilter filter);
 
-	/**
-	 * Update the param
-	 * @param newValue the param to update
-	 * 
-	 */
-	public void updateParam();
+    /**
+     * Adds the given filter to the param edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addBusinessFilterToParam(ViewerFilter filter);
 
-	/**
-	 * Adds the given filter to the param edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToParam(ViewerFilter filter);
+    /**
+     * @return true if the given element is contained inside the param table
+     * 
+     */
+    public boolean isContainedInParamTable(EObject element);
 
-	/**
-	 * Adds the given filter to the param edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToParam(ViewerFilter filter);
+    /**
+     * @return the class
+     * 
+     */
+    public String getClass_();
 
-	/**
-	 * @return true if the given element is contained inside the param table
-	 * 
-	 */
-	public boolean isContainedInParamTable(EObject element);
+    /**
+     * Defines a new class
+     * 
+     * @param newValue
+     *            the new class to set
+     * 
+     */
+    public void setClass_(String newValue);
 
+    /**
+     * @return the hint
+     * 
+     */
+    public String getHint();
 
-	/**
-	 * @return the class
-	 * 
-	 */
-	public String getClass_();
+    /**
+     * Defines a new hint
+     * 
+     * @param newValue
+     *            the new hint to set
+     * 
+     */
+    public void setHint(String newValue);
 
-	/**
-	 * Defines a new class
-	 * @param newValue the new class to set
-	 * 
-	 */
-	public void setClass_(String newValue);
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
+    // Start of user code for additional methods
 
-	/**
-	 * @return the hint
-	 * 
-	 */
-	public String getHint();
-
-	/**
-	 * Defines a new hint
-	 * @param newValue the new hint to set
-	 * 
-	 */
-	public void setHint(String newValue);
-
-
-
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

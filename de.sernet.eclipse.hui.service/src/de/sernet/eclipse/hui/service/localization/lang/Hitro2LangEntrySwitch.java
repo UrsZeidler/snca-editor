@@ -29,33 +29,33 @@ import de.sernet.eclipse.hitro.util.HitroSwitch;
 
 public class Hitro2LangEntrySwitch extends HitroSwitch<LanguagesEntry> {
 
-	@Override
-	public LanguagesEntry caseHuiproperty(Huiproperty object) {
-		return new LanguagesEntry(object.getId());
-	}
+    @Override
+    public LanguagesEntry caseHuiproperty(Huiproperty object) {
+        return new LanguagesEntry(object.getId());
+    }
 
-	@Override
-	public LanguagesEntry caseHuipropertygroup(Huipropertygroup object) {
-		return new LanguagesEntry(object.getId());
-	}
+    @Override
+    public LanguagesEntry caseHuipropertygroup(Huipropertygroup object) {
+        return new LanguagesEntry(object.getId());
+    }
 
-	@Override
-	public LanguagesEntry caseHuirelation(Huirelation object) {
-		return new LanguagesEntry(object.getId());
-	}
-	
-	@Override
-	public LanguagesEntry caseHuientity(Huientity object) {
-		return new LanguagesEntry(object.getId());
-	}
-	
-	@Override
-	public LanguagesEntry caseOption(Option object) {
-		return new LanguagesEntry(object.getId());
-	}
-	
-	@Override
-	public LanguagesEntry caseParam(Param object) {
-		return new LanguagesEntry(object.getId());
-	}
+    @Override
+    public LanguagesEntry caseHuirelation(Huirelation object) {
+        return new LanguagesEntry(object.getId());
+    }
+
+    @Override
+    public LanguagesEntry caseHuientity(Huientity object) {
+        return new LanguagesEntry(object.getId());
+    }
+
+    @Override
+    public LanguagesEntry caseOption(Option object) {
+        return new LanguagesEntry(object.getId());
+    }
+
+    @Override
+    public LanguagesEntry caseParam(Param object) {
+        return new LanguagesEntry(object.getId());
+    }
 }

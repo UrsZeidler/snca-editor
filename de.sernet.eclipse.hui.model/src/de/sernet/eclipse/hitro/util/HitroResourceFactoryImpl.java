@@ -29,17 +29,17 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Resource Factory</b> associated with the package.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Resource Factory</b> associated with the
+ * package. <!-- end-user-doc -->
+ * 
  * @see de.sernet.eclipse.hitro.util.HitroResourceImpl
  * @generated
  */
 public class HitroResourceFactoryImpl extends ResourceFactoryImpl {
     /**
-     * Creates an instance of the resource factory.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates an instance of the resource factory. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public HitroResourceFactoryImpl() {
@@ -47,9 +47,9 @@ public class HitroResourceFactoryImpl extends ResourceFactoryImpl {
     }
 
     /**
-     * Creates an instance of the resource.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates an instance of the resource. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -60,11 +60,13 @@ public class HitroResourceFactoryImpl extends ResourceFactoryImpl {
 
         result.getDefaultSaveOptions().put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 
-        result.getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
-        result.getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
+        result.getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE,
+                Boolean.TRUE);
+        result.getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE,
+                Boolean.TRUE);
 
         result.getDefaultLoadOptions().put(XMLResource.OPTION_USE_LEXICAL_HANDLER, Boolean.TRUE);
         return result;
     }
 
-} //HitroResourceFactoryImpl
+} // HitroResourceFactoryImpl

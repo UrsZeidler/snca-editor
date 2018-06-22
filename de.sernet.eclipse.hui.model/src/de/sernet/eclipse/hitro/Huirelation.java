@@ -23,19 +23,20 @@ package de.sernet.eclipse.hitro;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Huirelation</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Huirelation</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.sernet.eclipse.hitro.Huirelation#getId <em>Id</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huirelation#getName <em>Name</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huirelation#getReversename <em>Reversename</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huirelation#getTo <em>To</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huirelation#getTooltip <em>Tooltip</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huirelation#getId <em>Id</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huirelation#getName <em>Name</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huirelation#getReversename
+ * <em>Reversename</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huirelation#getTo <em>To</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huirelation#getTooltip
+ * <em>Tooltip</em>}</li>
  * </ul>
  *
  * @see de.sernet.eclipse.hitro.HitroPackage#getHuirelation()
@@ -44,40 +45,43 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Huirelation extends EObject {
     /**
-     * Returns the value of the '<em><b>Id</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Id</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuirelation_Id()
-     * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
-     *        extendedMetaData="kind='attribute' name='id'"
+     * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID"
+     *        required="true" extendedMetaData="kind='attribute' name='id'"
      * @generated
      */
     String getId();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huirelation#getId <em>Id</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Id</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huirelation#getId
+     * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
      * @generated
      */
     void setId(String value);
 
     /**
-     * Returns the value of the '<em><b>Name</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Name</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuirelation_Name()
@@ -88,23 +92,25 @@ public interface Huirelation extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huirelation#getName <em>Name</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Name</em>' attribute.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huirelation#getName
+     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
      */
     void setName(String value);
 
     /**
-     * Returns the value of the '<em><b>Reversename</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Reversename</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Reversename</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Reversename</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Reversename</em>' attribute.
      * @see #setReversename(String)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuirelation_Reversename()
@@ -115,23 +121,27 @@ public interface Huirelation extends EObject {
     String getReversename();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huirelation#getReversename <em>Reversename</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Reversename</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huirelation#getReversename
+     * <em>Reversename</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Reversename</em>' attribute.
      * @see #getReversename()
      * @generated
      */
     void setReversename(String value);
 
     /**
-     * Returns the value of the '<em><b>To</b></em>' reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>To</b></em>' reference. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>To</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>To</em>' reference isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>To</em>' reference.
      * @see #setTo(Huientity)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuirelation_To()
@@ -142,23 +152,25 @@ public interface Huirelation extends EObject {
     Huientity getTo();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huirelation#getTo <em>To</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>To</em>' reference.
+     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huirelation#getTo
+     * <em>To</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>To</em>' reference.
      * @see #getTo()
      * @generated
      */
     void setTo(Huientity value);
 
     /**
-     * Returns the value of the '<em><b>Tooltip</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Tooltip</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Tooltip</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Tooltip</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Tooltip</em>' attribute.
      * @see #setTooltip(String)
      * @see de.sernet.eclipse.hitro.HitroPackage#getHuirelation_Tooltip()
@@ -169,10 +181,12 @@ public interface Huirelation extends EObject {
     String getTooltip();
 
     /**
-     * Sets the value of the '{@link de.sernet.eclipse.hitro.Huirelation#getTooltip <em>Tooltip</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Tooltip</em>' attribute.
+     * Sets the value of the
+     * '{@link de.sernet.eclipse.hitro.Huirelation#getTooltip <em>Tooltip</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Tooltip</em>' attribute.
      * @see #getTooltip()
      * @generated
      */

@@ -63,7 +63,7 @@ public class TestNameNotEmpty extends AbstractModelConstraint {
             public String caseHuipropertygroup(Huipropertygroup object) {
                 return object.getName();
             }
-            
+
             @Override
             public String caseOption(Option object) {
                 return object.getName();

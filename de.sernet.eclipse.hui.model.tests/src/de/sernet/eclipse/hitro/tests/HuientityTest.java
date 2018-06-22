@@ -30,32 +30,35 @@ import junit.framework.TestCase;
 import junit.textui.TestRunner;
 
 /**
- * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Huientity</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test case for the model object
+ * '<em><b>Huientity</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link de.sernet.eclipse.hitro.Huientity#getHuiproperty() <em>Huiproperty</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huientity#getHuipropertygroup() <em>Huipropertygroup</em>}</li>
- *   <li>{@link de.sernet.eclipse.hitro.Huientity#getHuirelation() <em>Huirelation</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huientity#getHuiproperty()
+ * <em>Huiproperty</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huientity#getHuipropertygroup()
+ * <em>Huipropertygroup</em>}</li>
+ * <li>{@link de.sernet.eclipse.hitro.Huientity#getHuirelation()
+ * <em>Huirelation</em>}</li>
  * </ul>
  * </p>
+ * 
  * @generated
  */
 public class HuientityTest extends TestCase {
 
     /**
-     * The fixture for this Huientity test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The fixture for this Huientity test case. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected Huientity fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static void main(String[] args) {
@@ -63,9 +66,9 @@ public class HuientityTest extends TestCase {
     }
 
     /**
-     * Constructs a new Huientity test case with the given name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Constructs a new Huientity test case with the given name. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public HuientityTest(String name) {
@@ -73,9 +76,9 @@ public class HuientityTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Huientity test case.
-     * <!-- begin-user-doc -->
+     * Sets the fixture for this Huientity test case. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void setFixture(Huientity fixture) {
@@ -83,9 +86,9 @@ public class HuientityTest extends TestCase {
     }
 
     /**
-     * Returns the fixture for this Huientity test case.
-     * <!-- begin-user-doc -->
+     * Returns the fixture for this Huientity test case. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Huientity getFixture() {
@@ -93,8 +96,8 @@ public class HuientityTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
@@ -104,8 +107,8 @@ public class HuientityTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
@@ -115,20 +118,22 @@ public class HuientityTest extends TestCase {
     }
 
     /**
-     * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuiproperty() <em>Huiproperty</em>}' feature getter.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuiproperty()
+     * <em>Huiproperty</em>}' feature getter. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see de.sernet.eclipse.hitro.Huientity#getHuiproperty()
      * @generated not
      */
     public void testGetHuiproperty() {
-        assertEquals(0,getFixture().getHuiproperty().size());
+        assertEquals(0, getFixture().getHuiproperty().size());
     }
 
     /**
-     * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuipropertygroup() <em>Huipropertygroup</em>}' feature getter.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuipropertygroup()
+     * <em>Huipropertygroup</em>}' feature getter. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see de.sernet.eclipse.hitro.Huientity#getHuipropertygroup()
      * @generated not
      */
@@ -137,9 +142,10 @@ public class HuientityTest extends TestCase {
     }
 
     /**
-     * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuirelation() <em>Huirelation</em>}' feature getter.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Tests the '{@link de.sernet.eclipse.hitro.Huientity#getHuirelation()
+     * <em>Huirelation</em>}' feature getter. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see de.sernet.eclipse.hitro.Huientity#getHuirelation()
      * @generated not
      */
@@ -147,4 +153,4 @@ public class HuientityTest extends TestCase {
         assertEquals(0, getFixture().getHuirelation().size());
     }
 
-} //HuientityTest
+} // HuientityTest

@@ -30,25 +30,25 @@ import junit.framework.TestCase;
 import junit.textui.TestRunner;
 
 /**
- * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Default Rule</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test case for the model object '<em><b>Default
+ * Rule</b></em>'. <!-- end-user-doc -->
+ * 
  * @generated
  */
 @Ignore
 public class DefaultRuleTest extends TestCase {
 
     /**
-     * The fixture for this Default Rule test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The fixture for this Default Rule test case. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected DefaultRule fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static void main(String[] args) {
@@ -56,9 +56,9 @@ public class DefaultRuleTest extends TestCase {
     }
 
     /**
-     * Constructs a new Default Rule test case with the given name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Constructs a new Default Rule test case with the given name. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DefaultRuleTest(String name) {
@@ -66,9 +66,9 @@ public class DefaultRuleTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Default Rule test case.
-     * <!-- begin-user-doc -->
+     * Sets the fixture for this Default Rule test case. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void setFixture(DefaultRule fixture) {
@@ -76,9 +76,9 @@ public class DefaultRuleTest extends TestCase {
     }
 
     /**
-     * Returns the fixture for this Default Rule test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the fixture for this Default Rule test case. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected DefaultRule getFixture() {
@@ -86,8 +86,8 @@ public class DefaultRuleTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
@@ -97,8 +97,8 @@ public class DefaultRuleTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
@@ -107,4 +107,4 @@ public class DefaultRuleTest extends TestCase {
         setFixture(null);
     }
 
-} //DefaultRuleTest
+} // DefaultRuleTest

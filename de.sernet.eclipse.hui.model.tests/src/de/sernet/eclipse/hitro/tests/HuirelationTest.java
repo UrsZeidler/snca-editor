@@ -30,25 +30,25 @@ import junit.framework.TestCase;
 import junit.textui.TestRunner;
 
 /**
- * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Huirelation</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test case for the model object
+ * '<em><b>Huirelation</b></em>'. <!-- end-user-doc -->
+ * 
  * @generated
  */
 @Ignore
 public class HuirelationTest extends TestCase {
 
     /**
-     * The fixture for this Huirelation test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The fixture for this Huirelation test case. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected Huirelation fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static void main(String[] args) {
@@ -56,9 +56,9 @@ public class HuirelationTest extends TestCase {
     }
 
     /**
-     * Constructs a new Huirelation test case with the given name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Constructs a new Huirelation test case with the given name. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public HuirelationTest(String name) {
@@ -66,9 +66,9 @@ public class HuirelationTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Huirelation test case.
-     * <!-- begin-user-doc -->
+     * Sets the fixture for this Huirelation test case. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void setFixture(Huirelation fixture) {
@@ -76,9 +76,9 @@ public class HuirelationTest extends TestCase {
     }
 
     /**
-     * Returns the fixture for this Huirelation test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the fixture for this Huirelation test case. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Huirelation getFixture() {
@@ -86,8 +86,8 @@ public class HuirelationTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
@@ -97,8 +97,8 @@ public class HuirelationTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
@@ -107,4 +107,4 @@ public class HuirelationTest extends TestCase {
         setFixture(null);
     }
 
-} //HuirelationTest
+} // HuirelationTest

@@ -26,16 +26,16 @@ import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 /**
- * <!-- begin-user-doc -->
- * A test suite for the '<em><b>Hitro</b></em>' model.
+ * <!-- begin-user-doc --> A test suite for the '<em><b>Hitro</b></em>' model.
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class HitroAllTests extends TestSuite {
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static void main(String[] args) {
@@ -43,8 +43,8 @@ public class HitroAllTests extends TestSuite {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static Test suite() {
@@ -54,12 +54,12 @@ public class HitroAllTests extends TestSuite {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public HitroAllTests(String name) {
         super(name);
     }
 
-} //HitroAllTests
+} // HitroAllTests

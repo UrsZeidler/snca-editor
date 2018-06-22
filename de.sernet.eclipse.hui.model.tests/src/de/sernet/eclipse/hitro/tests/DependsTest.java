@@ -30,25 +30,25 @@ import junit.framework.TestCase;
 import junit.textui.TestRunner;
 
 /**
- * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Depends</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test case for the model object
+ * '<em><b>Depends</b></em>'. <!-- end-user-doc -->
+ * 
  * @generated
  */
 @Ignore
 public class DependsTest extends TestCase {
 
     /**
-     * The fixture for this Depends test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The fixture for this Depends test case. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected Depends fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static void main(String[] args) {
@@ -56,9 +56,9 @@ public class DependsTest extends TestCase {
     }
 
     /**
-     * Constructs a new Depends test case with the given name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Constructs a new Depends test case with the given name. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DependsTest(String name) {
@@ -66,9 +66,9 @@ public class DependsTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Depends test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Sets the fixture for this Depends test case. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void setFixture(Depends fixture) {
@@ -76,9 +76,9 @@ public class DependsTest extends TestCase {
     }
 
     /**
-     * Returns the fixture for this Depends test case.
-     * <!-- begin-user-doc -->
+     * Returns the fixture for this Depends test case. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Depends getFixture() {
@@ -86,8 +86,8 @@ public class DependsTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
@@ -97,8 +97,8 @@ public class DependsTest extends TestCase {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
@@ -107,4 +107,4 @@ public class DependsTest extends TestCase {
         setFixture(null);
     }
 
-} //DependsTest
+} // DependsTest

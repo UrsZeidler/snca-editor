@@ -82,317 +82,359 @@ import org.eclipse.swt.widgets.Text;
  * @author Urs Zeidler
  * 
  */
-public class DefaultRulePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, DefaultRulePropertiesEditionPart {
+public class DefaultRulePropertiesEditionPartImpl extends CompositePropertiesEditionPart
+        implements ISWTPropertiesEditionPart, DefaultRulePropertiesEditionPart {
 
-	protected ReferencesTable param;
-	protected List<ViewerFilter> paramBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> paramFilters = new ArrayList<ViewerFilter>();
-	protected Text class_;
+    protected ReferencesTable param;
+    protected List<ViewerFilter> paramBusinessFilters = new ArrayList<ViewerFilter>();
+    protected List<ViewerFilter> paramFilters = new ArrayList<ViewerFilter>();
+    protected Text class_;
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent
+     *            the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public DefaultRulePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public Composite createFigure(final Composite parent) {
+        view = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(view);
+        return view;
+    }
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public DefaultRulePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createControls(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(Composite view) {
+        CompositionSequence defaultRuleStep = new BindingCompositionSequence(
+                propertiesEditionComponent);
+        CompositionStep propertiesStep = defaultRuleStep
+                .addStep(HitroViewsRepository.DefaultRule.Properties.class);
+        propertiesStep.addStep(HitroViewsRepository.DefaultRule.Properties.param);
+        propertiesStep.addStep(HitroViewsRepository.DefaultRule.Properties.class_);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+        composer = new PartComposer(defaultRuleStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(Composite view) { 
-		CompositionSequence defaultRuleStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = defaultRuleStep.addStep(HitroViewsRepository.DefaultRule.Properties.class);
-		propertiesStep.addStep(HitroViewsRepository.DefaultRule.Properties.param);
-		propertiesStep.addStep(HitroViewsRepository.DefaultRule.Properties.class_);
-		
-		
-		composer = new PartComposer(defaultRuleStep) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == HitroViewsRepository.DefaultRule.Properties.class) {
+                    return createPropertiesGroup(parent);
+                }
+                if (key == HitroViewsRepository.DefaultRule.Properties.param) {
+                    return createParamAdvancedTableComposition(parent);
+                }
+                if (key == HitroViewsRepository.DefaultRule.Properties.class_) {
+                    return createClass_Text(parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == HitroViewsRepository.DefaultRule.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == HitroViewsRepository.DefaultRule.Properties.param) {
-					return createParamAdvancedTableComposition(parent);
-				}
-				if (key == HitroViewsRepository.DefaultRule.Properties.class_) {
-					return createClass_Text(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+    /**
+     * 
+     */
+    protected Composite createPropertiesGroup(Composite parent) {
+        Group propertiesGroup = new Group(parent, SWT.NONE);
+        propertiesGroup
+                .setText(HitroMessages.DefaultRulePropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesGroupData.horizontalSpan = 3;
+        propertiesGroup.setLayoutData(propertiesGroupData);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        return propertiesGroup;
+    }
 
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(HitroMessages.DefaultRulePropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    /**
+     * @param container
+     * 
+     */
+    protected Composite createParamAdvancedTableComposition(Composite parent) {
+        this.param = new ReferencesTable(
+                getDescription(HitroViewsRepository.DefaultRule.Properties.param,
+                        HitroMessages.DefaultRulePropertiesEditionPart_ParamLabel),
+                new ReferencesTableListener() {
+                    public void handleAdd() {
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                DefaultRulePropertiesEditionPartImpl.this,
+                                HitroViewsRepository.DefaultRule.Properties.param,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null,
+                                null));
+                        param.refresh();
+                    }
 
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createParamAdvancedTableComposition(Composite parent) {
-		this.param = new ReferencesTable(getDescription(HitroViewsRepository.DefaultRule.Properties.param, HitroMessages.DefaultRulePropertiesEditionPart_ParamLabel), new ReferencesTableListener() {
-			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DefaultRulePropertiesEditionPartImpl.this, HitroViewsRepository.DefaultRule.Properties.param, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				param.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DefaultRulePropertiesEditionPartImpl.this, HitroViewsRepository.DefaultRule.Properties.param, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				param.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DefaultRulePropertiesEditionPartImpl.this, HitroViewsRepository.DefaultRule.Properties.param, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				param.refresh();
-			}
-			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DefaultRulePropertiesEditionPartImpl.this, HitroViewsRepository.DefaultRule.Properties.param, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				param.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.paramFilters) {
-			this.param.addFilter(filter);
-		}
-		this.param.setHelpText(propertiesEditionComponent.getHelpContent(HitroViewsRepository.DefaultRule.Properties.param, HitroViewsRepository.SWT_KIND));
-		this.param.createControls(parent);
-		this.param.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DefaultRulePropertiesEditionPartImpl.this, HitroViewsRepository.DefaultRule.Properties.param, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData paramData = new GridData(GridData.FILL_HORIZONTAL);
-		paramData.horizontalSpan = 3;
-		this.param.setLayoutData(paramData);
-		this.param.setLowerBound(0);
-		this.param.setUpperBound(-1);
-		param.setID(HitroViewsRepository.DefaultRule.Properties.param);
-		param.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createParamAdvancedTableComposition
+                    public void handleEdit(EObject element) {
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                DefaultRulePropertiesEditionPartImpl.this,
+                                HitroViewsRepository.DefaultRule.Properties.param,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
+                                element));
+                        param.refresh();
+                    }
 
-		// End of user code
-		return parent;
-	}
+                    public void handleMove(EObject element, int oldIndex, int newIndex) {
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                DefaultRulePropertiesEditionPartImpl.this,
+                                HitroViewsRepository.DefaultRule.Properties.param,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element,
+                                newIndex));
+                        param.refresh();
+                    }
 
-	
-	protected Composite createClass_Text(Composite parent) {
-		createDescription(parent, HitroViewsRepository.DefaultRule.Properties.class_, HitroMessages.DefaultRulePropertiesEditionPart_Class_Label);
-		class_ = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData class_Data = new GridData(GridData.FILL_HORIZONTAL);
-		class_.setLayoutData(class_Data);
-		class_.addFocusListener(new FocusAdapter() {
+                    public void handleRemove(EObject element) {
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                DefaultRulePropertiesEditionPartImpl.this,
+                                HitroViewsRepository.DefaultRule.Properties.param,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null,
+                                element));
+                        param.refresh();
+                    }
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DefaultRulePropertiesEditionPartImpl.this, HitroViewsRepository.DefaultRule.Properties.class_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, class_.getText()));
-			}
+                    public void navigateTo(EObject element) {
+                    }
+                });
+        for (ViewerFilter filter : this.paramFilters) {
+            this.param.addFilter(filter);
+        }
+        this.param.setHelpText(propertiesEditionComponent.getHelpContent(
+                HitroViewsRepository.DefaultRule.Properties.param, HitroViewsRepository.SWT_KIND));
+        this.param.createControls(parent);
+        this.param.addSelectionListener(new SelectionAdapter() {
 
-		});
-		class_.addKeyListener(new KeyAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                if (e.item != null && e.item.getData() instanceof EObject) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            DefaultRulePropertiesEditionPartImpl.this,
+                            HitroViewsRepository.DefaultRule.Properties.param,
+                            PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED,
+                            null, e.item.getData()));
+                }
+            }
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DefaultRulePropertiesEditionPartImpl.this, HitroViewsRepository.DefaultRule.Properties.class_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, class_.getText()));
-				}
-			}
+        });
+        GridData paramData = new GridData(GridData.FILL_HORIZONTAL);
+        paramData.horizontalSpan = 3;
+        this.param.setLayoutData(paramData);
+        this.param.setLowerBound(0);
+        this.param.setUpperBound(-1);
+        param.setID(HitroViewsRepository.DefaultRule.Properties.param);
+        param.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+        // Start of user code for createParamAdvancedTableComposition
 
-		});
-		EditingUtils.setID(class_, HitroViewsRepository.DefaultRule.Properties.class_);
-		EditingUtils.setEEFtype(class_, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(HitroViewsRepository.DefaultRule.Properties.class_, HitroViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createClass_Text
+        // End of user code
+        return parent;
+    }
 
-		// End of user code
-		return parent;
-	}
+    protected Composite createClass_Text(Composite parent) {
+        createDescription(parent, HitroViewsRepository.DefaultRule.Properties.class_,
+                HitroMessages.DefaultRulePropertiesEditionPart_Class_Label);
+        class_ = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData class_Data = new GridData(GridData.FILL_HORIZONTAL);
+        class_.setLayoutData(class_Data);
+        class_.addFocusListener(new FocusAdapter() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(DefaultRulePropertiesEditionPartImpl.this,
+                                    HitroViewsRepository.DefaultRule.Properties.class_,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    class_.getText()));
+            }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+        });
+        class_.addKeyListener(new KeyAdapter() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                DefaultRulePropertiesEditionPartImpl.this,
+                                HitroViewsRepository.DefaultRule.Properties.class_,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                class_.getText()));
+                }
+            }
 
+        });
+        EditingUtils.setID(class_, HitroViewsRepository.DefaultRule.Properties.class_);
+        EditingUtils.setEEFtype(class_, "eef::Text"); //$NON-NLS-1$
+        SWTUtils.createHelpButton(parent,
+                propertiesEditionComponent.getHelpContent(
+                        HitroViewsRepository.DefaultRule.Properties.class_,
+                        HitroViewsRepository.SWT_KIND),
+                null); // $NON-NLS-1$
+        // Start of user code for createClass_Text
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#initParam(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initParam(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		param.setContentProvider(contentProvider);
-		param.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.DefaultRule.Properties.param);
-		if (eefElementEditorReadOnlyState && param.isEnabled()) {
-			param.setEnabled(false);
-			param.setToolTipText(HitroMessages.DefaultRule_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !param.isEnabled()) {
-			param.setEnabled(true);
-		}	
-		
-	}
+        // End of user code
+        return parent;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#updateParam()
-	 * 
-	 */
-	public void updateParam() {
-	param.refresh();
-}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#addFilterParam(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToParam(ViewerFilter filter) {
-		paramFilters.add(filter);
-		if (this.param != null) {
-			this.param.addFilter(filter);
-		}
-	}
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#addBusinessFilterParam(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToParam(ViewerFilter filter) {
-		paramBusinessFilters.add(filter);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#initParam(EObject
+     *      current, EReference containingFeature, EReference feature)
+     */
+    public void initParam(ReferencesTableSettings settings) {
+        if (current.eResource() != null && current.eResource().getResourceSet() != null)
+            this.resourceSet = current.eResource().getResourceSet();
+        ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+        param.setContentProvider(contentProvider);
+        param.setInput(settings);
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                HitroViewsRepository.DefaultRule.Properties.param);
+        if (eefElementEditorReadOnlyState && param.isEnabled()) {
+            param.setEnabled(false);
+            param.setToolTipText(HitroMessages.DefaultRule_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !param.isEnabled()) {
+            param.setEnabled(true);
+        }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#isContainedInParamTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInParamTable(EObject element) {
-		return ((ReferencesTableSettings)param.getInput()).contains(element);
-	}
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#getClass_()
-	 * 
-	 */
-	public String getClass_() {
-		return class_.getText();
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#updateParam()
+     * 
+     */
+    public void updateParam() {
+        param.refresh();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#setClass_(String newValue)
-	 * 
-	 */
-	public void setClass_(String newValue) {
-		if (newValue != null) {
-			class_.setText(newValue);
-		} else {
-			class_.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(HitroViewsRepository.DefaultRule.Properties.class_);
-		if (eefElementEditorReadOnlyState && class_.isEnabled()) {
-			class_.setEnabled(false);
-			class_.setToolTipText(HitroMessages.DefaultRule_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !class_.isEnabled()) {
-			class_.setEnabled(true);
-		}	
-		
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#addFilterParam(ViewerFilter
+     *      filter)
+     * 
+     */
+    public void addFilterToParam(ViewerFilter filter) {
+        paramFilters.add(filter);
+        if (this.param != null) {
+            this.param.addFilter(filter);
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#addBusinessFilterParam(ViewerFilter
+     *      filter)
+     * 
+     */
+    public void addBusinessFilterToParam(ViewerFilter filter) {
+        paramBusinessFilters.add(filter);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#isContainedInParamTable(EObject
+     *      element)
+     * 
+     */
+    public boolean isContainedInParamTable(EObject element) {
+        return ((ReferencesTableSettings) param.getInput()).contains(element);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#getClass_()
+     * 
+     */
+    public String getClass_() {
+        return class_.getText();
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see de.sernet.eclipse.hitro.parts.DefaultRulePropertiesEditionPart#setClass_(String
+     *      newValue)
+     * 
+     */
+    public void setClass_(String newValue) {
+        if (newValue != null) {
+            class_.setText(newValue);
+        } else {
+            class_.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                HitroViewsRepository.DefaultRule.Properties.class_);
+        if (eefElementEditorReadOnlyState && class_.isEnabled()) {
+            class_.setEnabled(false);
+            class_.setToolTipText(HitroMessages.DefaultRule_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !class_.isEnabled()) {
+            class_.setEnabled(true);
+        }
 
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return HitroMessages.DefaultRule_Part_Title;
-	}
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return HitroMessages.DefaultRule_Part_Title;
+    }
 
-	// Start of user code additional methods
-	
-	// End of user code
+    // Start of user code additional methods
 
+    // End of user code
 
 }

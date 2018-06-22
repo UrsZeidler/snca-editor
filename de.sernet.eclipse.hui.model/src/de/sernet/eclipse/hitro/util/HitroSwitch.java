@@ -28,31 +28,28 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
+ * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance
+ * hierarchy. It supports the call {@link #doSwitch(EObject) doSwitch(object)}
  * to invoke the <code>caseXXX</code> method for each class of the model,
- * starting with the actual class of the object
- * and proceeding up the inheritance hierarchy
- * until a non-null result is returned,
- * which is the result of the switch.
- * <!-- end-user-doc -->
+ * starting with the actual class of the object and proceeding up the
+ * inheritance hierarchy until a non-null result is returned, which is the
+ * result of the switch. <!-- end-user-doc -->
+ * 
  * @see de.sernet.eclipse.hitro.HitroPackage
  * @generated
  */
 public class HitroSwitch<T> extends Switch<T> {
     /**
-     * The cached model package
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected static HitroPackage modelPackage;
 
     /**
-     * Creates an instance of the switch.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates an instance of the switch. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public HitroSwitch() {
@@ -62,10 +59,11 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Checks whether this is a switch for the given package.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param ePackage the package in question.
+     * Checks whether this is a switch for the given package. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param ePackage
+     *            the package in question.
      * @return whether this is a switch for the given package.
      * @generated
      */
@@ -75,99 +73,116 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the first non-null result returned by a <code>caseXXX</code> call.
+     * Calls <code>caseXXX</code> for each class of the model until one returns
+     * a non null result; it yields that result. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the first non-null result returned by a <code>caseXXX</code>
+     *         call.
      * @generated
      */
     @Override
     protected T doSwitch(int classifierID, EObject theEObject) {
         switch (classifierID) {
-            case HitroPackage.DEFAULT_RULE: {
-                DefaultRule defaultRule = (DefaultRule)theEObject;
-                T result = caseDefaultRule(defaultRule);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.DEPENDS: {
-                Depends depends = (Depends)theEObject;
-                T result = caseDepends(depends);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.DOCUMENT_ROOT: {
-                DocumentRoot documentRoot = (DocumentRoot)theEObject;
-                T result = caseDocumentRoot(documentRoot);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.HUIENTITIES: {
-                Huientities huientities = (Huientities)theEObject;
-                T result = caseHuientities(huientities);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.HUIENTITY: {
-                Huientity huientity = (Huientity)theEObject;
-                T result = caseHuientity(huientity);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.HUIPROPERTY: {
-                Huiproperty huiproperty = (Huiproperty)theEObject;
-                T result = caseHuiproperty(huiproperty);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.HUIPROPERTYGROUP: {
-                Huipropertygroup huipropertygroup = (Huipropertygroup)theEObject;
-                T result = caseHuipropertygroup(huipropertygroup);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.HUIRELATION: {
-                Huirelation huirelation = (Huirelation)theEObject;
-                T result = caseHuirelation(huirelation);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.OPTION: {
-                Option option = (Option)theEObject;
-                T result = caseOption(option);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.PARAM: {
-                Param param = (Param)theEObject;
-                T result = caseParam(param);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.REFERENCE: {
-                Reference reference = (Reference)theEObject;
-                T result = caseReference(reference);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case HitroPackage.VALIDATION_RULE: {
-                ValidationRule validationRule = (ValidationRule)theEObject;
-                T result = caseValidationRule(validationRule);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            default: return defaultCase(theEObject);
+        case HitroPackage.DEFAULT_RULE: {
+            DefaultRule defaultRule = (DefaultRule) theEObject;
+            T result = caseDefaultRule(defaultRule);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.DEPENDS: {
+            Depends depends = (Depends) theEObject;
+            T result = caseDepends(depends);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.DOCUMENT_ROOT: {
+            DocumentRoot documentRoot = (DocumentRoot) theEObject;
+            T result = caseDocumentRoot(documentRoot);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.HUIENTITIES: {
+            Huientities huientities = (Huientities) theEObject;
+            T result = caseHuientities(huientities);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.HUIENTITY: {
+            Huientity huientity = (Huientity) theEObject;
+            T result = caseHuientity(huientity);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.HUIPROPERTY: {
+            Huiproperty huiproperty = (Huiproperty) theEObject;
+            T result = caseHuiproperty(huiproperty);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.HUIPROPERTYGROUP: {
+            Huipropertygroup huipropertygroup = (Huipropertygroup) theEObject;
+            T result = caseHuipropertygroup(huipropertygroup);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.HUIRELATION: {
+            Huirelation huirelation = (Huirelation) theEObject;
+            T result = caseHuirelation(huirelation);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.OPTION: {
+            Option option = (Option) theEObject;
+            T result = caseOption(option);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.PARAM: {
+            Param param = (Param) theEObject;
+            T result = caseParam(param);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.REFERENCE: {
+            Reference reference = (Reference) theEObject;
+            T result = caseReference(reference);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case HitroPackage.VALIDATION_RULE: {
+            ValidationRule validationRule = (ValidationRule) theEObject;
+            T result = caseValidationRule(validationRule);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        default:
+            return defaultCase(theEObject);
         }
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Default Rule</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Default Rule</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Default Rule</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Default Rule</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -176,13 +191,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Depends</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Depends</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Depends</em>'. <!-- begin-user-doc --> This implementation returns
+     * null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Depends</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -191,13 +208,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Document Root</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Document Root</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Document Root</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Document Root</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -206,13 +225,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Huientities</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Huientities</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Huientities</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Huientities</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -221,13 +242,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Huientity</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Huientity</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Huientity</em>'. <!-- begin-user-doc --> This implementation returns
+     * null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Huientity</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -236,13 +259,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Huiproperty</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Huiproperty</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Huiproperty</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Huiproperty</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -251,13 +276,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Huipropertygroup</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Huipropertygroup</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Huipropertygroup</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Huipropertygroup</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -266,13 +293,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Huirelation</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Huirelation</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Huirelation</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Huirelation</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -281,13 +310,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Option</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Option</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Option</em>'. <!-- begin-user-doc --> This implementation returns
+     * null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Option</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -296,13 +327,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Param</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Param</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Param</em>'. <!-- begin-user-doc --> This implementation returns
+     * null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Param</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -311,13 +344,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Reference</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Reference</em>'. <!-- begin-user-doc --> This implementation returns
+     * null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Reference</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -326,13 +361,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Validation Rule</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Validation Rule</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>Validation Rule</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>Validation Rule</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -341,13 +378,15 @@ public class HitroSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch, but this is the last case anyway.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
+     * Returns the result of interpreting the object as an instance of
+     * '<em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
+     * null; returning a non-null result will terminate the switch, but this is
+     * the last case anyway. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of
+     *         '<em>EObject</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject)
      * @generated
      */
@@ -356,4 +395,4 @@ public class HitroSwitch<T> extends Switch<T> {
         return null;
     }
 
-} //HitroSwitch
+} // HitroSwitch

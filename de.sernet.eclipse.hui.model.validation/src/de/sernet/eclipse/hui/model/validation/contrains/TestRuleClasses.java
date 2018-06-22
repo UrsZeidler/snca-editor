@@ -38,32 +38,33 @@ import de.sernet.eclipse.hitro.util.HitroSwitch;
  */
 public class TestRuleClasses extends AbstractModelConstraint {
 
-	private static final Set<String> KNOWN_RULES = Sets.newHashSet("SimpleValue", "Today", "NullRule");
+    private static final Set<String> KNOWN_RULES = Sets.newHashSet("SimpleValue", "Today",
+            "NullRule");
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.
-	 * validation.IValidationContext)
-	 */
-	@Override
-	public IStatus validate(IValidationContext ctx) {
-		EObject target = ctx.getTarget();
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.
+     * emf. validation.IValidationContext)
+     */
+    @Override
+    public IStatus validate(IValidationContext ctx) {
+        EObject target = ctx.getTarget();
 
-		HitroSwitch<String> hitroSwitch = new HitroSwitch<String>() {
-			@Override
-			public String caseDefaultRule(DefaultRule object) {
-				return object.getClass_();
-			}
-		};
+        HitroSwitch<String> hitroSwitch = new HitroSwitch<String>() {
+            @Override
+            public String caseDefaultRule(DefaultRule object) {
+                return object.getClass_();
+            }
+        };
 
-		String doSwitch = hitroSwitch.doSwitch(target);
-		if (!KNOWN_RULES.contains(doSwitch)) {
-			return ctx.createFailureStatus(doSwitch, target);
-		}
+        String doSwitch = hitroSwitch.doSwitch(target);
+        if (!KNOWN_RULES.contains(doSwitch)) {
+            return ctx.createFailureStatus(doSwitch, target);
+        }
 
-		return null;
-	}
+        return null;
+    }
 
 }

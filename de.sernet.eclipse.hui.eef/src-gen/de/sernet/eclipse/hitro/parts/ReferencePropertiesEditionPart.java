@@ -29,7 +29,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-
 // End of user code
 
 /**
@@ -38,80 +37,83 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface ReferencePropertiesEditionPart {
 
-	/**
-	 * @return the entitytype
-	 * 
-	 */
-	public EObject getEntitytype();
+    /**
+     * @return the entitytype
+     * 
+     */
+    public EObject getEntitytype();
 
-	/**
-	 * Init the entitytype
-	 * @param settings the combo setting
-	 */
-	public void initEntitytype(EObjectFlatComboSettings settings);
+    /**
+     * Init the entitytype
+     * 
+     * @param settings
+     *            the combo setting
+     */
+    public void initEntitytype(EObjectFlatComboSettings settings);
 
-	/**
-	 * Defines a new entitytype
-	 * @param newValue the new entitytype to set
-	 * 
-	 */
-	public void setEntitytype(EObject newValue);
+    /**
+     * Defines a new entitytype
+     * 
+     * @param newValue
+     *            the new entitytype to set
+     * 
+     */
+    public void setEntitytype(EObject newValue);
 
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 * 
-	 */
-	public void setEntitytypeButtonMode(ButtonsModeEnum newValue);
+    /**
+     * Defines the button mode
+     * 
+     * @param newValue
+     *            the new mode to set
+     * 
+     */
+    public void setEntitytypeButtonMode(ButtonsModeEnum newValue);
 
-	/**
-	 * Adds the given filter to the entitytype edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToEntitytype(ViewerFilter filter);
+    /**
+     * Adds the given filter to the entitytype edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addFilterToEntitytype(ViewerFilter filter);
 
-	/**
-	 * Adds the given filter to the entitytype edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToEntitytype(ViewerFilter filter);
+    /**
+     * Adds the given filter to the entitytype edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addBusinessFilterToEntitytype(ViewerFilter filter);
 
+    /**
+     * @return the linkType
+     * 
+     */
+    public String getLinkType();
 
-	/**
-	 * @return the linkType
-	 * 
-	 */
-	public String getLinkType();
+    /**
+     * Defines a new linkType
+     * 
+     * @param newValue
+     *            the new linkType to set
+     * 
+     */
+    public void setLinkType(String newValue);
 
-	/**
-	 * Defines a new linkType
-	 * @param newValue the new linkType to set
-	 * 
-	 */
-	public void setLinkType(String newValue);
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
+    // Start of user code for additional methods
 
-
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

@@ -104,7 +104,7 @@ public class ImportSNCAWizardPage extends WizardNewFileCreationPage {
                 .findMember(containerFullPath);
         IProject project = findContainersForLocation.getProject();
         try {
-            String defaultCharset = "UTF-8";//project.getDefaultCharset();
+            String defaultCharset = "UTF-8";// project.getDefaultCharset();
             FileInputStream fileInputStream = new FileInputStream(
                     new File(editor.getStringValue()));
             BufferedReader d = new BufferedReader(
