@@ -1,12 +1,13 @@
 package de.sernet.eclipse.hui.parsley;
 
-import de.sernet.eclipse.hui.parsley.ui.provider.ParsleyLabelProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.UndoableEditingStrategy;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+import de.sernet.eclipse.hui.parsley.ui.provider.ParsleyLabelProvider;
 
 /**
  * de.sernet.eclipse.hui.parsley EMF Parsley Dsl Module file

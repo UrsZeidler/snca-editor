@@ -24,9 +24,7 @@ import org.junit.Ignore;
 
 import de.sernet.eclipse.hitro.HitroFactory;
 import de.sernet.eclipse.hitro.Huirelation;
-
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 /**

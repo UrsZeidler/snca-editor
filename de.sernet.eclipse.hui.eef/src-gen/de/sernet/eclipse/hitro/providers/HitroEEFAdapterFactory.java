@@ -20,9 +20,9 @@
  */
 package de.sernet.eclipse.hitro.providers;
 
-import de.sernet.eclipse.hitro.util.HitroAdapterFactory;
-
 import org.eclipse.emf.common.notify.Adapter;
+
+import de.sernet.eclipse.hitro.util.HitroAdapterFactory;
 
 /**
  * @author Urs Zeidler

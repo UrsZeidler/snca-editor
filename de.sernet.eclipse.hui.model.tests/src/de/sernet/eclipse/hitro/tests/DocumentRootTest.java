@@ -22,9 +22,7 @@ package de.sernet.eclipse.hitro.tests;
 
 import de.sernet.eclipse.hitro.DocumentRoot;
 import de.sernet.eclipse.hitro.HitroFactory;
-
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 /**

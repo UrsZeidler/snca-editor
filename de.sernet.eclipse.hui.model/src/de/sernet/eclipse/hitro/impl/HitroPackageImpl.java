@@ -20,6 +20,15 @@
  */
 package de.sernet.eclipse.hitro.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+
 import de.sernet.eclipse.hitro.DefaultRule;
 import de.sernet.eclipse.hitro.Depends;
 import de.sernet.eclipse.hitro.DocumentRoot;
@@ -35,17 +44,6 @@ import de.sernet.eclipse.hitro.Option;
 import de.sernet.eclipse.hitro.Param;
 import de.sernet.eclipse.hitro.Reference;
 import de.sernet.eclipse.hitro.ValidationRule;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--

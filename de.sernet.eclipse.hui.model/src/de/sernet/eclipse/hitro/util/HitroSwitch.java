@@ -20,12 +20,23 @@
  */
 package de.sernet.eclipse.hitro.util;
 
-import de.sernet.eclipse.hitro.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import de.sernet.eclipse.hitro.DefaultRule;
+import de.sernet.eclipse.hitro.Depends;
+import de.sernet.eclipse.hitro.DocumentRoot;
+import de.sernet.eclipse.hitro.HitroPackage;
+import de.sernet.eclipse.hitro.Huientities;
+import de.sernet.eclipse.hitro.Huientity;
+import de.sernet.eclipse.hitro.Huiproperty;
+import de.sernet.eclipse.hitro.Huipropertygroup;
+import de.sernet.eclipse.hitro.Huirelation;
+import de.sernet.eclipse.hitro.Option;
+import de.sernet.eclipse.hitro.Param;
+import de.sernet.eclipse.hitro.Reference;
+import de.sernet.eclipse.hitro.ValidationRule;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance

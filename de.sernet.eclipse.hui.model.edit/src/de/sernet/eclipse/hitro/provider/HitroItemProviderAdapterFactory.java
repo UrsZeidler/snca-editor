@@ -20,15 +20,12 @@
  */
 package de.sernet.eclipse.hitro.provider;
 
-import de.sernet.eclipse.hitro.util.HitroAdapterFactory;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -40,6 +37,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+import de.sernet.eclipse.hitro.util.HitroAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support

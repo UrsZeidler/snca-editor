@@ -1,15 +1,17 @@
 package de.sernet.eclipse.hui.parsley.ui.provider;
 
-import com.google.inject.Inject;
-import de.sernet.eclipse.hitro.Huientity;
-import de.sernet.eclipse.hitro.Huiproperty;
-import de.sernet.eclipse.hitro.Huipropertygroup;
-import de.sernet.eclipse.hitro.Huirelation;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
+
+import com.google.inject.Inject;
+
+import de.sernet.eclipse.hitro.Huientity;
+import de.sernet.eclipse.hitro.Huiproperty;
+import de.sernet.eclipse.hitro.Huipropertygroup;
+import de.sernet.eclipse.hitro.Huirelation;
 
 @SuppressWarnings("all")
 public class ParsleyLabelProvider extends ViewerLabelProvider {

@@ -20,16 +20,28 @@
  */
 package de.sernet.eclipse.hitro.impl;
 
-import de.sernet.eclipse.hitro.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import de.sernet.eclipse.hitro.DefaultRule;
+import de.sernet.eclipse.hitro.Depends;
+import de.sernet.eclipse.hitro.DocumentRoot;
+import de.sernet.eclipse.hitro.HitroFactory;
+import de.sernet.eclipse.hitro.HitroPackage;
+import de.sernet.eclipse.hitro.Huientities;
+import de.sernet.eclipse.hitro.Huientity;
+import de.sernet.eclipse.hitro.Huiproperty;
+import de.sernet.eclipse.hitro.Huipropertygroup;
+import de.sernet.eclipse.hitro.Huirelation;
+import de.sernet.eclipse.hitro.Inputtypes;
+import de.sernet.eclipse.hitro.Option;
+import de.sernet.eclipse.hitro.Param;
+import de.sernet.eclipse.hitro.Reference;
+import de.sernet.eclipse.hitro.ValidationRule;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--

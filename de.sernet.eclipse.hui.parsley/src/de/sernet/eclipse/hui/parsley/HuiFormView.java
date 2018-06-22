@@ -7,7 +7,6 @@ import org.eclipse.emf.edit.provider.WrapperItemProvider;
 import org.eclipse.emf.parsley.composite.FormFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.inject.Inject;

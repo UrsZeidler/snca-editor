@@ -20,26 +20,19 @@
  */
 package de.sernet.eclipse.hitro.providers;
 
-import de.sernet.eclipse.hitro.HitroPackage;
-import de.sernet.eclipse.hitro.Huiproperty;
-
-import de.sernet.eclipse.hitro.components.HuipropertyPropertiesEditionComponent;
-
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
-
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
+
+import de.sernet.eclipse.hitro.HitroPackage;
+import de.sernet.eclipse.hitro.Huiproperty;
+import de.sernet.eclipse.hitro.components.HuipropertyPropertiesEditionComponent;
 
 /**
  * @author Urs Zeidler

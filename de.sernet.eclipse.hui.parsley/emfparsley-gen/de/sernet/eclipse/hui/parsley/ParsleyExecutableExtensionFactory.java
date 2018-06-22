@@ -1,8 +1,8 @@
 package de.sernet.eclipse.hui.parsley;
 
-import com.google.inject.Injector;
-import de.sernet.eclipse.hui.parsley.ParsleyInjectorProvider;
 import org.eclipse.emf.parsley.runtime.ui.AbstractGuiceAwareExecutableExtensionFactory;
+
+import com.google.inject.Injector;
 
 @SuppressWarnings("all")
 public class ParsleyExecutableExtensionFactory

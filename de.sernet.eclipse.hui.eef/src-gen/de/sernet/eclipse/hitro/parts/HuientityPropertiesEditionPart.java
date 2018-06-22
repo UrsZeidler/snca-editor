@@ -20,9 +20,6 @@
  */
 package de.sernet.eclipse.hitro.parts;
 
-// Start of user code for imports
-import org.eclipse.emf.common.util.EList;
-
 // End of user code
 
 /**

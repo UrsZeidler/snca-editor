@@ -20,15 +20,13 @@
  */
 package de.sernet.eclipse.hitro.util;
 
-import de.sernet.eclipse.hitro.HitroPackage;
-
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
+import de.sernet.eclipse.hitro.HitroPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

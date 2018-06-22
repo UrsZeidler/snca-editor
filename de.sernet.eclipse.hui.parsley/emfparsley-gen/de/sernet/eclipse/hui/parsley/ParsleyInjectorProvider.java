@@ -1,9 +1,9 @@
 package de.sernet.eclipse.hui.parsley;
 
+import org.eclipse.emf.parsley.runtime.ui.PluginUtil;
+
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import de.sernet.eclipse.hui.parsley.ParsleyEmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.runtime.ui.PluginUtil;
 
 @SuppressWarnings("all")
 public class ParsleyInjectorProvider {

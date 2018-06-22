@@ -24,14 +24,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.services.WorkbenchServiceRegistry;
 
 import de.sernet.eclipse.hui.service.localization.LocalizationService;
 import de.sernet.eclipse.hui.service.localization.lang.LangEntry;

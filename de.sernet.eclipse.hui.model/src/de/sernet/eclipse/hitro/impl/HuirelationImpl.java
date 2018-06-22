@@ -20,16 +20,14 @@
  */
 package de.sernet.eclipse.hitro.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import de.sernet.eclipse.hitro.HitroPackage;
 import de.sernet.eclipse.hitro.Huientity;
 import de.sernet.eclipse.hitro.Huirelation;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object
