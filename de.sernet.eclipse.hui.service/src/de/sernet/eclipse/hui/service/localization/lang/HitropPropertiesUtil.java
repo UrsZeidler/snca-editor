@@ -255,13 +255,6 @@ public class HitropPropertiesUtil {
                 for (LangEntry langEntry : entries) {
                     Properties properties = langProperties.get(langEntry.getLang());
                     String text = langEntry.getText();// TODO: write in ISO-8859
-                    // try {
-                    // text = new
-                    // String(langEntry.getText().getBytes("ISO-8859-1"),
-                    // "UTF-8");
-                    // } catch (UnsupportedEncodingException e1) {
-                    // e1.printStackTrace();
-                    // }
                     properties.put(languagesEntry.getId(), text);
                 }
             }

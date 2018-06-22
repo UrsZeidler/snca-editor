@@ -43,11 +43,15 @@ import de.sernet.eclipse.hui.service.localization.lang.LanguagesEntry;
  */
 public class TestNameLocalized extends AbstractModelConstraint {
 
+    private LocalizationService localizationService;
+
     /**
      * 
      */
     public TestNameLocalized() {
-        // TODO Auto-generated constructor stub
+        super();
+        IWorkbench workbench = PlatformUI.getWorkbench();
+        localizationService = workbench.getService(LocalizationService.class);
     }
 
     /*
@@ -60,8 +64,6 @@ public class TestNameLocalized extends AbstractModelConstraint {
     @Override
     public IStatus validate(IValidationContext ctx) {
         EObject target = ctx.getTarget();
-        IWorkbench workbench = PlatformUI.getWorkbench();
-        LocalizationService localizationService = workbench.getService(LocalizationService.class);
         Resource eResource = target.eResource();
 
         Map<EObject, LanguagesEntry> languageEntries = localizationService

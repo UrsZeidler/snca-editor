@@ -34,7 +34,6 @@ public class Test1 extends AbstractModelConstraint {
 	 * 
 	 */
 	public Test1() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
@@ -42,7 +41,6 @@ public class Test1 extends AbstractModelConstraint {
 	 */
 	@Override
 	public IStatus validate(IValidationContext ctx) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -23,7 +23,6 @@ public class HuiFormView extends org.eclipse.emf.parsley.views.OnSelectionTreeFo
 	
 	@Override
 	protected void updateOnSelection(IWorkbenchPart sourcepart, ISelection selection) {
-		// TODO Auto-generated method stub
 		super.updateOnSelection(sourcepart, selection);
 	}
 	

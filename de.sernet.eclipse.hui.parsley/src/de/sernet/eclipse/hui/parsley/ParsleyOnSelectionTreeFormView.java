@@ -15,7 +15,6 @@ public class ParsleyOnSelectionTreeFormView extends org.eclipse.emf.parsley.view
 	
 	@Override
 	protected EObject getFirstSelectedEObject(ISelection selection) {
-		// TODO Auto-generated method stub
 		return super.getFirstSelectedEObject(selection);
 	}
 	

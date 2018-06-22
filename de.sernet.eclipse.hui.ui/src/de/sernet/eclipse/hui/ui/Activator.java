@@ -64,6 +64,4 @@ public class Activator extends AbstractUIPlugin {
     public static void logInfo(String message) {
         plugin.getLog().log(new Status(IStatus.INFO, plugin.getBundle().getSymbolicName(), message));
     }
-
-
 }
