@@ -2,7 +2,8 @@
 <feature
       id="de.sernet.eclipse.hui.feature"
       label="Hui Feature"
-      version="1.0.0.qualifier">
+      version="1.0.0.qualifier"
+      plugin="de.sernet.eclipse.hui.branding">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -65,6 +66,12 @@
 
    <plugin
          id="de.sernet.eclipse.hui.service"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="de.sernet.eclipse.hui.branding"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
