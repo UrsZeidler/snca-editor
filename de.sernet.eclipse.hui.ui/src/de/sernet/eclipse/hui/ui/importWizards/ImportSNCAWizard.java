@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -54,7 +55,8 @@ public class ImportSNCAWizard extends Wizard implements IImportWizard {
                 File source = new File(mainPage.getOrgFilename());
                 String fileBasePath = HitropPropertiesUtil.fileBasePath(source);
                 String platformBasePath = HitropPropertiesUtil.platformBasePath(file);
-                for (String lang : HitropPropertiesUtil.LANGS) {
+                List<String> allLocales = HitropPropertiesUtil.getAllLocalesForFile(fileBasePath, HitropPropertiesUtil.TO_FILE);
+                for (String lang : allLocales) {
                     File targetFile = HitropPropertiesUtil.TO_WORKSPACE_FILE
                             .toFile(platformBasePath + lang);
                     File sourceFile = HitropPropertiesUtil.TO_FILE.toFile(fileBasePath + lang);
