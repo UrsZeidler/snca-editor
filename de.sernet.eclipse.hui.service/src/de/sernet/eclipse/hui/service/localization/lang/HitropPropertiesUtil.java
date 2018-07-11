@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -34,6 +35,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -43,6 +45,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+
+import com.google.common.io.Files;
 
 import de.sernet.eclipse.hitro.DocumentRoot;
 import de.sernet.eclipse.hitro.Huientities;
@@ -55,7 +59,6 @@ import de.sernet.eclipse.hui.service.Activator;
  *
  */
 public class HitropPropertiesUtil {
-    public static final String[] LANGS = { "", "_de" };
 
     /**
      * Transformer from basePath to a file.
@@ -73,8 +76,7 @@ public class HitropPropertiesUtil {
         public File toFile(String baseNamePath) {
             IPath filePath = new Path(baseNamePath + ".properties");
             IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(filePath);
-            File javaFile = file.getRawLocation().toFile();
-            return javaFile;
+            return file.getRawLocation().toFile();
         }
     };
 
@@ -123,12 +125,12 @@ public class HitropPropertiesUtil {
      * @param toFile
      * @return
      */
-    public static Map<EObject, LanguagesEntry> loadPropertyResources(EList<EObject> contents,
+    public static Map<EObject, LanguagesEntry> loadPropertyResources(List<EObject> contents,
             String basePath, ToFile toFile) {
         if (contents.isEmpty())
             return Collections.emptyMap();
 
-        Map<EObject, LanguagesEntry> entryMap = new HashMap<EObject, LanguagesEntry>();
+        Map<EObject, LanguagesEntry> entryMap = new HashMap<>();
         Hitro2LangEntrySwitch hitroSwitch = new Hitro2LangEntrySwitch();
         Map<String, Properties> map = HitropPropertiesUtil.getLangProperties(basePath, toFile);
 
@@ -137,7 +139,7 @@ public class HitropPropertiesUtil {
             DocumentRoot dr = (DocumentRoot) eObject;
             Huientities huientities = dr.getHuientities();
             TreeIterator<EObject> eAllContents = huientities.eAllContents();
-            for (; eAllContents.hasNext();) {
+            while (eAllContents.hasNext()) {
                 EObject next = eAllContents.next();
                 LanguagesEntry languagesEntry = hitroSwitch.doSwitch(next);
                 if (languagesEntry == null) {
@@ -169,7 +171,8 @@ public class HitropPropertiesUtil {
     public static Map<String, Properties> getLangProperties(String basePath, ToFile toFile) {
         Map<String, Properties> map = new HashMap<>();
 
-        for (String lang : LANGS) {
+        List<String> locales = getAllLocalesForFile(basePath, toFile);        
+        for (String lang : locales) {
             Properties properties = new Properties() {
                 private static final long serialVersionUID = 5598658684137906202L;
 
@@ -199,6 +202,28 @@ public class HitropPropertiesUtil {
         }
 
         return map;
+    }
+
+    public static List<String> getAllLocalesForFile(String basePath, ToFile toFile) {
+        File file = toFile.toFile(basePath);
+        String fullName = file.getName();
+        String fileExtension = Files.getFileExtension(fullName);
+        String filename = Files.getNameWithoutExtension(fullName);
+        
+        File parentFile = file.getParentFile();
+        File[] listFiles = parentFile.listFiles(f-> f.getName().startsWith(filename) && f.getName().endsWith(fileExtension));
+        return Arrays.stream(listFiles).map(f-> toLocalExtension(f,filename,fileExtension)).collect(Collectors.toList());
+    }
+    
+    /**
+     * Extract the locale from the file.
+     * @param file the file
+     * @param filePrefix the start of the filename 
+     * @param fileExtension the extension of the file
+     */
+    public static String toLocalExtension(File file, String filePrefix, String fileExtension) {
+        String name = file.getName();
+        return name.substring(filePrefix.length(), name.length()-fileExtension.length()-1);
     }
 
     /**

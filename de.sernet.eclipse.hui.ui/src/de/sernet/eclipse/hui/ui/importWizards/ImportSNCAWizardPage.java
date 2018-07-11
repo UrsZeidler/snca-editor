@@ -64,6 +64,7 @@ public class ImportSNCAWizardPage extends WizardNewFileCreationPage {
         String outfile = getDialogSettings().get("output.file.name");
         if (outfile != null) {
             setFileName(outfile);
+            orgFilename = inputFileName;
         }
         editor.setStringValue(inputFileName);
         editor.getTextControl(fileSelectionArea).addModifyListener(new ModifyListener() {

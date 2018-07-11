@@ -2,12 +2,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<!-- BUILD INSTRUCTIONS Build with mvn -Dtycho.disableP2Mirrors=true -X 
-		clean verify See https://bugs.eclipse.org/bugs/show_bug.cgi?id=376973 and 
-		https://wiki.eclipse.org/Tycho/FAQ#How_do_I_disable_P2_mirrors.3F. Otherwise 
-		you might get a NullPointerException while fetching the artifacts. HOW TO 
-		DEAL WITH ECLIPSE? -->
-
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
 
@@ -16,16 +10,6 @@
 	<version>1.0.0-SNAPSHOT</version>
 
 	<properties>
-		<!-- See http://mvnrepository.com/artifact/org.eclipse.tycho/tycho-maven-plugin/ 
-			for latest version. -->
-		<!-- Failed to execute goal org.eclipse.tycho:tycho-p2-publisher-plugin:1.0.0:publish-products 
-			(default-publish-products) on project sernet.verinice.releng.client.product: 
-			Detected Luna or older launcher feature org.eclipse.equinox.executable version 
-			3.5.1.v20111216-1653-7P7NFUIFIbaUcU77s0KQWHw5HZTZ. [ERROR] Native product 
-			launchers for MacOSX can only be built against Eclipse Mars or newer. [ERROR] 
-			To fix this, you can either build against Eclipse Mars or newer (recommended) 
-			or go back to Tycho <= 0.22.0 -->
-		<!-- <tycho-version>1.0.0</tycho-version> -->
 		<tycho-version>1.2.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -43,6 +27,7 @@
 		<module>de.sernet.eclipse.hui.parsley</module>
 		<module>de.sernet.eclipse.hui.ui</module>
 		<module>de.sernet.eclipse.hui.service</module>
+		<module>de.sernet.eclipse.hui.branding</module>
 		<!-- tests -->
 		<module>de.sernet.eclipse.hui.model.tests</module>
 		<!-- features -->

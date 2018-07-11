@@ -115,15 +115,15 @@ public class ExportSNCAWizardPage extends WizardPage {
         IDialogSettings section = getDialogSettings().getSection(ExportSNCAWizard.EXPORT_WIZARD);
         String targetfile = section.get(ExportSNCAWizard.TARGET_FILE);
 
-        Label lblNewLabel_1 = new Label(grpSource, SWT.NONE);
-        lblNewLabel_1.setText("target file");
+        Label lblNewLabel1 = new Label(grpSource, SWT.NONE);
+        lblNewLabel1.setText("target file");
 
         targetFileText = new Text(grpSource, SWT.BORDER);
         targetFileText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
         targetFileText.setText(targetfile);
 
-        Button btnNewButton_1 = new Button(grpSource, SWT.NONE);
-        btnNewButton_1.addSelectionListener(new SelectionAdapter() {
+        Button btnNewButton1 = new Button(grpSource, SWT.NONE);
+        btnNewButton1.addSelectionListener(new SelectionAdapter() {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
@@ -137,7 +137,7 @@ public class ExportSNCAWizardPage extends WizardPage {
                 }
             }
         });
-        btnNewButton_1.setText("select");
+        btnNewButton1.setText("select");
 
         if (selection != null) {
             Object element = selection.getFirstElement();
@@ -172,11 +172,10 @@ public class ExportSNCAWizardPage extends WizardPage {
         BufferedReader d = new BufferedReader(new InputStreamReader(contents));
 
         String collect = d.lines().collect(Collectors.joining("\n"));
-
         collect = collect.replaceAll("hitro:huientities", "huientities");
         collect = collect.replaceFirst("xmlns:hitro=", "xmlns=");
-
         FileWriter fileWriter = new FileWriter(targetFile, false);
+        
         try {
             fileWriter.append(collect);
         } finally {
@@ -189,12 +188,12 @@ public class ExportSNCAWizardPage extends WizardPage {
 
         String basePath = HitropPropertiesUtil.platformBasePath(sourceFile);
         String fileBasePath = HitropPropertiesUtil.fileBasePath(targetFile);
-        for (String lang : HitropPropertiesUtil.LANGS) {
-            File sourceFile = HitropPropertiesUtil.TO_WORKSPACE_FILE.toFile(basePath + lang);
-            File targetFile = HitropPropertiesUtil.TO_FILE.toFile(fileBasePath + lang);
-            Files.copy(sourceFile.toPath(), targetFile.toPath(),
+        List<String> allLocales = HitropPropertiesUtil.getAllLocalesForFile(basePath, HitropPropertiesUtil.TO_WORKSPACE_FILE);
+        for (String lang : allLocales) {
+            File source = HitropPropertiesUtil.TO_WORKSPACE_FILE.toFile(basePath + lang);
+            File target = HitropPropertiesUtil.TO_FILE.toFile(fileBasePath + lang);
+            Files.copy(source.toPath(), target.toPath(),
                     StandardCopyOption.REPLACE_EXISTING);
         }
     }
-
 }
