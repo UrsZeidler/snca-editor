@@ -30,6 +30,7 @@
 		<module>de.sernet.eclipse.hui.branding</module>
 		<!-- tests -->
 		<module>de.sernet.eclipse.hui.model.tests</module>
+		<module>de.sernet.eclipse.hui.service.tests</module>
 		<!-- features -->
 		<module>de.sernet.eclipse.hui.feature</module>
 		<module>de.sernet.eclipse.hui.depedencies.feature</module>

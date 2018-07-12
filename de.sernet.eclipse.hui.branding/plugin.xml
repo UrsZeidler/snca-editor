@@ -6,7 +6,7 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.ui.ide.workbench"
-            name="SNCA-Editor">
+            name="%product.name">
          <property
                name="appName"
                value="SNCA-Editor">
@@ -25,15 +25,15 @@
          </property>
          <property
                name="aboutText"
-               value="AN example text.">
+               value="%about.text">
          </property>
          <property
                name="windowImages"
-               value="images/about_feature_32.png">
+               value="images/v-16.png,images/v-32.png,images/v-48.png,images/v-64.png,images/v-128.png">
          </property>
          <property
                name="aboutImage"
-               value="images/shrImage_6_250.png">
+               value="images/about_img.png">
          </property>
          <property
                name="preferenceCustomization"

@@ -4,7 +4,7 @@
 <product name="SNCA-Editor" uid="de.sernet.eclipse.hui.product" id="de.sernet.eclipse.hui.branding.SNCA_Editor" application="org.eclipse.ui.ide.workbench" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="images/shrImage_6_250.png"/>
+      <image path="images/about_img.png"/>
       <text>
          AN example text.
       </text>
@@ -18,7 +18,7 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i32="images/about_feature_32.png"/>
+   <windowImages i16="images/v-16.png" i32="images/v-32.png" i48="images/v-48.png" i64="images/v-64.png" i128="images/v-128.png"/>
 
    <splash
       location="de.sernet.eclipse.hui.branding"
@@ -26,8 +26,10 @@
       startupMessageRect="7,252,445,20"
       startupForegroundColor="000000" />
    <launcher name="snca-editor">
-      <linux icon="images/snca-editor_64.xpm"/>
-      <win useIco="false">
+      <linux icon="images/v.xpm"/>
+      <macosx icon="images/v.icns"/>
+      <win useIco="true">
+         <ico path="images/v-128-16.ico"/>
          <bmp/>
       </win>
    </launcher>
