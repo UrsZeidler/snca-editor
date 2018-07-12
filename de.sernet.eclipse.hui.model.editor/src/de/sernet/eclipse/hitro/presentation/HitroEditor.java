@@ -87,6 +87,7 @@ import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+import org.eclipse.emf.eef.runtime.ui.notify.OpenWizardOnDoubleClick;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -1108,6 +1109,8 @@ public class HitroEditor extends MultiPageEditorPart
                 createContextMenuFor(selectionViewer);
                 int pageIndex = addPage(viewerPane.getControl());
                 setPageText(pageIndex, getString("_UI_SelectionPage_label"));
+                selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain, adapterFactory));
+
             }
 
             // Create a page for the parent tree view.
