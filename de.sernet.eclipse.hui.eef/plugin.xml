@@ -94,7 +94,7 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="de.sernet.eclipse.hitro.parts.forms.DocumentRootPropertiesEditionPartForm"
+               class="de.sernet.eclipse.hui.eef.properties.part.forms.CustomDocumentRootPropertiesEditionPartForm"
                filter="de.sernet.eclipse.hitro.providers.DocumentRootPropertiesEditionProvider$EditionFilter"
                id="de.sernet.eclipse.hitro.section.DocumentRoot"
                tab="Base">
@@ -112,7 +112,7 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="de.sernet.eclipse.hitro.parts.forms.HuipropertyPropertiesEditionPartForm"
+               class="de.sernet.eclipse.hui.eef.properties.part.forms.CustomHuipropertyPropertiesEditionPartForm"
                filter="de.sernet.eclipse.hitro.providers.HuipropertyPropertiesEditionProvider$EditionFilter"
                id="de.sernet.eclipse.hitro.section.Huiproperty"
                tab="Base">

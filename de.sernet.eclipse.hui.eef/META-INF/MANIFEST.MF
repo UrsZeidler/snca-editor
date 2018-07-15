@@ -12,4 +12,5 @@ Require-Bundle: de.sernet.eclipse.hui.model;bundle-version="1.0.0",
  org.eclipse.core.databinding.observable,
  org.eclipse.core.databinding.property,
  de.sernet.eclipse.hui.model.editor;bundle-version="1.0.0",
- de.sernet.eclipse.hui.service;bundle-version="1.0.0"
+ de.sernet.eclipse.hui.service;bundle-version="1.0.0",
+ com.google.guava
