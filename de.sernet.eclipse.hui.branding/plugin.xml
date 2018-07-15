@@ -6,7 +6,7 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.ui.ide.workbench"
-            name="%product.name">
+            name="SNCA-Editor">
          <property
                name="appName"
                value="SNCA-Editor">
@@ -25,7 +25,7 @@
          </property>
          <property
                name="aboutText"
-               value="%about.text">
+               value="AN example text.">
          </property>
          <property
                name="windowImages"
