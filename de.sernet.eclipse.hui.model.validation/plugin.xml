@@ -175,6 +175,19 @@ Works on Huientity and Huiproperty.
                               Validates that the numeric option is consitent with the defined values.
                            </description>
                         </constraint>
+                        <constraint
+                              class="de.sernet.eclipse.hui.model.validation.contrains.TestIdFormat"
+                              id="de.sernet.eclipse.hui.model.validation.testidfromat"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Live"
+                              name="TestIdFormat"
+                              severity="WARNING"
+                              statusCode="de.sernet.eclipse.hui.model.validation.testidfromat">
+                           <message>
+                              The element id of {0} does not conform to the schema.
+                           </message>
+                        </constraint>
             
          </constraints>
          <constraints

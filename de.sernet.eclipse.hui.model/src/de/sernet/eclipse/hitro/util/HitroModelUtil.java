@@ -24,12 +24,43 @@ import org.eclipse.emf.ecore.EObject;
 import de.sernet.eclipse.hitro.Huientity;
 import de.sernet.eclipse.hitro.Huiproperty;
 import de.sernet.eclipse.hitro.Huipropertygroup;
+import de.sernet.eclipse.hitro.Option;
 
 /**
  * @author uz[at]sernet.de
  *
  */
 public class HitroModelUtil {
+    
+    private static final class HitroIdSwitch extends HitroSwitch<String> {
+        @Override
+        public String caseHuientity(Huientity object) {
+            return object.getId();
+        }
+
+        @Override
+        public String caseHuiproperty(Huiproperty object) {
+            return object.getId();
+        }
+
+        @Override
+        public String caseHuipropertygroup(Huipropertygroup object) {
+            return object.getId();
+        }
+
+        @Override
+        public String caseOption(Option object) {
+            return object.getId();
+        }
+    }
+
+    
+    private static final HitroSwitch<String> HITRO_ID_SWITCH = new HitroIdSwitch();
+    
+    public static final HitroSwitch<String> getIdSwitch(){
+        return HITRO_ID_SWITCH;
+    }
+    
     /**
      * Create an id for the given object.
      * 
