@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     24.11.2013 11:48:17                                                        
+     chummer2shr5xsl    
+     Creates a shr5 xmi resourset from chummer2 resources.
+                   
+     urs                                                                
+     ====================================================================== -->
+<project name="product2md" basedir="./" default="product2md">
+	<description>
+		 Transforming targets.
+	</description>
+	<property name="path.to.project" value="/home/urszeidler/git/snca-editor" />
+	<property name="product2md" value="product2html.xsl" />
+	<property name="product.file" value="de.sernet.eclipse.hui.product/de.sernet.eclipse.hui.product" />
+	<property name="out.filename" value="product.html" />
+
+<!-- transform the xml -->
+	<target name="product2md" description="transform the product file to a markdown">
+		<xslt force="true" style="${product2md}" in="${path.to.project}/${product.file}" out="${out.filename}">
+			<param name="path" expression="${path.to.project}/" />
+		</xslt>
+</target>
+
+</project>
