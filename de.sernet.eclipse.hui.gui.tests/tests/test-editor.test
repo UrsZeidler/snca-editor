@@ -1,0 +1,141 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: test-editor
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _wuxhcIkVEei0b4DzIVZGJQ
+Runtime-Version: 2.2.0.201706152316
+Save-Time: 7/16/18 8:39 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | get-menu -path "New/Project..." | click
+with [get-window "New Project"] {
+    get-button "Next >" | click
+    get-editbox -after [get-label "Project name:"] | set-text "edtor-test"
+    get-button Finish | click
+}
+get-view "Project Explorer" | get-tree | select "edtor-test" | get-menu -path "New/Folder" | click
+with [get-window "New Folder"] {
+    get-editbox -after [get-label "Folder name:"] | set-text v1
+    get-button Finish | click
+}
+get-view "Project Explorer" | get-tree | select "edtor-test/v1" | get-menu -path "Import..." | click
+get-window Import | get-button "Next >" | click
+set-dialog-result File "/home/urszeidler/git-e4/verinice/sernet.gs.server/WebContent/WEB-INF/SNCA.xml"
+with [get-window "File Import Wizard"] {
+    get-button "Browse..." | click
+    get-button Finish | click
+}
+get-editor "SNCA.hitro" | get-tree | get-item -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro" 
+    | get-property caption | equals "platform:/resource/edtor-test/v1/SNCA.hitro" | verify-true
+get-view "Project Explorer" | get-tree | select "edtor-test/v1/SNCA.hitro"
+with [get-view "Project Explorer" | get-tree] {
+    get-item -path "edtor-test/v1/SNCA.hitro" | get-property caption | equals "SNCA.hitro" | verify-true
+    get-item -path "edtor-test/v1/SNCA.hitro" | get-property "getText()" | equals "SNCA.hitro" | verify-true
+    get-item -path "edtor-test/v1/snca-messages.properties" | get-property caption | equals "snca-messages.properties" 
+        | verify-true
+    get-item -path "edtor-test/v1/snca-messages_it.properties" | get-property caption 
+        | equals "snca-messages_it.properties" | verify-true
+    get-item -path "edtor-test/v1/snca-messages_de.properties" | get-property caption 
+        | equals "snca-messages_de.properties" | verify-true
+}
+get-button Resource | click
+get-button "SNCA Perspective" | click
+get-view Properties | get-label "platform:/resource/edtor-test/v1/SNCA.hitro" | get-property caption 
+    | equals "platform:/resource/edtor-test/v1/SNCA.hitro" | verify-true
+get-editor "SNCA.hitro" | get-tree | select "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root" 
+    | get-item -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities" | click
+get-view Properties | get-label Huientities | get-property "getText()" | equals Huientities | verify-true
+with [get-editor "SNCA.hitro" | get-tree] {
+    get-item 
+        -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities/Huientity Rollen \\[role\\]" 
+        | click
+    get-item 
+        -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities/Huientity TK-Komponente \\[tkkomponente\\]" 
+        | click
+    get-item 
+        -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities/Huientity TK-Komponente \\[tkkomponente\\]/Huirelation befindet sich in \\[tkkomponente_raum_located\\] -> Raum" 
+        | click
+}
+with [get-editor "SNCA.hitro" | get-tree] {
+    get-item -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root" | get-property caption 
+        | equals "Document Root" | verify-true
+    get-item -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities" 
+        | get-property caption | equals Huientities | verify-true
+}
+with [get-editor "SNCA.hitro" | get-tree] {
+    get-item 
+        -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities/Huientity TK-Komponente \\[tkkomponente\\]/Huiproperty Kürzel \\[tkkomponente_kuerzel\\]" 
+        | click
+    get-item 
+        -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities/Huientity TK-Komponente \\[tkkomponente\\]/Huiproperty Name \\[tkkomponente_name\\]" 
+        | click
+    get-item 
+        -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities/Huientity TK-Komponente \\[tkkomponente\\]/Huiproperty Name \\[tkkomponente_name\\]" 
+        | click
+    select "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities/Huientity TK-Komponente \\[tkkomponente\\]/Huiproperty Name \\[tkkomponente_name\\]" 
+        | double-click
+    get-item 
+        -path "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities/Huientity TK-Komponente \\[tkkomponente\\]/Huiproperty Name \\[tkkomponente_name\\]" 
+        | click
+}
+get-view Properties | get-section Type | get-button "Is URL" | check
+get-button "Save (M1+S)" | click
+get-editor "SNCA.hitro" | get-tree 
+    | select "platform:\\/resource\\/edtor-test\\/v1\\/SNCA.hitro/Document Root/Huientities" | get-menu -path Validate 
+    | click
+with [get-window "Validation Problems"] {
+    get-button "Details >>" | click
+    get-button OK | click
+}
+get-button "View Menu" -index 1 | click
+get-view Problems | get-tree | key-type "M1+a"
+with [get-view Navigator | get-tree] {
+    get-item -path "edtor-test" | click
+    select "edtor-test/v1" | get-menu -path "New/Other..." | click
+}
+with [get-window New] {
+    get-tree | select "General/File"
+    get-button "Next >" | click
+}
+with [get-window "New File"] {
+    get-editbox -after [get-label "File name:"] | set-text "problems.txt"
+    get-button Finish | click
+}
+get-view Problems | get-button "Filters..." | click
+with [get-window Filters] {
+    get-group Configurations | get-section Scope | get-button "No filter, show all elements" | click
+    get-button OK | click
+}
+get-button "View Menu" -index 1 | click
+get-view Problems | get-menu -path "Filters..." | click
+with [get-window Filters] {
+    get-button "Use limits" | uncheck
+    get-button OK | click
+}
+with [get-view Problems | get-tree] {
+    select "Errors (1245 items)/No localization Huiproperty Classification IT-Security Vulnerability [bp_incident_vv_bsig_classification_security_vulnerability] for _it defined." 
+        | key-type "M1+a"
+    get-menu -path Copy | click
+}
+with [get-editor "problems.txt"] {
+    with [get-text-viewer] {
+        key-type "M1+v"
+        key-type "M1+s"
+    }
+    get-right-ruler | hover-ruler -line 673
+}
+get-view Navigator | get-tree | select "edtor-test" | get-menu -path Delete | click
+with [get-window "Delete Resources"] {
+    get-button "Delete project contents on disk (cannot be undone)" | check
+    get-button OK | click
+    get-window "Delete Resources" | get-button Continue | click
+}
+get-button "SNCA Perspective" | click
+get-button Resource | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

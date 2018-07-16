@@ -1,0 +1,63 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: basic-start-and-stop
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _Pl3HAIjtEei0b4DzIVZGJQ
+Property-test-project: test
+Runtime-Version: 2.2.0.201706152316
+Save-Time: 7/16/18 4:04 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | get-menu -path "New/Project..." | click
+with [get-window "New Project"] {
+    get-tree | select "General/Project"
+    get-button "Next >" | click
+    get-editbox -after [get-label "Project name:"] | set-text $test-project
+    get-button Finish | click
+}
+get-view "Project Explorer" | get-tree | select test | get-menu -path "Import..." | click
+with [get-window Import] {
+    get-tree | select "SNCA Import/Import SNCA XML File"
+    get-button "Next >" | click
+}
+set-dialog-result File "/home/urszeidler/git-e4/verinice/sernet.gs.server/WebContent/WEB-INF/SNCA.xml"
+with [get-window "File Import Wizard"] {
+    get-button "Browse..." | click
+    get-button Finish | click
+}
+get-view "Project Explorer" | get-tree | select "test/snca-messages.properties"
+get-editor "SNCA.hitro" | get-tree | get-item -path "platform:\\/resource\\/test\\/SNCA.hitro" | click
+get-button "Open Perspective" | click
+get-window "Open Perspective" | get-table | select "SNCA Perspective" | double-click
+with [get-editor "SNCA.hitro" | get-tree] {
+    get-item -path "platform:\\/resource\\/test\\/SNCA.hitro/Document Root/Huientities/Huientity Rollen \\[role\\]" 
+        | click
+    get-item 
+        -path "platform:\\/resource\\/test\\/SNCA.hitro/Document Root/Huientities/Huientity Configuration \\[configuration\\]" 
+        | click
+}
+with [get-view Properties] {
+    get-property-tab Language | click
+    get-property-tab Advanced | click
+}
+get-editor "SNCA.hitro" | get-tree | get-item 
+    -path "platform:\\/resource\\/test\\/SNCA.hitro/Document Root/Huientities/Huientity Configuration \\[configuration\\]/Huiproperty Passwort \\[configuration_passwort\\]" 
+    | click
+get-view Properties | get-property-tab Base | click
+get-editor "SNCA.hitro" | get-tree | select "platform:\\/resource\\/test\\/SNCA.hitro/Document Root"
+get-menu -path "Hitro Editor/Validate" | click
+get-window "Validation Problems" | get-button OK | click
+get-button "SNCA Perspective" | click
+get-button Resource | click
+get-view "Project Explorer" | get-tree | select $test-project | get-menu -path Delete | click
+with [get-window "Delete Resources"] {
+    get-button "Delete project contents on disk (cannot be undone)" | check
+    get-button OK | click
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

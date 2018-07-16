@@ -1,0 +1,79 @@
+<project name="rcptt-project" default="test" basedir="../../">
+  <!-- Set properties below -->
+  <property name="runner-path" location="/home/urszeidler/programme/rcptt/eclipse/" />
+  <property name="aut-path" location="/home/urszeidler/programme/snca-editor" />
+  <property name="images" value="/home/urs/git/shr5rcp.wiki/wiki-images/images"/>
+
+  <property name="test-path" location="${basedir}/de.sernet.eclipse.hui.gui.tests"/> 
+  	
+  <property name="test-results" location="${basedir}/build/results"/>
+  <property name="runner-workspace" location="${test-results}/runner-workspace"/>
+  <property name="aut-workspace" location="${test-results}/aut-workspace-"/>
+  <property name="aut-stdout" location="${test-results}/aut-out-"/>
+  <property name="junit-report" location="${test-results}/results.xml"/>
+  <property name="html-report" location="${test-results}/results.html"/>
+
+  <property name="erunner" value="org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar"/>
+
+  <target name="init">
+    <delete dir="${test-results}" quiet="true"/>
+    <mkdir dir="${test-results}" />
+  </target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: configure-aut                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="configure-aut">
+<!--            <delete file="${aut-path}/run_shr.ini" />
+    		<echo  file="${aut-path}/run_shr.ini">
+-startup plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar
+-launcher.library plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.200.v20150204-1316
+-nl 
+ en
+    			
+-vmargs
+-XX:MaxPermSize=256m
+-Xms240m
+-Xmx768m
+-Dimage.folder=${images}
+</echo> 
+-->   
+    </target>
+
+  
+  <target name="test" depends="init,configure-aut">
+  	<echo>  ${runner-path}/plugins/${erunner} </echo>
+    <java jar="${runner-path}/plugins/${erunner}" fork="true">
+      <arg value="-application" />
+      <arg value="org.eclipse.rcptt.runner.headless" />
+
+      <arg value="-data" />
+      <arg value="${runner-workspace}" />
+
+      <arg value="-aut" />
+      <arg value="${aut-path}" />
+      
+      <arg value="-autArgs" />
+      <arg value="'-nl;en'" />
+      	
+      <arg value="-autWsPrefix" />
+      <arg value="${aut-workspace}" />
+
+      <arg value="-autConsolePrefix" />
+      <arg value="${aut-stdout}"/>
+
+      <arg value="-htmlReport" />
+      <arg value="${html-report}" />
+
+      <arg value="-junitReport" />
+      <arg value="${junit-report}" />
+
+      <arg value="-import" />
+      <arg value="${test-path}" />
+
+      <arg value="-testOptions" />
+      <arg value="testExecTimeout=600;execTimeout=3600;reportingIncludeIgnoredWaitDetails=true;reportingPassedTestDetails=true;runtimeEnableActivityLogs=true;q7ImageCapture=true" />
+
+    </java>
+  </target>
+</project>
