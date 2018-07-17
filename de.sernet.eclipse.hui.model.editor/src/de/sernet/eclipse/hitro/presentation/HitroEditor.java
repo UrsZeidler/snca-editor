@@ -212,7 +212,7 @@ public class HitroEditor extends MultiPageEditorPart
      * 
      * @generated
      */
-    protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
+    protected List<PropertySheetPage> propertySheetPages = new ArrayList<>();
 
     /**
      * This is the viewer that shadows the selection in the content outline. The
@@ -295,7 +295,7 @@ public class HitroEditor extends MultiPageEditorPart
      * 
      * @generated
      */
-    protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
+    protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<>();
 
     /**
      * This keeps track of the selection of the editor as a whole. <!--
@@ -361,7 +361,7 @@ public class HitroEditor extends MultiPageEditorPart
      * 
      * @generated
      */
-    protected Collection<Resource> removedResources = new ArrayList<Resource>();
+    protected Collection<Resource> removedResources = new ArrayList<>();
 
     /**
      * Resources that have been changed since last activation. <!--
@@ -369,7 +369,7 @@ public class HitroEditor extends MultiPageEditorPart
      * 
      * @generated
      */
-    protected Collection<Resource> changedResources = new ArrayList<Resource>();
+    protected Collection<Resource> changedResources = new ArrayList<>();
 
     /**
      * Resources that have been saved. <!-- begin-user-doc --> <!-- end-user-doc
@@ -377,7 +377,7 @@ public class HitroEditor extends MultiPageEditorPart
      * 
      * @generated
      */
-    protected Collection<Resource> savedResources = new ArrayList<Resource>();
+    protected Collection<Resource> savedResources = new ArrayList<>();
 
     /**
      * Map to store the diagnostic associated with a resource. <!--
@@ -385,7 +385,7 @@ public class HitroEditor extends MultiPageEditorPart
      * 
      * @generated
      */
-    protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<Resource, Diagnostic>();
+    protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<>();
 
     /**
      * Controls whether the problem indication should be updated. <!--
@@ -464,8 +464,8 @@ public class HitroEditor extends MultiPageEditorPart
             try {
                 class ResourceDeltaVisitor implements IResourceDeltaVisitor {
                     protected ResourceSet resourceSet = editingDomain.getResourceSet();
-                    protected Collection<Resource> changedResources = new ArrayList<Resource>();
-                    protected Collection<Resource> removedResources = new ArrayList<Resource>();
+                    protected Collection<Resource> changedResources = new ArrayList<>();
+                    protected Collection<Resource> removedResources = new ArrayList<>();
 
                     public boolean visit(final IResourceDelta delta) {
                         if (delta.getResource().getType() == IResource.FILE) {
@@ -590,7 +590,7 @@ public class HitroEditor extends MultiPageEditorPart
                 if (resource.isLoaded()) {
                     resource.unload();
                     try {
-                        resource.load(Collections.EMPTY_MAP);
+                        resource.load(Collections.emptyMap());
                     } catch (IOException exception) {
                         if (!resourceToDiagnosticMap.containsKey(resource)) {
                             resourceToDiagnosticMap.put(resource,
@@ -639,7 +639,6 @@ public class HitroEditor extends MultiPageEditorPart
                 try {
                     addPage(++lastEditorPage, problemEditorPart, getEditorInput());
                     setPageText(lastEditorPage, problemEditorPart.getPartName());
-                    // setActivePage(lastEditorPage);
                     showTabs();
                 } catch (PartInitException exception) {
                     HitroEditorPlugin.INSTANCE.log(exception);
@@ -831,7 +830,7 @@ public class HitroEditor extends MultiPageEditorPart
         @Override
         public Object[] getChildren(Object object) {
             Object parent = super.getParent(object);
-            return (parent == null ? Collections.EMPTY_SET : Collections.singleton(parent))
+            return (parent == null ? Collections.emptySet() : Collections.singleton(parent))
                     .toArray();
         }
 
@@ -909,9 +908,8 @@ public class HitroEditor extends MultiPageEditorPart
                                 if (value instanceof ContainmentUpdatingFeatureMapEntry) {
                                     ContainmentUpdatingFeatureMapEntry e = (ContainmentUpdatingFeatureMapEntry) value;
                                     Object value2 = e.getValue();
-                                    StructuredSelection structuredSelection = new StructuredSelection(
+                                    return new StructuredSelection(
                                             value2);
-                                    return structuredSelection;
                                 } else if (value instanceof EObject) {
                                     return new StructuredSelection(value);
                                 }
@@ -1001,7 +999,7 @@ public class HitroEditor extends MultiPageEditorPart
             //
             resource = editingDomain.getResourceSet().getResource(resourceURI, true);
         } catch (Exception e) {
-            System.out.println(e.fillInStackTrace());
+            HitroEditorPlugin.logError(e);
             exception = e;
             resource = editingDomain.getResourceSet().getResource(resourceURI, false);
         }
@@ -1112,226 +1110,6 @@ public class HitroEditor extends MultiPageEditorPart
                 selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain, adapterFactory));
 
             }
-
-            // Create a page for the parent tree view.
-            //
-            // {
-            // ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-            // HitroEditor.this)
-            // {
-            // @Override
-            // public Viewer createViewer(Composite composite) {
-            // Tree tree = new Tree(composite, SWT.MULTI);
-            // TreeViewer newTreeViewer = new TreeViewer(tree);
-            // return newTreeViewer;
-            // }
-            //
-            // @Override
-            // public void requestActivation() {
-            // super.requestActivation();
-            // setCurrentViewerPane(this);
-            // }
-            // };
-            // viewerPane.createControl(getContainer());
-            //
-            // parentViewer = (TreeViewer) viewerPane.getViewer();
-            // parentViewer.setAutoExpandLevel(30);
-            // parentViewer.setContentProvider(new
-            // ReverseAdapterFactoryContentProvider(adapterFactory));
-            // parentViewer.setLabelProvider(new
-            // AdapterFactoryLabelProvider(adapterFactory));
-            //
-            // createContextMenuFor(parentViewer);
-            // int pageIndex = addPage(viewerPane.getControl());
-            // setPageText(pageIndex, getString("_UI_ParentPage_label"));
-            // }
-            //
-            // // This is the page for the list viewer
-            // //
-            // {
-            // ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-            // HitroEditor.this)
-            // {
-            // @Override
-            // public Viewer createViewer(Composite composite) {
-            // return new ListViewer(composite);
-            // }
-            //
-            // @Override
-            // public void requestActivation() {
-            // super.requestActivation();
-            // setCurrentViewerPane(this);
-            // }
-            // };
-            // viewerPane.createControl(getContainer());
-            // listViewer = (ListViewer) viewerPane.getViewer();
-            // listViewer.setContentProvider(new
-            // AdapterFactoryContentProvider(adapterFactory));
-            // listViewer.setLabelProvider(new
-            // AdapterFactoryLabelProvider(adapterFactory));
-            //
-            // createContextMenuFor(listViewer);
-            // int pageIndex = addPage(viewerPane.getControl());
-            // setPageText(pageIndex, getString("_UI_ListPage_label"));
-            // }
-            //
-            // // This is the page for the tree viewer
-            // //
-            // {
-            // ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-            // HitroEditor.this)
-            // {
-            // @Override
-            // public Viewer createViewer(Composite composite) {
-            // return new TreeViewer(composite);
-            // }
-            //
-            // @Override
-            // public void requestActivation() {
-            // super.requestActivation();
-            // setCurrentViewerPane(this);
-            // }
-            // };
-            // viewerPane.createControl(getContainer());
-            // treeViewer = (TreeViewer) viewerPane.getViewer();
-            // treeViewer.setContentProvider(new
-            // AdapterFactoryContentProvider(adapterFactory));
-            // treeViewer.setLabelProvider(
-            // new DecoratingColumLabelProvider(new
-            // AdapterFactoryLabelProvider(adapterFactory),
-            // new DiagnosticDecorator(editingDomain, treeViewer)));
-            //
-            // new AdapterFactoryTreeEditor(treeViewer.getTree(),
-            // adapterFactory);
-            // new ColumnViewerInformationControlToolTipSupport(treeViewer,
-            // new
-            // DiagnosticDecorator.EditingDomainLocationListener(editingDomain,
-            // treeViewer));
-            //
-            // createContextMenuFor(treeViewer);
-            // int pageIndex = addPage(viewerPane.getControl());
-            // setPageText(pageIndex, getString("_UI_TreePage_label"));
-            // }
-
-            // This is the page for the table viewer.
-            //
-            // {
-            // ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-            // HitroEditor.this)
-            // {
-            // @Override
-            // public Viewer createViewer(Composite composite) {
-            // return new TableViewer(composite);
-            // }
-            //
-            // @Override
-            // public void requestActivation() {
-            // super.requestActivation();
-            // setCurrentViewerPane(this);
-            // }
-            // };
-            // viewerPane.createControl(getContainer());
-            // tableViewer = (TableViewer) viewerPane.getViewer();
-            //
-            // Table table = tableViewer.getTable();
-            // TableLayout layout = new TableLayout();
-            // table.setLayout(layout);
-            // table.setHeaderVisible(true);
-            // table.setLinesVisible(true);
-            //
-            // TableColumn objectColumn = new TableColumn(table, SWT.NONE);
-            // layout.addColumnData(new ColumnWeightData(3, 100, true));
-            // objectColumn.setText(getString("_UI_ObjectColumn_label"));
-            // objectColumn.setResizable(true);
-            //
-            // TableColumn selfColumn = new TableColumn(table, SWT.NONE);
-            // layout.addColumnData(new ColumnWeightData(2, 100, true));
-            // selfColumn.setText(getString("_UI_SelfColumn_label"));
-            // selfColumn.setResizable(true);
-            //
-            // tableViewer.setColumnProperties(new String[] { "a", "b" });
-            // tableViewer.setContentProvider(new
-            // AdapterFactoryContentProvider(adapterFactory));
-            // tableViewer.setLabelProvider(new DecoratingColumLabelProvider(
-            // new AdapterFactoryLabelProvider(adapterFactory), new
-            // DiagnosticDecorator(editingDomain,
-            // tableViewer,
-            // HitroEditorPlugin.getPlugin().getDialogSettings())));
-            //
-            // new ColumnViewerInformationControlToolTipSupport(tableViewer,
-            // new
-            // DiagnosticDecorator.EditingDomainLocationListener(editingDomain,
-            // tableViewer));
-            //
-            // createContextMenuFor(tableViewer);
-            // int pageIndex = addPage(viewerPane.getControl());
-            // setPageText(pageIndex, getString("_UI_TablePage_label"));
-            // }
-
-            // This is the page for the table tree viewer.
-            //
-            // {
-            // ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-            // HitroEditor.this)
-            // {
-            // @Override
-            // public Viewer createViewer(Composite composite) {
-            // return new TreeViewer(composite);
-            // }
-            //
-            // @Override
-            // public void requestActivation() {
-            // super.requestActivation();
-            // setCurrentViewerPane(this);
-            // }
-            // };
-            // viewerPane.createControl(getContainer());
-            //
-            // treeViewerWithColumns = (TreeViewer) viewerPane.getViewer();
-            //
-            // Tree tree = treeViewerWithColumns.getTree();
-            // tree.setLayoutData(new FillLayout());
-            // tree.setHeaderVisible(true);
-            // tree.setLinesVisible(true);
-            //
-            // TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
-            // objectColumn.setText(getString("_UI_ObjectColumn_label"));
-            // objectColumn.setResizable(true);
-            // objectColumn.setWidth(250);
-            //
-            // TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
-            // selfColumn.setText(getString("_UI_SelfColumn_label"));
-            // selfColumn.setResizable(true);
-            // selfColumn.setWidth(200);
-            //
-            // treeViewerWithColumns.setColumnProperties(new String[] { "a", "b"
-            // });
-            // treeViewerWithColumns.setContentProvider(new
-            // AdapterFactoryContentProvider(adapterFactory));
-            // treeViewerWithColumns.setLabelProvider(new
-            // DecoratingColumLabelProvider(
-            // new AdapterFactoryLabelProvider(adapterFactory), new
-            // DiagnosticDecorator(editingDomain,
-            // treeViewerWithColumns,
-            // HitroEditorPlugin.getPlugin().getDialogSettings())));
-            //
-            // new
-            // ColumnViewerInformationControlToolTipSupport(treeViewerWithColumns,
-            // new
-            // DiagnosticDecorator.EditingDomainLocationListener(editingDomain,
-            // treeViewerWithColumns));
-            //
-            // createContextMenuFor(treeViewerWithColumns);
-            // int pageIndex = addPage(viewerPane.getControl());
-            // setPageText(pageIndex,
-            // getString("_UI_TreeWithColumnsPage_label"));
-            // }
-            //
-            // getSite().getShell().getDisplay().asyncExec(new Runnable() {
-            // public void run() {
-            // setActivePage(0);
-            // }
-            // });
         }
 
         // Ensures that this editor will only display the page's tab
@@ -1358,9 +1136,7 @@ public class HitroEditor extends MultiPageEditorPart
     }
 
     private void addActionToToolbar(ToolBarManager toolBarManager) {
-        // toolBarManager.add(new Action("filter") {
-        // });
-
+//
     }
 
     /**
@@ -1567,7 +1343,7 @@ public class HitroEditor extends MultiPageEditorPart
                 // same selection as this selection.
                 //
                 if (currentViewerPane.getViewer() == selectionViewer) {
-                    ArrayList<Object> selectionList = new ArrayList<Object>();
+                    ArrayList<Object> selectionList = new ArrayList<>();
                     selectionList.add(selectedElement);
                     while (selectedElements.hasNext()) {
                         selectionList.add(selectedElements.next());
@@ -1609,7 +1385,7 @@ public class HitroEditor extends MultiPageEditorPart
     public void doSave(IProgressMonitor progressMonitor) {
         // Save only resources that have actually changed.
         //
-        final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+        final Map<Object, Object> saveOptions = new HashMap<>();
         saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
                 Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
         saveOptions.put(Resource.OPTION_LINE_DELIMITER, Resource.OPTION_LINE_DELIMITER_UNSPECIFIED);
