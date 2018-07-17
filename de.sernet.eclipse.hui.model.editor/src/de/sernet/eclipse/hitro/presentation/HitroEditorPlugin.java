@@ -20,6 +20,8 @@
  */
 package de.sernet.eclipse.hitro.presentation;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -79,6 +81,25 @@ public final class HitroEditorPlugin extends EMFPlugin {
         return plugin;
     }
 
+    public static void logError(String message, Exception e) {
+        plugin.getLog()
+                .log(new Status(IStatus.ERROR, plugin.getBundle().getSymbolicName(), message, e));
+    }
+
+    public static void logError(String message) {
+        plugin.getLog()
+                .log(new Status(IStatus.ERROR, plugin.getBundle().getSymbolicName(), message));
+    }
+
+    public static void logError(Exception e) {
+        plugin.getLog().log(
+                new Status(IStatus.ERROR, plugin.getBundle().getSymbolicName(), e.getMessage(), e));
+    }
+
+    public static void logInfo(String message) {
+        plugin.getLog()
+                .log(new Status(IStatus.INFO, plugin.getBundle().getSymbolicName(), message));
+    }
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!--
      * begin-user-doc --> <!-- end-user-doc -->
