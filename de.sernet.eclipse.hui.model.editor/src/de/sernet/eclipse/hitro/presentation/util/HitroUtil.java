@@ -29,10 +29,16 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 
+import de.sernet.eclipse.hitro.presentation.HitroEditorPlugin;
+
 public class HitroUtil {
 
+    private HitroUtil() {
+        super();
+    }
+
     public static IDoubleClickListener unwrapedDoubleClickListener(
-            final IDoubleClickListener listener) {
+            final IDoubleClickListener listener) { 
 
         return new IDoubleClickListener() {
             @Override
@@ -80,8 +86,7 @@ public class HitroUtil {
                 }
             }
         }
-        System.out.println("unhandled selection:" + selection);
-
+        HitroEditorPlugin.logError("no eobject found for selection");
         return null;
     }
 
