@@ -88,6 +88,7 @@ import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.emf.eef.runtime.ui.notify.OpenWizardOnDoubleClick;
+import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -143,6 +144,7 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
+import de.sernet.eclipse.hitro.presentation.actions.TextControlContribution;
 import de.sernet.eclipse.hitro.presentation.actions.PatternFilterAction;
 import de.sernet.eclipse.hitro.provider.HitroItemProviderAdapterFactory;
 import de.sernet.eclipse.hui.service.localization.LocalizationService;
@@ -153,7 +155,7 @@ import de.sernet.eclipse.hui.service.localization.lang.LanguagesEntry;
  * This is an example of a Hitro model editor. <!-- begin-user-doc -->
  * 
  * @implements ITabbedPropertySheetPageContributor <!-- end-user-doc -->
- * @generated
+ * @generated not
  */
 public class HitroEditor extends MultiPageEditorPart
         implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider,
@@ -818,7 +820,7 @@ public class HitroEditor extends MultiPageEditorPart
         @Override
         public Object[] getElements(Object object) {
             Object parent = super.getParent(object);
-            return (parent == null ? Collections.EMPTY_SET : Collections.singleton(parent))
+            return (parent == null ? Collections.emptySet() : Collections.singleton(parent))
                     .toArray();
         }
 
@@ -1088,15 +1090,9 @@ public class HitroEditor extends MultiPageEditorPart
                         editingDomain.getResourceSet().getResources().get(0)), true);
                 viewerPane.setTitle(editingDomain.getResourceSet());
 
-                addActionToToolbar(viewerPane.getToolBarManager());
                 PatternFilter filter = new PatternFilter();
                 selectionViewer.addFilter(filter);
-                HitroEditorPlugin.getPlugin();
-                viewerPane.getToolBarManager()
-                        .add(new PatternFilterAction("", filter, viewerPane,
-                                AbstractUIPlugin.imageDescriptorFromPlugin(
-                                        "de.sernet.eclipse.hui.model.editor",
-                                        "icons/actions/filter.png")));
+                addActionToToolbar(viewerPane.getToolBarManager(), filter,viewerPane);
                 viewerPane.updateActionBars();
 
                 new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
@@ -1135,8 +1131,15 @@ public class HitroEditor extends MultiPageEditorPart
         });
     }
 
-    private void addActionToToolbar(ToolBarManager toolBarManager) {
-//
+    private void addActionToToolbar(ToolBarManager toolBarManager, PatternFilter filter, ViewerPane viewerPane) {
+        IContributionItem filterWidget = new TextControlContribution("filter", filter,viewerPane);
+        toolBarManager.add(filterWidget);
+        toolBarManager
+        .add(new PatternFilterAction("", filter, viewerPane,
+                AbstractUIPlugin.imageDescriptorFromPlugin(
+                        "de.sernet.eclipse.hui.model.editor",
+                        "icons/actions/filter.png")));
+
     }
 
     /**
