@@ -70,7 +70,7 @@ public final class TextControlContribution extends ControlContribution {
 		});
 		GridData layoutData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
 		text.setLayoutData(layoutData);
-		layoutData.widthHint = 100;
+		layoutData.widthHint = 200;
 		String[] items = HitroEditorPlugin.getPlugin().getDialogSettings().getArray("editor.filter.items");
 		if (items == null) {
 			proposals = new ArrayList<>();

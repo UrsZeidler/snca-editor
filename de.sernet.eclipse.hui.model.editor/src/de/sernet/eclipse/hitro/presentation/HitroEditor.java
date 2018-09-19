@@ -132,6 +132,8 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.ide.IGotoMarker;
+import org.eclipse.ui.part.DrillDownAdapter;
+import org.eclipse.ui.part.DrillDownComposite;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -1090,9 +1092,13 @@ public class HitroEditor extends MultiPageEditorPart
                         editingDomain.getResourceSet().getResources().get(0)), true);
                 viewerPane.setTitle(editingDomain.getResourceSet());
 
+                DrillDownAdapter drillDownAdapter = new DrillDownAdapter(selectionViewer);
+                drillDownAdapter.addNavigationActions(viewerPane.getToolBarManager());
+
                 PatternFilter filter = new PatternFilter();
                 selectionViewer.addFilter(filter);
                 addActionToToolbar(viewerPane.getToolBarManager(), filter,viewerPane);
+                
                 viewerPane.updateActionBars();
 
                 new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
@@ -1132,14 +1138,13 @@ public class HitroEditor extends MultiPageEditorPart
     }
 
     private void addActionToToolbar(ToolBarManager toolBarManager, PatternFilter filter, ViewerPane viewerPane) {
-        IContributionItem filterWidget = new TextControlContribution("filter", filter,viewerPane);
+    	IContributionItem filterWidget = new TextControlContribution("filter", filter,viewerPane);
         toolBarManager.add(filterWidget);
         toolBarManager
         .add(new PatternFilterAction("", filter, viewerPane,
                 AbstractUIPlugin.imageDescriptorFromPlugin(
                         "de.sernet.eclipse.hui.model.editor",
                         "icons/actions/filter.png")));
-
     }
 
     /**
