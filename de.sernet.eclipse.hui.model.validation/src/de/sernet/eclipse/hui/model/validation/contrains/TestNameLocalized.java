@@ -79,7 +79,21 @@ public class TestNameLocalized extends AbstractModelConstraint {
 
     private String validateEntries(List<LangEntry> entries) {
         return entries.stream().filter(e -> e.getText() == null || e.getText().isEmpty())
-                .map(e -> e.getLang()).collect(Collectors.joining(","));
+                .map(TestNameLocalized::getLanguageName).collect(Collectors.joining(","));
     }
+
+	private static String getLanguageName(LangEntry e) {
+		switch (e.getLang()) {
+		case "":
+			return "english";
+		case "_de":
+			return "german";
+		case "_it":
+			return "italian";
+		default:
+			break;
+		}
+		return "no_name";
+	}
 
 }
