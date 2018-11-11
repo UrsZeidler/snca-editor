@@ -3,5 +3,9 @@
    <feature url="features/de.sernet.eclipse.hui.feature_1.0.0.qualifier.jar" id="de.sernet.eclipse.hui.feature" version="1.0.0.qualifier">
       <category name="hui_model"/>
    </feature>
+   <feature url="features/de.sernet.eclipse.hui.model.codegen.feature_1.0.0.qualifier.jar" id="de.sernet.eclipse.hui.model.codegen.feature" version="1.0.0.qualifier">
+      <category name="codegen"/>
+   </feature>
    <category-def name="hui_model" label="hui model"/>
+   <category-def name="codegen" label="Generation"/>
 </site>

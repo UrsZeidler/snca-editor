@@ -37,20 +37,20 @@
 <repository location="http://download.eclipse.org/releases/oxygen/"/>
 </location>
 <location  includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.diagram.gmf.source.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.diagram.sirius.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.diagram.sirius.source.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.egit.feature.group" version="1.2.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.egit.source.feature.group" version="1.2.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.rcp.ui.source.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.source.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.uml2.feature.group" version="3.3.3.201805161152"/>
-<unit id="org.eclipse.emf.compare.uml2.source.feature.group" version="3.3.3.201805161152"/>
+<unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.diagram.gmf.source.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.diagram.sirius.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.diagram.sirius.source.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.egit.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.egit.source.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.rcp.ui.source.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.source.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.uml2.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.compare.uml2.source.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/latest"/>
 </location>
 <location  includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">

@@ -1,0 +1,231 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generateHuiModelReport.
+ */]
+[module generateHuiModelReport('http://www.sernet.de/hitro', 'http://www.eclipse.org/emf/2002/Ecore')]
+
+[import de::sernet::eclipse::hui::model::codegen::main::hitroCommons /]
+
+
+[**
+ * The documentation of the template generateElement.
+ * @param aDefaultRule
+ */]
+[template public generateElement(root : DocumentRoot)]
+[comment @main/]
+[file ('SNCA.md', false, 'UTF-8')]
+# SNCA report
+
+[for (e : Huientity | root.huientities.huientity)]
+[printEntity(e)/]
+[/for]
+[/file]
+
+
+[/template]
+
+[template public generateJavaClasses(root : DocumentRoot)]
+[for (e : Huientity | root.huientities.huientity)]
+[printJavaClass(e)/]
+[/for]
+[/template]
+
+[template public printJavaClass (e : Huientity) ]
+[file ( 'java/'+ e.toJavaClassName() +'.java', false, 'UTF-8')]
+package default;
+
+public class [e.toJavaClassName()/] {
+
+	public static final String TYPE_ID = "[e.id/]";
+
+[for (p : Huiproperty | e.huiproperty)]
+	public static final String [p.toJavaConstant()/] = "[p.id/]";
+[/for]
+[for (pg : Huipropertygroup | e.huipropertygroup)]
+[for (p : Huiproperty | pg.huiproperty)]
+	public static final String [p.toJavaConstant()/] = "[p.id/]";
+[/for]
+[/for]
+[for (p : Huiproperty | e.huiproperty)]
+	public String get[p.id.toJavaIdentifier()/](){
+		return getProperty("[p.id/]");
+	}
+//	public static final String [p.toJavaConstant()/] = "[p.id/]";
+[/for]
+[for (pg : Huipropertygroup | e.huipropertygroup)]
+[for (p : Huiproperty | pg.huiproperty)]
+	public String get[p.id.toJavaIdentifier()/](){
+		return getProperty("[p.id/]");
+	}
+[/for]
+[/for]
+	
+	public static [e.toJavaClassName()/] of(CnATreeElement cnaElement){
+		return new [e.toJavaClassName()/](cnaElement);
+	}
+
+	private [e.toJavaClassName()/](CnATreeElement cnaElement){
+		this.cnaElement = cnaElement;
+	}
+
+	private final CnATreeElement cnaElement;
+
+	private String  getProperty(String id){
+		return cnaElement.getPropertyValue(id);
+	}
+}
+
+[/file]
+[/template]
+
+
+[template private toJavaConstant(p: Huiproperty)]
+[if (p.name.oclIsUndefined() or p.name='')]
+[p.id.basicreplace().toUpper()/][else]
+[p.name.basicreplace().toUpper().replaceAll('Ü', 'UE')/][/if]
+[/template]
+
+
+[template private toJavaClassName(e : Huientity)]
+[e.id.toJavaIdentifier()/]Wrapper
+[/template]
+
+
+[template public printEntity(e : Huientity)]
+## Entity: [e.name/] ([e.id/])
+
+[printEntityLocalization(e)/]
+
+[printRelations(e)/]
+
+### main properties
+
+[for (p : Huiproperty | e.huiproperty)]
+#[printProperty(p)/]
+[/for]
+[printPropertyGroupList(e.huipropertygroup)/]
+[/template]
+
+[template public printRelations(e : Huientity)]
+### [e.name/] ([e.id/]) relations
+
+[for (r : Huirelation | e.huirelation)]
+[r.name/] ([r.id/]) -> [r.to.name/] ([r.to.id/]) reservename: [r.reversename/] tooltip: [r.tooltip/]
+[printRelationLocalization(r)/]
+[/for]
+[/template]
+
+
+[template public printPropertyGroupList(list : OrderedSet(Huipropertygroup))]
+[for (pg : Huipropertygroup | list)]
+[printPropertyGroup(pg)/]
+[/for]
+[/template]
+
+[template private printPropertyList(list : OrderedSet(Huiproperty))]
+[for (p : Huiproperty | list)]
+[printProperty(p)/]
+[/for]
+[/template]
+
+[template public printPropertyGroup(pg : Huipropertygroup)]
+### [pg.id/] [pg.name/]  "[pg.tags/]"
+
+[for (p : Huiproperty | pg.huiproperty)]
+#[printProperty(p)/]
+[/for]
+[/template]
+
+[template public printProperty(p : Huiproperty)]
+### [p.name/] ([p.id/])
+
+type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
+[printPropertyLocalization(p)/]
+
+[printPropertyFlags(p)/]
+[for (d : Depends | p.depends)]
+depends on: [d.option.name/]([d.option.id/]) [d.value/] [if (d.inverse)]inverse[/if]
+[/for]
+[printDependencies(p)/]
+
+[printPropertyOptions(p)/]
+[printDefaultRule(p)/]
+[/template]
+
+[template public printDependencies(p : Huiproperty)?(not p.allDependendProperties()->isEmpty())]
+dependencies:
+[for (p : Huiproperty | p.allDependendProperties())]
+[p.name/] ([p.id/])
+[/for]
+[/template]
+
+[query public dependsOn(p : Huiproperty, dependend: Huiproperty) : Boolean = not p.depends->select(option.id=dependend.id)->isEmpty() /]
+[query public allDependendProperties(p : Huiproperty) : OrderedSet(Huiproperty) = Huiproperty.allInstances()->select(dependsOn(p))->asOrderedSet() /]
+
+
+[template public printDefaultRule(p : Huiproperty) ? (p.hasDefaultRule())]
+default rule: [p.defaultRule.class/]
+[for (pa : Param | p.defaultRule.param)]
+[pa.id/]:
+[for (it : EFeatureMapEntry | pa.mixed)]
+>>[it.getValue()/]<<
+[/for][/for]
+[/template]
+
+[template public printPropertyOptions(p : Huiproperty) ? (p.hasOptions())]
+[if (p.inputtype=Inputtypes::singleoption or p.inputtype=Inputtypes::numericoption)]
+one of:
+[elseif (p.inputtype=Inputtypes::multioption)]
+many of:
+[/if]
+[printOptions(p.option)/]
+[/template]
+
+[template public printPropertyFlags(p : Huiproperty)]
+[if (p.required)]
+* required
+[/if][if (p.showInObjectBrowser)]
+* objectBrowser
+[/if][if (p.isURL)]
+* isUrl
+[/if][if (p.editable)]
+* isEditable
+[/if][if (p.focus)]
+* focus
+[/if][if (p.visible)]
+* visible
+[/if][if (p.report)]
+* report
+[/if]
+[/template]
+
+[template public printPropertyLocalization(p : Huiproperty)]
+de name   : [getProperty('snca-messages_de.properties', p.id)/]
+de tooltip: [getProperty('snca-messages_de.properties', p.id+'_tooltip')/]
+en name   : [getProperty('snca-messages.properties', p.id)/]
+en tooltip: [getProperty('snca-messages.properties', p.id+'_tooltip')/]
+[/template]
+
+
+[template public printEntityLocalization(e : Huientity)]
+de name   : [getProperty('snca-messages_de.properties', e.id)/]
+en name   : [getProperty('snca-messages.properties', e.id)/]
+[/template]
+
+[template public printRelationLocalization(r : Huirelation)]
+de name   : [getProperty('snca-messages_de.properties', r.id+'_name')/]
+de reverse name   : [getProperty('snca-messages_de.properties', r.id+'_reversename')/]
+en name   : [getProperty('snca-messages.properties', r.id+'_name')/]
+en reverse name   : [getProperty('snca-messages.properties', r.id+'_reversename')/]
+[/template]
+
+[template public printOptions(list : OrderedSet(Option))]
+[for (o : Option | list)]
+[printOption(o)/]
+[/for]
+[/template]
+
+[template public printOption (o : Option) ]
+* [o.id/] [o.name/] '[o.value/]'
+[/template]
+

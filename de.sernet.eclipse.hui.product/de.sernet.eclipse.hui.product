@@ -43,6 +43,7 @@
 
    <features>
       <feature id="de.sernet.eclipse.hui.feature" version="1.0.0.qualifier"/>
+      <feature id="de.sernet.eclipse.hui.model.codegen.feature" version="1.0.0.qualifier"/>
       <feature id="de.sernet.eclipse.hui.depedencies.feature" version="1.0.0.qualifier"/>
    </features>
 
