@@ -63,6 +63,7 @@ public class LanguageSection extends AbstractPropertySection {
     private TableViewerColumn tableViewerColumn;
     private LanguagesEntry selected;
     private List<Object> entries = new WritableList<Object>();
+	private TableViewerColumn tableViewerColumn_suffix;
 
     /**
      * 
@@ -111,6 +112,11 @@ public class LanguageSection extends AbstractPropertySection {
         tblclmnNewColumn.setWidth(100);
         tblclmnNewColumn.setText("lang");
 
+        tableViewerColumn_suffix = new TableViewerColumn(tableViewer, SWT.NONE);
+        TableColumn tblclmnNewColumn_suffix = tableViewerColumn_suffix.getColumn();
+        tblclmnNewColumn_suffix.setWidth(100);
+        tblclmnNewColumn_suffix.setText("suffix");
+
         tableViewerColumn_1 = new TableViewerColumn(tableViewer, SWT.NONE);
         TableColumn tblclmnNewColumn_1 = tableViewerColumn_1.getColumn();
         tblclmnNewColumn_1.setWidth(100);
@@ -125,7 +131,7 @@ public class LanguageSection extends AbstractPropertySection {
         ObservableListContentProvider listContentProvider = new ObservableListContentProvider();
         IObservableMap[] observeMaps = BeansObservables.observeMaps(
                 listContentProvider.getKnownElements(), LangEntry.class,
-                new String[] { "lang", "text" });
+                new String[] { "lang", "suffix","text" });
         tableViewer.setLabelProvider(new ObservableMapLabelProvider(observeMaps));
         tableViewer.setContentProvider(listContentProvider);
         //

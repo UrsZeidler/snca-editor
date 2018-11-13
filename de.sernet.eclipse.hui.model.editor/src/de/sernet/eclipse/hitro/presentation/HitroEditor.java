@@ -1458,7 +1458,7 @@ public class HitroEditor extends MultiPageEditorPart
         IFile file = HitropPropertiesUtil.getFile(resource);
         String basePath = HitropPropertiesUtil.platformBasePath(file);
 
-        HitropPropertiesUtil.savePropertyFile(resource, basePath, entryMap,
+        HitropPropertiesUtil.syncPropertyFile(resource, basePath, entryMap,
                 HitropPropertiesUtil.TO_WORKSPACE_FILE);
     }
 

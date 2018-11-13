@@ -60,6 +60,7 @@ import de.sernet.eclipse.hui.service.Activator;
  */
 public class HitropPropertiesUtil {
 
+	private static final Hitro2LangEntrySuffixesSwitch SUFFIXES_SWITCH = new Hitro2LangEntrySuffixesSwitch();
     /**
      * Transformer from basePath to a file.
      */
@@ -146,20 +147,28 @@ public class HitropPropertiesUtil {
                     continue;
                 }
                 entryMap.put(next, languagesEntry);
-                for (String lang : map.keySet()) {
-                    Properties properties = map.get(lang);
-                    String property = languagesEntry.getId() == null ? null
-                            : properties.getProperty(languagesEntry.getId());
-                    if (property != null)
-                        languagesEntry.getEntries().add(new LangEntry(lang, property));
-                    else {
-                        languagesEntry.getEntries().add(new LangEntry(lang, ""));
-                    }
-                }
+                initalizeEntry(map, languagesEntry, next);
             }
         }
         return entryMap;
     }
+
+	private static void initalizeEntry(Map<String, Properties> map, LanguagesEntry languagesEntry, EObject next) {
+		
+		for (Entry<String, Properties> lang : map.entrySet()) {
+		    Properties properties = lang.getValue();
+		    List<String> entrySuffixes = SUFFIXES_SWITCH.doSwitch(next);
+		    for (String suffix : entrySuffixes) {
+		    	String property = languagesEntry.getId() == null ? null
+		    			: properties.getProperty(languagesEntry.getId()+suffix);
+		    	if (property != null)
+		    		languagesEntry.getEntries().add(new LangEntry(lang.getKey(),suffix, property));
+		    	else {
+		    		languagesEntry.getEntries().add(new LangEntry(lang.getKey(),suffix, ""));
+		    	}
+			}
+		}
+	}
 
     /**
      * Load the properties from the given path.
@@ -259,7 +268,7 @@ public class HitropPropertiesUtil {
      * @param entryMap
      * @param toFile
      */
-    public static void savePropertyFile(Resource resource, String basePath,
+    public static void syncPropertyFile(Resource resource, String basePath,
             Map<EObject, LanguagesEntry> entryMap, ToFile toFile) {
         Hitro2LangEntrySwitch entrySwitch = new Hitro2LangEntrySwitch();
         Map<String, Properties> langProperties = getLangProperties(basePath, toFile);
@@ -280,7 +289,7 @@ public class HitropPropertiesUtil {
                 for (LangEntry langEntry : entries) {
                     Properties properties = langProperties.get(langEntry.getLang());
                     String text = langEntry.getText();// TODO: write in ISO-8859
-                    properties.put(languagesEntry.getId(), text);
+                    properties.put(languagesEntry.getId()+langEntry.getSuffix(), text);
                 }
             }
         }
