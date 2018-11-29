@@ -18,37 +18,31 @@ import java.util.List;
 import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
-import org.eclipse.acceleo.engine.utils.AcceleoEngineUtils;
-import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
-import de.sernet.eclipse.hitro.HitroPackage;
-import de.sernet.eclipse.hitro.util.HitroResourceFactoryImpl;
-import de.sernet.eclipse.hitro.util.HitroResourceImpl;
-
 /**
- * Entry point of the 'GenerateHuiModelReport' generation module.
+ * Entry point of the 'GenerateJsonSchema' generation module.
  *
  * @generated
  */
-public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
+public class GenerateJsonSchema extends AbstractAcceleoGenerator {
     /**
      * The name of the module.
      *
      * @generated
      */
-    public static final String MODULE_FILE_NAME = "/de/sernet/eclipse/hui/model/codegen/main/generateHuiModelReport";
+    public static final String MODULE_FILE_NAME = "/de/sernet/eclipse/hui/model/codegen/main/generateJsonSchema";
     
     /**
      * The name of the templates that are to be generated.
      *
      * @generated
      */
-    public static final String[] TEMPLATE_NAMES = { "generateElement" };
+    public static final String[] TEMPLATE_NAMES = { "generateJsonSchema" };
     
     /**
      * The list of properties files from the launch parameters (Launch configuration).
@@ -71,7 +65,7 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
      *
      * @generated
      */
-    public GenerateHuiModelReport() {
+    public GenerateJsonSchema() {
         // Empty implementation
     }
 
@@ -91,7 +85,7 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
      *             the model cannot be loaded.
      * @generated
      */
-    public GenerateHuiModelReport(URI modelURI, File targetFolder,
+    public GenerateJsonSchema(URI modelURI, File targetFolder,
             List<? extends Object> arguments) throws IOException {
         initialize(modelURI, targetFolder, arguments);
     }
@@ -112,7 +106,7 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
      *             This can be thrown in two scenarios : the module cannot be found, or it cannot be loaded.
      * @generated
      */
-    public GenerateHuiModelReport(EObject model, File targetFolder,
+    public GenerateJsonSchema(EObject model, File targetFolder,
             List<? extends Object> arguments) throws IOException {
         initialize(model, targetFolder, arguments);
     }
@@ -147,7 +141,7 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
                  * add in "arguments" this "String" attribute.
                  */
                 
-                GenerateHuiModelReport generator = new GenerateHuiModelReport(modelURI, folder, arguments);
+                GenerateJsonSchema generator = new GenerateJsonSchema(modelURI, folder, arguments);
                 
                 /*
                  * Add the properties from the launch arguments.
@@ -271,7 +265,7 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
      * 
      * @return The list of properties file we need to add to the generation context.
      * @see java.util.ResourceBundle#getBundle(String)
-     * @generated not
+     * @generated
      */
     @Override
     public List<String> getProperties() {
@@ -309,12 +303,7 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
          * 
          * To learn more about Properties Files, have a look at the Acceleo documentation (Help -> Help Contents).
          */
-//       if (EMFPlugin.IS_ECLIPSE_RUNNING && model != null && model.eResource() != null) { 
-//            propertiesFiles.addAll(AcceleoEngineUtils.getPropertiesFilesNearModel(model.eResource()));
-//        }
-
-       propertiesFiles.addAll(AcceleoEngineUtils.getPropertiesFilesNearModel(model.eResource()));
-       return propertiesFiles;
+        return propertiesFiles;
     }
     
     /**
@@ -346,11 +335,14 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
      * 
      * @param resourceSet
      *            The resource set which registry has to be updated.
-     * @generated not
+     * @generated
      */
     @Override
     public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
+        if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
+        }
         
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
@@ -383,13 +375,6 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
          * 
          * To learn more about Package Registration, have a look at the Acceleo documentation (Help -> Help Contents).
          */
-        
-        
-        if (!isInWorkspace(HitroPackage.class)) {
-            // The normal package registration if your metamodel is in a plugin.
-            resourceSet.getPackageRegistry().put(HitroPackage.eNS_URI, HitroPackage.eINSTANCE);
-        }
-
     }
 
     /**
@@ -397,7 +382,7 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
      * 
      * @param resourceSet
      *            The resource set which registry has to be updated.
-     * @generated not
+     * @generated
      */
     @Override
     public void registerResourceFactories(ResourceSet resourceSet) {
@@ -418,7 +403,7 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
          * To learn more about the registration of Resource Factories, have a look at the Acceleo documentation (Help -> Help Contents). 
          */ 
         
-        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("hitro", new HitroResourceFactoryImpl());
+        // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(XyzResource.FILE_EXTENSION, XyzResource.Factory.INSTANCE);
         
         /*
          * Some metamodels require a very complex setup for standalone usage. For example, if you want to use a generator
