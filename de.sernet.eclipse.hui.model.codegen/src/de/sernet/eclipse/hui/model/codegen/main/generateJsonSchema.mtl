@@ -18,8 +18,9 @@
 [/template]
 
 
-
-[query public toEntityName(e : Huientity) : String = e.id /]
+[query public toJsonId(p : Huiproperty) : String = p.id.toCamelCase() /]
+[query public toJsonId(o : Option) : String = o.id.toCamelCase() /]
+[query public toEntityName(e : Huientity) : String = e.id.toCamelCase() /]
 [query public toLinkName(e : Huientity, r : Huirelation) : String = e.toEntityName().concat('_').concat(r.to.toEntityName()) /]
 
 
@@ -38,7 +39,7 @@
   "definitions": {},
   "$schema": "http://verinice.com/veo/draft-01/schema#",
   "type": "object",
-  "description": "Schema for Links between an [e.name/] and a [r.to.name/]",
+  "description": "Schema for Links between [e.name/] and [r.to.name/]",
   "title": "[e.toLinkName(r)/]",
   "properties": {
     "$veo.id": {
@@ -104,22 +105,20 @@
       "type": "string",
       "title": "The UUID to identify the parent"
     }[if (not e.allProperties()->isEmpty())],[/if]
-[for (p : Huiproperty | e.allProperties())separator (',')]
-[printProperty(p)/]
-[/for]
+[for (p : Huiproperty | e.allProperties())separator (',\n')][printProperty(p)/][/for]
   },
   "required": ['['/]
     "$veo.id",
     "$veo.type",
     "parent",
-    "$veo.title"
+    "$veo.title"[for (p : Huiproperty | e.allRequiredProperties())before (',\n')separator (',\n')]    "[p.toJsonId()/]"[/for]
    [']'/]
 }		
 [/file]
 [/template]
 
 [template public printProperty (p : Huiproperty) ]
-    "[p.id/]": {
+    "[p.toJsonId()/]": {
       "title": "[p.name/]",
 [if (p.inputtype=Inputtypes::line or p.inputtype=Inputtypes::text)]
       "type": "string"
@@ -129,13 +128,13 @@
       "type": "array",
       "items": {
         "enum": ['['/]
-			[for (o : Option | p.option)separator (', ')]"[o.id/]"[/for]
+[for (o : Option | p.option)separator (',\n')]			"[o.toJsonId()/]"[/for]
         [']'/]
       },
       "uniqueItems": true
 [elseif (p.inputtype=Inputtypes::singleoption)]
       "enum": ['['/]
-		[for (o : Option | p.option)separator (', ')]"[o.id/]"[/for]
+[for (o : Option | p.option)separator (',\n')]		"[o.toJsonId()/]"[/for]
       [']'/]
 [elseif (p.inputtype=Inputtypes::numericoption)]
       "type": "integer"

@@ -11,6 +11,8 @@
 
 [query public allProperties(e : Huientity) : OrderedSet(Huiproperty) = 
 	e.huiproperty->addAll(e.huipropertygroup->collect(huiproperty)->flatten()) /]
+[query public allRequiredProperties(e : Huientity) : OrderedSet(Huiproperty) = 
+	e.allProperties()->select(required) /]
 
 [query public basicreplace(s : String) : String = 
 s.replaceAll('\\(', '').replaceAll('\\)', '').replaceAll('\\?', '').replaceAll('\\.', '').replaceAll('\\\\', '_')
@@ -21,6 +23,8 @@ s.replaceAll('\\(', '').replaceAll('\\)', '').replaceAll('\\?', '').replaceAll('
 [query public allDependendProperties(p : Huiproperty) : OrderedSet(Huiproperty) = Huiproperty.allInstances()->select(dependsOn(p))->asOrderedSet() /]
 
 
+[query public toCamelCase(s : String) : String =   s.tokenize('_')->reduce().toUpperFirst() /]
+[query public toCamelCaseFirstLower(s : String) : String =   s.tokenize('_')->reduce().toLowerFirst() /]
 
 [query public toJavaIdentifier(s : String) : String =   s.basicreplace().tokenize('_')->reduce().toUpperFirst() /]
 
