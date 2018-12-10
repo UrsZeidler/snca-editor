@@ -1,0 +1,223 @@
+[comment encoding = UTF-8 /]
+[module generateJavaCode('http://www.sernet.de/hitro', 'http://www.eclipse.org/emf/2002/Ecore')/]
+
+[import de::sernet::eclipse::hui::model::codegen::main::hitroCommons /]
+
+[template public generateJavaCode(root : DocumentRoot)]
+	
+	[comment @main /]
+	
+[/template]
+
+[query public toJavaWarpperClassName(e : Huientity) : String = e.id.toJavaIdentifier() + 'Wrapper' /]
+[query public toJavaWrapperPackage(e : Huientity) : String = 'sernet.verinice.model.wrapper' /]
+
+[query public toEnumName(p : Huiproperty) : String = p.name.toJavaIdentifier()+'Enum' /]
+
+
+
+[query public toJavaType(p : Huiproperty) : String =  if p.inputtype=Inputtypes::line or p.inputtype=Inputtypes::text then 
+'String' else
+if p.inputtype=Inputtypes::booleanoption then
+'Boolean'
+else
+''
+endif
+endif /]
+
+
+[template public generateJavaClasses(root : DocumentRoot)]
+[for (e : Huientity | root.allBPEntities())]
+[printJavaClass(e)/]
+[/for]
+[root.printNamendSwitch('Bp')/]
+[/template]
+
+
+
+[template public printNamendSwitch(root : DocumentRoot, prefix : String = '')]
+[file ( 'java/'+ prefix.toUpperFirst()+'Switch' +'.java', false, 'UTF-8')]
+package sernet.verinice.model.wrapper.util;
+
+import sernet.verinice.model.common.CnATreeElement;
+
+public class [prefix.toUpperFirst()/]Switch<T> {
+
+	public void doSwitch(CnATreeElement o) {
+[for (e : Huientity |root.allBPEntities() )separator ('else')]
+		if ("[e.id/]".equals(o.getTypeId())) {
+			case[e.id.toJavaIdentifier()/](o);
+		}[/for]
+
+	}
+
+
+[for (e : Huientity |root.allBPEntities() )]
+	public T case[e.id.toJavaIdentifier()/](CnATreeElement object) {
+		return null;
+	}
+[/for]
+
+}
+[/file]
+[/template]
+
+
+
+[template public printNamendWrapperSwitch(root : DocumentRoot, prefix : String = '')]
+[file ( 'java/'+ prefix.toUpperFirst()+'WrapperSwitch' +'.java', false, 'UTF-8')]
+package sernet.verinice.model.wrapper.util;
+
+[for (e : Huientity |root.allBPEntities() )]
+import [e.toJavaWrapperPackage()/].[e.toJavaWarpperClassName()/];
+[/for]
+
+public class [prefix.toUpperFirst()/]WrapperSwitch<T> {
+
+	public void doSwitch(Object o) {
+[for (e : Huientity |root.allBPEntities() )separator ('else')]
+		if (o instanceof [e.toJavaWarpperClassName()/]) {
+			[e.toJavaWarpperClassName()/] o1 = ([e.toJavaWarpperClassName()/]) o;
+			case[e.toJavaWarpperClassName()/](o1);
+		}[/for]
+
+	}
+
+
+[for (e : Huientity |root.allBPEntities() )]
+	public T case[e.toJavaWarpperClassName()/]([e.toJavaWarpperClassName()/] object) {
+		return null;
+	}
+[/for]
+
+}
+[/file]
+[/template]
+
+[template public printJavaClass (e : Huientity) ]
+[file ( 'java/'+ e.toJavaWarpperClassName() +'.java', false, 'UTF-8')]
+package [e.toJavaWrapperPackage()/];
+
+import java.util.List;
+
+import sernet.verinice.model.common.CnATreeElement;
+
+public class [e.toJavaWarpperClassName()/] {
+
+	public static final String TYPE_ID = "[e.id/]";
+
+[for (p : Huiproperty | e.allProperties())]
+	public static final String [p.toConstant()/] = "[p.id/]";
+[/for]
+[for (p : Huiproperty | e.allProperties()->select(not option->isEmpty()) )]
+	[p.printEnum()/]
+[/for]
+	private final CnATreeElement cnaElement;
+	
+	/**
+	 * Create a new wrapper for the given element.
+	 * 
+	 * @param cnaElement
+	 * @return the created wrapper
+	 */
+	public static [e.toJavaClassName()/] of(CnATreeElement cnaElement){
+		if(!TYPE_ID.equals(cnaElement.getTypeId())) {
+			throw new IllegalArgumentException("The type "+cnaElement.getTypeId()+" can not be used with this wrapper.");
+		}
+		return new [e.toJavaClassName()/](cnaElement);
+	}
+
+	private [e.toJavaClassName()/](CnATreeElement cnaElement){
+		this.cnaElement = cnaElement;
+	}
+
+[for (p : Huiproperty | e.allProperties())]
+[p.printPropertyGetter()/]
+[/for]
+
+	private String  getProperty(String id){
+		return cnaElement.getPropertyValue(id);
+	}
+}
+
+[/file]
+[/template]
+
+
+[template public printEnum(p : Huiproperty) ? (not p.option->isEmpty())]
+enum [p.toEnumName()/] {
+[for (o : Option | p.option)separator (',\n')after (';')]	[o.name.toJavaIdentifier()/]("[o.id/]")[/for]
+
+	private final String stringValue;
+
+	[p.toEnumName()/](final String s) { 
+		stringValue = s; 
+	}
+
+	@Override
+	public String toString() { 
+		return stringValue; 
+	}
+ }
+[/template]
+
+
+
+[template public printPropertyGetter (p : Huiproperty) ]
+	/**
+	 * Getter for the '[p.id.toJavaIdentifier()/]' property.
+	 */
+[if (p.inputtype=Inputtypes::line or p.inputtype=Inputtypes::text)]
+	public String get[p.id.toJavaIdentifier()/](){
+		return getProperty([p.toConstant()/]);
+	}
+[elseif (p.inputtype=Inputtypes::booleanoption)]
+	public Boolean is[p.id.toJavaIdentifier()/](){
+        return cnaElement.getNumericProperty([p.toConstant()/]) == 1;
+	}
+[elseif (p.inputtype=Inputtypes::multioption)]
+	public String get[p.id.toJavaIdentifier()/](){
+		return getProperty([p.toConstant()/]);
+	}
+[elseif (p.inputtype=Inputtypes::singleoption)]
+	public String get[p.id.toJavaIdentifier()/](){
+		return getProperty([p.toConstant()/]);
+	}
+
+	public [p.toEnumName()/] get[p.id.toJavaIdentifier()+'Enum'/](){
+		return [p.toEnumName()/].valueOf(getProperty([p.toConstant()/]));
+	}
+[elseif (p.inputtype=Inputtypes::numericoption)]
+	public Integer get[p.id.toJavaIdentifier()/](){
+		return cnaElement.getNumericProperty([p.toConstant()/]);
+	}
+[elseif (p.inputtype=Inputtypes::date)]
+	public String get[p.id.toJavaIdentifier()/](){
+		return getProperty([p.toConstant()/]);
+	}
+[/if]
+[/template]
+
+
+[query public toConstant(p: Huiproperty) : String = if p.name.oclIsUndefined() or p.name='' then 
+p.id.basicreplace().toUpper()
+else
+p.name.basicreplace().toUpper()
+.replaceAll('Ü', 'UE')
+.replaceAll('Ä', 'AE')
+.replaceAll('Ö', 'OE')
+endif
+ /]
+
+
+[template private toJavaConstant(p: Huiproperty)]
+[if (p.name.oclIsUndefined() or p.name='')]
+[p.id.basicreplace().toUpper()/][else]
+[p.name.basicreplace().toUpper().replaceAll('Ü', 'UE').replaceAll('Ä', 'AE')/][/if]
+[/template]
+
+
+[template private toJavaClassName(e : Huientity)]
+[e.id.toJavaIdentifier()/]Wrapper
+[/template]
+

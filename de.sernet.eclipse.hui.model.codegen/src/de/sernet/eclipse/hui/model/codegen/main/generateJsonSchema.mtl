@@ -24,9 +24,6 @@
 [query public toLinkName(e : Huientity, r : Huirelation) : String = e.toEntityName().concat('_').concat(r.to.toEntityName()) /]
 
 
-[query public allBPEntities(root : DocumentRoot) : Sequence(Huientity) = root.huientities.huientity->select(id.startsWith('bp_'))/]
-
-
 [template public printLinks (e : Huientity) ]
 [for (r : Huirelation | e.huirelation)]
 [printLink(r,e)/]

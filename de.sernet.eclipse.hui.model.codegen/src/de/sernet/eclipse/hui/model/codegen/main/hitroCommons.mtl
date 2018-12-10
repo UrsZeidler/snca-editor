@@ -9,14 +9,26 @@
 [query public hasDefaultRule(p : Huiproperty) : Boolean = not p.defaultRule.oclIsUndefined() /]
 
 
+
+[query public allBPEntities(root : DocumentRoot) : Sequence(Huientity) = root.huientities.huientity->select(id.startsWith('bp_'))/]
+
 [query public allProperties(e : Huientity) : OrderedSet(Huiproperty) = 
 	e.huiproperty->addAll(e.huipropertygroup->collect(huiproperty)->flatten()) /]
+
+[query public allPropertyGroups(e : Huientity) : OrderedSet(Huiproperty) = 
+	e.huipropertygroup
+	->addAll(e.huipropertygroup
+		->collect(huiproperty)->flatten()
+	)
+
+ /]
+
 [query public allRequiredProperties(e : Huientity) : OrderedSet(Huiproperty) = 
 	e.allProperties()->select(required) /]
 
 [query public basicreplace(s : String) : String = 
 s.replaceAll('\\(', '').replaceAll('\\)', '').replaceAll('\\?', '').replaceAll('\\.', '').replaceAll('\\\\', '_')
-.replaceAll('/', '_').replaceAll('-', '_').replaceAll(' ', '_').replaceAll('__', '_').replaceAll('__', '_') /]
+.replaceAll('/', '_').replaceAll('-', '_').replaceAll('>', 'M').replaceAll(' ', '_').replaceAll('__', '_').replaceAll('__', '_') /]
 
 
 [query public dependsOn(p : Huiproperty, dependend: Huiproperty) : Boolean = not p.depends->select(option.id=dependend.id)->isEmpty() /]
