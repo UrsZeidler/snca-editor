@@ -18,8 +18,8 @@
 [/template]
 
 
-[query public toJsonId(p : Huiproperty) : String = p.id.toCamelCase() /]
-[query public toJsonId(o : Option) : String = o.id.toCamelCase() /]
+[query public toJsonId(p : Huiproperty) : String = p.id.toCamelCase().toLowerFirst() /]
+[query public toJsonId(o : Option) : String = o.id.toCamelCase().toLowerFirst() /]
 [query public toEntityName(e : Huientity) : String = e.id.toCamelCase() /]
 [query public toLinkName(e : Huientity, r : Huirelation) : String = e.toEntityName().concat('_').concat(r.to.toEntityName()) /]
 
