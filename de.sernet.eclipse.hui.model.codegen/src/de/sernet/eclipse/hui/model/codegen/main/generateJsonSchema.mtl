@@ -4,24 +4,25 @@
 [import de::sernet::eclipse::hui::model::codegen::main::hitroCommons /]
 
 [template public generateJsonSchema(root : DocumentRoot)]
-	[comment @main /]
-[for (e : Huientity | root.allBPEntities())]
+[comment @main /]
+[for (e : Huientity | root.allISOEntities())]
 [printEntitySchema(e)/]
 [printLinks(e)/]
 [/for]
 
-[file ('entity/test.txt', false, 'UTF-8')]
-[for (e : Huientity | root.allBPEntities())]
-[e.id/]  --> [e.name/]
-[/for]
-[/file]	
 [/template]
 
 
-[query public toJsonId(p : Huiproperty) : String = p.id.toCamelCase().toLowerFirst() /]
-[query public toJsonId(o : Option) : String = o.id.toCamelCase().toLowerFirst() /]
-[query public toEntityName(e : Huientity) : String = e.id.toCamelCase() /]
-[query public toLinkName(e : Huientity, r : Huirelation) : String = e.toEntityName().concat('_').concat(r.to.toEntityName()) /]
+[query private toJsonId(p : Huiproperty) : String = p.id.toCamelCase().toLowerFirst() /]
+[query private toJsonId(o : Option) : String = o.id.toCamelCase().toLowerFirst() /]
+[query private toEntityName(e : Huientity) : String = e.id.toCamelCase() /]
+[query private toLinkName(e : Huientity, r : Huirelation) : String = e.toEntityName().concat('_').concat(transformName(r)).concat('_').concat(r.to.toEntityName()) /]
+
+[query public transformName(r : Huirelation) : String = if r.name.oclIsUndefined() then '' else r.name.toLower().replaceAll(' ', '_') endif/]
+
+
+[query private isJsonProperty(p : Huiproperty) : Boolean = not(p.name = 'Name') and not(p.name='Title') /]
+[query private allJsonProperties(e : Huientity) : OrderedSet(Huiproperty) = e.allProperties()->select(isJsonProperty()) /]
 
 
 [template public printLinks (e : Huientity) ]
@@ -62,7 +63,7 @@
       "title": "id of the [r.to.name/]"
     }
   },
-  "required":  ['['/]
+  "required":  ['['/]"type": "string"
     "$veo.id",
     "$veo.type",
     "source",
@@ -96,21 +97,21 @@
     },
     "$veo.title": {
       "type": "string",
-      "title": "The title of the asset"
+      "title": "The title of the [e.toEntityName()/]."
     },
     "parent": {
       "type": "string",
       "title": "The UUID to identify the parent"
     }[if (not e.allProperties()->isEmpty())],[/if]
-[for (p : Huiproperty | e.allProperties())separator (',\n')][printProperty(p)/][/for]
+[for (p : Huiproperty | e.allJsonProperties())separator (',\n')][printProperty(p)/][/for]
   },
   "required": ['['/]
     "$veo.id",
     "$veo.type",
     "parent",
-    "$veo.title"[for (p : Huiproperty | e.allRequiredProperties())before (',\n')separator (',\n')]    "[p.toJsonId()/]"[/for]
+    "$veo.title"[for (p : Huiproperty | e.allRequiredProperties()->select(isJsonProperty()))before (',\n')separator (',\n')]    "[p.toJsonId()/]"[/for]
    [']'/]
-}		
+}
 [/file]
 [/template]
 
@@ -125,14 +126,18 @@
       "type": "array",
       "items": {
         "enum": ['['/]
-[for (o : Option | p.option)separator (',\n')]			"[o.toJsonId()/]"[/for]
+[for (o : Option | p.option)separator (',\n')]        "[o.toJsonId()/]"[/for]
         [']'/]
       },
       "uniqueItems": true
 [elseif (p.inputtype=Inputtypes::singleoption)]
+[if (p.option->isEmpty())]
+      "type": "string"
+[else]
       "enum": ['['/]
-[for (o : Option | p.option)separator (',\n')]		"[o.toJsonId()/]"[/for]
+[for (o : Option | p.option)separator (',\n')]        "[o.toJsonId()/]"[/for]
       [']'/]
+[/if]
 [elseif (p.inputtype=Inputtypes::numericoption)]
       "type": "integer"
 [elseif (p.inputtype=Inputtypes::date)]

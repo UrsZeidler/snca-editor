@@ -10,7 +10,51 @@
 
 
 
-[query public allBPEntities(root : DocumentRoot) : Sequence(Huientity) = root.huientities.huientity->select(id.startsWith('bp_'))/]
+[query public allBPEntities(root : DocumentRoot) : Sequence(Huientity) = 
+	root.huientities.huientity->select(id.startsWith('bp_'))/]
+
+
+[query public allIsoIds(root : DocumentRoot) : Set(String) = Set{
+'org',
+'assetgroup',
+'asset',
+'persongroup',
+'person-iso',
+'auditgroup',
+'audit',
+'controlgroup',
+'control',
+'exceptiongroup',
+'exception',
+'requirementgroup',
+'requirement',
+'incident',
+'incident_group',
+'incident_scenario',
+'incident_scenario_group',
+'response',
+'response_group',
+'threat',
+'threat_group',
+'vulnerability',
+'vulnerability_group',
+'document',
+'document_group',
+'interview',
+'interview_group',
+'evidence',
+'evidence_group',
+'finding',
+'finding_group',
+'process',
+'process_group',
+'record',
+'record_group'
+} /]
+
+
+[query public allISOEntities(root : DocumentRoot) : Sequence(Huientity) = 
+	root.huientities.huientity->select(root.allIsoIds()->includes(id))/]
 
 [query public allProperties(e : Huientity) : OrderedSet(Huiproperty) = 
 	e.huiproperty->addAll(e.huipropertygroup->collect(huiproperty)->flatten()) /]
@@ -35,7 +79,7 @@ s.replaceAll('\\(', '').replaceAll('\\)', '').replaceAll('\\?', '').replaceAll('
 [query public allDependendProperties(p : Huiproperty) : OrderedSet(Huiproperty) = Huiproperty.allInstances()->select(dependsOn(p))->asOrderedSet() /]
 
 
-[query public toCamelCase(s : String) : String =   s.tokenize('_')->reduce().toUpperFirst() /]
+[query public toCamelCase(s : String) : String =   s.replaceAll('-','_').tokenize('_')->reduce().toUpperFirst() /]
 [query public toCamelCaseFirstLower(s : String) : String =   s.tokenize('_')->reduce().toLowerFirst() /]
 
 [query public toJavaIdentifier(s : String) : String =   s.basicreplace().tokenize('_')->reduce().toUpperFirst() /]
