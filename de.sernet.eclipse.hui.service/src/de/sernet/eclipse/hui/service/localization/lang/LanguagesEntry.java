@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class LanguagesEntry {
     private String id;
-    private List<LangEntry> entries = new ArrayList<LangEntry>(2);
+    private List<LangEntry> entries = new ArrayList<>();
 
     public LanguagesEntry(String id) {
         super();

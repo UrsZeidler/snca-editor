@@ -31,16 +31,18 @@ import java.beans.PropertyChangeSupport;
 public class LangEntry {
     private PropertyChangeSupport changeSupport;
     private String lang;
+    private String suffix;
     private String text;
 
-    public LangEntry(String lang) {
+    private LangEntry(String lang, String suffix) {
         super();
         this.lang = lang;
+        this.suffix = suffix;
         changeSupport = new PropertyChangeSupport(this);
     }
 
-    public LangEntry(String lang, String text) {
-        this(lang);
+    public LangEntry(String lang,String suffix, String text) {
+        this(lang, suffix);
         this.text = text;
     }
 
@@ -52,7 +54,15 @@ public class LangEntry {
         this.lang = lang;
     }
 
-    public String getText() {
+    public String getSuffix() {
+		return suffix;
+	}
+
+	public void setSuffix(String suffix) {
+		this.suffix = suffix;
+	}
+
+	public String getText() {
         return text;
     }
 
