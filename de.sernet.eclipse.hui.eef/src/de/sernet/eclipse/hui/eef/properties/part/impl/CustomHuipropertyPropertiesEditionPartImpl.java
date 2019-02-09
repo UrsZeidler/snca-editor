@@ -21,11 +21,15 @@
 package de.sernet.eclipse.hui.eef.properties.part.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -60,13 +64,19 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.eclipse.ui.forms.widgets.Section;
 
+import de.sernet.eclipse.hitro.Huiproperty;
+import de.sernet.eclipse.hitro.Inputtypes;
 // Start of user code for imports
 import de.sernet.eclipse.hitro.parts.HitroViewsRepository;
 import de.sernet.eclipse.hitro.parts.HuipropertyPropertiesEditionPart;
 import de.sernet.eclipse.hitro.providers.HitroMessages;
+import de.sernet.eclipse.hui.eef.properties.part.forms.CustomHuipropertyPropertiesEditionPartForm;
 
 // End of user code
 
@@ -103,6 +113,7 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
     protected ReferencesTable option;
     protected List<ViewerFilter> optionBusinessFilters = new ArrayList<ViewerFilter>();
     protected List<ViewerFilter> optionFilters = new ArrayList<ViewerFilter>();
+    private Map<Object, Composite> fieldCompositeMap = new HashMap<>();
 
     /**
      * Default constructor
@@ -174,7 +185,7 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
         childsStep.addStep(HitroViewsRepository.Huiproperty.Childs.option);
 
         composer = new PartComposer(huipropertyStep) {
-
+//TODO here to work
             @Override
             public Composite addToPart(Composite parent, Object key) {
                 if (key == HitroViewsRepository.Huiproperty.Base.class) {
@@ -193,13 +204,22 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
                     return createInputtypeEMFComboViewer(parent);
                 }
                 if (key == HitroViewsRepository.Huiproperty.Type.isURL) {
-                    return createIsURLCheckbox(parent);
+                    Composite fieldContainer = createIsURLCheckbox(parent);
+                    fieldCompositeMap.put(key, fieldContainer);
+                    return fieldContainer;
+
+                	
+                  //  return createIsURLCheckbox(parent);
                 }
                 if (key == HitroViewsRepository.Huiproperty.Type.min) {
-                    return createMinText(parent);
+                    Composite fieldContainer = createMinText(parent);
+                    fieldCompositeMap.put(key, fieldContainer);
+                    return fieldContainer;
                 }
                 if (key == HitroViewsRepository.Huiproperty.Type.max) {
-                    return createMaxText(parent);
+                    Composite fieldContainer = createMaxText(parent);
+                    fieldCompositeMap.put(key, fieldContainer);
+                    return fieldContainer;
                 }
                 if (key == HitroViewsRepository.Huiproperty.Properties.class) {
                     return createPropertiesGroup(parent);
@@ -223,13 +243,17 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
                     return createRequiredCheckbox(parent);
                 }
                 if (key == HitroViewsRepository.Huiproperty.Properties.showInObjectBrowser) {
-                    return createShowInObjectBrowserCheckbox(parent);
+                    Composite fieldContainer = createShowInObjectBrowserCheckbox(parent);
+                    fieldCompositeMap.put(key, fieldContainer);
+                    return fieldContainer;
                 }
                 if (key == HitroViewsRepository.Huiproperty.Properties.tags) {
                     return createTagsText(parent);
                 }
                 if (key == HitroViewsRepository.Huiproperty.Properties.textrows) {
-                    return createTextrowsText(parent);
+                    Composite fieldContainer = createTextrowsText(parent);
+                    fieldCompositeMap.put(key, fieldContainer);
+                    return fieldContainer;
                 }
                 if (key == HitroViewsRepository.Huiproperty.Properties.tooltip) {
                     return createTooltipText(parent);
@@ -253,6 +277,61 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
             }
         };
         composer.compose(view);
+        //updateVisibility();
+    }
+
+    
+    
+    private Huiproperty getHuiProperty() {
+        return (Huiproperty) current;
+    }
+
+    private void updateVisibility() {
+
+        Inputtypes inputtypes = getHuiProperty().getInputtype();
+        switch (inputtypes) {
+        case DATE:
+        case LINE:
+            updateAllWidgets(de.sernet.eclipse.hui.eef.properties.part.forms.CustomHuipropertyPropertiesEditionPartForm.LINE_WIDGET_CONTAINERS);
+            break;
+        case TEXT:
+            updateAllWidgets(de.sernet.eclipse.hui.eef.properties.part.forms.CustomHuipropertyPropertiesEditionPartForm.TEXT_WIDGET_CONTAINERS);
+            break;
+        case MULTIOPTION:
+        case SINGLEOPTION:
+        case NUMERICOPTION:
+            updateAllWidgets(de.sernet.eclipse.hui.eef.properties.part.forms.CustomHuipropertyPropertiesEditionPartForm.NUMBER_WIDGET_CONTAINERS);
+            break;
+        case BOOLEANOPTION:
+            updateAllWidgets(CustomHuipropertyPropertiesEditionPartForm.BOOLEAN_WIDGET_CONTAINERS);
+            break;
+        default:
+            break;
+        }
+    }
+
+    private void updateAllWidgets(Collection<Object> widgetContainers) {
+    	CustomHuipropertyPropertiesEditionPartForm.ALL_WIDGET_CONTAINERS.stream().forEach(k -> {
+            Composite c = fieldCompositeMap.get(k);
+            if (c != null && !c.isDisposed()) {
+                boolean visible2 = !widgetContainers.contains(k);
+                c.setVisible(visible2);
+                GridData parentData = new GridData(SWT.FILL, SWT.TOP, true, false);
+                parentData.horizontalSpan = 3;
+                parentData.verticalSpan = 1;
+                parentData.heightHint = visible2 ? 32 : 0;
+                c.setLayoutData(parentData);
+                c.getParent().layout(visible2);
+                Composite parent = c.getParent().getParent();
+                if (parent instanceof Section) {
+                    Section section = (Section) parent;
+//                    section.computeSize(SWT.DEFAULT, SWT.DEFAULT, true);
+                    Control client = section.getClient();
+                    client.requestLayout();
+                }
+                parent.layout(true);
+            }
+        });
     }
 
     /**
@@ -426,6 +505,7 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
                                     HitroViewsRepository.Huiproperty.Type.inputtype,
                                     PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
                                     getInputtype()));
+                updateVisibility();
             }
 
         });
@@ -441,8 +521,25 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
         return parent;
     }
 
+    private Composite createFieldComposite(Composite parent) {
+        parent = new Composite(parent, SWT.NONE);
+        GridData parentData = new GridData(SWT.FILL, SWT.TOP, true, false);
+        parentData.horizontalSpan = 3;
+        parentData.verticalSpan = 1;
+        parentData.heightHint = 40;
+        parent.setLayoutData(parentData);
+        GridLayout layout = new GridLayout(2, false);
+        layout.marginWidth = 0;
+        layout.marginHeight = 2;
+        parent.setLayout(layout);
+        parent.pack();
+        return parent;
+    }
+
+    
     protected Composite createIsURLCheckbox(Composite parent) {
-        isURL = new Button(parent, SWT.CHECK);
+        parent = createFieldComposite(parent);
+       isURL = new Button(parent, SWT.CHECK);
         isURL.setText(getDescription(HitroViewsRepository.Huiproperty.Type.isURL,
                 HitroMessages.HuipropertyPropertiesEditionPart_IsURLLabel));
         isURL.addSelectionListener(new SelectionAdapter() {
@@ -478,7 +575,8 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
         return parent;
     }
 
-    protected Composite createMinText(Composite parent) {
+    protected Composite createMinText(Composite p) {
+        Composite parent = createFieldComposite(p);
         createDescription(parent, HitroViewsRepository.Huiproperty.Type.min,
                 HitroMessages.HuipropertyPropertiesEditionPart_MinLabel);
         min = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -536,7 +634,8 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
         return parent;
     }
 
-    protected Composite createMaxText(Composite parent) {
+    protected Composite createMaxText(Composite p) {
+        Composite parent = createFieldComposite(p);
         createDescription(parent, HitroViewsRepository.Huiproperty.Type.max,
                 HitroMessages.HuipropertyPropertiesEditionPart_MaxLabel);
         max = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -861,7 +960,9 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
         return parent;
     }
 
-    protected Composite createShowInObjectBrowserCheckbox(Composite parent) {
+    protected Composite createShowInObjectBrowserCheckbox(Composite p) {
+        Composite parent = createFieldComposite(p);
+
         showInObjectBrowser = new Button(parent, SWT.CHECK);
         showInObjectBrowser.setText(
                 getDescription(HitroViewsRepository.Huiproperty.Properties.showInObjectBrowser,
@@ -962,7 +1063,9 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
         return parent;
     }
 
-    protected Composite createTextrowsText(Composite parent) {
+    protected Composite createTextrowsText(Composite p) {
+        Composite parent = createFieldComposite(p);
+
         createDescription(parent, HitroViewsRepository.Huiproperty.Properties.textrows,
                 HitroMessages.HuipropertyPropertiesEditionPart_TextrowsLabel);
         textrows = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -1388,6 +1491,12 @@ public class CustomHuipropertyPropertiesEditionPartImpl extends CompositePropert
         // Start of user code for tab synchronization
 
         // End of user code
+    }
+    
+    @Override
+    public void setContext(EObject eObject, ResourceSet allResources) {
+    	super.setContext(eObject, allResources);
+    	updateVisibility();
     }
 
     /**

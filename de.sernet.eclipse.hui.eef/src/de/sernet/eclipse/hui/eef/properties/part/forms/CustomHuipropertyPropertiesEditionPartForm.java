@@ -117,24 +117,24 @@ public class CustomHuipropertyPropertiesEditionPartForm extends SectionPropertie
     protected List<ViewerFilter> optionBusinessFilters = new ArrayList<>();
     protected List<ViewerFilter> optionFilters = new ArrayList<>();
     private Map<Object, Composite> fieldCompositeMap = new HashMap<>();
-    private static final Set<Object> ALL_WIDGET_CONTAINERS = Sets.newHashSet(
+    public static final Set<Object> ALL_WIDGET_CONTAINERS = Sets.newHashSet(
             HitroViewsRepository.Huiproperty.Type.isURL, HitroViewsRepository.Huiproperty.Type.max,
             HitroViewsRepository.Huiproperty.Type.min,
             HitroViewsRepository.Huiproperty.Properties.showInObjectBrowser,
             HitroViewsRepository.Huiproperty.Properties.textrows);
-    private static final Set<Object> NUMBER_WIDGET_CONTAINERS = Sets.newHashSet(
+    public static final Set<Object> NUMBER_WIDGET_CONTAINERS = Sets.newHashSet(
             HitroViewsRepository.Huiproperty.Type.isURL,
             HitroViewsRepository.Huiproperty.Properties.showInObjectBrowser,
             HitroViewsRepository.Huiproperty.Properties.textrows);
-    private static final Set<Object> BOOLEAN_WIDGET_CONTAINERS = Sets.newHashSet(
+    public static final Set<Object> BOOLEAN_WIDGET_CONTAINERS = Sets.newHashSet(
             HitroViewsRepository.Huiproperty.Type.isURL,
             HitroViewsRepository.Huiproperty.Properties.showInObjectBrowser,
             HitroViewsRepository.Huiproperty.Properties.textrows,
             HitroViewsRepository.Huiproperty.Type.max, HitroViewsRepository.Huiproperty.Type.min);
-    private static final Set<Object> TEXT_WIDGET_CONTAINERS = Sets.newHashSet(
+    public static final Set<Object> TEXT_WIDGET_CONTAINERS = Sets.newHashSet(
             HitroViewsRepository.Huiproperty.Type.isURL, HitroViewsRepository.Huiproperty.Type.max,
             HitroViewsRepository.Huiproperty.Type.min);
-    private static final Set<Object> LINE_WIDGET_CONTAINERS = Sets.newHashSet(
+    public static final Set<Object> LINE_WIDGET_CONTAINERS = Sets.newHashSet(
             HitroViewsRepository.Huiproperty.Properties.showInObjectBrowser,
             HitroViewsRepository.Huiproperty.Properties.textrows,
             HitroViewsRepository.Huiproperty.Type.max, HitroViewsRepository.Huiproperty.Type.min);
