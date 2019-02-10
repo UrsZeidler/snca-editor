@@ -99,6 +99,7 @@ import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.util.LocalSelectionTransfer;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -1083,10 +1084,58 @@ public class HitroEditor extends MultiPageEditorPart
                         .setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
                 selectionViewer.setUseHashlookup(true);
 
-                selectionViewer.setLabelProvider(new DecoratingColumLabelProvider(
-                        new AdapterFactoryLabelProvider(adapterFactory),
-                        new DiagnosticDecorator(editingDomain, selectionViewer,
-                                HitroEditorPlugin.getPlugin().getDialogSettings())));
+				selectionViewer.setLabelProvider(new DecoratingColumLabelProvider(
+						new AdapterFactoryLabelProvider(adapterFactory), new DiagnosticDecorator(editingDomain,
+								selectionViewer, HitroEditorPlugin.getPlugin().getDialogSettings()) {
+
+							protected void buildToolTipText(StringBuilder result, ILabelProvider labelProvider,
+									Diagnostic diagnostic, Object object) {
+								int maxChilds = 5;
+								
+								List<Diagnostic> children = diagnostic.getChildren();
+								Diagnostic child = children.get(0);
+								int index = 0;
+								if (child.getData().contains(object)) {
+									++index;
+									List<Diagnostic> subList = child.getChildren().subList(0, Math.min(maxChilds, child.getChildren().size()));
+									for (Diagnostic grandChild : subList) {
+										buildToolTipMessage(result, labelProvider, object, grandChild, 0);
+									}
+									if(child.getChildren().size()>maxChilds) {
+										int more = child.getChildren().size()-maxChilds;
+										result.append("<h2>And "+more+" more  Problems</h2>\n");
+									}
+								}
+								StringBuilder moreResults = new StringBuilder();
+								for (int size = children.size(); index < Math.min(maxChilds, size); ++index) {
+									child = children.get(index);
+									buildMoreToolTipText(moreResults, labelProvider, child);
+								}
+								if (moreResults.length() != 0) {
+									result.append("<h1>Problems on Children</h1>\n");
+									moreResults.setLength(10000);
+									result.append(moreResults);
+								}
+								if(children.size()>maxChilds) {
+									int more = children.size()-maxChilds;
+									result.append("<h2>And "+more+" more  Children</h2>\n");
+								}
+							}
+
+//							@Override
+//									protected void buildMoreToolTipText(StringBuilder result,
+//											ILabelProvider labelProvider, Diagnostic diagnostic) {
+//								//String source, int code, List<? extends Diagnostic> children,
+//								//String message, Object[] data)
+//								Diagnostic nd = new BasicDiagnostic(
+//										diagnostic.getSource(),
+//										diagnostic.getSeverity(),
+//										diagnostic.getChildren().subList(0, 8),
+//										diagnostic.getMessage(),
+//										diagnostic.getData().toArray());
+//										super.buildMoreToolTipText(result, labelProvider, nd);
+//									}
+						}));
                 selectionViewer.setInput(editingDomain.getResourceSet());
                 selectionViewer.setSelection(new StructuredSelection(
                         editingDomain.getResourceSet().getResources().get(0)), true);
