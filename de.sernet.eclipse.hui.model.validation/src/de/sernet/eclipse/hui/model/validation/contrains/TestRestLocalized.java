@@ -39,14 +39,14 @@ import de.sernet.eclipse.hui.service.localization.lang.LanguagesEntry;
  * @author uz[at]sernet.de
  *
  */
-public class TestNameLocalized extends AbstractModelConstraint {
+public class TestRestLocalized extends AbstractModelConstraint {
 
     private LocalizationService localizationService;
 
     /**
      * 
      */
-    public TestNameLocalized() {
+    public TestRestLocalized() {
         super();
         IWorkbench workbench = PlatformUI.getWorkbench();
         localizationService = workbench.getService(LocalizationService.class);
@@ -78,9 +78,9 @@ public class TestNameLocalized extends AbstractModelConstraint {
     }
 
     private String validateEntries(List<LangEntry> entries) {
-        return entries.stream().filter(e->e.getSuffix()==null || e.getSuffix().isEmpty())//
-        		.filter(e -> e.getText() == null || e.getText().isEmpty())//
-                .map(TestNameLocalized::getLanguageName).collect(Collectors.joining(","));
+        return entries.stream().filter(e->e.getSuffix()!=null && !e.getSuffix().isEmpty())//
+        		.filter(e -> e.getText() == null || e.getText().isEmpty())
+                .map(e-> getLanguageName(e)+ " for "+ e.getSuffix()  ).collect(Collectors.joining(","));
     }
 
 	private static String getLanguageName(LangEntry e) {

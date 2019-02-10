@@ -129,34 +129,6 @@ Works on Huientity and Huiproperty.
                </target>
             </constraint>
                         <constraint
-                              class="de.sernet.eclipse.hui.model.validation.contrains.TestNameLocalized"
-                              id="de.sernet.eclipse.hui.model.validation.testmessageproperties"
-                              isEnabledByDefault="true"
-                              lang="Java"
-                              mode="Live"
-                              name="Element Übersetzung"
-                              severity="ERROR"
-                              statusCode="de.sernet.eclipse.hui.model.validation.testmessageproperties">
-                           <message>
-                              No localization {0} for {1} defined.
-                           </message>
-                           <description>
-                              Check if the element has all localization defined.
-                           </description>
-                           <target
-                                 class="Huiproperty">
-                           </target>
-                           <target
-                                 class="Option">
-                           </target>
-                           <target
-                                 class="Huipropertygroup">
-                           </target>
-                           <target
-                                 class="Huiproperty">
-                           </target>
-                        </constraint>
-                        <constraint
                               class="de.sernet.eclipse.hui.model.validation.contrains.TestNumericOption"
                               id="de.sernet.eclipse.hui.model.validation.testnumericoption"
                               isEnabledByDefault="true"
@@ -188,6 +160,64 @@ Works on Huientity and Huiproperty.
                               The element id of {0} does not conform to the schema.
                            </message>
                         </constraint>
+
+                                 <constraint
+                              class="de.sernet.eclipse.hui.model.validation.contrains.TestNameLocalized"
+                              id="de.sernet.eclipse.hui.model.validation.testmessageproperties"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Live"
+                              name="Element Übersetzung"
+                              severity="ERROR"
+                              statusCode="de.sernet.eclipse.hui.model.validation.testmessageproperties">
+                           <message>
+                              No localization: {0} for language {1} defined.
+                           </message>
+                           <description>
+                              Check if the element has all localization defined.
+                           </description>
+                           <target
+                                 class="Huiproperty">
+                           </target>
+                           <target
+                                 class="Option">
+                           </target>
+                           <target
+                                 class="Huipropertygroup">
+                           </target>
+                           <target
+                                 class="Huientity">
+                           </target>
+                        </constraint>
+                        <constraint
+                              class="de.sernet.eclipse.hui.model.validation.contrains.TestRestLocalized"
+                              id="de.sernet.eclipse.hui.model.validation.testrestmessageproperties"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Live"
+                              name="Rest Element Übersetzung"
+                              severity="ERROR"
+                              statusCode="de.sernet.eclipse.hui.model.validation.testrestmessageproperties">
+                           <message>
+                             No localization: {0} languages {1} defined.
+                           </message>
+                           <description>
+                              Check if the element has all localization defined.
+                           </description>
+                           <target
+                                 class="Huiproperty">
+                           </target>
+                           <target
+                                 class="Option">
+                           </target>
+                           <target
+                                 class="Huipropertygroup">
+                           </target>
+                           <target
+                                 class="Huientity">
+                           </target>
+                        </constraint>
+
             
          </constraints>
          <constraints
@@ -205,6 +235,9 @@ Works on Huientity and Huiproperty.
                   message body text
                </message>
             </constraint>
+         
+                        
+                        
          </constraints>
       </constraintProvider>
    </extension>
