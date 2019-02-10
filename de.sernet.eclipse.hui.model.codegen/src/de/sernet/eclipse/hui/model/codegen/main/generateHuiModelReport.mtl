@@ -14,20 +14,11 @@
  */]
 [template public generateElement(root : DocumentRoot)]
 [comment @main/]
-[comment][file ('SNCA.md', false, 'UTF-8')]
-# SNCA report
-
-[for (e : Huientity | root.huientities.huientity)]
-[printEntity(e)/]
-[/for]
-[/file][/comment]
-
-
 [root.printMediaWiki()/]
+[root.printMarkDown()/]
 [root.generateJsonSchema()/]
 [root.generateJavaClasses()/]
 [/template]
-
 
 [query public allTags(root : DocumentRoot) : Set(String) = root.huientities.huientity
 	->collect(allProperties()
@@ -37,29 +28,30 @@
 	->union(root.huientities.huientity.huipropertygroup
 		->collect(tags)->flatten()
 		->asSet())
-
-
  /]
 
 
 [template public printMediaWiki(root : DocumentRoot)]
-[file ('SNCA.mediawiki', false, 'UTF-8')]
-= SNCA =
+[printSNCAMediaWikiFile('SNCA-ISO.mediawiki', 'SNCA for ISO', root.allISOEntities())/]
+[printSNCAMediaWikiFile('SNCA-MOGS.mediawiki', 'SNCA for MOGS', root.allISOEntities())/]
+[/template]
+
+[template public printSNCAMediaWikiFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
+[file (filename, false, 'UTF-8')]
+= [docTitel/] =
 
 
-[root.allTags()/]
+[comment][root.allTags()/]
 
 [for (s : String | root.allTags())]
   ->[s.tokenize(',')/]
-[/for]
+[/for][/comment]
 
-[for (e : Huientity | root.huientities.huientity)]
+[for (e : Huientity | entities)]
 [printEntityMediaWiki(e)/]
 [/for]
 [/file]
 [/template]
-
-
 
 
 [template public printEntityMediaWiki (e : Huientity) ]
@@ -95,9 +87,26 @@ type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
 
 [/template]
 
+[template public printMarkDown(root : DocumentRoot)]
+[printSNCAMarkdownFile('SNCA-ISO.md', 'SNCA for ISO', root.allISOEntities())/]
+[printSNCAMarkdownFile('SNCA-MOGS.md', 'SNCA for MOGS', root.allISOEntities())/]
+[/template]
+
+
+
+[template public printSNCAMarkdownFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
+[file (filename, false, 'UTF-8')]
+# [docTitel/] 
+
+[for (e : Huientity | entities)]
+[printEntity(e)/]
+[/for]
+[/file]
+[/template]
+
 
 [template public printEntity(e : Huientity)]
-## Entity: [e.name/] ([e.id/])
+## Entity: [e.name/] ([e.id/]) {#[e.id/]}
 
 [printEntityLocalization(e)/]
 
@@ -115,8 +124,7 @@ type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
 ### [e.name/] ([e.id/]) relations
 
 [for (r : Huirelation | e.huirelation)]
-[r.name/] ([r.id/]) -> [r.to.name/] ([r.to.id/]) reservename: [r.reversename/] 
-tooltip: [r.tooltip/]
+**[r.name/] ([r.id/])** **-->** [ '[' /][r.to.name/] ([r.to.id/])[ ']' /](#[r.to.id/])  
 [printRelationLocalization(r)/]
 
 [/for]
@@ -140,7 +148,7 @@ tooltip: [r.tooltip/]
 
 [printPropertyGroupLocalization(pg)/]
 
-tags: [pg.tags/]
+[if (pg.hasTags())]tags:'[pg.tags/]'[/if]  
 
 [for (p : Huiproperty | pg.huiproperty)]
 #[printProperty(p)/]
@@ -150,12 +158,13 @@ tags: [pg.tags/]
 [template public printProperty(p : Huiproperty)]
 ### [p.name/] ([p.id/])
 
-type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
+type: **[p.inputtype/]**  
+[if (p.hasTags())]tags:'[p.tags/]'[/if]  
 [printPropertyLocalization(p)/]
 
 [printPropertyFlags(p)/]
 [for (d : Depends | p.depends)]
-depends on: [d.option.name/]([d.option.id/]) [d.value/] [if (d.inverse)]inverse[/if]
+depends on: [d.option.name/]([d.option.id/]) [d.value/] [if (d.inverse)]inverse[/if]  
 [/for]
 [printDependencies(p)/]
 
@@ -166,25 +175,25 @@ depends on: [d.option.name/]([d.option.id/]) [d.value/] [if (d.inverse)]inverse[
 [template public printDependencies(p : Huiproperty)?(not p.allDependendProperties()->isEmpty())]
 dependencies:
 [for (p : Huiproperty | p.allDependendProperties())]
-[p.name/] ([p.id/])
+[p.name/] ([p.id/])  
 [/for]
 [/template]
 
 
 [template public printDefaultRule(p : Huiproperty) ? (p.hasDefaultRule())]
-default rule: [p.defaultRule.class/]
+default rule: [p.defaultRule.class/]  
 [for (pa : Param | p.defaultRule.param)]
-[pa.id/]:
+[pa.id/]:  
 [for (it : EFeatureMapEntry | pa.mixed)]
->>[it.getValue()/]<<
+  >>[it.getValue()/]<<
 [/for][/for]
 [/template]
 
 [template public printPropertyOptions(p : Huiproperty) ? (p.hasOptions())]
 [if (p.inputtype=Inputtypes::singleoption or p.inputtype=Inputtypes::numericoption)]
-one of:
+one of:  
 [elseif (p.inputtype=Inputtypes::multioption)]
-many of:
+many of:  
 [/if]
 [printOptions(p.option)/]
 [/template]
@@ -208,43 +217,44 @@ many of:
 [/template]
 
 [template public printPropertyLocalization(p : Huiproperty)]
-de name   : [getProperty('snca-messages_de.properties', p.id)/]
-de tooltip: [getProperty('snca-messages_de.properties', p.id+'_tooltip')/]
-en name   : [getProperty('snca-messages.properties', p.id)/]
-en tooltip: [getProperty('snca-messages.properties', p.id+'_tooltip')/]
+de name   : [getProperty('snca-messages_de.properties', p.id)/]  
+de tooltip: [getProperty('snca-messages_de.properties', p.id+'_tooltip')/]  
+en name   : [getProperty('snca-messages.properties', p.id)/]  
+en tooltip: [getProperty('snca-messages.properties', p.id+'_tooltip')/]  
 [/template]
 
 [template public printPropertyGroupLocalization(p : Huipropertygroup)]
-de name   : [getProperty('snca-messages_de.properties', p.id)/]
-de tooltip: [getProperty('snca-messages_de.properties', p.id+'_tooltip')/]
-en name   : [getProperty('snca-messages.properties', p.id)/]
-en tooltip: [getProperty('snca-messages.properties', p.id+'_tooltip')/]
+de name   : [getProperty('snca-messages_de.properties', p.id)/]  
+de tooltip: [getProperty('snca-messages_de.properties', p.id+'_tooltip')/]  
+en name   : [getProperty('snca-messages.properties', p.id)/]  
+en tooltip: [getProperty('snca-messages.properties', p.id+'_tooltip')/]  
 [/template]
 
 
 [template public printEntityLocalization(e : Huientity)]
-de name   : [getProperty('snca-messages_de.properties', e.id)/]
-de doc    : [getProperty('snca-messages_de.properties', e.id+'_doc')/]
-en name   : [getProperty('snca-messages.properties', e.id)/]
-en doc    : [getProperty('snca-messages.properties', e.id)+'_doc'/]
+de name   : [getProperty('snca-messages_de.properties', e.id)/]  
+de doc    : [getProperty('snca-messages_de.properties', e.id+'_doc')/]  
+en name   : [getProperty('snca-messages.properties', e.id)/]  
+en doc    : [getProperty('snca-messages.properties', e.id)+'_doc'/]  
 [/template]
 
 [template public printRelationLocalization(r : Huirelation)]
-de name           : [getProperty('snca-messages_de.properties', r.id+'_name')/]
-de reverse name   : [getProperty('snca-messages_de.properties', r.id+'_reversename')/]
-de tooltip        : [getProperty('snca-messages_de.properties', r.id+'_tooltip')/]
-en name           : [getProperty('snca-messages.properties', r.id+'_name')/]
-en reverse name   : [getProperty('snca-messages.properties', r.id+'_reversename')/]
-en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]
+de name           : [getProperty('snca-messages_de.properties', r.id+'_name')/]  
+de reverse name   : [getProperty('snca-messages_de.properties', r.id+'_reversename')/]  
+de tooltip        : [getProperty('snca-messages_de.properties', r.id+'_tooltip')/]  
+en name           : [getProperty('snca-messages.properties', r.id+'_name')/]  
+en reverse name   : [getProperty('snca-messages.properties', r.id+'_reversename')/]  
+en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]  
 [/template]
 
 [template public printOptions(list : OrderedSet(Option))]
+
 [for (o : Option | list)]
 [printOption(o)/]
 [/for]
 [/template]
 
 [template public printOption (o : Option) ]
-* [o.id/] [o.name/] '[o.value/]'
+* [o.id/] [o.name/] '[o.value/]'  
 [/template]
 
