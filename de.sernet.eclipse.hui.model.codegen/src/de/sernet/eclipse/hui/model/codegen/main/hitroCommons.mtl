@@ -12,8 +12,11 @@
 
 
 
+[query public isBPEntity(e : Huientity) : Boolean = e.id.startsWith('bp_') /]
+
+
 [query public allBPEntities(root : DocumentRoot) : Sequence(Huientity) = 
-	root.huientities.huientity->select(id.startsWith('bp_'))/]
+	root.huientities.huientity->select(isBPEntity())/]
 
 
 [query public allIsoIds(root : DocumentRoot) : Set(String) = Set{
@@ -51,12 +54,28 @@
 'process',
 'process_group',
 'record',
-'record_group'
+'record_group',
+'samt_topic'
 } /]
 
 
 [query public allISOEntities(root : DocumentRoot) : Sequence(Huientity) = 
 	root.huientities.huientity->select(root.allIsoIds()->includes(id))/]
+
+[query public allConfigurationIds(root : DocumentRoot) : Set(String) = Set{
+'role',
+'configuration'
+} /]
+
+[query public allConfigurationEntities(root : DocumentRoot) : Sequence(Huientity) = 
+	root.huientities.huientity->select(root.allConfigurationIds()->includes(id))/]
+
+[query public allOldBPEntities(root : DocumentRoot) : Sequence(Huientity) = 
+	root.huientities.huientity->select(not root.allConfigurationIds()->includes(id)
+		and (not root.allIsoIds()->includes(id))
+		and (not isBPEntity())
+)/]
+
 
 [query public allProperties(e : Huientity) : OrderedSet(Huiproperty) = 
 	e.huiproperty->addAll(e.huipropertygroup->collect(huiproperty)->flatten()) /]

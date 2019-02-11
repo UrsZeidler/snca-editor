@@ -34,6 +34,8 @@
 [template public printMediaWiki(root : DocumentRoot)]
 [printSNCAMediaWikiFile('SNCA-ISO.mediawiki', 'SNCA for ISO', root.allISOEntities())/]
 [printSNCAMediaWikiFile('SNCA-MOGS.mediawiki', 'SNCA for MOGS', root.allISOEntities())/]
+[printSNCAMediaWikiFile('SNCA-OLD-GS.mediawiki', 'SNCA for OLD-GS', root.allOldBPEntities())/]
+[printSNCAMediaWikiFile('SNCA-CONF.mediawiki', 'SNCA for Configuraion', root.allConfigurationEntities())/]
 [/template]
 
 [template public printSNCAMediaWikiFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
@@ -90,6 +92,8 @@ type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
 [template public printMarkDown(root : DocumentRoot)]
 [printSNCAMarkdownFile('SNCA-ISO.md', 'SNCA for ISO', root.allISOEntities())/]
 [printSNCAMarkdownFile('SNCA-MOGS.md', 'SNCA for MOGS', root.allISOEntities())/]
+[printSNCAMarkdownFile('SNCA-OLD-GS.md', 'SNCA for OLD-GS', root.allOldBPEntities())/]
+[printSNCAMarkdownFile('SNCA-CONF.md', 'SNCA for Configuration', root.allConfigurationEntities())/]
 [/template]
 
 
@@ -97,6 +101,12 @@ type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
 [template public printSNCAMarkdownFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
 [file (filename, false, 'UTF-8')]
 # [docTitel/] 
+
+#### toc
+
+[for (e : Huientity | entities)]
+[linkToEntity(e)/]
+[/for]
 
 [for (e : Huientity | entities)]
 [printEntity(e)/]
@@ -124,11 +134,14 @@ type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
 ### [e.name/] ([e.id/]) relations
 
 [for (r : Huirelation | e.huirelation)]
-**[r.name/] ([r.id/])** **-->** [ '[' /][r.to.name/] ([r.to.id/])[ ']' /](#[r.to.id/])  
+**[r.name/] ([r.id/]) -->** [linkToEntity(r.to)/]  
 [printRelationLocalization(r)/]
 
 [/for]
 [/template]
+
+[template public linkToEntity(e : Huientity)]
+[ '[' /][e.name/] ([e.id/])[ ']' /](#[e.id/])[/template]
 
 
 [template public printPropertyGroupList(list : OrderedSet(Huipropertygroup))]
