@@ -19,11 +19,14 @@
  ******************************************************************************/
 package de.sernet.eclipse.hui.service.localization.lang;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -307,14 +310,13 @@ public class HitropPropertiesUtil {
             ToFile toFile) {
         for (Entry<String, Properties> e : langProperties.entrySet()) {
             File javaFile = toFile.toFile(basePath + e.getKey());
-            FileWriter fileWriter;
             try {
-                fileWriter = new FileWriter(javaFile);
+            	OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(javaFile));
                 try {
-                    e.getValue().store(fileWriter,
+                    e.getValue().store(outputStream,
                             "automatic generated properties file for " + e.getKey());
                 } finally {
-                    fileWriter.close();
+                    outputStream.close();
                 }
             } catch (IOException e1) {
                 Activator.logError("Error saving property file: ", e1);
