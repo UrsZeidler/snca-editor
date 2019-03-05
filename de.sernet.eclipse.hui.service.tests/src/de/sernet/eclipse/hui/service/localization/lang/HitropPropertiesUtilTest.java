@@ -26,6 +26,9 @@ import de.sernet.eclipse.hitro.HitroFactory;
 import de.sernet.eclipse.hitro.HitroPackage;
 import de.sernet.eclipse.hitro.Huientities;
 import de.sernet.eclipse.hitro.Huientity;
+import de.sernet.eclipse.hitro.Huiproperty;
+import de.sernet.eclipse.hitro.Huipropertygroup;
+import de.sernet.eclipse.hitro.Huirelation;
 
 import java.io.File;
 import java.util.Collections;
@@ -111,15 +114,49 @@ public class HitropPropertiesUtilTest {
 		assertEquals(0, propertyResources.size());
 
 		Huientity huientity = HitroFactory.eINSTANCE.createHuientity();
-		huientity.setId("id1");
+		huientity.setId("id:e1");
 		huientities.getHuientity().add(huientity);
 
 		propertyResources = HitropPropertiesUtil.loadPropertyResources(list, basePath, HitropPropertiesUtil.TO_FILE);
 		assertEquals(1, propertyResources.size());
 
 		LanguagesEntry languagesEntry = propertyResources.get(huientity);
-		assertEquals("id1", languagesEntry.getId());
+		assertEquals("id:e1", languagesEntry.getId());
 		assertEquals(8, languagesEntry.getEntries().size());
+		
+		Huipropertygroup huipropertygroup = HitroFactory.eINSTANCE.createHuipropertygroup();
+		huipropertygroup.setId("id:g1");
+		huientity.getHuipropertygroup().add(huipropertygroup);
+		
+		propertyResources = HitropPropertiesUtil.loadPropertyResources(list, basePath, HitropPropertiesUtil.TO_FILE);
+		assertEquals(2, propertyResources.size());
+
+		languagesEntry = propertyResources.get(huipropertygroup);
+		assertEquals("id:g1", languagesEntry.getId());
+		assertEquals(8, languagesEntry.getEntries().size());
+
+		Huiproperty huiproperty = HitroFactory.eINSTANCE.createHuiproperty();
+		huiproperty.setId("id:p1");
+		huipropertygroup.getHuiproperty().add(huiproperty);
+		
+		propertyResources = HitropPropertiesUtil.loadPropertyResources(list, basePath, HitropPropertiesUtil.TO_FILE);
+		assertEquals(3, propertyResources.size());
+
+		languagesEntry = propertyResources.get(huiproperty);
+		assertEquals("id:p1", languagesEntry.getId());
+		assertEquals(8, languagesEntry.getEntries().size());
+		
+		Huirelation huirelation = HitroFactory.eINSTANCE.createHuirelation();
+		huirelation.setId("id:r1");
+		huientity.getHuirelation().add(huirelation);
+		
+		propertyResources = HitropPropertiesUtil.loadPropertyResources(list, basePath, HitropPropertiesUtil.TO_FILE);
+		assertEquals(4, propertyResources.size());
+
+		languagesEntry = propertyResources.get(huirelation);
+		assertEquals("id:r1", languagesEntry.getId());
+		assertEquals(12, languagesEntry.getEntries().size());
+		
 	}
 
 }
