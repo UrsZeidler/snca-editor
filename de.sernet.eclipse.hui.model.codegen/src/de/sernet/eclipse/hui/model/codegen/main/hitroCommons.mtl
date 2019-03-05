@@ -64,7 +64,9 @@
 
 [query public allConfigurationIds(root : DocumentRoot) : Set(String) = Set{
 'role',
-'configuration'
+'configuration',
+'attachment',
+'note'
 } /]
 
 [query public allConfigurationEntities(root : DocumentRoot) : Sequence(Huientity) = 

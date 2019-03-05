@@ -14,10 +14,10 @@
  */]
 [template public generateElement(root : DocumentRoot)]
 [comment @main/]
-[root.printMediaWiki()/]
+[comment][root.printMediaWiki()/][/comment]
 [root.printMarkDown()/]
-[root.generateJsonSchema()/]
-[root.generateJavaClasses()/]
+[comment][root.generateJsonSchema()/]
+[root.generateJavaClasses()/][/comment]
 [/template]
 
 [query public allTags(root : DocumentRoot) : Set(String) = root.huientities.huientity
@@ -33,7 +33,7 @@
 
 [template public printMediaWiki(root : DocumentRoot)]
 [printSNCAMediaWikiFile('SNCA-ISO.mediawiki', 'SNCA for ISO', root.allISOEntities())/]
-[printSNCAMediaWikiFile('SNCA-MOGS.mediawiki', 'SNCA for MOGS', root.allISOEntities())/]
+[printSNCAMediaWikiFile('SNCA-MOGS.mediawiki', 'SNCA for MOGS', root.allBPEntities())/]
 [printSNCAMediaWikiFile('SNCA-OLD-GS.mediawiki', 'SNCA for OLD-GS', root.allOldBPEntities())/]
 [printSNCAMediaWikiFile('SNCA-CONF.mediawiki', 'SNCA for Configuraion', root.allConfigurationEntities())/]
 [/template]
@@ -62,15 +62,15 @@
 
 [printEntityLocalization(e)/]
 
-[printRelations(e)/]
+[printRelationsMediaWiki(e)/]
 
-=== main properties ===
+''' main properties '''
 [for (p : Huiproperty | e.huiproperty)]
 [printPropertyMediaWiki(p)/]
 [/for]
 
 [for (g : Huipropertygroup | e.huipropertygroup)]
-==== [g.name/] ====
+'''Group [g.name/]'''
 
 [for (p : Huiproperty | e.huiproperty)]
 [printPropertyMediaWiki(p)/]
@@ -81,8 +81,18 @@
 
 [/template]
 
+[template public printRelationsMediaWiki(e : Huientity)]
+ [e.name/] ([e.id/])| relations
+
+[for (r : Huirelation | e.huirelation)]
+'''[r.name/] ([r.id/]) -->''' [ '[' /][ '[' /]#[e.name/] | [e.name/][ ']' /][ ']' /] 
+[printRelationLocalization(r)/]
+
+[/for]
+[/template]
+
 [template public printPropertyMediaWiki (p : Huiproperty) ]
-===== [p.name/] =====
+'''[p.name/]'''
 
 type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
 [printPropertyLocalization(p)/]
@@ -91,12 +101,96 @@ type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
 
 [template public printMarkDown(root : DocumentRoot)]
 [printSNCAMarkdownFile('SNCA-ISO.md', 'SNCA for ISO', root.allISOEntities())/]
-[printSNCAMarkdownFile('SNCA-MOGS.md', 'SNCA for MOGS', root.allISOEntities())/]
+[printSNCAMarkdownFile('SNCA-MOGS.md', 'SNCA for MOGS', root.allBPEntities())/]
 [printSNCAMarkdownFile('SNCA-OLD-GS.md', 'SNCA for OLD-GS', root.allOldBPEntities())/]
 [printSNCAMarkdownFile('SNCA-CONF.md', 'SNCA for Configuration', root.allConfigurationEntities())/]
+
+[comment][printLeanMarkdown('SNCA-MOGS-lean.md', 'SNCA for MOGS', root.allBPEntities())/]
+[printLeanMarkdown('SNCA-OLD-GS-lean.md', 'SNCA for OLD-GS', root.allOldBPEntities())/][/comment]
+
+[comment][printRealtions('SNCA-MOGS-rel-', root.allBPEntities())/]
+[printRealtions('SNCA-OLD-GS-rel-', root.allOldBPEntities())/][/comment]
+
+[/template]
+
+[template public printRealtions(filename : String,entities : Sequence(Huientity))]
+[for (e : Huientity | entities)]
+[if (not e.huirelation->isEmpty())]
+[file ('rel/'+filename+e.id+'.csv', false, 'UTF-8')]
+"relation id";"name en";"name de";"reversename en";"reversename de","target id"
+[for (r : Huirelation | e.huirelation)]
+[r.id/];"[r.getLocalizedName('', '_name')/]";"[r.getLocalizedName('_de', '_name')/]";"[r.getLocalizedName('', '_reversename')/]";"[r.getLocalizedName('_de', '_reversename')/]";[r.to.id/]
+[/for]
+[/file]
+[/if]
+[/for]
 [/template]
 
 
+
+[template public printOptionTypes(filename : String,entities : Sequence(Huientity))]
+[file (filename, false, 'UTF-8')]
+[for (e : Huientity | entities)]
+[for (p : Huiproperty | e.huiproperty)]
+[printOptions(p)/][/for]
+[for (pg : Huipropertygroup | e.huipropertygroup)]
+[for (p : Huiproperty | pg.huiproperty)]
+[printOptions(p)/][/for][/for][/for]
+[/file]
+[/template]
+
+[template public printOptions(p : Huiproperty)? (p.inputtype=Inputtypes::singleoption or 
+p.inputtype=Inputtypes::numericoption or p.inputtype=Inputtypes::multioption)]
+[p.id/][for (o : Option | p.option)before (';') separator (';')][o.id/][/for]
+
+[/template]
+
+[template public printLeanCSV(filename : String,docTitel : String, entities : Sequence(Huientity))]
+[file (filename, false, 'UTF-8')]
+[for (e : Huientity | entities)]
+"[e.name/]";"";"[e.id/]"
+[for (p : Huiproperty | e.huiproperty)]
+"[p.getLocalizedName('_de')/]";"[p.getLocalizedName('')/]";"[p.id/]"
+[/for]
+[for (pg : Huipropertygroup | e.huipropertygroup)]
+"[pg.getLocalizedName('_de')/]";"[pg.getLocalizedName('')/]";"[pg.id/]"
+[for (p : Huiproperty | pg.huiproperty)]
+"[p.getLocalizedName('_de')/]";"[p.getLocalizedName('')/]";"[p.id/]"
+[/for]
+;;;
+[/for]
+;;;
+[/for]
+
+[/file]
+[/template]
+
+[template public printLeanMarkdown(filename : String,docTitel : String, entities : Sequence(Huientity))]
+[file (filename, false, 'UTF-8')]
+# [docTitel/] 
+
+#### toc
+
+[for (e : Huientity | entities)]
+[linkToEntity(e)/]
+[/for]
+
+[for (e : Huientity | entities)]
+## Entity: [e.name/] ([e.id/]) {#[e.id/]}
+
+[for (p : Huiproperty | e.huiproperty)]
+ 0.[e.huiproperty->indexOf(p)/].  [p.getLocalizedName('_de')/] ([p.id/])  
+[/for]
+[for (pg : Huipropertygroup | e.huipropertygroup)]
+ [e.huipropertygroup->indexOf(pg)/].0. **Group**: [pg.getLocalizedName('_de')/] ([pg.id/])  
+[for (p : Huiproperty | pg.huiproperty)]
+ [e.huipropertygroup->indexOf(pg)/].[pg.huiproperty->indexOf(p)/].  [p.getLocalizedName('_de')/] ([p.id/])  
+[/for]
+[/for]
+[/for]
+
+[/file]
+[/template]
 
 [template public printSNCAMarkdownFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
 [file (filename, false, 'UTF-8')]
@@ -228,6 +322,14 @@ many of:
 * report
 [/if]
 [/template]
+
+[query public getLocalizedName(r : Huirelation, lang : String) : String = getLocalizedName(r, lang, '') /]
+[query public getLocalizedName(r : Huirelation, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', r.id+key) /]
+[query public getLocalizedName(p : Huiproperty, lang : String) : String = getLocalizedName(p, lang, '') /]
+[query public getLocalizedName(p : Huiproperty, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', p.id+key) /]
+[query public getLocalizedName(p : Huipropertygroup, lang : String) : String = getLocalizedName(p, lang, '') /]
+[query public getLocalizedName(p : Huipropertygroup, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', p.id+key) /]
+
 
 [template public printPropertyLocalization(p : Huiproperty)]
 de name   : [getProperty('snca-messages_de.properties', p.id)/]  
