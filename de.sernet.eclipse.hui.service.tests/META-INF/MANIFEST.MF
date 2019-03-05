@@ -5,7 +5,8 @@ Bundle-SymbolicName: de.sernet.eclipse.hui.service.tests;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.core.runtime,
  org.junit;bundle-version="4.12.0",
- de.sernet.eclipse.hui.service;bundle-version="1.0.0"
+ de.sernet.eclipse.hui.service;bundle-version="1.0.0",
+ de.sernet.eclipse.hui.model
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: de.sernet.eclipse.hui.service.tests
 Bundle-ActivationPolicy: lazy

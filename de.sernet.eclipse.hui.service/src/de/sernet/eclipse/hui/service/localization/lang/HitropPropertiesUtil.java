@@ -142,6 +142,9 @@ public class HitropPropertiesUtil {
         if (eObject instanceof DocumentRoot) {
             DocumentRoot dr = (DocumentRoot) eObject;
             Huientities huientities = dr.getHuientities();
+            if(huientities==null) {
+            	return entryMap;
+            }
             TreeIterator<EObject> eAllContents = huientities.eAllContents();
             while (eAllContents.hasNext()) {
                 EObject next = eAllContents.next();

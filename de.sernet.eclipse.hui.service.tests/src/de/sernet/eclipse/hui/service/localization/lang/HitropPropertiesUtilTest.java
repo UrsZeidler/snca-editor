@@ -21,11 +21,19 @@ package de.sernet.eclipse.hui.service.localization.lang;
 
 import static org.junit.Assert.*;
 
+import de.sernet.eclipse.hitro.DocumentRoot;
+import de.sernet.eclipse.hitro.HitroFactory;
+import de.sernet.eclipse.hitro.HitroPackage;
+import de.sernet.eclipse.hitro.Huientities;
+import de.sernet.eclipse.hitro.Huientity;
+
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import org.eclipse.emf.ecore.EObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -86,4 +94,32 @@ public class HitropPropertiesUtilTest {
 		File file = new File("testdata/test/test_de.properties");
 		assertEquals("_de", HitropPropertiesUtil.toLocalExtension(file, "test", "properties"));
 	}
+
+	@Test
+	public void testLoadPropertyResources() {
+		DocumentRoot documentRoot = HitroFactory.eINSTANCE.createDocumentRoot();
+
+		List<EObject> list = Collections.singletonList(documentRoot);
+		Map<EObject, LanguagesEntry> propertyResources = HitropPropertiesUtil.loadPropertyResources(list, basePath,
+				HitropPropertiesUtil.TO_FILE);
+		assertEquals(0, propertyResources.size());
+
+		Huientities huientities = HitroFactory.eINSTANCE.createHuientities();
+		documentRoot.setHuientities(huientities);
+
+		propertyResources = HitropPropertiesUtil.loadPropertyResources(list, basePath, HitropPropertiesUtil.TO_FILE);
+		assertEquals(0, propertyResources.size());
+
+		Huientity huientity = HitroFactory.eINSTANCE.createHuientity();
+		huientity.setId("id1");
+		huientities.getHuientity().add(huientity);
+
+		propertyResources = HitropPropertiesUtil.loadPropertyResources(list, basePath, HitropPropertiesUtil.TO_FILE);
+		assertEquals(1, propertyResources.size());
+
+		LanguagesEntry languagesEntry = propertyResources.get(huientity);
+		assertEquals("id1", languagesEntry.getId());
+		assertEquals(8, languagesEntry.getEntries().size());
+	}
+
 }
