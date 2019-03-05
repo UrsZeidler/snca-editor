@@ -36,45 +36,54 @@ import org.junit.Test;
  */
 public class HitropPropertiesUtilTest {
 
-    private String basePath;
+	private String basePath;
 
-    /**
-     * @throws java.lang.Exception
-     */
-    @Before
-    public void setUp() throws Exception {
-        File file = new File("testdata/test");
-        basePath = file.getAbsolutePath();
-    }
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+		File file = new File("testdata/test");
+		basePath = file.getAbsolutePath();
+	}
 
-    /**
-     * @throws java.lang.Exception
-     */
-    @After
-    public void tearDown() throws Exception {
-    }
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+	}
 
-    /**
-     * Test method for {@link de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil#getLangProperties(java.lang.String, de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil.ToFile)}.
-     */
-    @Test
-    public void testGetLangProperties() {
-        Map<String, Properties> langProperties = HitropPropertiesUtil.getLangProperties(basePath, HitropPropertiesUtil.TO_FILE);
-        assertEquals(4, langProperties.size());
-    }
+	/**
+	 * Test method for
+	 * {@link de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil#getLangProperties(java.lang.String, de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil.ToFile)}.
+	 */
+	@Test
+	public void testGetLangProperties() {
+		Map<String, Properties> langProperties = HitropPropertiesUtil.getLangProperties(basePath,
+				HitropPropertiesUtil.TO_FILE);
+		assertEquals(4, langProperties.size());
+	}
 
-    /**
-     * Test method for {@link de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil#getAllLocalesForFile(java.lang.String, de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil.ToFile)}.
-     */
-    @Test
-    public void testGetAllLocalesForFile() {
-        List<String> allLocalesForFile = HitropPropertiesUtil.getAllLocalesForFile(basePath, HitropPropertiesUtil.TO_FILE);
-        assertEquals(4, allLocalesForFile.size());
-        
-        assertTrue(allLocalesForFile.contains(""));
-        assertTrue(allLocalesForFile.contains("_de"));
-        assertTrue(allLocalesForFile.contains("_de_DE"));
-        assertTrue(allLocalesForFile.contains("_jp"));
-    }
+	/**
+	 * Test method for
+	 * {@link de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil#getAllLocalesForFile(java.lang.String, de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil.ToFile)}.
+	 */
+	@Test
+	public void testGetAllLocalesForFile() {
+		List<String> allLocalesForFile = HitropPropertiesUtil.getAllLocalesForFile(basePath,
+				HitropPropertiesUtil.TO_FILE);
+		assertEquals(4, allLocalesForFile.size());
 
+		assertTrue(allLocalesForFile.contains(""));
+		assertTrue(allLocalesForFile.contains("_de"));
+		assertTrue(allLocalesForFile.contains("_de_DE"));
+		assertTrue(allLocalesForFile.contains("_jp"));
+	}
+
+	@Test
+	public void testToLocalExtension() {
+		File file = new File("testdata/test/test_de.properties");
+		assertEquals("_de", HitropPropertiesUtil.toLocalExtension(file, "test", "properties"));
+	}
 }
