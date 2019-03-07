@@ -29,14 +29,18 @@ import de.sernet.eclipse.hitro.Huientity;
 import de.sernet.eclipse.hitro.Huiproperty;
 import de.sernet.eclipse.hitro.Huipropertygroup;
 import de.sernet.eclipse.hitro.Huirelation;
+import de.sernet.eclipse.hitro.Option;
 
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-
+import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -99,6 +103,16 @@ public class HitropPropertiesUtilTest {
 	}
 
 	@Test
+	public void testGetFile() {
+		ResourceSetImpl resourceSetImpl = new ResourceSetImpl();
+		File file = new File("testdata/test/test_de.properties");
+		URI uri = URI.createFileURI(file.getAbsolutePath());
+		Resource resource = resourceSetImpl.createResource(uri);
+		IFile file2 = HitropPropertiesUtil.getFile(resource);
+		assertNull(file2);
+	}
+
+	@Test
 	public void testLoadPropertyResources() {
 		DocumentRoot documentRoot = HitroFactory.eINSTANCE.createDocumentRoot();
 
@@ -157,6 +171,16 @@ public class HitropPropertiesUtilTest {
 		assertEquals("id:r1", languagesEntry.getId());
 		assertEquals(12, languagesEntry.getEntries().size());
 		
+		Option option = HitroFactory.eINSTANCE.createOption();
+		option.setId("id:o1");
+		huiproperty.getOption().add(option);
+		
+		propertyResources = HitropPropertiesUtil.loadPropertyResources(list, basePath, HitropPropertiesUtil.TO_FILE);
+		assertEquals(5, propertyResources.size());
+
+		languagesEntry = propertyResources.get(option);
+		assertEquals("id:o1", languagesEntry.getId());
+		assertEquals(4, languagesEntry.getEntries().size());
 	}
 
 }
