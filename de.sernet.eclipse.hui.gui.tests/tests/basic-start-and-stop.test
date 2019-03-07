@@ -1,13 +1,14 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
+Contexts: _oxuLcEEZEemohouIo4TVTw
 Element-Name: basic-start-and-stop
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _Pl3HAIjtEei0b4DzIVZGJQ
 Property-test-project: test
-Runtime-Version: 2.2.0.201706152316
-Save-Time: 7/16/18 4:04 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 3/7/19 10:31 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -26,7 +27,7 @@ with [get-window Import] {
     get-tree | select "SNCA Import/Import SNCA XML File"
     get-button "Next >" | click
 }
-set-dialog-result File "/home/urszeidler/git-e4/verinice/sernet.gs.server/WebContent/WEB-INF/SNCA.xml"
+set-dialog-result File [concat $datadir [get-java-property "file.separator"] "SNCA.xml"]
 with [get-window "File Import Wizard"] {
     get-button "Browse..." | click
     get-button Finish | click
@@ -54,6 +55,9 @@ get-editor "SNCA.hitro" | get-tree | select "platform:\\/resource\\/test\\/SNCA.
 get-menu -path "Hitro Editor/Validate" | click
 get-window "Validation Problems" | get-button OK | click
 get-button "SNCA Perspective" | click
+
+screen-shot-eclispe-window "test.png"
+
 get-button Resource | click
 get-view "Project Explorer" | get-tree | select $test-project | get-menu -path Delete | click
 with [get-window "Delete Resources"] {

@@ -1,79 +1,94 @@
-<project name="rcptt-project" default="test" basedir="../../">
-  <!-- Set properties below -->
-  <property name="runner-path" location="/home/urszeidler/programme/rcptt/eclipse/" />
-  <property name="aut-path" location="/home/urszeidler/programme/snca-editor" />
-  <property name="images" value="/home/urs/git/shr5rcp.wiki/wiki-images/images"/>
+<project name="rcptt-project" default="init.dev.enviorment" basedir="../../">
+	<property name="gui-test-properties" value="${basedir}/build/rcptt/gui-test.properties" />
+	<loadproperties srcfile="${gui-test-properties}" />
+	<!-- Set properties below -->
+	<property name="aut-path" location="${basedir}/de.sernet.eclipse.hui.product/target/products/de.sernet.eclipse.hui.product/linux/gtk/x86_64/snca-editor" />
 
-  <property name="test-path" location="${basedir}/de.sernet.eclipse.hui.gui.tests"/> 
-  	
-  <property name="test-results" location="${basedir}/build/results"/>
-  <property name="runner-workspace" location="${test-results}/runner-workspace"/>
-  <property name="aut-workspace" location="${test-results}/aut-workspace-"/>
-  <property name="aut-stdout" location="${test-results}/aut-out-"/>
-  <property name="junit-report" location="${test-results}/results.xml"/>
-  <property name="html-report" location="${test-results}/results.html"/>
+	<property name="test-path" location="${basedir}/de.sernet.eclipse.hui.gui.tests" />
+	<property name="test-data" location="${basedir}/build/rcptt/test-data" />
+	<property name="test-results" location="${basedir}/build/results" />
+	<property name="images" value="${test-results}/app-images" />
+	<property name="runner-workspace" location="${test-results}/runner-workspace" />
+	<property name="aut-workspace" location="${test-results}/aut-workspace-" />
+	<property name="aut-stdout" location="${test-results}/aut-out-" />
+	<property name="junit-report" location="${test-results}/results.xml" />
+	<property name="html-report" location="${test-results}/results.html" />
 
-  <property name="erunner" value="org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar"/>
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+    <target name="clean"  description="cleans the resources">
+		<delete dir="${test-results}" quiet="true" />
+    </target>
 
-  <target name="init">
-    <delete dir="${test-results}" quiet="true"/>
-    <mkdir dir="${test-results}" />
-  </target>
+	<target name="init" depends="clean">
+		<mkdir dir="${test-results}" />
+		<mkdir dir="${images}" />
+	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: configure-aut                      
          - - - - - - - - - - - - - - - - - -->
-    <target name="configure-aut">
-<!--            <delete file="${aut-path}/run_shr.ini" />
-    		<echo  file="${aut-path}/run_shr.ini">
--startup plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar
--launcher.library plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.200.v20150204-1316
--nl 
- en
-    			
--vmargs
--XX:MaxPermSize=256m
--Xms240m
--Xmx768m
--Dimage.folder=${images}
-</echo> 
--->   
-    </target>
+	<target name="configure-aut">
+		
+	</target>
 
-  
-  <target name="test" depends="init,configure-aut">
-  	<echo>  ${runner-path}/plugins/${erunner} </echo>
-    <java jar="${runner-path}/plugins/${erunner}" fork="true">
-      <arg value="-application" />
-      <arg value="org.eclipse.rcptt.runner.headless" />
 
-      <arg value="-data" />
-      <arg value="${runner-workspace}" />
+	<target name="test" depends="init,configure-aut">
+		<echo>  ${runner-path}/plugins/${erunner} </echo>
+		<java jar="${runner-path}/plugins/${erunner}" fork="true">
+			<arg value="-application" />
+			<arg value="org.eclipse.rcptt.runner.headless" />
 
-      <arg value="-aut" />
-      <arg value="${aut-path}" />
-      
-      <arg value="-autArgs" />
-      <arg value="'-nl;en'" />
-      	
-      <arg value="-autWsPrefix" />
-      <arg value="${aut-workspace}" />
+			<arg value="-data" />
+			<arg value="${runner-workspace}" />
 
-      <arg value="-autConsolePrefix" />
-      <arg value="${aut-stdout}"/>
+			<arg value="-aut" />
+			<arg value="${aut-path}" />
 
-      <arg value="-htmlReport" />
-      <arg value="${html-report}" />
+			<arg value="-autArgs" />
+			<arg value="'-nl;en'" />
+			
+			<arg value="-autVMArgs" />
+			<arg value="-Xmx1024m;-Dimages=${images};-Dbasepath=${test-results};-Dtest-data=${test-data}" />
 
-      <arg value="-junitReport" />
-      <arg value="${junit-report}" />
+			<arg value="-autWsPrefix" />
+			<arg value="${aut-workspace}" />
 
-      <arg value="-import" />
-      <arg value="${test-path}" />
+			<arg value="-autConsolePrefix" />
+			<arg value="${aut-stdout}" />
 
-      <arg value="-testOptions" />
-      <arg value="testExecTimeout=600;execTimeout=3600;reportingIncludeIgnoredWaitDetails=true;reportingPassedTestDetails=true;runtimeEnableActivityLogs=true;q7ImageCapture=true" />
+			<arg value="-htmlReport" />
+			<arg value="${html-report}" />
 
-    </java>
-  </target>
+			<arg value="-junitReport" />
+			<arg value="${junit-report}" />
+
+			<arg value="-import" />
+			<arg value="${test-path}" />
+
+			<arg value="-testOptions" />
+			<arg value="${test-options}" />
+
+		</java>
+	</target>
+	
+	<!-- ================================= 
+          target: init.dev.enviorment              
+         ================================= -->
+	<target name="init.dev.enviorment" depends="init" description="description">
+		<fileset id="lauchconfigs" dir="${basedir}/build/etc/launchconfigs">
+			<include name="**/*.launch.tmp" />
+		</fileset>
+
+		<property name="local.path" value="${basedir}/build/local" />
+		<mkdir dir="${local.path}" />
+
+		<copy todir="${local.path}">
+			<fileset refid="lauchconfigs" />
+			<globmapper from="*.launch.tmp" to="*.launch" />
+		</copy>
+		
+	</target>
+
 </project>

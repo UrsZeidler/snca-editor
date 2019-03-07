@@ -1,0 +1,46 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: common
+Element-Type: context
+Element-Version: 2.0
+Id: _oxuLcEEZEemohouIo4TVTw
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 3/7/19 10:19 PM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Set the basic values and provides basic functions.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+global [val basedir [get-java-property basepath]] [val datadir [get-java-property "test-data"]] [val imagedir
+	[get-java-property images]]
+
+/* Take a screenshot of the window. */
+proc "screen-shot-eclispe-window" [val name] {
+	get-eclipse-window | get-object | save-screenshot -out [concat $imagedir "/" $name]
+}
+
+proc "screen-shot-window" [val window] [val name] {
+	get-window $window | get-object | save-screenshot -out [concat $imagedir "/" $name]
+}
+
+proc "screen-shot-view" [val view] [val name] {
+	get-view $view | get-tree | get-object | invoke getParent | invoke getParent | invoke getParent | save-screenshot
+		-out [concat $imagedir "/" $name]
+}
+
+proc "get-last" [val path] {
+	split -str $path -sep "/" -trimResults -omitEmptyStrings | to-list | get [minus [split -str $path -sep "/"
+		-trimResults -omitEmptyStrings | length] 1]
+}
+
+proc "get-first" [val path] {
+	split -str $path -sep "/" -trimResults -omitEmptyStrings | to-list | get 0
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
