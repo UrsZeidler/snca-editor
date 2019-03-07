@@ -101,6 +101,9 @@ s.replaceAll('\\(', '').replaceAll('\\)', '').replaceAll('\\?', '').replaceAll('
 [query public dependsOn(p : Huiproperty, dependend: Huiproperty) : Boolean = not p.depends->select(option.id=dependend.id)->isEmpty() /]
 [query public allDependendProperties(p : Huiproperty) : OrderedSet(Huiproperty) = Huiproperty.allInstances()->select(dependsOn(p))->asOrderedSet() /]
 
+[query public allOppositeRelations(e : Huientity) : Set(Huirelation) = Huirelation.allInstances()->select(to=e) /]
+
+
 
 [query public toCamelCase(s : String) : String =   s.replaceAll('-','_').tokenize('_')->reduce().toUpperFirst() /]
 [query public toCamelCaseFirstLower(s : String) : String =   s.tokenize('_')->reduce().toLowerFirst() /]
