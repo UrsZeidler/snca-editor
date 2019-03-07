@@ -16,7 +16,6 @@
       [Enter License Description here.]
    </license>
 
-
    <plugin
          id="com.google.inject"
          download-size="0"
@@ -45,7 +44,7 @@
          version="0.0.0"
          unpack="false"/>
 
-  <plugin
+   <plugin
          id="org.apache.felix.scr"
          download-size="0"
          install-size="0"
@@ -376,13 +375,6 @@
          install-size="0"
          version="0.0.0"
          fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.lucene.misc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
          unpack="false"/>
 
    <plugin
