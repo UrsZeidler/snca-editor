@@ -1,0 +1,29 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.workbench
+Element-Name: start-snca
+Element-Type: context
+Element-Version: 2.0
+Id: _2Y6tYEF7EemohouIo4TVTw
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 3/8/19 9:36 AM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Start in the snca perspective.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
+Content-Type: q7/binary
+Entry-Name: .q7.content
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAACVkVFLwzAQx9/7KULe
+l+gQldJ2yJiwB8dwY25P0qVnG2xyJbm289ubTVb3Iirk5S6/390/JJkcTM06cF6jTfm1uOIMrMJC2zLl
+Lb2N7vkkixJ0pQBV68aDcKohEl6BzZ3G+AXd+z441RQtwYHYweh4mDg+Tgw7rI9DP+UVURNL2fe9QFOK
+MFdun+Zn5Oc1g3m+PponRBosoJZnMPjogDObG0i5p9zRyFuVc6aLlL+Od7e0mz3ezcBghe0cb9abdc9Z
+EwI3oEh3MA9cAcKDs0BDnKrVIpwLTqwW04fld82ziLGk09D77PIhwTo1xTN4bJ2CRd7pMid0ifyif/GW
+Dvc1mE0o/m6EoPSxqgBocBL5j2/Mok9QSwcIUozJ3RQBAAAcAgAAUEsBAhQAFAAICAgAAAAhAFKMyd0U
+AQAAHAIAAAgACQAAAAAAAAAAAAAAAAAAAC5jb250ZW50VVQFAAEAAAAAUEsFBgAAAAABAAEAPwAAAFMB
+AAAAAA==
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--

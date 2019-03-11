@@ -1,0 +1,28 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.workbench
+Element-Name: start-resource
+Element-Type: context
+Element-Version: 2.0
+Id: _YRpBUEE6EemohouIo4TVTw
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 3/8/19 9:15 AM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Starts with the resource perspective.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
+Content-Type: q7/binary
+Entry-Name: .q7.content
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAAB1jstqwzAQRff5CjH7
+SG0poZgogRYvvCiEkj6yKo48tUUtjZDGsT+/SsFpN9neOefeWW8n14sTxmTJa7iVNyDQG2qsbzUM/LV8
+gO1msabYSjS9DQllNIFZJoO+jpaKd4rfx+x0T+QZJxaTs8Wl8e7cmDd8KnKuoWMOhVLjOEpyrcy96uO5
+mpHrMxdzPp/NX0Q5arBXM5h9igjC1w41JK4jLyMmGqLJqW00fB5ewuNrWa5KdNTRUNH9/m0/ggj56YCG
+7QmrzP1/ZrByLtn9UaA2ix9QSwcIBBWOnNIAAABCAQAAUEsBAhQAFAAICAgAAAAhAAQVjpzSAAAAQgEA
+AAgACQAAAAAAAAAAAAAAAAAAAC5jb250ZW50VVQFAAEAAAAAUEsFBgAAAAABAAEAPwAAABEBAAAAAA==
+
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--
