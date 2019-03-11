@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _oxuLcEEZEemohouIo4TVTw
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/7/19 10:19 PM
+Save-Time: 3/11/19 9:14 AM
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
 Content-Type: text/plain
@@ -21,13 +21,38 @@ Entry-Name: .ecl.context
 global [val basedir [get-java-property basepath]] [val datadir [get-java-property "test-data"]] [val imagedir
 	[get-java-property images]]
 
+proc createLinkedFolder [val container] [val externalpath] [val foldername]{
+	get-view Navigator | get-tree | select $container | get-menu -path "New/Other..." | click
+	with [get-window New] {
+		get-tree | select "General/Folder"
+		get-button "Next >" | click
+	}
+	with [get-window "New Folder"] {
+		get-button "Advanced >>" | click
+		get-button "Link to alternate location (Linked Folder)" | click
+		get-editbox -after [get-label "Folder name:"] | set-text $foldername
+	}
+	set-dialog-result Folder $externalpath
+	with [get-window "New Folder"] {
+		get-button "Browse..." | click
+		get-button Finish | click
+	}
+}
+
+proc "copy-resource" [val from] [val to]{
+with [get-view Navigator | get-tree] {
+    select $from | get-menu -path Copy | click
+    select $to | get-menu -path Paste | click
+}
+}
+
 /* Take a screenshot of the window. */
 proc "screen-shot-eclispe-window" [val name] {
-	get-eclipse-window | get-object | save-screenshot -out [concat $imagedir "/" $name]
+	get-eclipse-window | get-object | save-screenshot -out [concat $imagedir  [get-java-property "file.separator"] $name]
 }
 
 proc "screen-shot-window" [val window] [val name] {
-	get-window $window | get-object | save-screenshot -out [concat $imagedir "/" $name]
+	get-window $window | get-object | save-screenshot -out [concat $imagedir  [get-java-property "file.separator"] $name]
 }
 
 proc "screen-shot-view" [val view] [val name] {
