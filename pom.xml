@@ -34,7 +34,7 @@
 		<module>de.sernet.eclipse.hui.model.editor</module>
 		<module>de.sernet.eclipse.hui.model.validation</module>
 		<module>de.sernet.eclipse.hui.eef</module>
-		<module>de.sernet.eclipse.hui.parsley</module>
+<!-- 		<module>de.sernet.eclipse.hui.parsley</module> -->
 		<module>de.sernet.eclipse.hui.ui</module>
 		<module>de.sernet.eclipse.hui.service</module>
 		<module>de.sernet.eclipse.hui.branding</module>
