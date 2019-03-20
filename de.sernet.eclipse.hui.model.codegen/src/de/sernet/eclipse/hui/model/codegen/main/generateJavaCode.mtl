@@ -6,7 +6,7 @@
 [template public generateJavaCode(root : DocumentRoot)]
 	
 	[comment @main /]
-	
+	[root.generateJavaClasses()/]
 [/template]
 
 [query public toJavaWarpperClassName(e : Huientity) : String = e.id.toJavaIdentifier() + 'Wrapper' /]

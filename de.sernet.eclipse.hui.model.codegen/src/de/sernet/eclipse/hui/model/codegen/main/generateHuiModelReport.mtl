@@ -14,21 +14,12 @@
  */]
 [template public generateElement(root : DocumentRoot)]
 [comment @main/]
-[comment][root.printMediaWiki()/][/comment]
-[root.printMarkDown()/]
+[root.printMediaWiki()/]
+
 [comment][root.generateJsonSchema()/]
 [root.generateJavaClasses()/][/comment]
 [/template]
 
-[query public allTags(root : DocumentRoot) : Set(String) = root.huientities.huientity
-	->collect(allProperties()
-	->collect(tags))
-	->flatten()
-	->asSet()
-	->union(root.huientities.huientity.huipropertygroup
-		->collect(tags)->flatten()
-		->asSet())
- /]
 
 
 [template public printMediaWiki(root : DocumentRoot)]
@@ -99,22 +90,22 @@ type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
 
 [/template]
 
-[template public printMarkDown(root : DocumentRoot)]
-[printSNCAMarkdownFile('SNCA-ISO.md', 'SNCA for ISO', root.allISOEntities())/]
+[comment][template public printMarkDown(root : DocumentRoot)]
+[comment][printSNCAMarkdownFile('SNCA-ISO.md', 'SNCA for ISO', root.allISOEntities())/]
 [printSNCAMarkdownFile('SNCA-MOGS.md', 'SNCA for MOGS', root.allBPEntities())/]
 [printSNCAMarkdownFile('SNCA-OLD-GS.md', 'SNCA for OLD-GS', root.allOldBPEntities())/]
 [printSNCAMarkdownFile('SNCA-CONF.md', 'SNCA for Configuration', root.allConfigurationEntities())/]
 [printSNCAMarkdownFile('SNCA-ALL.md', 'SNCA for All elements', root.huientities.huientity)/]
 [printSNCAGraph(root, '_de')/]
 [printSNCAProblemGraph('_de')/]
-[printEntityGrahFiles(root.huientities.huientity, 'image/', '_de')/]
+[printEntityGrahFiles(root.huientities.huientity, 'image/', '_de')/][/comment]
 [comment][printLeanMarkdown('SNCA-MOGS-lean.md', 'SNCA for MOGS', root.allBPEntities())/]
 [printLeanMarkdown('SNCA-OLD-GS-lean.md', 'SNCA for OLD-GS', root.allOldBPEntities())/][/comment]
 
 [comment][printRealtions('SNCA-MOGS-rel-', root.allBPEntities())/]
 [printRealtions('SNCA-OLD-GS-rel-', root.allOldBPEntities())/][/comment]
 
-[/template]
+[/template][/comment]
 
 [template public printRealtions(filename : String,entities : Sequence(Huientity))]
 [for (e : Huientity | entities)]
@@ -168,102 +159,8 @@ p.inputtype=Inputtypes::numericoption or p.inputtype=Inputtypes::multioption)]
 [/file]
 [/template]
 
-[template public printSNCAProblemGraph(root : DocumentRoot, lang : String)]
-[file ('image/problems-snca.dot', false, 'UTF-8')]
-digraph  {
 
-[for (r : Huirelation | Huirelation.allInstances())]
-[if (r.getOwner().isBPEntity() and not root.allBPEntities()->includes(r.to)  )]
-[r.getOwner().toGraphId()/]_bp -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /]
-[/if]
-[if (root.allISOEntities()->includes(r.getOwner()) and not root.allISOEntities()->includes(r.to)  )]
-[r.getOwner().toGraphId()/]_iso -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /]
-[/if]
-[if (root.allOldBPEntities()->includes(r.getOwner()) and not root.allOldBPEntities()->includes(r.to)  )]
-[r.getOwner().toGraphId()/]_gs -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /]
-[/if]
-[/for]
-}
-[/file]
-[/template]
-
-
-[template public printSNCAGraph(root : DocumentRoot, lang : String)]
-[file ('image/snca.dot', false, 'UTF-8')]
-digraph  {
-[for (e : Huientity | root.huientities.huientity)]
-  [e.toGraphId()/][ '[' /]label="[getLocalizedName(e, lang)/]([e.id/])"[ ']' /];
-[/for]
-[for (r : Huirelation | Huirelation.allInstances())]
-  [r.getOwner().toGraphId()/] -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /];
-[/for]
-}
-[/file]
-[/template]
-
-[template public printEntityGraph(entity : Huientity, lang : String)]
-digraph [entity.toGraphId()/] {
-  [entity.toGraphId()/][ '[' /]label="[getLocalizedName(entity, lang)/]", shape=box, style=rounded[ ']' /];
-[for (e : Huientity | entity.allRelatedEntities() )]
-  [e.toGraphId()/][ '[' /]label="[getLocalizedName(e, lang)/]"[ ']' /];
-[/for]
-[for (r : Huirelation | entity.allOppositeRelations()->select(not (getOwner()=entity and to=entity)))]
-  [r.getOwner().toGraphId()/] -> [entity.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /];
-[/for]
-[for (r : Huirelation | entity.huirelation)]
-  [entity.toGraphId()/] -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /];
-[/for]
-}
-[/template]
-
-[query public toGraphId(e : Huientity) : String = e.id.replaceAll('-', '_') /]
-
-[query public getOwner(r : Huirelation) : Huientity = r.eContainer().oclAsType(Huientity) /]
-[query public allRelatedEntities(e : Huientity) : Set(Huientity) = e.huirelation -> collect(to)->asSet()
-	->union(e.allOppositeRelations()->collect(getOwner()))->asSet()->excluding(e)->flatten()  /]
-
-[template public printEntityGrahFiles(entities : Sequence(Huientity), path : String, lang : String)]
-[for (e : Huientity | entities)]
-[if (not (e.allOppositeRelations()->isEmpty() and e.huirelation->isEmpty()))]
-[file (path+e.toGraphFilename(), false, 'UTF-8')]
-[printEntityGraph(e, lang)/]
-[/file]
-[/if]
-[/for]
-[/template]
-
-[query public toGraphFilename(e : Huientity) : String = e.id+'.dot' /]
-[query public toGraphImageFilename(e : Huientity) : String = e.id+'.png' /]
-
-
-[template public printLeanMarkdown(filename : String,docTitel : String, entities : Sequence(Huientity))]
-[file (filename, false, 'UTF-8')]
-# [docTitel/] 
-
-#### toc
-
-[for (e : Huientity | entities)]
-[linkToMarkdownEntity(e)/]
-[/for]
-
-[for (e : Huientity | entities)]
-## Entity: [e.name/] ([e.id/]) {#[e.id/]}
-
-[for (p : Huiproperty | e.huiproperty)]
- 0.[e.huiproperty->indexOf(p)/].  [p.getLocalizedName('_de')/] ([p.id/])  
-[/for]
-[for (pg : Huipropertygroup | e.huipropertygroup)]
- [e.huipropertygroup->indexOf(pg)/].0. **Group**: [pg.getLocalizedName('_de')/] ([pg.id/])  
-[for (p : Huiproperty | pg.huiproperty)]
- [e.huipropertygroup->indexOf(pg)/].[pg.huiproperty->indexOf(p)/].  [p.getLocalizedName('_de')/] ([p.id/])  
-[/for]
-[/for]
-[/for]
-
-[/file]
-[/template]
-
-[template public printSNCAMarkdownFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
+[comment][template public printSNCAMarkdownFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
 [file (filename, false, 'UTF-8')]
 # [docTitel/] 
 
@@ -277,10 +174,10 @@ digraph [entity.toGraphId()/] {
 [printMarkdownEntity(e)/]
 [/for]
 [/file]
-[/template]
+[/template][/comment]
 
 
-[template public printMarkdownEntity(e : Huientity)]
+[comment][template public printMarkdownEntity(e : Huientity)]
 ## Entity: [e.name/] ([e.id/]) {#[e.id/]}
 
 [printEntityLocalization(e)/]
@@ -293,23 +190,25 @@ digraph [entity.toGraphId()/] {
 #[printProperty(p)/]
 [/for]
 [printPropertyGroupList(e.huipropertygroup)/]
-[/template]
+[/template][/comment]
 
-[template public printMarkdownRelations(e : Huientity)]
+[comment][template public printMarkdownRelations(e : Huientity) ? (not e.huirelation->isEmpty())]
 ### [e.name/] ([e.id/]) relations
+
+![ '[' /] relations for [e.name/][ ']' /] (image/[e.toGraphImageFilename()/])
 
 [for (r : Huirelation | e.huirelation)]
 **[r.name/] ([r.id/]) -->** [linkToMarkdownEntity(r.to)/]  
 [printRelationLocalization(r)/]
 
 [/for]
-[/template]
+[/template][/comment]
 
-[template public linkToMarkdownEntity(e : Huientity)]
-[ '[' /][e.name/] ([e.id/])[ ']' /](#[e.id/])[/template]
+[comment][template public linkToMarkdownEntity(e : Huientity)]
+[ '[' /][e.name/] ([e.id/])[ ']' /](#[e.id/])[/template][/comment]
 
 
-[template public printPropertyGroupList(list : OrderedSet(Huipropertygroup))]
+[comment][template public printPropertyGroupList(list : OrderedSet(Huipropertygroup))]
 [for (pg : Huipropertygroup | list)]
 [printPropertyGroup(pg)/]
 [/for]
@@ -319,9 +218,9 @@ digraph [entity.toGraphId()/] {
 [for (p : Huiproperty | list)]
 [printProperty(p)/]
 [/for]
-[/template]
+[/template][/comment]
 
-[template public printPropertyGroup(pg : Huipropertygroup)]
+[comment][template public printPropertyGroup(pg : Huipropertygroup)]
 ### group: [pg.name/] ([pg.id/])
 
 [printPropertyGroupLocalization(pg)/]
@@ -331,9 +230,9 @@ digraph [entity.toGraphId()/] {
 [for (p : Huiproperty | pg.huiproperty)]
 #[printProperty(p)/]
 [/for]
-[/template]
+[/template][/comment]
 
-[template public printProperty(p : Huiproperty)]
+[comment][template public printProperty(p : Huiproperty)]
 ### [p.name/] ([p.id/])
 
 type: **[p.inputtype/]**  
@@ -348,7 +247,7 @@ depends on: [d.option.name/]([d.option.id/]) [d.value/] [if (d.inverse)]inverse[
 
 [printPropertyOptions(p)/]
 [printDefaultRule(p)/]
-[/template]
+[/template][/comment]
 
 [template public printDependencies(p : Huiproperty)?(not p.allDependendProperties()->isEmpty())]
 dependencies:
@@ -367,14 +266,14 @@ default rule: [p.defaultRule.class/]
 [/for][/for]
 [/template]
 
-[template public printPropertyOptions(p : Huiproperty) ? (p.hasOptions())]
+[comment][template public printPropertyOptions(p : Huiproperty) ? (p.hasOptions())]
 [if (p.inputtype=Inputtypes::singleoption or p.inputtype=Inputtypes::numericoption)]
 one of:  
 [elseif (p.inputtype=Inputtypes::multioption)]
 many of:  
 [/if]
 [printOptions(p.option)/]
-[/template]
+[/template][/comment]
 
 [template public printPropertyFlags(p : Huiproperty)]
 [if (p.required)]
@@ -393,15 +292,6 @@ many of:
 * report
 [/if]
 [/template]
-
-[query public getLocalizedName(e : Huientity, lang : String) : String = getLocalizedName(e, lang, '') /]
-[query public getLocalizedName(e : Huientity, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', e.id+key) /]
-[query public getLocalizedName(r : Huirelation, lang : String) : String = getLocalizedName(r, lang, '') /]
-[query public getLocalizedName(r : Huirelation, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', r.id+key) /]
-[query public getLocalizedName(p : Huiproperty, lang : String) : String = getLocalizedName(p, lang, '') /]
-[query public getLocalizedName(p : Huiproperty, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', p.id+key) /]
-[query public getLocalizedName(p : Huipropertygroup, lang : String) : String = getLocalizedName(p, lang, '') /]
-[query public getLocalizedName(p : Huipropertygroup, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', p.id+key) /]
 
 
 [template public printPropertyLocalization(p : Huiproperty)]
@@ -435,7 +325,7 @@ en reverse name   : [getProperty('snca-messages.properties', r.id+'_reversename'
 en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]  
 [/template]
 
-[template public printOptions(list : OrderedSet(Option))]
+[comment][template public printOptions(list : OrderedSet(Option))]
 
 [for (o : Option | list)]
 [printOption(o)/]
@@ -444,5 +334,5 @@ en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]
 
 [template public printOption (o : Option) ]
 * [o.id/] [o.name/] '[o.value/]'  
-[/template]
+[/template][/comment]
 

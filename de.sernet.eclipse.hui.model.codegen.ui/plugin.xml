@@ -15,8 +15,24 @@
                enablesFor="+"
                id="de.sernet.eclipse.hui.model.codegen.ui.popupMenus.acceleoGenerateCodegenAction"
                icon="icons/default.gif"
-               label="Generate Codegen"
+               label="Generate Wiki"
                menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
+         <action
+               class="de.sernet.eclipse.hui.model.codegen.ui.popupMenus.AcceleoGenerateMarkdownAction"
+               enablesFor="+"
+               icon="icons/default.gif"
+               id="de.sernet.eclipse.hui.model.codegen.ui.popupMenus.acceleoGenerateCodegenAction"
+               label="Generate Markdown"
+               menubarPath="org.eclipse.acceleo.module.menu/acceleo">
+         </action>
+         <action
+               class="de.sernet.eclipse.hui.model.codegen.ui.popupMenus.AcceleoGenerateJavaCodeAction"
+               enablesFor="+"
+               icon="icons/default.gif"
+               id="de.sernet.eclipse.hui.model.codegen.ui.popupMenus.acceleoGenerateCodegenAction"
+               label="Generate Java code"
+               menubarPath="org.eclipse.acceleo.module.menu/acceleo">
+         </action>
       </objectContribution>
    </extension>
 </plugin>

@@ -1,0 +1,287 @@
+[comment encoding = UTF-8 /]
+[module generateMarkdown('http://www.sernet.de/hitro', 'http://www.eclipse.org/emf/2002/Ecore')/]
+
+[import de::sernet::eclipse::hui::model::codegen::main::hitroCommons /]
+
+
+[template public generateMarkdown(root : DocumentRoot)]
+	[comment @main /]
+[printSNCAMarkdownFile('SNCA-ISO.md', 'SNCA for ISO', root.allISOEntities())/]
+[printSNCAMarkdownFile('SNCA-MOGS.md', 'SNCA for MOGS', root.allBPEntities())/]
+[printSNCAMarkdownFile('SNCA-OLD-GS.md', 'SNCA for OLD-GS', root.allOldBPEntities())/]
+[printSNCAMarkdownFile('SNCA-CONF.md', 'SNCA for Configuration', root.allConfigurationEntities())/]
+[printSNCAMarkdownFile('SNCA-ALL.md', 'SNCA for All elements', root.huientities.huientity)/]
+[/template]
+
+[template public printSNCAMarkdownFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
+[file (filename, false, 'UTF-8')]
+# [docTitel/] 
+
+#### toc
+
+[for (e : Huientity | entities)]
+[linkToMarkdownEntity(e)/]
+[/for]
+
+[for (e : Huientity | entities)]
+[printMarkdownEntity(e)/]
+[/for]
+[/file]
+[/template]
+
+
+[template public printLeanMarkdown(filename : String,docTitel : String, entities : Sequence(Huientity))]
+[file (filename, false, 'UTF-8')]
+# [docTitel/] 
+
+#### toc
+
+[for (e : Huientity | entities)]
+[linkToMarkdownEntity(e)/]
+[/for]
+
+[for (e : Huientity | entities)]
+## Entity: [e.name/] ([e.id/]) {#[e.id/]}
+
+[for (p : Huiproperty | e.huiproperty)]
+ 0.[e.huiproperty->indexOf(p)/].  [p.getLocalizedName('_de')/] ([p.id/])  
+[/for]
+[for (pg : Huipropertygroup | e.huipropertygroup)]
+ [e.huipropertygroup->indexOf(pg)/].0. **Group**: [pg.getLocalizedName('_de')/] ([pg.id/])  
+[for (p : Huiproperty | pg.huiproperty)]
+ [e.huipropertygroup->indexOf(pg)/].[pg.huiproperty->indexOf(p)/].  [p.getLocalizedName('_de')/] ([p.id/])  
+[/for]
+[/for]
+[/for]
+
+[/file]
+[/template]
+
+[template public printMarkdownEntity(e : Huientity)]
+## Entity: [e.name/] ([e.id/]) {#[e.id/]}
+
+[printEntityLocalization(e)/]
+
+[printMarkdownRelations(e)/]
+
+### main properties
+
+[for (p : Huiproperty | e.huiproperty)]
+#[printProperty(p)/]
+[/for]
+[printPropertyGroupList(e.huipropertygroup)/]
+[/template]
+
+
+[template public printMarkdownRelations(e : Huientity) ? (not e.huirelation->isEmpty())]
+### [e.name/] ([e.id/]) relations
+
+![ '[' /] relations for [e.name/][ ']' /] (image/[e.toGraphImageFilename()/])
+
+[for (r : Huirelation | e.huirelation)]
+**[r.name/] ([r.id/]) -->** [linkToMarkdownEntity(r.to)/]  
+[printRelationLocalization(r)/]
+
+[/for]
+[/template]
+
+[template public printProperty(p : Huiproperty)]
+### [p.name/] ([p.id/])
+
+type: **[p.inputtype/]**  
+[if (p.hasTags())]tags:'[p.tags/]'[/if]  
+[printPropertyLocalization(p)/]
+
+[printPropertyFlags(p)/]
+[for (d : Depends | p.depends)]
+depends on: [d.option.name/]([d.option.id/]) [d.value/] [if (d.inverse)]inverse[/if]  
+[/for]
+[printDependencies(p)/]
+
+[printPropertyOptions(p)/]
+[printDefaultRule(p)/]
+[/template]
+
+[template public printPropertyGroupList(list : OrderedSet(Huipropertygroup))]
+[for (pg : Huipropertygroup | list)]
+[printPropertyGroup(pg)/]
+[/for]
+[/template]
+
+[template private printPropertyList(list : OrderedSet(Huiproperty))]
+[for (p : Huiproperty | list)]
+[printProperty(p)/]
+[/for]
+[/template]
+
+[template public printPropertyGroup(pg : Huipropertygroup)]
+### group: [pg.name/] ([pg.id/])
+
+[printPropertyGroupLocalization(pg)/]
+
+[if (pg.hasTags())]tags:'[pg.tags/]'[/if]  
+
+[for (p : Huiproperty | pg.huiproperty)]
+#[printProperty(p)/]
+[/for]
+[/template]
+
+
+[template public printDefaultRule(p : Huiproperty) ? (p.hasDefaultRule())]
+default rule: [p.defaultRule.class/]  
+[for (pa : Param | p.defaultRule.param)]
+[pa.id/]:  
+[for (it : EFeatureMapEntry | pa.mixed)]
+  >>[it.getValue()/]<<
+[/for][/for]
+[/template]
+
+[template public printPropertyOptions(p : Huiproperty) ? (p.hasOptions())]
+[if (p.inputtype=Inputtypes::singleoption or p.inputtype=Inputtypes::numericoption)]
+one of:  
+[elseif (p.inputtype=Inputtypes::multioption)]
+many of:  
+[/if]
+[printOptions(p.option)/]
+[/template]
+
+[template public printOptions(list : OrderedSet(Option))]
+
+[for (o : Option | list)]
+[printOption(o)/]
+[/for]
+[/template]
+
+[template public printOption (o : Option) ]
+* [o.id/] [o.name/] '[o.value/]'  
+[/template]
+
+[template public printDependencies(p : Huiproperty)?(not p.allDependendProperties()->isEmpty())]
+dependencies:
+[for (p : Huiproperty | p.allDependendProperties())]
+[p.name/] ([p.id/])  
+[/for]
+[/template]
+
+
+[template public printPropertyFlags(p : Huiproperty)]
+[if (p.required)]
+* required
+[/if][if (p.showInObjectBrowser)]
+* objectBrowser
+[/if][if (p.isURL)]
+* isUrl
+[/if][if (p.editable)]
+* isEditable
+[/if][if (p.focus)]
+* focus
+[/if][if (p.visible)]
+* visible
+[/if][if (p.report)]
+* report
+[/if]
+[/template]
+
+
+
+[template public printPropertyLocalization(p : Huiproperty)]
+de name   : [getProperty('snca-messages_de.properties', p.id)/]  
+de tooltip: [getProperty('snca-messages_de.properties', p.id+'_tooltip')/]  
+en name   : [getProperty('snca-messages.properties', p.id)/]  
+en tooltip: [getProperty('snca-messages.properties', p.id+'_tooltip')/]  
+[/template]
+
+[template public printPropertyGroupLocalization(p : Huipropertygroup)]
+de name   : [getProperty('snca-messages_de.properties', p.id)/]  
+de tooltip: [getProperty('snca-messages_de.properties', p.id+'_tooltip')/]  
+en name   : [getProperty('snca-messages.properties', p.id)/]  
+en tooltip: [getProperty('snca-messages.properties', p.id+'_tooltip')/]  
+[/template]
+
+
+[template public printEntityLocalization(e : Huientity)]
+de name   : [getProperty('snca-messages_de.properties', e.id)/]  
+de doc    : [getProperty('snca-messages_de.properties', e.id+'_doc')/]  
+en name   : [getProperty('snca-messages.properties', e.id)/]  
+en doc    : [getProperty('snca-messages.properties', e.id)+'_doc'/]  
+[/template]
+
+[template public printRelationLocalization(r : Huirelation)]
+de name           : [getProperty('snca-messages_de.properties', r.id+'_name')/]  
+de reverse name   : [getProperty('snca-messages_de.properties', r.id+'_reversename')/]  
+de tooltip        : [getProperty('snca-messages_de.properties', r.id+'_tooltip')/]  
+en name           : [getProperty('snca-messages.properties', r.id+'_name')/]  
+en reverse name   : [getProperty('snca-messages.properties', r.id+'_reversename')/]  
+en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]  
+[/template]
+
+
+
+
+
+[template public linkToMarkdownEntity(e : Huientity)]
+[ '[' /][e.name/] ([e.id/])[ ']' /](#[e.id/])[/template]
+
+
+
+
+[template public printSNCAGraph(root : DocumentRoot, lang : String)]
+[file ('image/snca.dot', false, 'UTF-8')]
+digraph  {
+[for (e : Huientity | root.huientities.huientity)]
+  [e.toGraphId()/][ '[' /]label="[getLocalizedName(e, lang)/]([e.id/])"[ ']' /];
+[/for]
+[for (r : Huirelation | Huirelation.allInstances())]
+  [r.getOwner().toGraphId()/] -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /];
+[/for]
+}
+[/file]
+[/template]
+
+
+[template public printSNCAProblemGraph(root : DocumentRoot, lang : String)]
+[file ('image/problems-snca.dot', false, 'UTF-8')]
+digraph  {
+[for (r : Huirelation | Huirelation.allInstances())]
+[if (r.getOwner().isBPEntity() and not root.allBPEntities()->includes(r.to)  )]
+[r.getOwner().toGraphId()/]_bp -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /]
+[/if]
+[if (root.allISOEntities()->includes(r.getOwner()) and not root.allISOEntities()->includes(r.to)  )]
+[r.getOwner().toGraphId()/]_iso -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /]
+[/if]
+[if (root.allOldBPEntities()->includes(r.getOwner()) and not root.allOldBPEntities()->includes(r.to)  )]
+[r.getOwner().toGraphId()/]_gs -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /]
+[/if]
+[/for]
+}
+[/file]
+[/template]
+
+
+[template public printEntityGraph(entity : Huientity, lang : String)]
+digraph [entity.toGraphId()/] {
+  [entity.toGraphId()/][ '[' /]label="[getLocalizedName(entity, lang)/]", shape=box, style=rounded[ ']' /];
+[for (e : Huientity | entity.allRelatedEntities() )]
+  [e.toGraphId()/][ '[' /]label="[getLocalizedName(e, lang)/]"[ ']' /];
+[/for]
+[for (r : Huirelation | entity.allOppositeRelations()->select(not (getOwner()=entity and to=entity)))]
+  [r.getOwner().toGraphId()/] -> [entity.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /];
+[/for]
+[for (r : Huirelation | entity.huirelation)]
+  [entity.toGraphId()/] -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /];
+[/for]
+}
+[/template]
+
+[template public printEntityGrahFiles(entities : Sequence(Huientity), path : String, lang : String)]
+[for (e : Huientity | entities)]
+[if (not (e.allOppositeRelations()->isEmpty() and e.huirelation->isEmpty()))]
+[file (path+e.toGraphFilename(), false, 'UTF-8')]
+[printEntityGraph(e, lang)/]
+[/file]
+[/if]
+[/for]
+[/template]
+
+
+

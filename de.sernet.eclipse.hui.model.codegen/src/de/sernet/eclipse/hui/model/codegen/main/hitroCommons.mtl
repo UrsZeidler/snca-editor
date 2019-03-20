@@ -3,6 +3,9 @@
 
 
 
+[query public toGraphFilename(e : Huientity) : String = e.id+'.dot' /]
+[query public toGraphImageFilename(e : Huientity) : String = e.id+'.png' /]
+
 [query public hasNoTags(p : Huipropertygroup) : Boolean =  p.tags.oclIsUndefined() or p.tags='' /]
 [query public hasTags(p : Huipropertygroup) : Boolean =  not p.hasNoTags() /]
 [query public hasNoTags(p : Huiproperty) : Boolean =  p.tags.oclIsUndefined() or p.tags='' /]
@@ -10,6 +13,22 @@
 [query public hasOptions(p : Huiproperty) : Boolean = not p.option->isEmpty() /]
 [query public hasDefaultRule(p : Huiproperty) : Boolean = not p.defaultRule.oclIsUndefined() /]
 
+[query public allTags(root : DocumentRoot) : Set(String) = root.huientities.huientity
+	->collect(allProperties()
+	->collect(tags))
+	->flatten()
+	->asSet()
+	->union(root.huientities.huientity.huipropertygroup
+		->collect(tags)->flatten()
+		->asSet())
+ /]
+
+
+[query public toGraphId(e : Huientity) : String = e.id.replaceAll('-', '_') /]
+
+[query public getOwner(r : Huirelation) : Huientity = r.eContainer().oclAsType(Huientity) /]
+[query public allRelatedEntities(e : Huientity) : Set(Huientity) = e.huirelation -> collect(to)->asSet()
+	->union(e.allOppositeRelations()->collect(getOwner()))->asSet()->excluding(e)->flatten()  /]
 
 
 [query public isBPEntity(e : Huientity) : Boolean = e.id.startsWith('bp_') /]
@@ -43,8 +62,6 @@
 'threat_group',
 'vulnerability',
 'vulnerability_group',
-'document',
-'document_group',
 'interview',
 'interview_group',
 'evidence',
@@ -63,6 +80,8 @@
 	root.huientities.huientity->select(root.allIsoIds()->includes(id))/]
 
 [query public allConfigurationIds(root : DocumentRoot) : Set(String) = Set{
+'document',
+'document_group',
 'role',
 'configuration',
 'attachment',
@@ -126,3 +145,12 @@ s.replaceAll('\\(', '').replaceAll('\\)', '').replaceAll('\\?', '').replaceAll('
              'getEStructuralFeature()', 
              Sequence{entry}) /]
 
+
+[query public getLocalizedName(e : Huientity, lang : String) : String = getLocalizedName(e, lang, '') /]
+[query public getLocalizedName(e : Huientity, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', e.id+key) /]
+[query public getLocalizedName(r : Huirelation, lang : String) : String = getLocalizedName(r, lang, '') /]
+[query public getLocalizedName(r : Huirelation, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', r.id+key) /]
+[query public getLocalizedName(p : Huiproperty, lang : String) : String = getLocalizedName(p, lang, '') /]
+[query public getLocalizedName(p : Huiproperty, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', p.id+key) /]
+[query public getLocalizedName(p : Huipropertygroup, lang : String) : String = getLocalizedName(p, lang, '') /]
+[query public getLocalizedName(p : Huipropertygroup, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', p.id+key) /]
