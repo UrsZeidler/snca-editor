@@ -4,15 +4,16 @@ Element-Name: gui-test-suite
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _mXoHcIkVEei0b4DzIVZGJQ
-Runtime-Version: 2.2.0.201706152316
-Save-Time: 7/16/18 8:39 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 3/21/19 8:31 AM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
 Entry-Name: testcase-items
 
-_Pl3HAIjtEei0b4DzIVZGJQ	// kind: 'test' name: 'basic-start-and-stop' path: 'basic-start-and-stop.test'
-_d5_S8Ij4Eei0b4DzIVZGJQ	// kind: 'test' name: 'test-about-emf-compare' path: 'test-about-emf-compare.test'
-_wuxhcIkVEei0b4DzIVZGJQ	// kind: 'test' name: 'test-editor' path: 'test-editor.test'
+_Pl3HAIjtEei0b4DzIVZGJQ	// kind: 'test' name: 'basic-start-and-stop' path: 'tests/basic-start-and-stop.test'
+_d5_S8Ij4Eei0b4DzIVZGJQ	// kind: 'test' name: 'test-about-emf-compare' path: 'tests/test-about-emf-compare.test'
+_wuxhcIkVEei0b4DzIVZGJQ	// kind: 'test' name: 'test-editor' path: 'tests/test-editor.test'
+_Khw84EF6EemohouIo4TVTw	// kind: 'test' name: 'test-acceleo-generate' path: 'tests/test-acceleo-generate.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

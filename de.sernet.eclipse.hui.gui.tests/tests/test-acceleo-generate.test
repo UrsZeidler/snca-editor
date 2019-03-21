@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _Khw84EF6EemohouIo4TVTw
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/19/19 11:11 AM
+Save-Time: 3/21/19 8:27 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -22,20 +22,21 @@ Entry-Name: .content
 
 log "start test test-acceleo-generate"
 
-
 create-project "acceleo-test"
 
 import-snca "Navigator" "acceleo-test" [concat $datadir [get-java-property "file.separator"] "SNCA.xml"]
 
 with [get-view Navigator | get-tree] {
-    select "acceleo-test/SNCA.hitro" | get-menu -path "Acceleo Model to Text/Generate Codegen" | click
-    select "acceleo-test/src-gen/SNCA-ALL.md" | select "acceleo-test/src-gen/SNCA-ALL.md" | get-menu 
-        -path "Open With/Text Editor" | click
+	select "acceleo-test/SNCA.hitro" | get-menu -path "Acceleo Model to Text/Generate Wiki" | click
+	select "acceleo-test/src-gen/SNCA-MOGS.mediawiki" | get-menu -path "Open With/Text Editor" | click
 }
 
-createLinkedFolder "acceleo-test" [concat $basedir  [get-java-property "file.separator"] "result"] "data"
+createLinkedFolder "acceleo-test" [concat $basedir [get-java-property "file.separator"] result] data
 copy-resource "acceleo-test/src-gen" "acceleo-test/data"
 
+try -times 2 -delay 1000 -command {
+	get-window "Resource Exists" | get-button "Yes To All" | click
+}
 
-
+log "test-ended"
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
