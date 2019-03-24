@@ -10,7 +10,7 @@
 [printSNCAMarkdownFile('SNCA-MOGS.md', 'SNCA for MOGS', root.allBPEntities())/]
 [printSNCAMarkdownFile('SNCA-OLD-GS.md', 'SNCA for OLD-GS', root.allOldBPEntities())/]
 [printSNCAMarkdownFile('SNCA-CONF.md', 'SNCA for Configuration', root.allConfigurationEntities())/]
-[printSNCAMarkdownFile('SNCA-ALL.md', 'SNCA for All elements', root.huientities.huientity)/]
+[comment][printSNCAMarkdownFile('SNCA-ALL.md', 'SNCA for All elements', root.huientities.huientity)/][/comment]
 [/template]
 
 [template public printSNCAMarkdownFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
