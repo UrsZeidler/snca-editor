@@ -23,6 +23,7 @@
 
 	<target name="init" depends="clean">
 		<mkdir dir="${test-results}" />
+		<mkdir dir="${test-results}/data" />
 		<mkdir dir="${images}" />
 	</target>
 

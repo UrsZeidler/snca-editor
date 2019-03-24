@@ -1,0 +1,78 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generateDot.
+ */]
+[module generateDot('http://www.sernet.de/hitro')]
+
+[import de::sernet::eclipse::hui::model::codegen::main::hitroCommons /]
+
+
+[template public generateDotFiles(root : DocumentRoot)]
+[printSNCAGraph(root, '_de')/]
+[printSNCAGraph(root, '')/]
+[printSNCAGraph(root, '')/]
+[printSNCAProblemGraph('_de')/]
+[printEntityGrahFiles(root.huientities.huientity, 'image/', '_de')/]
+[/template]
+
+
+
+
+[template public printSNCAGraph(root : DocumentRoot, lang : String)]
+[file ('image/snca_'+lang+'.dot', false, 'UTF-8')]
+digraph  {
+[for (e : Huientity | root.huientities.huientity)]
+  [e.toGraphId()/][ '[' /]label="[getLocalizedName(e, lang)/]([e.id/])"[ ']' /];
+[/for]
+[for (r : Huirelation | Huirelation.allInstances())]
+  [r.getOwner().toGraphId()/] -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /];
+[/for]
+}
+[/file]
+[/template]
+
+
+[template public printSNCAProblemGraph(root : DocumentRoot, lang : String)]
+[file ('image/problems-snca.dot', false, 'UTF-8')]
+digraph  {
+[for (r : Huirelation | Huirelation.allInstances())]
+[if (r.getOwner().isBPEntity() and not root.allBPEntities()->includes(r.to)  )]
+[r.getOwner().toGraphId()/]_bp -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /]
+[/if]
+[if (root.allISOEntities()->includes(r.getOwner()) and not root.allISOEntities()->includes(r.to)  )]
+[r.getOwner().toGraphId()/]_iso -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /]
+[/if]
+[if (root.allOldBPEntities()->includes(r.getOwner()) and not root.allOldBPEntities()->includes(r.to)  )]
+[r.getOwner().toGraphId()/]_gs -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /]
+[/if]
+[/for]
+}
+[/file]
+[/template]
+
+
+[template public printEntityGraph(entity : Huientity, lang : String)]
+digraph [entity.toGraphId()/] {
+  [entity.toGraphId()/][ '[' /]label="[getLocalizedName(entity, lang)/]", shape=box, style=rounded[ ']' /];
+[for (e : Huientity | entity.allRelatedEntities() )]
+  [e.toGraphId()/][ '[' /]label="[getLocalizedName(e, lang)/]"[ ']' /];
+[/for]
+[for (r : Huirelation | entity.allOppositeRelations()->select(not (getOwner()=entity and to=entity)))]
+  [r.getOwner().toGraphId()/] -> [entity.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /];
+[/for]
+[for (r : Huirelation | entity.huirelation)]
+  [entity.toGraphId()/] -> [r.to.toGraphId()/][ '[' /]label="[getLocalizedName(r, lang,'_name')/]"[ ']' /];
+[/for]
+}
+[/template]
+
+[template public printEntityGrahFiles(entities : Sequence(Huientity), path : String, lang : String)]
+[for (e : Huientity | entities)]
+[if (not (e.allOppositeRelations()->isEmpty() and e.huirelation->isEmpty()))]
+[file (path+e.toGraphFilename(), false, 'UTF-8')]
+[printEntityGraph(e, lang)/]
+[/file]
+[/if]
+[/for]
+[/template]
+

@@ -1,0 +1,94 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MbhH4EE6EemohouIo4TVTw,_2Y6tYEF7EemohouIo4TVTw,_oxuLcEEZEemohouIo4TVTw
+Element-Name: test-validation
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _JFoeUEy4EemYPIZZU5VNRg
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 3/22/19 4:48 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Generates the documents from the snca model.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+log "start test test-acceleo-generate"
+
+create-project "acceleo-test"
+
+import-snca "Navigator" "acceleo-test" [concat $datadir [get-java-property "file.separator"] "SNCA.xml"]
+
+createLinkedFolder "acceleo-test" [concat $basedir [get-java-property "file.separator"] "data"] data
+
+
+
+//copy-resource "acceleo-test/src-gen" "acceleo-test/data"
+
+
+
+log "test-ended"
+
+/*
+get-editor "SNCA.hitro" | get-tree | select "platform:\\/resource\\/acceleo-test\\/SNCA.hitro" | get-menu 
+    -path Validate | click
+get-window "Validation Problems" | get-button OK | click
+*/
+
+get-preferences-menu | click
+with [get-window Preferences] {
+    get-tree -after [get-label "Constraint categories:"] | select "basic validation"
+    with [get-table] {
+        get-item -path "Element Übersetzung" | check
+        select "Element Übersetzung"
+    }
+    get-button "Apply and Close" | click
+}
+
+get-editor "SNCA.hitro" | get-tree | select "platform:\\/resource\\/acceleo-test\\/SNCA.hitro" | get-menu 
+    -path Validate | click
+get-window "Validation Problems" | get-button OK | click
+
+
+get-button "View Menu" -index 1 | click
+get-view Problems | with [get-tree]{  
+	key-type "M1+a"
+     key-type "M1+c"
+    }
+    
+with [get-view Navigator | get-tree] {
+    get-item -path "acceleo-test" | click
+    select "acceleo-test" | get-menu -path "New/Other..." | click
+}
+with [get-window New] {
+    get-tree | select "General/File"
+    get-button "Next >" | click
+}
+with [get-window "New File"] {
+    get-editbox -after [get-label "File name:"] | set-text "problems-no-name-property.txt"
+    get-button Finish | click
+}
+
+get-editor "SNCA.hitro" | click
+with [get-view Problems | get-tree] {
+    select "Errors.*" -all | key-type "M1+a"
+    key-type "M1+c"
+}
+
+with [get-editor "problems-no-name-property.txt"] {
+	click
+    with [get-text-viewer] {
+        key-type "M1+v"
+        key-type "M1+s"
+    }
+}
+
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

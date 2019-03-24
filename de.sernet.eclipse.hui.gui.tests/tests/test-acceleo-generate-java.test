@@ -1,0 +1,40 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MbhH4EE6EemohouIo4TVTw,_2Y6tYEF7EemohouIo4TVTw,_oxuLcEEZEemohouIo4TVTw
+Element-Name: test-acceleo-generate-java
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: __KFPQEx3EemYPIZZU5VNRg
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 3/22/19 9:09 AM
+Tags: generation
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Generates the documents from the snca model.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+log "start test test-acceleo-generate-java"
+
+create-project "acceleo-test"
+
+import-snca "Navigator" "acceleo-test" [concat $datadir [get-java-property "file.separator"] "SNCA.xml"]
+
+with [get-view Navigator | get-tree] {
+	select "acceleo-test/SNCA.hitro" | get-menu -path "Acceleo Model to Text/Generate Java code" | click
+}
+
+createLinkedFolder "acceleo-test" [concat $basedir [get-java-property "file.separator"] "data"] data
+copy-resource "acceleo-test/src-gen" "acceleo-test/data"
+
+
+
+log "test-ended"
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

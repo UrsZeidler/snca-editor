@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _oxuLcEEZEemohouIo4TVTw
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/18/19 8:34 AM
+Save-Time: 3/22/19 8:52 AM
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
 Content-Type: text/plain
@@ -65,6 +65,12 @@ proc "copy-resource" [val from] [val to] {
 	with [get-view Navigator | get-tree] {
 		select $from | get-menu -path Copy | click
 		select $to | get-menu -path Paste | click
+	}
+
+	try -times 1 -delay 1000 -command {
+		get-window "Resource Exists" | get-button "Yes To All" | click
+	} -catch {
+		log "resource exist"
 	}
 }
 
