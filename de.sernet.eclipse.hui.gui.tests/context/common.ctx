@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _oxuLcEEZEemohouIo4TVTw
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/24/19 8:37 AM
+Save-Time: 3/24/19 9:43 AM
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
 Content-Type: text/plain
@@ -28,7 +28,7 @@ proc "import-snca" [val viewname] [val target] [val pathtosnca] {
 	set-dialog-result File $pathtosnca
 	with [get-window "File Import Wizard"] {
 		get-button "Browse..." | click
-		screen-shot-window "File Import Wizard" "new-project2.png"
+		//screen-shot-window "File Import Wizard" "new-project2.png"
 
 		get-button Finish | click
 	}

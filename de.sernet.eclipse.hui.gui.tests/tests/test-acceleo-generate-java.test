@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: __KFPQEx3EemYPIZZU5VNRg
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/24/19 9:27 AM
+Save-Time: 3/24/19 9:41 AM
 Tags: generation
 Testcase-Type: ecl
 
@@ -30,6 +30,8 @@ import-snca "Navigator" "acceleo-test-java" [concat $datadir [get-java-property 
 with [get-view Navigator | get-tree] {
 	select "acceleo-test-java/SNCA.hitro" | get-menu -path "Acceleo Model to Text/Generate Java code" | click
 }
+
+log "generation of javacode endet"
 
 createLinkedFolder "acceleo-test-java" [concat $basedir [get-java-property "file.separator"] "data"] data
 copy-resource "acceleo-test-java/src-gen" "acceleo-test-java/data"
