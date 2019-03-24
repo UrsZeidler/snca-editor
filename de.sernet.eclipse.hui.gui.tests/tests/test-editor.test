@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _wuxhcIkVEei0b4DzIVZGJQ
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/24/19 9:00 AM
+Save-Time: 3/24/19 9:23 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -132,8 +132,6 @@ with [get-editor "problems.txt"] {
 
 createLinkedFolder "editor-test" [concat $basedir  [get-java-property "file.separator"] "data"] "data"
 copy-resource "editor-test/v1/problems.txt"  "editor-test/data"
-
-wait-until-eclipse-is-ready
 
 log "test editor- endet"
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

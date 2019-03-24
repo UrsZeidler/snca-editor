@@ -8,12 +8,14 @@ External-Reference:
 Id: _Pl3HAIjtEei0b4DzIVZGJQ
 Property-test-project: test
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/21/19 8:31 AM
+Save-Time: 3/24/19 9:28 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
 Content-Type: text/ecl
 Entry-Name: .content
+
+l
 
 get-view "Project Explorer" | get-tree | get-menu -path "New/Project..." | click
 with [get-window "New Project"] {
