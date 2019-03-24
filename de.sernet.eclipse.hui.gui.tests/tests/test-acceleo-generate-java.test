@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: __KFPQEx3EemYPIZZU5VNRg
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/24/19 8:06 AM
+Save-Time: 3/24/19 8:11 AM
 Tags: generation
 Testcase-Type: ecl
 
@@ -32,7 +32,7 @@ with [get-view Navigator | get-tree] {
 }
 
 createLinkedFolder "acceleo-test-java" [concat $basedir [get-java-property "file.separator"] "data"] data
-copy-resource "acceleo-test-java/src-gen" "acceleo-test/data"
+copy-resource "acceleo-test-java/src-gen" "acceleo-test-java/data"
 
 
 
