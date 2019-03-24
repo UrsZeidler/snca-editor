@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _oxuLcEEZEemohouIo4TVTw
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/22/19 8:52 AM
+Save-Time: 3/24/19 8:37 AM
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
 Content-Type: text/plain
@@ -23,6 +23,7 @@ global [val basedir [get-java-property basepath]] [val datadir [get-java-propert
 
 proc "import-snca" [val viewname] [val target] [val pathtosnca] {
 	get-view $viewname | get-tree | select $target | get-menu -path "Import..." | click
+	get-window Import | get-tree | select "SNCA Import/Import SNCA XML File"
 	get-window Import | get-button "Next >" | click
 	set-dialog-result File $pathtosnca
 	with [get-window "File Import Wizard"] {
