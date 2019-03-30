@@ -5,8 +5,8 @@
 [module generateHuiModelReport('http://www.sernet.de/hitro', 'http://www.eclipse.org/emf/2002/Ecore')]
 
 [import de::sernet::eclipse::hui::model::codegen::main::hitroCommons /]
-[import de::sernet::eclipse::hui::model::codegen::main::generateJsonSchema /]
-[import de::sernet::eclipse::hui::model::codegen::main::generateJavaCode /]
+[import de::sernet::eclipse::hui::model::codegen::main::generateDot /]
+
 
 [**
  * The documentation of the template generateElement.
@@ -14,22 +14,82 @@
  */]
 [template public generateElement(root : DocumentRoot)]
 [comment @main/]
-[root.printMediaWiki()/]
-
-[comment][root.generateJsonSchema()/]
-[root.generateJavaClasses()/][/comment]
+[root.generateMediaWiki()/]
+[generateDotFiles(root)/]
 [/template]
 
 
 
-[template public printMediaWiki(root : DocumentRoot)]
-[printSNCAMediaWikiFile('SNCA-ISO.mediawiki', 'SNCA for ISO', root.allISOEntities())/]
-[printSNCAMediaWikiFile('SNCA-MOGS.mediawiki', 'SNCA for MOGS', root.allBPEntities())/]
-[printSNCAMediaWikiFile('SNCA-OLD-GS.mediawiki', 'SNCA for OLD-GS', root.allOldBPEntities())/]
-[printSNCAMediaWikiFile('SNCA-CONF.mediawiki', 'SNCA for Configuraion', root.allConfigurationEntities())/]
+[template public generateMediaWiki(root : DocumentRoot)]
+[generateSNCAMediaWikiFile('SNCA-ISO.mediawiki', 'SNCA for ISO', root.allISOEntities(),'_de')/]
+[generateSNCAMediaWikiFile('SNCA-MOGS.mediawiki', 'SNCA for MOGS', root.allBPEntities(),'_de')/]
+[generateSNCAMediaWikiFile('SNCA-OLD-GS.mediawiki', 'SNCA for OLD-GS', root.allOldBPEntities(),'_de')/]
+[generateSNCAMediaWikiFile('SNCA-CONF.mediawiki', 'SNCA for Configuraion', root.allConfigurationEntities(),'_de')/]
 [/template]
 
-[template public printSNCAMediaWikiFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
+[template public generateSNCAMediaWikiFile(filename : String,docTitel : String, entities : Sequence(Huientity), lang :String)]
+[file (filename, false, 'UTF-8')]
+= [docTitel/] =
+
+[for (e : Huientity | entities)]
+[printEntityMediaWiki(e, lang)/]
+[/for]
+[/file]
+[/template]
+
+[template public printEntityMediaWiki (e : Huientity, lang : String) ]
+== [e.getLocalizedName(lang)/] ([e.id/]) ==
+
+doc : [e.getLocalizedName(lang, '_doc')/]
+
+[for (r : Huirelation | e.huirelation)]
+'''[r.getLocalizedName(lang)/] ([r.id/]) -->''' [ '[' /][ '[' /]#[e.getLocalizedName(lang)/] ([e.id/]) | [e.getLocalizedName(lang)/][ ']' /][ ']' /]<br />
+<--[r.getLocalizedName(lang,'_reversename')/]<br />
+doc: [r.getLocalizedName(lang, '_tooltip')/]<br />
+[/for]
+
+
+''' main properties '''
+[for (p : Huiproperty | e.huiproperty)]
+[printPropertyMediaWiki(p,lang)/]
+[/for]
+
+[for (g : Huipropertygroup | e.huipropertygroup)]
+'''Group [g.getLocalizedName(lang)/]'''
+
+[for (p : Huiproperty | g.huiproperty)]
+[printPropertyMediaWiki(p,lang)/]
+[/for]
+
+
+[/for]
+
+[/template]
+
+[template public printPropertyMediaWiki (p : Huiproperty, lang: String) ]
+'''[p.getLocalizedName(lang)/]''' ([p.id/])
+
+type: [p.inputtype/][if (p.hasTags())] tags:'[p.tags/]'[/if]
+
+[p.printPropertyFlags()/]
+
+doc: [p.getLocalizedName(lang, '_tooltip')/]
+[if (p.inputtype=Inputtypes::singleoption or 
+p.inputtype=Inputtypes::numericoption or p.inputtype=Inputtypes::multioption)]
+[if (p.inputtype=Inputtypes::singleoption or p.inputtype=Inputtypes::numericoption)]
+one of:  
+[elseif (p.inputtype=Inputtypes::multioption)]
+many of:  
+[/if]
+[for (o : Option | p.option)]
+* [o.getLocalizedName(lang)/] ([o.id/])-> "[o.value/]"  
+[/for]
+[/if]
+
+[/template]
+
+
+[template public generateSNCAMediaWikiFile(filename : String,docTitel : String, entities : Sequence(Huientity))]
 [file (filename, false, 'UTF-8')]
 = [docTitel/] =
 

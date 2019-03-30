@@ -7,6 +7,11 @@
 	
 	[comment @main /]
 	[root.generateJavaClasses()/]
+	[generateMissingProperties(root.huientities.huientity,'_de','all_missing')/]
+	[generateMissingProperties(root.allBPEntities(),'_de','bp_missing')/]
+	[generateMissingProperties(root.allBPEntities(),'','bp_missing')/]
+	[generateMissingProperties(root.allBPEntities(),'_it','bp_missing')/]
+
 [/template]
 
 [query public toJavaWarpperClassName(e : Huientity) : String = e.id.toJavaIdentifier() + 'Wrapper' /]
@@ -30,12 +35,57 @@ endif /]
 [for (e : Huientity | root.allBPEntities())]
 [printJavaClass(e)/]
 [/for]
-[root.printNamendSwitch('Bp')/]
+[root.printNamendSwitch(root.allBPEntities(),'Bp')/]
+[root.printNamendSwitch(root.allISOEntities(),'Iso')/]
+[/template]
+
+[template public generateMissingProperties(entites:Sequence(Huientity),lang : String, filename : String)]
+[file (filename+lang+'.properties', false, 'iso8859-1')]
+[for (e : Huientity | entites)]
+#[e.name/] ([e.id/])
+[if (e.getLocalizedName(lang)=null)]
+[e.id/]=
+[/if]
+[for (r : Huirelation | e.huirelation)]
+[if (r.getLocalizedName(lang,'_name')='')]
+[r.id/]_name=
+[/if]
+[if (r.getLocalizedName(lang,'_reversename')='')]
+[r.id/]_reversename=
+[/if]
+[if (r.getLocalizedName(lang,'_tooltip')='')]
+[r.id/]_tooltip=
+[/if]
+[/for]
+[for (p : Huiproperty | e.huiproperty)]
+[if (p.getLocalizedName(lang)='')]
+[p.id/]=
+[/if]
+[if (p.getLocalizedName(lang,'_tooltip')='')]
+[p.id/]_tooltip=
+[/if]
+[/for]
+[for (g : Huipropertygroup | e.huipropertygroup)]
+[if (g.getLocalizedName(lang)='')]
+[g.id/]=
+[for (p : Huiproperty | g.huiproperty)]
+[if (p.getLocalizedName(lang)='')]
+[p.id/]=
+[/if]
+[if (p.getLocalizedName(lang,'_tooltip')='')]
+[p.id/]_tooltip=
+[/if]
+[/for]
+[/if]
+[/for]
+[/for]
+[/file]
+
 [/template]
 
 
 
-[template public printNamendSwitch(root : DocumentRoot, prefix : String = '')]
+[template public printNamendSwitch(entites:Sequence(Huientity), prefix : String = '')]
 [file ( 'java/'+ prefix.toUpperFirst()+'Switch' +'.java', false, 'UTF-8')]
 package sernet.verinice.model.wrapper.util;
 
@@ -44,7 +94,7 @@ import sernet.verinice.model.common.CnATreeElement;
 public class [prefix.toUpperFirst()/]Switch<T> {
 
 	public void doSwitch(CnATreeElement o) {
-[for (e : Huientity |root.allBPEntities() )separator ('else')]
+[for (e : Huientity |entites )separator ('else')]
 		if ("[e.id/]".equals(o.getTypeId())) {
 			case[e.id.toJavaIdentifier()/](o);
 		}[/for]
@@ -52,7 +102,7 @@ public class [prefix.toUpperFirst()/]Switch<T> {
 	}
 
 
-[for (e : Huientity |root.allBPEntities() )]
+[for (e : Huientity |entites )]
 	public T case[e.id.toJavaIdentifier()/](CnATreeElement object) {
 		return null;
 	}

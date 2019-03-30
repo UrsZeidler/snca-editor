@@ -146,9 +146,11 @@ s.replaceAll('\\(', '').replaceAll('\\)', '').replaceAll('\\?', '').replaceAll('
              Sequence{entry}) /]
 
 
+[query public getLocalizedName(o : Option, lang : String) : String = getLocalizedName(o, lang, '') /]
+[query public getLocalizedName(o : Option, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', o.id+key) /]
 [query public getLocalizedName(e : Huientity, lang : String) : String = getLocalizedName(e, lang, '') /]
 [query public getLocalizedName(e : Huientity, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', e.id+key) /]
-[query public getLocalizedName(r : Huirelation, lang : String) : String = getLocalizedName(r, lang, '') /]
+[query public getLocalizedName(r : Huirelation, lang : String) : String = getLocalizedName(r, lang, '_name') /]
 [query public getLocalizedName(r : Huirelation, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', r.id+key) /]
 [query public getLocalizedName(p : Huiproperty, lang : String) : String = getLocalizedName(p, lang, '') /]
 [query public getLocalizedName(p : Huiproperty, lang : String,key : String) : String = getProperty('snca-messages'+lang+'.properties', p.id+key) /]

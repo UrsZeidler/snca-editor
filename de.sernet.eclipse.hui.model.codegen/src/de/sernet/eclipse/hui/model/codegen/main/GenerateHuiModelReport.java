@@ -309,11 +309,11 @@ public class GenerateHuiModelReport extends AbstractAcceleoGenerator {
          * 
          * To learn more about Properties Files, have a look at the Acceleo documentation (Help -> Help Contents).
          */
-//       if (EMFPlugin.IS_ECLIPSE_RUNNING && model != null && model.eResource() != null) { 
-//            propertiesFiles.addAll(AcceleoEngineUtils.getPropertiesFilesNearModel(model.eResource()));
-//        }
+       if (EMFPlugin.IS_ECLIPSE_RUNNING && model != null && model.eResource() != null) { 
+            propertiesFiles.addAll(AcceleoEngineUtils.getPropertiesFilesNearModel(model.eResource()));
+        }
 
-       propertiesFiles.addAll(AcceleoEngineUtils.getPropertiesFilesNearModel(model.eResource()));
+//       propertiesFiles.addAll(AcceleoEngineUtils.getPropertiesFilesNearModel(model.eResource()));
        return propertiesFiles;
     }
     
