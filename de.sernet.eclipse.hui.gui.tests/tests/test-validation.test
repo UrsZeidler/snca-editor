@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _JFoeUEy4EemYPIZZU5VNRg
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/30/19 2:56 PM
+Save-Time: 3/30/19 3:20 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -24,6 +24,7 @@ proc "create-validation" [val validationFilename] [val constrainName] {
 	get-preferences-menu | click
 	
 	with [get-window Preferences] {
+	get-window Preferences | get-tree | select "Model Validation/Constraints"
     get-tree -after [get-label "Constraint categories:"] | select "basic validation"
     with [get-table] {
         get-item -path "Element Übersetzung" | uncheck
