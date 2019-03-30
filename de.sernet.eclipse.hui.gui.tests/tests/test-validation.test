@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _JFoeUEy4EemYPIZZU5VNRg
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 3/24/19 10:16 AM
+Save-Time: 3/30/19 2:28 PM
 Tags: skipExecution
 Testcase-Type: ecl
 
@@ -21,75 +21,89 @@ Generates the documents from the snca model.
 Content-Type: text/ecl
 Entry-Name: .content
 
+proc "create-validation" [val validationFilename] [val constrainName] {
+	get-preferences-menu | click
+	
+	with [get-window Preferences] {
+    get-tree -after [get-label "Constraint categories:"] | select "basic validation"
+    with [get-table] {
+        get-item -path "Element Übersetzung" | uncheck
+        get-item -path "Name not empty" | uncheck
+        get-item -path "Rest Element Übersetzung" | uncheck
+        get-item -path RuleClasses | uncheck
+        get-item -path "Validate numeric option" | uncheck
+        get-item -path ValidationRuleClasses | uncheck
+    }
+}
+	with [get-window Preferences] {
+		get-tree -after [get-label "Constraint categories:"] | select "basic validation"
+		with [get-table] {
+			get-item -path $constrainName | check
+			select $constrainName
+		}
+		get-button "Apply and Close" | click
+	}
+
+	get-editor "SNCA.hitro" | get-tree | select "platform:\\/resource\\/acceleo-test\\/SNCA.hitro" | get-menu
+		-path Validate | click
+	get-window "Validation Problems" | get-button OK | click
+
+	get-button "View Menu" -index 1 | click
+	get-view Problems | with [get-tree] {
+		key-type "M1+a"
+		key-type "M1+c"
+	}
+
+	with [get-view Navigator | get-tree] {
+		get-item -path "acceleo-test" | click
+		select "acceleo-test" | get-menu -path "New/Other..." | click
+	}
+	with [get-window New] {
+		get-tree | select "General/File"
+		get-button "Next >" | click
+	}
+	with [get-window "New File"] {
+		get-editbox -after [get-label "File name:"] | set-text $validationFilename
+		get-button Finish | click
+	}
+
+	get-editor "SNCA.hitro" | click
+	with [get-view Problems | get-tree] {
+		select "Errors.*" -all | key-type "M1+a"
+		key-type "M1+c"
+	}
+
+	with [get-editor $validationFilename] {
+		click
+		with [get-text-viewer] {
+			key-type "M1+v"
+			key-type "M1+s"
+		}
+	}
+
+	get-view Navigator | get-tree | select [concat "acceleo-test/" $validationFilename] | get-menu -path "Move..."
+		| click
+	with [get-window "Move Resources"] {
+		get-tree | select "acceleo-test/data"
+		get-button OK | click
+	}
+}
+
 log "start test test-acceleo-generate"
 
 create-project "acceleo-test"
 
-import-snca "Navigator" "acceleo-test" [concat $datadir [get-java-property "file.separator"] "SNCA.xml"]
+import-snca Navigator "acceleo-test" [concat $datadir [get-java-property "file.separator"] "SNCA.xml"]
 
-createLinkedFolder "acceleo-test" [concat $basedir [get-java-property "file.separator"] "data"] data
+createLinkedFolder "acceleo-test" [concat $basedir [get-java-property "file.separator"] data] data
 
-
-
-//copy-resource "acceleo-test/src-gen" "acceleo-test/data"
-
+create-validation "no-localization.txt" "Element Übersetzung"
+create-validation "no-localization-rest.txt" "Rest Element Übersetzung"
+create-validation "no-name.txt" "Name not empty"
+create-validation "rules.txt" "RuleClasses"
+create-validation "numeric-options.txt" "Validate numeric option"
+create-validation "validation-rule.txt" "ValidationRuleClasses"
 
 
 log "test-ended"
-
-/*
-get-editor "SNCA.hitro" | get-tree | select "platform:\\/resource\\/acceleo-test\\/SNCA.hitro" | get-menu 
-    -path Validate | click
-get-window "Validation Problems" | get-button OK | click
-*/
-
-get-preferences-menu | click
-with [get-window Preferences] {
-    get-tree -after [get-label "Constraint categories:"] | select "basic validation"
-    with [get-table] {
-        get-item -path "Element Übersetzung" | check
-        select "Element Übersetzung"
-    }
-    get-button "Apply and Close" | click
-}
-
-get-editor "SNCA.hitro" | get-tree | select "platform:\\/resource\\/acceleo-test\\/SNCA.hitro" | get-menu 
-    -path Validate | click
-get-window "Validation Problems" | get-button OK | click
-
-
-get-button "View Menu" -index 1 | click
-get-view Problems | with [get-tree]{  
-	key-type "M1+a"
-     key-type "M1+c"
-    }
-    
-with [get-view Navigator | get-tree] {
-    get-item -path "acceleo-test" | click
-    select "acceleo-test" | get-menu -path "New/Other..." | click
-}
-with [get-window New] {
-    get-tree | select "General/File"
-    get-button "Next >" | click
-}
-with [get-window "New File"] {
-    get-editbox -after [get-label "File name:"] | set-text "problems-no-name-property.txt"
-    get-button Finish | click
-}
-
-get-editor "SNCA.hitro" | click
-with [get-view Problems | get-tree] {
-    select "Errors.*" -all | key-type "M1+a"
-    key-type "M1+c"
-}
-
-with [get-editor "problems-no-name-property.txt"] {
-	click
-    with [get-text-viewer] {
-        key-type "M1+v"
-        key-type "M1+s"
-    }
-}
-
-
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
