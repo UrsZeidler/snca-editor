@@ -27,6 +27,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
+import de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil;
+
 public class ImportSNCAWizardPage extends WizardNewFileCreationPage {
 
     protected FileFieldEditor editor;
@@ -99,31 +101,34 @@ public class ImportSNCAWizardPage extends WizardNewFileCreationPage {
      * org.eclipse.ui.dialogs.WizardNewFileCreationPage#getInitialContents()
      */
     protected InputStream getInitialContents() {
-        IPath containerFullPath = getContainerFullPath();
-        IResource findContainersForLocation = ResourcesPlugin.getWorkspace().getRoot()
-                .findMember(containerFullPath);
-        IProject project = findContainersForLocation.getProject();
-        try {
-            String defaultCharset = "UTF-8";// project.getDefaultCharset();
-            FileInputStream fileInputStream = new FileInputStream(
-                    new File(editor.getStringValue()));
-            BufferedReader d = new BufferedReader(
-                    new InputStreamReader(fileInputStream, defaultCharset));
-            try {
-                String collect = d.lines().collect(Collectors.joining("\n"));
-                collect = collect.replaceAll("huientities", "hitro:huientities");
-                collect = collect.replaceFirst("xmlns=", "xmlns:hitro=");
-
-                return new ByteArrayInputStream(collect.getBytes(defaultCharset));
-            } finally {
-                d.close();
-            }
-        } catch (FileNotFoundException e) {
-            return null;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    	String pathname = editor.getStringValue();
+    	return HitropPropertiesUtil.transformSnca(pathname);
+    	
+//        IPath containerFullPath = getContainerFullPath();
+//        IResource findContainersForLocation = ResourcesPlugin.getWorkspace().getRoot()
+//                .findMember(containerFullPath);
+//        IProject project = findContainersForLocation.getProject();
+//        try {
+//            String defaultCharset = "UTF-8";// project.getDefaultCharset();
+//			FileInputStream fileInputStream = new FileInputStream(
+//                    new File(pathname));
+//            BufferedReader d = new BufferedReader(
+//                    new InputStreamReader(fileInputStream, defaultCharset));
+//            try {
+//                String collect = d.lines().collect(Collectors.joining("\n"));
+//                collect = collect.replaceAll("huientities", "hitro:huientities");
+//                collect = collect.replaceFirst("xmlns=", "xmlns:hitro=");
+//
+//                return new ByteArrayInputStream(collect.getBytes(defaultCharset));
+//            } finally {
+//                d.close();
+//            }
+//        } catch (FileNotFoundException e) {
+//            return null;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
     }
 
     /*

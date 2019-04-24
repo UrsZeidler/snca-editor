@@ -20,15 +20,20 @@
 package de.sernet.eclipse.hui.service.localization.lang;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -42,8 +47,10 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -326,4 +333,77 @@ public class HitropPropertiesUtil {
             }
         }
     }
+    
+	public static void importSncaInWorkspace(final IFile container, String orgFilename) throws CoreException {
+		File source = new File(orgFilename);
+        String fileBasePath = HitropPropertiesUtil.fileBasePath(source);
+        String platformBasePath = HitropPropertiesUtil.platformBasePath(container);
+        List<String> allLocales = HitropPropertiesUtil.getAllLocalesForFile(fileBasePath, HitropPropertiesUtil.TO_FILE);
+        for (String lang : allLocales) {
+            File targetFile = HitropPropertiesUtil.TO_WORKSPACE_FILE
+                    .toFile(platformBasePath + lang);
+            File sourceFile = HitropPropertiesUtil.TO_FILE.toFile(fileBasePath + lang);
+            try {
+            	java.nio.file.Files.copy(sourceFile.toPath(), targetFile.toPath(),
+                        StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                throw new CoreException(Status.CANCEL_STATUS);
+            }
+        }
+	}
+
+	
+	public static ByteArrayInputStream transformSnca(String inputsnca) {
+        try {
+            String defaultCharset = "UTF-8";
+			FileInputStream fileInputStream = new FileInputStream(
+                    new File(inputsnca));
+            BufferedReader d = new BufferedReader(
+                    new InputStreamReader(fileInputStream, defaultCharset));
+            try {
+                String collect = d.lines().collect(Collectors.joining("\n"));
+                collect = collect.replaceAll("huientities", "hitro:huientities");
+                collect = collect.replaceFirst("xmlns=", "xmlns:hitro=");
+                
+                return new ByteArrayInputStream(collect.getBytes(defaultCharset));
+            } finally {
+                d.close();
+            }
+        } catch (FileNotFoundException e) {
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+	}
+	
+	
+	public static void exportSncaFlies(IFile sourceFile, File targetFile) throws CoreException, IOException {
+		InputStream contents = sourceFile.getContents(true);
+        BufferedReader d = new BufferedReader(new InputStreamReader(contents));
+
+        String collect = d.lines().collect(Collectors.joining("\n"));
+        collect = collect.replaceAll("hitro:huientities", "huientities");
+        collect = collect.replaceFirst("xmlns:hitro=", "xmlns=");
+        FileWriter fileWriter = new FileWriter(targetFile, false);
+        
+        try {
+            fileWriter.append(collect);
+        } finally {
+            fileWriter.close();
+            d.close();
+        }
+
+        String basePath = HitropPropertiesUtil.platformBasePath(sourceFile);
+        String fileBasePath = HitropPropertiesUtil.fileBasePath(targetFile);
+        List<String> allLocales = HitropPropertiesUtil.getAllLocalesForFile(basePath, HitropPropertiesUtil.TO_WORKSPACE_FILE);
+        for (String lang : allLocales) {
+            File source = HitropPropertiesUtil.TO_WORKSPACE_FILE.toFile(basePath + lang);
+            File target = HitropPropertiesUtil.TO_FILE.toFile(fileBasePath + lang);
+            java.nio.file.Files.copy(source.toPath(), target.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+        }
+	}
+
 }

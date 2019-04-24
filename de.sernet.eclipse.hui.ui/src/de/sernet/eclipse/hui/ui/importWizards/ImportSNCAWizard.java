@@ -52,21 +52,8 @@ public class ImportSNCAWizard extends Wizard implements IImportWizard {
             @Override
             protected void execute(IProgressMonitor monitor)
                     throws CoreException, InvocationTargetException, InterruptedException {
-                File source = new File(mainPage.getOrgFilename());
-                String fileBasePath = HitropPropertiesUtil.fileBasePath(source);
-                String platformBasePath = HitropPropertiesUtil.platformBasePath(file);
-                List<String> allLocales = HitropPropertiesUtil.getAllLocalesForFile(fileBasePath, HitropPropertiesUtil.TO_FILE);
-                for (String lang : allLocales) {
-                    File targetFile = HitropPropertiesUtil.TO_WORKSPACE_FILE
-                            .toFile(platformBasePath + lang);
-                    File sourceFile = HitropPropertiesUtil.TO_FILE.toFile(fileBasePath + lang);
-                    try {
-                        Files.copy(sourceFile.toPath(), targetFile.toPath(),
-                                StandardCopyOption.REPLACE_EXISTING);
-                    } catch (IOException e) {
-                        throw new CoreException(Status.CANCEL_STATUS);
-                    }
-                }
+                String orgFilename = mainPage.getOrgFilename();
+                HitropPropertiesUtil.importSncaInWorkspace(file, orgFilename);
             }
         };
 

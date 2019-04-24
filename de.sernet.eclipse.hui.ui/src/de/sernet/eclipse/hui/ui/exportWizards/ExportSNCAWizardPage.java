@@ -168,32 +168,9 @@ public class ExportSNCAWizardPage extends WizardPage {
         sourceFile = ResourcesPlugin.getWorkspace().getRoot()
                 .getFile(new Path(sourceFileText.getText()));
 
-        InputStream contents = sourceFile.getContents(true);
-        BufferedReader d = new BufferedReader(new InputStreamReader(contents));
-
-        String collect = d.lines().collect(Collectors.joining("\n"));
-        collect = collect.replaceAll("hitro:huientities", "huientities");
-        collect = collect.replaceFirst("xmlns:hitro=", "xmlns=");
-        FileWriter fileWriter = new FileWriter(targetFile, false);
-        
-        try {
-            fileWriter.append(collect);
-        } finally {
-            fileWriter.close();
-            d.close();
-        }
-
         IDialogSettings section = getDialogSettings().getSection(ExportSNCAWizard.EXPORT_WIZARD);
         section.put(ExportSNCAWizard.TARGET_FILE, targetFile.getAbsolutePath());
 
-        String basePath = HitropPropertiesUtil.platformBasePath(sourceFile);
-        String fileBasePath = HitropPropertiesUtil.fileBasePath(targetFile);
-        List<String> allLocales = HitropPropertiesUtil.getAllLocalesForFile(basePath, HitropPropertiesUtil.TO_WORKSPACE_FILE);
-        for (String lang : allLocales) {
-            File source = HitropPropertiesUtil.TO_WORKSPACE_FILE.toFile(basePath + lang);
-            File target = HitropPropertiesUtil.TO_FILE.toFile(fileBasePath + lang);
-            Files.copy(source.toPath(), target.toPath(),
-                    StandardCopyOption.REPLACE_EXISTING);
-        }
+        HitropPropertiesUtil.exportSncaFlies(sourceFile, targetFile);
     }
 }
