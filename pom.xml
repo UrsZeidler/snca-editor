@@ -40,6 +40,7 @@
 		<module>de.sernet.eclipse.hui.branding</module>
 		<module>de.sernet.eclipse.hui.model.codegen</module>
 		<module>de.sernet.eclipse.hui.model.codegen.ui</module>
+		<module>de.sernet.eclipse.hui.commandline</module>
 
 		<!-- tests -->
 		<module>de.sernet.eclipse.hui.model.tests</module>
