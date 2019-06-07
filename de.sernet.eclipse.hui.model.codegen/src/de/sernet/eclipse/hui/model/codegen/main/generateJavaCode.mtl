@@ -32,6 +32,7 @@ endif /]
 
 
 [template public generateJavaClasses(root : DocumentRoot)]
+[printModelTree(root)/]
 [for (e : Huientity | root.allBPEntities())]
 [printJavaClass(e)/]
 [/for]
@@ -83,7 +84,64 @@ endif /]
 
 [/template]
 
+[template public printModelTree(root : DocumentRoot)]
+[file ( 'java/ModelStruct.java', false, 'UTF-8')]
+[printClassHeader(root)/]
+package sernet.verinice.model.util;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 
+ * This class holds the mapping of entities to a scope.
+ *
+ */
+public class ModelStruct{
+
+    private static ModelStruct instance;
+    private List<String> isoElements = new ArrayList<>([root.allISOEntities()->size()/]);
+    private List<String> bpElements = new ArrayList<>([root.allBPEntities()->size()/]);
+    private List<String> oldBpElements = new ArrayList<>([root.allOldBPEntities()->size()/]);
+    private Map<String,List<String>> tree = new HashMap<>();
+
+	public static ModelStruct getInstrance() {
+		if(instance==null) {
+			instance = new ModelStruct();
+		}
+		return instance;
+	}
+	private ModelStruct() {
+
+[for (e : Huientity | root.allBPEntities())]
+		bpElements.add("[e.id/]");
+[/for]
+
+[for (e : Huientity | root.allISOEntities())]
+		isoElements.add("[e.id/]");
+[/for]
+	
+[for (e : Huientity | root.allOldBPEntities())]
+		oldBpElements.add("[e.id/]");
+[/for]
+	
+		tree.put("modernizedBP", bpElements);
+		tree.put("iso", isoElements);
+		tree.put("oldbp", oldBpElements);
+	}
+	
+	/**
+	 * Returns the model tree.
+	 */
+	public Map<String, List<String>> getTree() {
+		return tree;
+	}
+
+}
+[/file]
+[/template]
 
 [template public printNamendSwitch(entites:Sequence(Huientity), prefix : String = '')]
 [file ( 'java/'+ prefix.toUpperFirst()+'Switch' +'.java', false, 'UTF-8')]
@@ -211,7 +269,27 @@ enum [p.toEnumName()/] {
  }
 [/template]
 
-
+[template public printClassHeader(e : OclAny)]
+/*******************************************************************************
+ * Copyright (c) 2019 Urs Zeidler.
+ *
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.
+ * If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Contributors:
+ *     Urs Zeidler uz[ '[' /] at[ ']' /] sernet.de - initial API and implementation
+ ******************************************************************************/
+[/template]
 
 [template public printPropertyGetter (p : Huiproperty) ]
 	/**

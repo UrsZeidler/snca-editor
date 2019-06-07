@@ -14,8 +14,12 @@
  */]
 [template public generateElement(root : DocumentRoot)]
 [comment @main/]
-[root.generateMediaWiki()/]
-[generateDotFiles(root)/]
+[comment][root.generateMediaWiki()/]
+[generateDotFiles(root)/][/comment]
+
+
+[printEntityGroupProperyCSV('iso-entitys.csv', root.allISOEntities())/]
+[printEntityGroupProperyCSV('bp-entitys.csv', root.allBPEntities())/]
 [/template]
 
 
@@ -216,6 +220,22 @@ p.inputtype=Inputtypes::numericoption or p.inputtype=Inputtypes::multioption)]
 ;;;
 [/for]
 
+[/file]
+[/template]
+
+[template public printEntityGroupProperyCSV(filename : String, entities : Sequence(Huientity))]
+[file (filename, false, 'UTF-8')]
+[for (e : Huientity | entities)]
+[for (p : Huiproperty | e.huiproperty)]
+"[e.name/]";"[e.id/]";"";"" ;"[p.getLocalizedName('_de')/]";"[p.id/]"
+[/for]
+[for (pg : Huipropertygroup | e.huipropertygroup)]
+[for (p : Huiproperty | pg.huiproperty)]
+"[e.name/]";"[e.id/]"; "[pg.getLocalizedName('_de')/]";"[pg.id/]"; "[p.getLocalizedName('_de')/]";"[p.id/]"
+[/for]
+[/for]
+;;;
+[/for]
 [/file]
 [/template]
 
