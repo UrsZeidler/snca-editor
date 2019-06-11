@@ -79,7 +79,8 @@ public class CommandlineRunner implements IApplication {
 			URI importSncaXML = importSncaXML(monitor, file, orgFilename);
 			
 			doGenerationOptions(commandLine,project,importSncaXML,monitor,file);
-			
+			System.out.println("Refresh workspace");
+			ResourcesPlugin.getWorkspace().getRoot().refreshLocal(2, monitor);
 		}else if (commandLine.hasOption('l')) {
 			//load a hitro model
 		}
