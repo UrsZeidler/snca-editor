@@ -17,6 +17,7 @@
 [comment][root.generateMediaWiki()/]
 [generateDotFiles(root)/][/comment]
 
+[htmlreport('iso-doc-de.html', 'ISO',  root.allISOEntities(), '_de')/]
 
 [printEntityGroupProperyCSV('iso-entitys.csv', root.allISOEntities())/]
 [printEntityGroupProperyCSV('bp-entitys.csv', root.allBPEntities())/]
@@ -404,6 +405,53 @@ en name           : [getProperty('snca-messages.properties', r.id+'_name')/]
 en reverse name   : [getProperty('snca-messages.properties', r.id+'_reversename')/]  
 en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]  
 [/template]
+
+
+
+[template private toTag(content : String, tag : String, attributes : String )]
+<[tag/][if (attributes <> '')] [attributes/][/if]>[content/]</[tag/]>
+[/template]
+
+[template public htmlreport(filename : String, docTitel : String, entities : Sequence(Huientity), lang :String)]
+[file (filename, false, 'UTF-8')]
+[docTitel.toTag('h1', '')/]
+[for (e : Huientity | entities)]
+<h2>[e.getLocalizedName(lang).toTag('a', 'id="'+e.id+'"')/]([e.id/])<h2/>
+[e.getLocalizedName(lang, '_doc').toTag('div', 'class="doc"')/]
+
+<h3> relations </h3>
+[for (r : Huirelation | e.huirelation)]
+[comment][r.name.toTag('p', 'class="relation"')/] [/comment]
+[r.getLocalizedName(lang)/] ([r.id/]) --> <a href="#[r.to.id/]">[r.to.getLocalizedName(lang)/]</a><br/>
+[/for]
+<h3> properties </h3>
+[htmlPrpoertyTable(e.huiproperty, lang)/]
+[for (pg : Huipropertygroup | e.huipropertygroup)]
+[pg.getLocalizedName(lang).toTag('h3', '')/]
+[htmlPrpoertyTable(pg.huiproperty, lang)/]
+[/for]
+[/for]
+[/file]
+[/template]
+
+[template public htmlPrpoertyTable(properties : OrderedSet(Huiproperty), lang : String)]
+<div class="propertytable">
+[for (p : Huiproperty | properties)]
+[p.getLocalizedName(lang)/] ([p.id/])::[p.inputtype/]<br/>
+[p.getLocalizedName(lang, '_tooltip').toTag('div', 'class="doc"')/]
+
+<div class="dep">
+[for (p : Huiproperty | p.allDependendProperties())]
+--> [p.name/] ([p.id/])<br/>
+[/for]
+</div>
+
+[/for]
+
+</div>
+[/template]
+
+
 
 [comment][template public printOptions(list : OrderedSet(Option))]
 
