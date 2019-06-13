@@ -15,9 +15,10 @@
 [template public generateElement(root : DocumentRoot)]
 [comment @main/]
 [comment][root.generateMediaWiki()/]
-[generateDotFiles(root)/][/comment]
-
+[/comment]
+[generateDotFiles(root)/]
 [htmlreport('iso-doc-de.html', 'ISO',  root.allISOEntities(), '_de')/]
+[htmlreport('iso-doc-en.html', 'ISO',  root.allISOEntities(), '')/]
 
 [printEntityGroupProperyCSV('iso-entitys.csv', root.allISOEntities())/]
 [printEntityGroupProperyCSV('bp-entitys.csv', root.allBPEntities())/]
