@@ -2,16 +2,16 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: hui Ui
 Bundle-SymbolicName: de.sernet.eclipse.hui.ui;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.jface,
  org.eclipse.ui.ide,
  org.eclipse.ui,
- de.sernet.eclipse.hui.model.editor;bundle-version="1.0.0",
+ de.sernet.eclipse.hui.model.editor;bundle-version="0.0.2",
  org.eclipse.emf.compare;bundle-version="3.5.0",
  org.eclipse.emf.compare.ide.ui;bundle-version="4.4.0",
- de.sernet.eclipse.hui.service;bundle-version="1.0.0"
+ de.sernet.eclipse.hui.service;bundle-version="0.0.2"
 Bundle-Activator: de.sernet.eclipse.hui.ui.Activator
 Bundle-ActivationPolicy: lazy

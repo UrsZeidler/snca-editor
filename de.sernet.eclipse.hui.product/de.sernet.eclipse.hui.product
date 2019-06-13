@@ -42,9 +42,9 @@
    </plugins>
 
    <features>
-      <feature id="de.sernet.eclipse.hui.feature" version="1.0.0.qualifier"/>
-      <feature id="de.sernet.eclipse.hui.model.codegen.feature" version="1.0.0.qualifier"/>
-      <feature id="de.sernet.eclipse.hui.depedencies.feature" version="1.0.0.qualifier"/>
+      <feature id="de.sernet.eclipse.hui.feature" version="0.0.2"/>
+      <feature id="de.sernet.eclipse.hui.model.codegen.feature" version="0.0.2"/>
+      <feature id="de.sernet.eclipse.hui.depedencies.feature" version="0.0.2"/>
    </features>
 
    <configurations>

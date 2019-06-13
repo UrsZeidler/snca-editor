@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Acceleo Codegen Module IDE Plug-in
 Bundle-SymbolicName: de.sernet.eclipse.hui.model.codegen.ui;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.2
 Bundle-Activator: de.sernet.eclipse.hui.model.codegen.ui.Activator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.ui,

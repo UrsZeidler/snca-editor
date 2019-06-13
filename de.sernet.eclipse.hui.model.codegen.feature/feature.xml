@@ -2,7 +2,7 @@
 <feature
       id="de.sernet.eclipse.hui.model.codegen.feature"
       label="generation Feature"
-      version="1.0.0.qualifier">
+      version="0.0.2">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]

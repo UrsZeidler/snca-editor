@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: de.sernet.eclipse.hui.model.editor;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.2
 Bundle-ClassPath: .
 Bundle-Activator: de.sernet.eclipse.hitro.presentation.HitroEditorPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport,
- de.sernet.eclipse.hui.model;bundle-version="1.0.0",
+ de.sernet.eclipse.hui.model;bundle-version="0.0.2",
  org.eclipse.emf.eef.runtime;bundle-version="1.5.1",
- de.sernet.eclipse.hui.service;bundle-version="1.0.0"
+ de.sernet.eclipse.hui.service;bundle-version="0.0.2"
 Bundle-ActivationPolicy: lazy

@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Commandline
 Bundle-SymbolicName: de.sernet.eclipse.hui.commandline;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.2
 Automatic-Module-Name: de.sernet.eclipse.hui.commandline
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.equinox.app,
- de.sernet.eclipse.hui.model;bundle-version="1.0.0",
- de.sernet.eclipse.hui.model.codegen;bundle-version="1.0.0",
- de.sernet.eclipse.hui.model.validation;bundle-version="1.0.0",
- de.sernet.eclipse.hui.service;bundle-version="1.0.0",
+ de.sernet.eclipse.hui.model;bundle-version="0.0.2",
+ de.sernet.eclipse.hui.model.codegen;bundle-version="0.0.2",
+ de.sernet.eclipse.hui.model.validation;bundle-version="0.0.2",
+ de.sernet.eclipse.hui.service;bundle-version="0.0.2",
  org.eclipse.core.resources,
  org.eclipse.core.runtime;bundle-version="3.14.0",
  org.eclipse.ui.workbench,

@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Hui Service
 Bundle-SymbolicName: de.sernet.eclipse.hui.service;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.2
 Bundle-Activator: de.sernet.eclipse.hui.service.Activator
 Bundle-Vendor: SerNet
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- de.sernet.eclipse.hui.model;bundle-version="1.0.0",
+ de.sernet.eclipse.hui.model;bundle-version="0.0.2",
  org.eclipse.core.resources,
  com.google.guava;bundle-version="21.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

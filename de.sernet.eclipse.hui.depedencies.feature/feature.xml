@@ -2,7 +2,7 @@
 <feature
       id="de.sernet.eclipse.hui.depedencies.feature"
       label="Dependencies Feature"
-      version="1.0.0.qualifier">
+      version="0.0.2">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
