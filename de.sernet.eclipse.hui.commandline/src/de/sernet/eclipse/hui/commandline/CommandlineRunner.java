@@ -98,6 +98,10 @@ public class CommandlineRunner implements IApplication {
 			System.out.println("generate markdown");
 			generateMarkdown(monitor, project, importSncaXML);
 		}
+		if(commandLine.hasOption("generateWiki")) {
+			System.out.println("generate wiki");
+			generateWiki(monitor, project, importSncaXML);
+		}
 		if(commandLine.hasOption("export")) {
 			System.out.println("export snca");
 			doExport(monitor, project, sncaHitroFile);
@@ -151,12 +155,12 @@ public class CommandlineRunner implements IApplication {
 				.create("generateJava"));
 		
 		options.addOption(OptionBuilder//
-				.withDescription("generate java")//
+				.withDescription("generate markdown")//
 				.create("generateMarkdown"));
 		
 		options.addOption(OptionBuilder//
-				.withDescription("generate java")//
-				.create("generateMarkdown"));
+				.withDescription("generate wiki")//
+				.create("generateWiki"));
 		
 		options.addOption(OptionBuilder//
 				.withDescription("export to snca")//
