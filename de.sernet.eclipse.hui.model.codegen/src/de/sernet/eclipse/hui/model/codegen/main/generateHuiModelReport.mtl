@@ -19,6 +19,8 @@
 [generateDotFiles(root)/]
 [htmlreport('iso-doc-de.html', 'ISO',  root.allISOEntities(), '_de')/]
 [htmlreport('iso-doc-en.html', 'ISO',  root.allISOEntities(), '')/]
+[htmlreport('mogs-doc-de.html', 'MOGS',  root.allBPEntities(), '_de')/]
+[htmlreport('mogs-doc-en.html', 'MOGS',  root.allBPEntities(), '')/]
 
 [printEntityGroupProperyCSV('iso-entitys.csv', root.allISOEntities())/]
 [printEntityGroupProperyCSV('bp-entitys.csv', root.allBPEntities())/]
@@ -415,10 +417,16 @@ en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]
 
 [template public htmlreport(filename : String, docTitel : String, entities : Sequence(Huientity), lang :String)]
 [file (filename, false, 'UTF-8')]
+<!DOCTYPE html>
+<html>
+<title>[docTitel/]</title>
+<body 
 [docTitel.toTag('h1', '')/]
 [for (e : Huientity | entities)]
-<h2>[e.getLocalizedName(lang).toTag('a', 'id="'+e.id+'"')/]([e.id/])<h2/>
+<h2>[e.getLocalizedName(lang).toTag('a', 'id="'+e.id+'"')/] ([e.id/])<h2/>
+
 [e.getLocalizedName(lang, '_doc').toTag('div', 'class="doc"')/]
+<img src="image/[e.toGraphImageFilename()/]"/>
 
 <h3> relations </h3>
 [for (r : Huirelation | e.huirelation)]
@@ -432,27 +440,73 @@ en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]
 [htmlPrpoertyTable(pg.huiproperty, lang)/]
 [/for]
 [/for]
+</body 
+</html>
 [/file]
 [/template]
 
 [template public htmlPrpoertyTable(properties : OrderedSet(Huiproperty), lang : String)]
 <div class="propertytable">
 [for (p : Huiproperty | properties)]
-[p.getLocalizedName(lang)/] ([p.id/])::[p.inputtype/]<br/>
+<b>[p.getLocalizedName(lang)/] ([p.id/])</b>::[p.inputtype/]<br/>
 [p.getLocalizedName(lang, '_tooltip').toTag('div', 'class="doc"')/]
 
-<div class="dep">
+[comment]<div class="dep">
 [for (p : Huiproperty | p.allDependendProperties())]
 --> [p.name/] ([p.id/])<br/>
 [/for]
-</div>
-
+</div>[/comment]
+[printPropertyFlagsHmtl(p)/]<br/>
+[printDefaultRuleHtml(p)/]
+[printPropertyOptionsHtml(p)/]
 [/for]
 
 </div>
 [/template]
 
+[template public printDefaultRuleHtml(p : Huiproperty) ? (p.hasDefaultRule())]
+default rule: [p.defaultRule.class/]<br/>
+[for (pa : Param | p.defaultRule.param)]
+[pa.id/]:  
+[for (it : EFeatureMapEntry | pa.mixed)]
+  "[it.getValue()/]" <br/>
+[/for][/for]
+[/template]
 
+[template public printPropertyOptionsHtml(p : Huiproperty) ? (p.hasOptions())]
+[if (p.inputtype=Inputtypes::singleoption or p.inputtype=Inputtypes::numericoption)]
+one of:  
+[elseif (p.inputtype=Inputtypes::multioption)]
+many of:  
+[/if]
+[printOptionsHtml(p.option)/]
+[/template]
+
+[template public printOptionsHtml(list : OrderedSet(Option))]
+
+[for (o : Option | list)]
+* [o.id/] [o.name/] '[o.value/]'<br/>
+[/for]
+[/template]
+
+
+[template public printPropertyFlagsHmtl(p : Huiproperty)]
+[if (p.required)]
+| required
+[/if][if (p.showInObjectBrowser)]
+| objectBrowser
+[/if][if (p.isURL)]
+| isUrl
+[/if][if (p.editable)]
+| isEditable
+[/if][if (p.focus)]
+| focus
+[/if][if (p.visible)]
+| visible
+[/if][if (p.report)]
+| report
+[/if]
+[/template]
 
 [comment][template public printOptions(list : OrderedSet(Option))]
 

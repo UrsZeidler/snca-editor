@@ -4,7 +4,7 @@
 
 
 [query public toGraphFilename(e : Huientity) : String = e.id+'.dot' /]
-[query public toGraphImageFilename(e : Huientity) : String = e.id+'.png' /]
+[query public toGraphImageFilename(e : Huientity) : String = e.id+'.dot.png' /]
 
 [query public hasNoTags(p : Huipropertygroup) : Boolean =  p.tags.oclIsUndefined() or p.tags='' /]
 [query public hasTags(p : Huipropertygroup) : Boolean =  not p.hasNoTags() /]
