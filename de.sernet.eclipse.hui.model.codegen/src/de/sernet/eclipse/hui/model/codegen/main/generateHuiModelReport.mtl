@@ -420,7 +420,7 @@ en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]
 <!DOCTYPE html>
 <html>
 <title>[docTitel/]</title>
-<body 
+<body> 
 [docTitel.toTag('h1', '')/]
 [for (e : Huientity | entities)]
 <h2>[e.getLocalizedName(lang).toTag('a', 'id="'+e.id+'"')/] ([e.id/])<h2/>
