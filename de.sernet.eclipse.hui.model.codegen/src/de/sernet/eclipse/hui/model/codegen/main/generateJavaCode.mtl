@@ -7,12 +7,24 @@
 	
 	[comment @main /]
 	[root.generateJavaClasses()/]
-	[generateMissingProperties(root.huientities.huientity,'_de','all_missing')/]
-	[generateMissingProperties(root.allBPEntities(),'_de','bp_missing')/]
-	[generateMissingProperties(root.allBPEntities(),'','bp_missing')/]
-	[generateMissingProperties(root.allBPEntities(),'_it','bp_missing')/]
+[comment]	[generateMissingProperties(root.huientities.huientity,'_de','all_missing', allPropertyOptions())/]
+	[generateMissingProperties(root.allBPEntities(),'_de','bp_missing',Set(String){'_name',
+		'_reversename','_tooltip'})/]
+	[generateMissingProperties(root.allBPEntities(),'','bp_missing',Set(String){'_name',
+		'_reversename','_tooltip'})/]
+	[generateMissingProperties(root.allBPEntities(),'_it','bp_missing',Set(String){'_name',
+		'_reversename','_tooltip'})/][/comment]
+
+	[for (lang : String | root.allLang())]
+		[generateMissingProperties(root.huientities.huientity,lang,'all_name_missing', Set(String){'name', '_name'})/]
+		[generateMissingProperties(root.huientities.huientity,lang,'all_missing', allPropertyOptions())/]
+	[/for]
+
 
 [/template]
+
+[query public allPropertyOptions(any : OclAny) : Set(String) = Set(String){'_name',
+		'_reversename','_tooltip', 'name'} /]
 
 [query public toJavaWarpperClassName(e : Huientity) : String = e.id.toJavaIdentifier() + 'Wrapper' /]
 [query public toJavaWrapperPackage(e : Huientity) : String = 'sernet.verinice.model.wrapper' /]
@@ -40,40 +52,44 @@ endif /]
 [root.printNamendSwitch(root.allISOEntities(),'Iso')/]
 [/template]
 
-[template public generateMissingProperties(entites:Sequence(Huientity),lang : String, filename : String)]
+[template public generateMissingProperties(entites:Sequence(Huientity),lang : String, filename : String, options : Set(String))]
 [file (filename+lang+'.properties', false, 'iso8859-1')]
+#
+# missing Properties ([for (option : String | options)separator (',')][option/][/for])
+# lang : [lang/]
+#
 [for (e : Huientity | entites)]
 #[e.name/] ([e.id/])
-[if (e.getLocalizedName(lang)=null)]
+[if (options->includes('name') and e.getLocalizedName(lang)=null)]
 [e.id/]=
 [/if]
 [for (r : Huirelation | e.huirelation)]
-[if (r.getLocalizedName(lang,'_name')='')]
+[if (options->includes('_name') and r.getLocalizedName(lang,'_name')='')]
 [r.id/]_name=
 [/if]
-[if (r.getLocalizedName(lang,'_reversename')='')]
+[if (options->includes('_reversename') and r.getLocalizedName(lang,'_reversename')='')]
 [r.id/]_reversename=
 [/if]
-[if (r.getLocalizedName(lang,'_tooltip')='')]
+[if (options->includes('_tooltip') and r.getLocalizedName(lang,'_tooltip')='')]
 [r.id/]_tooltip=
 [/if]
 [/for]
 [for (p : Huiproperty | e.huiproperty)]
-[if (p.getLocalizedName(lang)='')]
+[if (options->includes('name') and p.getLocalizedName(lang)='')]
 [p.id/]=
 [/if]
-[if (p.getLocalizedName(lang,'_tooltip')='')]
+[if (options->includes('_tooltip') and p.getLocalizedName(lang,'_tooltip')='')]
 [p.id/]_tooltip=
 [/if]
 [/for]
 [for (g : Huipropertygroup | e.huipropertygroup)]
-[if (g.getLocalizedName(lang)='')]
+[if (options->includes('name') and g.getLocalizedName(lang)='')]
 [g.id/]=
 [for (p : Huiproperty | g.huiproperty)]
-[if (p.getLocalizedName(lang)='')]
+[if (options->includes('name') and p.getLocalizedName(lang)='')]
 [p.id/]=
 [/if]
-[if (p.getLocalizedName(lang,'_tooltip')='')]
+[if (options->includes('_tooltip') and p.getLocalizedName(lang,'_tooltip')='')]
 [p.id/]_tooltip=
 [/if]
 [/for]

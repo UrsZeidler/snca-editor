@@ -88,6 +88,13 @@
 'note'
 } /]
 
+[query public allLang(t : OclAny) :  Set(String) = Set{
+'',
+'_de',
+'_it',
+'_cz'
+} /]
+
 [query public allConfigurationEntities(root : DocumentRoot) : Sequence(Huientity) = 
 	root.huientities.huientity->select(root.allConfigurationIds()->includes(id))/]
 

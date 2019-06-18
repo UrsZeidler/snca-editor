@@ -422,9 +422,14 @@ en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]
 <title>[docTitel/]</title>
 <body> 
 [docTitel.toTag('h1', '')/]
+<h2><a id="toc">toc</h2>
 [for (e : Huientity | entities)]
-<h2>[e.getLocalizedName(lang).toTag('a', 'id="'+e.id+'"')/] ([e.id/])<h2/>
+<a href="#[e.id/]">[e.getLocalizedName(lang)/]</a>
+[/for]
 
+[for (e : Huientity | entities)]
+<h2>[e.getLocalizedName(lang).toTag('a', 'id="'+e.id+'"')/] ([e.id/]) </h2>
+<a href="#toc" class="toc_back_nav">back to toc</a>
 [e.getLocalizedName(lang, '_doc').toTag('div', 'class="doc"')/]
 <img src="image/[e.toGraphImageFilename()/]"/>
 
@@ -434,9 +439,15 @@ en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]
 [r.getLocalizedName(lang)/] ([r.id/]) --> <a href="#[r.to.id/]">[r.to.getLocalizedName(lang)/]</a><br/>
 [/for]
 <h3> properties </h3>
+[for (pg : Huipropertygroup | e.huipropertygroup)]
+<a href="#[pg.id/]">[pg.getLocalizedName(lang)/]</a>
+[/for]
+
 [htmlPrpoertyTable(e.huiproperty, lang)/]
 [for (pg : Huipropertygroup | e.huipropertygroup)]
-[pg.getLocalizedName(lang).toTag('h3', '')/]
+<h3>[pg.getLocalizedName(lang).toTag('a', 'id="'+pg.id+'"')/] ([pg.id/]) </h3>
+<a href="#[e.id/]">bach to [e.getLocalizedName(lang)/]</a></br>
+
 [htmlPrpoertyTable(pg.huiproperty, lang)/]
 [/for]
 [/for]
@@ -475,9 +486,9 @@ default rule: [p.defaultRule.class/]<br/>
 
 [template public printPropertyOptionsHtml(p : Huiproperty) ? (p.hasOptions())]
 [if (p.inputtype=Inputtypes::singleoption or p.inputtype=Inputtypes::numericoption)]
-one of:  
+one of:<br/>
 [elseif (p.inputtype=Inputtypes::multioption)]
-many of:  
+many of:<br/>
 [/if]
 [printOptionsHtml(p.option)/]
 [/template]
