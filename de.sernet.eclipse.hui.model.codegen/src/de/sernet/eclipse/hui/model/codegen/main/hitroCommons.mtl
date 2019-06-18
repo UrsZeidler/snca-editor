@@ -92,7 +92,7 @@
 '',
 '_de',
 '_it',
-'_cz'
+'_cs'
 } /]
 
 [query public allConfigurationEntities(root : DocumentRoot) : Sequence(Huientity) = 
