@@ -21,6 +21,10 @@
 [htmlreport('iso-doc-en.html', 'ISO',  root.allISOEntities(), '')/]
 [htmlreport('mogs-doc-de.html', 'MOGS',  root.allBPEntities(), '_de')/]
 [htmlreport('mogs-doc-en.html', 'MOGS',  root.allBPEntities(), '')/]
+[htmlreport('old-mogs-doc-de.html', 'OLD-MOGS',  root.allOldBPEntities(), '_de')/]
+[htmlreport('old-mogs-doc-en.html', 'OLD-MOGS',  root.allOldBPEntities(), '')/]
+[htmlreport('configuration-doc-de.html', 'CONFIG',  root.allConfigurationEntities(), '_de')/]
+[htmlreport('configuration-doc-en.html', 'CONFIG',  root.allConfigurationEntities(), '')/]
 
 [printEntityGroupProperyCSV('iso-entitys.csv', root.allISOEntities())/]
 [printEntityGroupProperyCSV('bp-entitys.csv', root.allBPEntities())/]
