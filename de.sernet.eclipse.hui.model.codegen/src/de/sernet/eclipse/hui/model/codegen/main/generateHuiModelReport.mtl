@@ -411,7 +411,7 @@ en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]
 
 
 
-[template private toTag(content : String, tag : String, attributes : String )]
+[template private toTag(content : String, tag : String, attributes : String ) ? (content<>'')]
 <[tag/][if (attributes <> '')] [attributes/][/if]>[content/]</[tag/]>
 [/template]
 
@@ -420,13 +420,42 @@ en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]
 <!DOCTYPE html>
 <html>
 <title>[docTitel/]</title>
+<style type="text/css">
+.toc_group {
+ font-size:  small
+}
+.propertytable {}
+.doc {
+margin: 10px;
+font-size : smaller;
+background-color: lightgray;
+}
+.toc_back_nav {
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.group_toc {
+  font-size:  smaller;
+  margin-bottom: 10px;
+}
+.value_quote {
+margin: 10px;
+font-size: smaller;
+font-style: italic;
+}
+.toc {
+  font-size:  smaller;
+  margin-bottom: 10px;
+}
+</style>
 <body> 
 [docTitel.toTag('h1', '')/]
 <h2><a id="toc">toc</h2>
+<div class="toc">
 [for (e : Huientity | entities)]
 <a href="#[e.id/]">[e.getLocalizedName(lang)/]</a>
 [/for]
-
+</div>
 [for (e : Huientity | entities)]
 <h2>[e.getLocalizedName(lang).toTag('a', 'id="'+e.id+'"')/] ([e.id/]) </h2>
 <a href="#toc" class="toc_back_nav">back to toc</a>
@@ -439,14 +468,14 @@ en tooltip        : [getProperty('snca-messages.properties', r.id+'_tooltip')/]
 [r.getLocalizedName(lang)/] ([r.id/]) --> <a href="#[r.to.id/]">[r.to.getLocalizedName(lang)/]</a><br/>
 [/for]
 <h3> properties </h3>
-[for (pg : Huipropertygroup | e.huipropertygroup)]
+<div class="group_toc">[for (pg : Huipropertygroup | e.huipropertygroup)]
 <a href="#[pg.id/]">[pg.getLocalizedName(lang)/]</a>
-[/for]
+[/for]</div>
 
 [htmlPrpoertyTable(e.huiproperty, lang)/]
 [for (pg : Huipropertygroup | e.huipropertygroup)]
 <h3>[pg.getLocalizedName(lang).toTag('a', 'id="'+pg.id+'"')/] ([pg.id/]) </h3>
-<a href="#[e.id/]">bach to [e.getLocalizedName(lang)/]</a></br>
+<a href="#[e.id/]" class="toc_back_nav">back to [e.getLocalizedName(lang)/]</a></br>
 
 [htmlPrpoertyTable(pg.huiproperty, lang)/]
 [/for]
@@ -480,7 +509,7 @@ default rule: [p.defaultRule.class/]<br/>
 [for (pa : Param | p.defaultRule.param)]
 [pa.id/]:  
 [for (it : EFeatureMapEntry | pa.mixed)]
-  "[it.getValue()/]" <br/>
+ <div class ="value_quote"> "[it.getValue()/]" </div>
 [/for][/for]
 [/template]
 
