@@ -1,0 +1,54 @@
+[comment encoding = UTF-8 /]
+[module generateEcore('http://www.sernet.de/hitro', 'http://www.eclipse.org/emf/2002/Ecore')]
+
+[import de::sernet::eclipse::hui::model::codegen::main::hitroCommons /]
+
+[template public generateEntities2Ecore(e : Huientities)]
+[file ('custom.xmi' , false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="veoModelCustomAspectExport" nsURI="http://sernet.de/veoModelCustomAspect/m1/1.0"
+    nsPrefix="vmcae">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="Contains the customizable instances of the aspects. Exported from the snca."/>
+  </eAnnotations>
+[for (e : Huientity | e.huientity)]
+[generateEntity(e)/]
+[/for]
+</ecore:EPackage>
+[/file]
+[/template]
+
+[template public generateEntity(e : Huientity)]
+[for (pg : Huipropertygroup | e.huipropertygroup)]
+[generateHuiGroup(pg, e)/]
+[/for]
+[/template]
+
+[template public generateHuiGroup(pg : Huipropertygroup, e : Huientity)]
+  <eClassifiers xsi:type="ecore:EClass" name="[pg.id.toEClassName()/]" eSuperTypes="veoM1.ecore#//CustomProperties">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="[e.name/] - [pg.name.replaceAll('&', ' ')/]"/>
+    </eAnnotations>
+[for (p : Huiproperty | pg.huiproperty)]
+[if (p.inputtype=Inputtypes::multioption)]
+ 	<eStructuralFeatures xsi:type="ecore:EAttribute" name="[p.id.toAttributeName()/]" upperBound="-1" eType="[p.toEcoreType()/]"/>
+[else]
+ 	<eStructuralFeatures xsi:type="ecore:EAttribute" name="[p.id.toAttributeName()/]" eType="[p.toEcoreType()/]"/>
+[/if]
+[/for]
+  </eClassifiers>
+[/template]
+
+
+[query public toEClassName(id : String) : String = id.toCamelCase() /]
+[query public toAttributeName(id : String) : String = id.toCamelCase().toLowerFirst() /]
+
+[template private toEcoreType(p : Huiproperty)]
+[if (p.inputtype=Inputtypes::line or p.inputtype=Inputtypes::text)]
+ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString[elseif (p.inputtype=Inputtypes::booleanoption)]
+ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean[elseif (p.inputtype=Inputtypes::numericoption or (p.inputtype=Inputtypes::singleoption))]
+ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt[else]
+ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString[/if][/template]
+
+

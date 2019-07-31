@@ -2,6 +2,7 @@
 [module generateJavaCode('http://www.sernet.de/hitro', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import de::sernet::eclipse::hui::model::codegen::main::hitroCommons /]
+[import de::sernet::eclipse::hui::model::codegen::main::generateEcore /]
 
 [template public generateJavaCode(root : DocumentRoot)]
 	
@@ -20,6 +21,7 @@
 		[generateMissingProperties(root.huientities.huientity,lang,'all_missing', allPropertyOptions())/]
 	[/for]
 
+	[root.huientities.generateEntities2Ecore()/]
 
 [/template]
 
