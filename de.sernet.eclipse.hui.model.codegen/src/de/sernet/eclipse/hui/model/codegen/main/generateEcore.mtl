@@ -38,8 +38,19 @@
 [/if]
 [/for]
   </eClassifiers>
+
+[for (p : Huiproperty | pg.huiproperty)]
+[p.optionTo()/]
+[/for]
 [/template]
 
+[template public optionTo(p : Huiproperty)? (not p.option->isEmpty())]
+  <eClassifiers xsi:type="ecore:EEnum" name="[p.id.toJavaIdentifier()/]">
+[for (o : Option | p.option)]
+    <eLiterals name="[o.id.toEClassName().toUpperCase()/]" literal="[o.id.toEClassName()/]"/>
+[/for]
+  </eClassifiers>
+[/template]
 
 [query public toEClassName(id : String) : String = id.toCamelCase() /]
 [query public toAttributeName(id : String) : String = id.toCamelCase().toLowerFirst() /]
@@ -47,8 +58,10 @@
 [template private toEcoreType(p : Huiproperty)]
 [if (p.inputtype=Inputtypes::line or p.inputtype=Inputtypes::text)]
 ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString[elseif (p.inputtype=Inputtypes::booleanoption)]
-ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean[elseif (p.inputtype=Inputtypes::numericoption or (p.inputtype=Inputtypes::singleoption))]
-ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt[else]
+ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean[elseif (p.inputtype=Inputtypes::numericoption)]
+ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt[elseif(p.inputtype=Inputtypes::singleoption)]
+//[p.id.toJavaIdentifier()/][elseif(p.inputtype=Inputtypes::multioption)]
+//[p.id.toJavaIdentifier()/][else]
 ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString[/if][/template]
 
 
