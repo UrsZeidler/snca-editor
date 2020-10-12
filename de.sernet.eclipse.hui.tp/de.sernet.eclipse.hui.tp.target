@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target includeMode="feature" name="hui-platfrom" sequenceNumber="41">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?pde version="3.8"?><target includeMode="feature" name="hui-platfrom" sequenceNumber="41">
 <locations>
-<location  includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.platform.ide" version="0.0.0"/>
 <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
@@ -10,17 +9,15 @@
 <unit id="org.eclipse.sdk.ide" version="0.0.0"/>
 <repository location="http://download.eclipse.org/eclipse/updates/4.16"/>
 </location>
-<location  includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="com.google.guava" version="21.0.0.v20170206-1425"/>
-<unit id="com.google.guava" version="21.0.0.v20170206-1425"/>
-<unit id="com.google.guava.source" version="21.0.0.v20170206-1425"/>
-<unit id="com.google.guava.source" version="21.0.0.v20170206-1425"/>
-<unit id="com.google.inject" version="3.0.0.v201605172100"/>
-<unit id="com.google.inject.source" version="3.0.0.v201605172100"/>
+<location includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.google.guava" version="0.0.0"/>
+<unit id="com.google.guava.source" version="0.0.0"/>
+<unit id="com.google.inject" version="0.0.0"/>
+<unit id="com.google.inject.source" version="0.0.0"/>
 <unit id="javax.xml" version="1.3.4.v201005080400"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
 </location>
-<location  includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.eef.sdk-feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.parsley.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.parsley.sdk.source.feature.group" version="0.0.0"/>
@@ -32,7 +29,7 @@
 <unit id="org.eclipse.egit.feature.group" version="0.0.0"/>
 <repository location="https://download.eclipse.org/releases/2020-06/"/>
 </location>
-<location  includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.compare.diagram.gmf.source.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.compare.diagram.sirius.feature.group" version="0.0.0"/>
@@ -49,5 +46,12 @@
 <unit id="org.eclipse.emf.compare.uml2.source.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/latest"/>
 </location>
+	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="com.google.guava" version="27.1.0.v20190517-1946"/>
+		<unit id="com.google.guava.source" version="27.1.0.v20190517-1946"/>
+		<unit id="com.google.inject" version="3.0.0.v201605172100"/>
+		<unit id="com.google.inject.source" version="3.0.0.v201605172100"/>
+		<repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository"/>
+	</location>
 </locations>
 </target>
