@@ -107,6 +107,9 @@ public class HitroModelUtil {
     }
 
     protected static String trasformName(String name) {
+        if (name == null) {
+            return "";
+        }
         return name.toLowerCase().replaceAll(" ", "_");
     }
 }
