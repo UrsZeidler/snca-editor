@@ -14,3 +14,5 @@ Require-Bundle: org.eclipse.ui,
  de.sernet.eclipse.hui.service;bundle-version="0.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
+Export-Package: de.sernet.eclipse.hui.model.validation,
+ de.sernet.eclipse.hui.model.validation.contrains
