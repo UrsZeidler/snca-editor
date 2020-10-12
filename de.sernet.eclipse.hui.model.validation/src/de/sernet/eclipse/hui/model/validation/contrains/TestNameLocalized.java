@@ -31,6 +31,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
+import de.sernet.eclipse.hitro.util.HitroModelUtil;
 import de.sernet.eclipse.hui.service.localization.LocalizationService;
 import de.sernet.eclipse.hui.service.localization.lang.LangEntry;
 import de.sernet.eclipse.hui.service.localization.lang.LanguagesEntry;
@@ -42,14 +43,19 @@ import de.sernet.eclipse.hui.service.localization.lang.LanguagesEntry;
 public class TestNameLocalized extends AbstractModelConstraint {
 
     private LocalizationService localizationService;
+    public static LocalizationService localizationServiceRuntime;
 
     /**
      * 
      */
     public TestNameLocalized() {
         super();
+        if(PlatformUI.isWorkbenchRunning()) {
         IWorkbench workbench = PlatformUI.getWorkbench();
         localizationService = workbench.getService(LocalizationService.class);
+        } else {
+            localizationService = localizationServiceRuntime;
+        }
     }
 
     /*
@@ -71,7 +77,7 @@ public class TestNameLocalized extends AbstractModelConstraint {
             List<LangEntry> entries = languagesEntry.getEntries();
             String result = validateEntries(entries);
             if (result != null && !result.isEmpty()) {
-                return ctx.createFailureStatus(target, result);
+                return ctx.createFailureStatus(HitroModelUtil.getIdSwitch().doSwitch(target), result);
             }
         }
         return null;
@@ -80,7 +86,7 @@ public class TestNameLocalized extends AbstractModelConstraint {
     private String validateEntries(List<LangEntry> entries) {
         return entries.stream().filter(e->e.getSuffix()==null || e.getSuffix().isEmpty())//
         		.filter(e -> e.getText() == null || e.getText().isEmpty())//
-                .map(TestNameLocalized::getLanguageName).collect(Collectors.joining(","));
+                .map( TestNameLocalized::getLanguageName).collect(Collectors.joining(","));
     }
 
 	private static String getLanguageName(LangEntry e) {

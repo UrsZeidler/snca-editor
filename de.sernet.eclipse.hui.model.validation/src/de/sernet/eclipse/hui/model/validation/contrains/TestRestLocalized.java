@@ -42,14 +42,19 @@ import de.sernet.eclipse.hui.service.localization.lang.LanguagesEntry;
 public class TestRestLocalized extends AbstractModelConstraint {
 
     private LocalizationService localizationService;
+    public static LocalizationService localizationServiceRuntime;
 
     /**
      * 
      */
     public TestRestLocalized() {
         super();
-        IWorkbench workbench = PlatformUI.getWorkbench();
-        localizationService = workbench.getService(LocalizationService.class);
+        if(PlatformUI.isWorkbenchRunning()) {
+            IWorkbench workbench = PlatformUI.getWorkbench();
+            localizationService = workbench.getService(LocalizationService.class);
+        } else {
+            localizationService = localizationServiceRuntime;
+        }
     }
 
     /*
