@@ -32,16 +32,25 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.BasicMonitor;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.BasicEAnnotationValidator.ValidationContext;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.ui.PlatformUI;
 
+import de.sernet.eclipse.hitro.HitroPackage;
 import de.sernet.eclipse.hui.model.codegen.main.GenerateHuiModelReport;
 import de.sernet.eclipse.hui.model.codegen.main.GenerateJavaCode;
 import de.sernet.eclipse.hui.model.codegen.main.GenerateMarkdown;
+import de.sernet.eclipse.hui.model.validation.EValidatorAdapter;
+import de.sernet.eclipse.hui.model.validation.contrains.TestNameLocalized;
+import de.sernet.eclipse.hui.model.validation.contrains.TestRestLocalized;
 import de.sernet.eclipse.hui.service.localization.LocalizationService;
 import de.sernet.eclipse.hui.service.localization.LocalizationServiceImpl;
 import de.sernet.eclipse.hui.service.localization.lang.HitropPropertiesUtil;
@@ -52,7 +61,8 @@ import de.sernet.eclipse.hui.service.localization.lang.LanguagesEntry;
  *
  */
 public class CommandlineRunner implements IApplication {
-
+    private boolean doValidation = true;
+    private int validationLevel = Diagnostic.INFO;
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -66,6 +76,22 @@ public class CommandlineRunner implements IApplication {
 		CommandLineParser parser = new BasicParser();
 
 		CommandLine commandLine = parser.parse(options, args);
+		if(commandLine.hasOption("validate")) {
+		    doValidation = true;
+		    String[] values = commandLine.getOptionValues("validate");
+		    String level = values[0];
+		    switch (level) {
+            case "WARNING":
+                validationLevel = Diagnostic.WARNING;
+                break;
+            case "ERROR":
+                validationLevel = Diagnostic.ERROR;
+                break;
+            default:
+                validationLevel = Diagnostic.INFO;
+                break;
+            }
+		}
 		if(commandLine.hasOption('h')){
 			printHelp(options);
 			
@@ -109,6 +135,17 @@ public class CommandlineRunner implements IApplication {
 		
 	}
 
+    protected void printDiagnostic(Diagnostic diagnostic, String indent) {
+        if (diagnostic.getSeverity() >= validationLevel) {
+            System.out.print(indent);
+            System.out.println(diagnostic.getSeverity()+" " + diagnostic.getMessage());
+
+        }
+        for (Diagnostic child : diagnostic.getChildren()) {
+            printDiagnostic(child, indent + "  ");
+        }
+    }
+	
 	private void doExport(IProgressMonitor monitor, IProject project, IFile sncaHitroFile) throws CoreException, IOException {
 		IContainer target = project.getFolder("export");
 		IContainer targetFolder = target;
@@ -162,10 +199,17 @@ public class CommandlineRunner implements IApplication {
 				.withDescription("generate wiki")//
 				.create("generateWiki"));
 		
-		options.addOption(OptionBuilder//
-				.withDescription("export to snca")//
-				.create("export"));
-		
+        options.addOption(OptionBuilder//
+                .withDescription("export to snca")//
+                .create("export"));
+        
+        options.addOption(OptionBuilder//
+                .withDescription("validate and report <level> one of INFO|WARNING|ERROR")//
+                .withValueSeparator()//
+                .withArgName("level")//
+                .hasArgs(1)//
+                .create("validate"));
+        
 		options.addOptionGroup(optionGroup);
 		return options;
 	}
@@ -226,6 +270,7 @@ public class CommandlineRunner implements IApplication {
 		} else
 			file.setContents(transformSnca, true, false, monitor);
 
+		EValidator.Registry.INSTANCE.put(HitroPackage.eINSTANCE, new EValidatorAdapter());
 		HitropPropertiesUtil.importSncaInWorkspace(file, orgFilename);
 
 		ResourceSetImpl resourceSetImpl = new ResourceSetImpl();
@@ -234,8 +279,20 @@ public class CommandlineRunner implements IApplication {
 		Map<?, ?> options = new HashMap<>();
 		resource.load(options);
 
-	//	ServiceLocator serviceLocator = new ServiceLocator();
+		//TODO need another kind of service
 		LocalizationService localizationService = new LocalizationServiceImpl();//PlatformUI.getWorkbench().getService(LocalizationService.class);
+        if (doValidation) {
+            TestNameLocalized.localizationServiceRuntime = localizationService;
+            TestRestLocalized.localizationServiceRuntime = localizationService;
+            for (EObject eObject : resource.getContents()) {
+                Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
+                if (diagnostic.getSeverity() != Diagnostic.OK) {
+                    printDiagnostic(diagnostic, "");
+                }
+            }
+        }
+		
+	//	ServiceLocator serviceLocator = new ServiceLocator();
 		Map<EObject, LanguagesEntry> entryMap = localizationService.getLanguageEntries(resource);
         String basePath = HitropPropertiesUtil.platformBasePath(file);
 
@@ -248,6 +305,10 @@ public class CommandlineRunner implements IApplication {
 
 	private IProject getProject(IProgressMonitor monitor) throws CoreException {
 		final IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		if(!PlatformUI.isWorkbenchRunning()){
+		    //PlatformUI.createAndRunWorkbench(display, advisor);
+		}
+		
 		
 		IWorkspaceRoot root = workspace.getRoot();
 		root.refreshLocal(10, monitor);
