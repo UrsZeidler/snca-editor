@@ -6,9 +6,9 @@ package de.sernet.eclipse.hui.commandline;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.cli.BasicParser;
@@ -19,7 +19,6 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -28,7 +27,6 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.BasicMonitor;
@@ -38,13 +36,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.BasicEAnnotationValidator.ValidationContext;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.ui.PlatformUI;
 
 import de.sernet.eclipse.hitro.HitroPackage;
+import de.sernet.eclipse.hitro.Huientity;
+import de.sernet.eclipse.hitro.Huiproperty;
+import de.sernet.eclipse.hitro.Huipropertygroup;
+import de.sernet.eclipse.hitro.Huirelation;
+import de.sernet.eclipse.hitro.util.HitroSwitch;
 import de.sernet.eclipse.hui.model.codegen.main.GenerateHuiModelReport;
 import de.sernet.eclipse.hui.model.codegen.main.GenerateJavaCode;
 import de.sernet.eclipse.hui.model.codegen.main.GenerateMarkdown;
@@ -135,14 +137,16 @@ public class CommandlineRunner implements IApplication {
 		
 	}
 
-    protected void printDiagnostic(Diagnostic diagnostic, String indent) {
+    protected void printDiagnostic(Diagnostic diagnostic, String indent, HitroSwitch<String> lableProvider) {
         if (diagnostic.getSeverity() >= validationLevel) {
             System.out.print(indent);
-            System.out.println(diagnostic.getSeverity()+" " + diagnostic.getMessage());
+            List<?> data = diagnostic.getData();
+            data.get(0);
+            System.out.println(diagnostic.getSeverity()+" "+lableProvider.doSwitch((EObject) diagnostic.getData().get(0))+" :" + diagnostic.getMessage());
 
         }
         for (Diagnostic child : diagnostic.getChildren()) {
-            printDiagnostic(child, indent + "  ");
+            printDiagnostic(child, indent + "  ", lableProvider);
         }
     }
 	
@@ -282,12 +286,36 @@ public class CommandlineRunner implements IApplication {
 		//TODO need another kind of service
 		LocalizationService localizationService = new LocalizationServiceImpl();//PlatformUI.getWorkbench().getService(LocalizationService.class);
         if (doValidation) {
+            HitroSwitch<String> displayNameSwitch = new HitroSwitch<String>() {
+                @Override
+                public String caseHuientity(Huientity object) {
+                    return object.eClass().getName()+"-"+ object.getName() + "["+object.getId()+"]";
+                }
+                @Override
+                public String caseHuipropertygroup(Huipropertygroup object) {
+                    return object.eClass().getName()+"-"+ object.getName() + "["+object.getId()+"]";
+                }
+                @Override
+                public String caseHuiproperty(Huiproperty object) {
+                    return object.eClass().getName()+"-"+ object.getName() + "["+object.getId()+"]";
+                }
+                @Override
+                public String caseHuirelation(Huirelation object) {
+                    return object.eClass().getName()+"-"+ object.getName() + "["+object.getId()+"]";
+                }
+                @Override
+                public String caseOption(de.sernet.eclipse.hitro.Option object) {
+                    return object.eClass().getName()+"-"+ object.getName() + "["+object.getId()+"]";
+                }
+            };
+            
+            
             TestNameLocalized.localizationServiceRuntime = localizationService;
             TestRestLocalized.localizationServiceRuntime = localizationService;
             for (EObject eObject : resource.getContents()) {
                 Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
                 if (diagnostic.getSeverity() != Diagnostic.OK) {
-                    printDiagnostic(diagnostic, "");
+                    printDiagnostic(diagnostic, "", displayNameSwitch);
                 }
             }
         }
