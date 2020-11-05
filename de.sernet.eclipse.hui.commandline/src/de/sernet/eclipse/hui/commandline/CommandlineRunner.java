@@ -6,10 +6,13 @@ package de.sernet.eclipse.hui.commandline;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.sql.rowset.serial.SerialArray;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -139,10 +142,16 @@ public class CommandlineRunner implements IApplication {
 
     protected void printDiagnostic(Diagnostic diagnostic, String indent, HitroSwitch<String> lableProvider) {
         if (diagnostic.getSeverity() >= validationLevel) {
+            EObject eObject = (EObject) diagnostic.getData().get(0);
+            if(eObject==null)
+                return;
             System.out.print(indent);
-            List<?> data = diagnostic.getData();
-            data.get(0);
-            System.out.println(diagnostic.getSeverity()+" "+lableProvider.doSwitch((EObject) diagnostic.getData().get(0))+" :" + diagnostic.getMessage());
+            String message = MessageFormat.format("{0} in {1}: {2}", 
+                    toSererity(diagnostic.getSeverity()),
+                    lableProvider.doSwitch(eObject),
+                    diagnostic.getMessage());
+            
+            System.out.println(message);
 
         }
         for (Diagnostic child : diagnostic.getChildren()) {
@@ -150,7 +159,19 @@ public class CommandlineRunner implements IApplication {
         }
     }
 	
-	private void doExport(IProgressMonitor monitor, IProject project, IFile sncaHitroFile) throws CoreException, IOException {
+	private String toSererity(int severity) {
+        switch (severity ) {
+        case Diagnostic.OK:
+            return "OK";
+        case Diagnostic.ERROR:
+            return "ERROR";
+        case Diagnostic.WARNING:
+            return "WARNING";
+        }
+        return "INFO";
+    }
+
+    private void doExport(IProgressMonitor monitor, IProject project, IFile sncaHitroFile) throws CoreException, IOException {
 		IContainer target = project.getFolder("export");
 		IContainer targetFolder = target;
 		
@@ -289,23 +310,28 @@ public class CommandlineRunner implements IApplication {
             HitroSwitch<String> displayNameSwitch = new HitroSwitch<String>() {
                 @Override
                 public String caseHuientity(Huientity object) {
-                    return object.eClass().getName()+"-"+ object.getName() + "["+object.getId()+"]";
+                    return object.eClass().getName()+ "["+object.getId()+"]";
                 }
                 @Override
                 public String caseHuipropertygroup(Huipropertygroup object) {
-                    return object.eClass().getName()+"-"+ object.getName() + "["+object.getId()+"]";
+                    return object.eClass().getName()+ "["+object.getId()+"]";
                 }
                 @Override
                 public String caseHuiproperty(Huiproperty object) {
-                    return object.eClass().getName()+"-"+ object.getName() + "["+object.getId()+"]";
+                    return object.eClass().getName()+ "["+object.getId()+"]";
                 }
                 @Override
                 public String caseHuirelation(Huirelation object) {
-                    return object.eClass().getName()+"-"+ object.getName() + "["+object.getId()+"]";
+                    return object.eClass().getName()+ "["+object.getId()+"]";
                 }
                 @Override
                 public String caseOption(de.sernet.eclipse.hitro.Option object) {
-                    return object.eClass().getName()+"-"+ object.getName() + "["+object.getId()+"]";
+                    return object.eClass().getName()+ "["+object.getId()+"]";
+                }
+                
+                @Override
+                public String defaultCase(EObject object) {
+                    return  object.eClass().getName();
                 }
             };
             
