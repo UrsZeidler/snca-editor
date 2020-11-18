@@ -17,6 +17,7 @@
 		'_reversename','_tooltip'})/][/comment]
 
 	[for (lang : String | root.allLang())]
+		[generateMissingProperties(root.huientities.huientity,lang,'all_name_reverse_missing', Set(String){'name', '_name', '_reversename'})/]
 		[generateMissingProperties(root.huientities.huientity,lang,'all_name_missing', Set(String){'name', '_name'})/]
 		[generateMissingProperties(root.huientities.huientity,lang,'all_missing', allPropertyOptions())/]
 	[/for]
