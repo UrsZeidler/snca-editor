@@ -147,7 +147,7 @@ public class CommandlineRunner implements IApplication {
                 return;
             System.out.print(indent);
             String message = MessageFormat.format("{0} in {1}: {2}", 
-                    toSererity(diagnostic.getSeverity()),
+                    diagnostic.getSeverity(),//toSererity(diagnostic.getSeverity()), //switch back when we can fix the jenkins parser
                     lableProvider.doSwitch(eObject),
                     diagnostic.getMessage());
             
