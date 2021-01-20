@@ -9,11 +9,8 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import javax.sql.rowset.serial.SerialArray;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -36,7 +33,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -47,6 +46,7 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Sets;
 
+import de.sernet.eclipse.hitro.DocumentRoot;
 import de.sernet.eclipse.hitro.HitroPackage;
 import de.sernet.eclipse.hitro.Huientity;
 import de.sernet.eclipse.hitro.Huiproperty;
@@ -148,14 +148,14 @@ public class CommandlineRunner implements IApplication {
             EObject eObject = (EObject) diagnostic.getData().get(0);
             if(eObject==null)
                 return;
+            if(! (eObject instanceof DocumentRoot)) {
             System.out.print(indent);
             String message = MessageFormat.format("{0} in {1}: {2}", 
                     diagnostic.getSeverity(),//toSererity(diagnostic.getSeverity()), //switch back when we can fix the jenkins parser
                     lableProvider.doSwitch(eObject),
                     diagnostic.getMessage());
-            
             System.out.println(message);
-
+            }
         }
         for (Diagnostic child : diagnostic.getChildren()) {
             printDiagnostic(child, indent + "  ", lableProvider);
@@ -334,7 +334,12 @@ public class CommandlineRunner implements IApplication {
                 
                 @Override
                 public String defaultCase(EObject object) {
-                    return  object.eClass().getName();
+                        EObject eContainer = object.eContainer();
+                        String doSwitch = "";
+                        if(eContainer!=null) {
+                            doSwitch = this.doSwitch(eContainer);
+                        }
+                    return doSwitch+" "+ object.eClass().getName();
                 }
             };
             
@@ -343,8 +348,28 @@ public class CommandlineRunner implements IApplication {
 
             TestNameLocalized.localizationServiceRuntime = localizationServiceValidation;
             TestRestLocalized.localizationServiceRuntime = localizationServiceValidation;
+            Map<Class<?>, Object> context = new HashMap<>();
+            context.put(EValidator.SubstitutionLabelProvider.class, new EValidator.SubstitutionLabelProvider() {
+
+                @Override
+                public String getObjectLabel(EObject eObject) {
+                    return displayNameSwitch.doSwitch(eObject);
+                }
+
+                @Override
+                public String getFeatureLabel(EStructuralFeature eStructuralFeature) {
+                    return eStructuralFeature.getName();
+                }
+
+                @Override
+                public String getValueLabel(EDataType eDataType, Object value) {
+                    return value.toString();
+                }
+                
+            });
+
             for (EObject eObject : resource.getContents()) {
-                Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
+                Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject, context);
                 if (diagnostic.getSeverity() != Diagnostic.OK) {
                     printDiagnostic(diagnostic, "", displayNameSwitch);
                 }
