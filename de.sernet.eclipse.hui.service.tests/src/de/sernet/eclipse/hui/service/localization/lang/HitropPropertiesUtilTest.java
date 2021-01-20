@@ -76,7 +76,7 @@ public class HitropPropertiesUtilTest {
 	@Test
 	public void testGetLangProperties() {
 		Map<String, Properties> langProperties = HitropPropertiesUtil.getLangProperties(basePath,
-				HitropPropertiesUtil.TO_FILE);
+				HitropPropertiesUtil.TO_FILE, Collections.emptySet());
 		assertEquals(4, langProperties.size());
 	}
 

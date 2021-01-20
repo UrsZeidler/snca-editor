@@ -42,6 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
@@ -138,12 +139,25 @@ public class HitropPropertiesUtil {
      */
     public static Map<EObject, LanguagesEntry> loadPropertyResources(List<EObject> contents,
             String basePath, ToFile toFile) {
+        return loadPropertyResources(contents, basePath, toFile, Collections.emptySet());
+    }
+        /**
+         * Loads the languages properties and build the mapping structure.
+         * 
+         * @param contents
+         * @param basePath
+         * @param toFile
+         * @param excludeLang 
+         * @return
+         */
+        public static Map<EObject, LanguagesEntry> loadPropertyResources(List<EObject> contents,
+                String basePath, ToFile toFile, Set<String> excludeLang) {
         if (contents.isEmpty())
             return Collections.emptyMap();
 
         Map<EObject, LanguagesEntry> entryMap = new HashMap<>();
         Hitro2LangEntrySwitch hitroSwitch = new Hitro2LangEntrySwitch();
-        Map<String, Properties> map = HitropPropertiesUtil.getLangProperties(basePath, toFile);
+        Map<String, Properties> map = HitropPropertiesUtil.getLangProperties(basePath, toFile, excludeLang);
 
         EObject eObject = contents.get(0);
         if (eObject instanceof DocumentRoot) {
@@ -188,12 +202,13 @@ public class HitropPropertiesUtil {
      * 
      * @param basePath
      * @param toFile
+     * @param excludeLang 
      * @return
      */
-    public static Map<String, Properties> getLangProperties(String basePath, ToFile toFile) {
+    public static Map<String, Properties> getLangProperties(String basePath, ToFile toFile, Set<String> excludeLang) {
         Map<String, Properties> map = new HashMap<>();
 
-        List<String> locales = getAllLocalesForFile(basePath, toFile);        
+        List<String> locales = getAllLocalesForFile(basePath, toFile).stream().filter(l-> !excludeLang.contains(l)).collect(Collectors.toList());       
         for (String lang : locales) {
             Properties properties = new Properties() {
                 private static final long serialVersionUID = 5598658684137906202L;
@@ -284,7 +299,7 @@ public class HitropPropertiesUtil {
     public static void syncPropertyFile(Resource resource, String basePath,
             Map<EObject, LanguagesEntry> entryMap, ToFile toFile) {
         Hitro2LangEntrySwitch entrySwitch = new Hitro2LangEntrySwitch();
-        Map<String, Properties> langProperties = getLangProperties(basePath, toFile);
+        Map<String, Properties> langProperties = getLangProperties(basePath, toFile, Collections.emptySet());
 
         EList<EObject> contents = resource.getContents();
         EObject eObject = contents.get(0);

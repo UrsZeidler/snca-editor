@@ -19,8 +19,12 @@
  ******************************************************************************/
 package de.sernet.eclipse.hui.service.localization;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
@@ -35,7 +39,17 @@ import de.sernet.eclipse.hui.service.localization.lang.LanguagesEntry;
  */
 public class LocalizationServiceImpl implements LocalizationService {
 
+    public LocalizationServiceImpl(Set<String> excludeLang) {
+        super();
+        this.excludeLang = excludeLang;
+    }
+
+    public LocalizationServiceImpl() {
+        super();
+    }
+
     private Map<Resource, Map<EObject, LanguagesEntry>> entries = new HashMap<>();
+    private Set<String> excludeLang = Collections.emptySet();
 
     public Map<EObject, LanguagesEntry> getLanguageEntries(Resource resource) {
         Map<EObject, LanguagesEntry> map = entries.get(resource);
@@ -50,7 +64,7 @@ public class LocalizationServiceImpl implements LocalizationService {
         IFile file = HitropPropertiesUtil.getFile(resource);
         String basePath = HitropPropertiesUtil.platformBasePath(file);
         Map<EObject, LanguagesEntry> entryMap = HitropPropertiesUtil.loadPropertyResources(
-                resource.getContents(), basePath, HitropPropertiesUtil.TO_WORKSPACE_FILE);
+                resource.getContents(), basePath, HitropPropertiesUtil.TO_WORKSPACE_FILE, excludeLang);
 
         return entryMap;
     }

@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.sql.rowset.serial.SerialArray;
 
@@ -43,6 +44,8 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.ui.PlatformUI;
+
+import com.google.common.collect.Sets;
 
 import de.sernet.eclipse.hitro.HitroPackage;
 import de.sernet.eclipse.hitro.Huientity;
@@ -304,8 +307,8 @@ public class CommandlineRunner implements IApplication {
 		Map<?, ?> options = new HashMap<>();
 		resource.load(options);
 
-		//TODO need another kind of service
 		LocalizationService localizationService = new LocalizationServiceImpl();//PlatformUI.getWorkbench().getService(LocalizationService.class);
+		//TODO need another kind of service
         if (doValidation) {
             HitroSwitch<String> displayNameSwitch = new HitroSwitch<String>() {
                 @Override
@@ -335,9 +338,11 @@ public class CommandlineRunner implements IApplication {
                 }
             };
             
-            
-            TestNameLocalized.localizationServiceRuntime = localizationService;
-            TestRestLocalized.localizationServiceRuntime = localizationService;
+            Set<String> exclude = Sets.newHashSet("_cs","_it");
+            LocalizationService localizationServiceValidation = new LocalizationServiceImpl(exclude);//PlatformUI.getWorkbench().getService(LocalizationService.class);
+
+            TestNameLocalized.localizationServiceRuntime = localizationServiceValidation;
+            TestRestLocalized.localizationServiceRuntime = localizationServiceValidation;
             for (EObject eObject : resource.getContents()) {
                 Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
                 if (diagnostic.getSeverity() != Diagnostic.OK) {
