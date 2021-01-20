@@ -135,7 +135,7 @@ Works on Huientity and Huiproperty.
                               lang="Java"
                               mode="Live"
                               name="Validate numeric option"
-                              severity="ERROR"
+                              severity="WARNING"
                               statusCode="de.sernet.eclipse.hui.model.validation.numericoption">
                            <message>
                               The property {0} has an inconsitent numeric setting. {1}
@@ -171,7 +171,7 @@ Works on Huientity and Huiproperty.
                               severity="ERROR"
                               statusCode="de.sernet.eclipse.hui.model.validation.testmessageproperties">
                            <message>
-                              No localization for {0}: &quot;{1}&quot;.
+                              No basic localization for language &quot;{1}&quot;.
                            </message>
                            <description>
                               Check if the element has all localization defined.
@@ -199,7 +199,7 @@ Works on Huientity and Huiproperty.
                               severity="WARNING"
                               statusCode="de.sernet.eclipse.hui.model.validation.testrestmessageproperties">
                            <message>
-                             No localization for {0}:&quot;{1}&quot;.
+                             No localization &quot;{1}&quot;.
                            </message>
                            <description>
                               Check if the element has all localization defined.
@@ -215,6 +215,26 @@ Works on Huientity and Huiproperty.
                            </target>
                            <target
                                  class="Huientity">
+                           </target>
+                        </constraint>
+                        <constraint
+                              class="de.sernet.eclipse.hui.model.validation.contrains.ValidateDependsReference"
+                              id="de.sernet.eclipse.hui.model.validation.depen_reference"
+                              isEnabledByDefault="true"
+                              lang="Java"
+                              mode="Live"
+                              name="Depends reference exist"
+                              severity="ERROR"
+                              statusCode="de.sernet.eclipse.hui.model.validation.depen_reference">
+                           <message>
+                              Refrenced value"{1}" does not exist in "{0}".
+                           </message>
+                           <description>
+                              Test the reference of a depends object.
+Checks NUMERICOPTION, MULTIOPTION, SINGLEOPTION
+                           </description>
+                           <target
+                                 class="Depends">
                            </target>
                         </constraint>
 
@@ -234,26 +254,6 @@ Works on Huientity and Huiproperty.
                <message>
                   message body text
                </message>
-            </constraint>
-            <constraint
-                  class="de.sernet.eclipse.hui.model.validation.contrains.ValidateDependsReference"
-                  id="de.sernet.eclipse.hui.model.validation.depen_reference"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Live"
-                  name="Depends reference exist"
-                  severity="ERROR"
-                  statusCode="de.sernet.eclipse.hui.model.validation.depen_reference">
-               <message>
-                  Refrenced value &quot;{1}&quot; does not exist in &quot;{0}&quot;.
-               </message>
-               <description>
-                  Test the reference of a depends object.
-Checks NUMERICOPTION, MULTIOPTION, SINGLEOPTION
-               </description>
-               <target
-                     class="Depends">
-               </target>
             </constraint>
          
                         
