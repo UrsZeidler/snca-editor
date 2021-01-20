@@ -235,6 +235,26 @@ Works on Huientity and Huiproperty.
                   message body text
                </message>
             </constraint>
+            <constraint
+                  class="de.sernet.eclipse.hui.model.validation.contrains.ValidateDependsReference"
+                  id="de.sernet.eclipse.hui.model.validation.depen_reference"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Live"
+                  name="Depends reference exist"
+                  severity="ERROR"
+                  statusCode="de.sernet.eclipse.hui.model.validation.depen_reference">
+               <message>
+                  Refrenced value &quot;{1}&quot; does not exist in &quot;{0}&quot;.
+               </message>
+               <description>
+                  Test the reference of a depends object.
+Checks NUMERICOPTION, MULTIOPTION, SINGLEOPTION
+               </description>
+               <target
+                     class="Depends">
+               </target>
+            </constraint>
          
                         
                         
