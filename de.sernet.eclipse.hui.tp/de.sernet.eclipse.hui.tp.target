@@ -8,7 +8,7 @@
 <unit id="org.eclipse.rcp.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.rcp.source.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.sdk.ide" version="0.0.0"/>
-<repository location="http://download.eclipse.org/eclipse/updates/4.8"/>
+<repository location="http://download.eclipse.org/eclipse/updates/4.16"/>
 </location>
 <location  includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="com.google.guava" version="21.0.0.v20170206-1425"/>
@@ -21,7 +21,6 @@
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
 </location>
 <location  includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.diffmerge.sdk.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.eef.sdk-feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.parsley.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.parsley.sdk.source.feature.group" version="0.0.0"/>
@@ -30,8 +29,7 @@
 <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.validation.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.ecp.sdk.feature.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/releases/photon/"/>
+<repository location="https://download.eclipse.org/releases/latest"/>
 </location>
 <location  includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="0.0.0"/>
